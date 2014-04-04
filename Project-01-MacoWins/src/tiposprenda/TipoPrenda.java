@@ -6,5 +6,5 @@ public interface TipoPrenda
 	 * Precio Base del tipo de prenda
 	 * @return precio de la prenda
 	 */
-	Double precioBase();
+	public Double precioBase();
 }
