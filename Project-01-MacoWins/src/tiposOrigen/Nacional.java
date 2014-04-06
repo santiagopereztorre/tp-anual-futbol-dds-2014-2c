@@ -1,4 +1,4 @@
-package tipoOrigen;
+package tiposOrigen;
 
 public class Nacional implements TipoOrigen {
 
