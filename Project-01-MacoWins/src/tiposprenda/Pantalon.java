@@ -1,4 +1,4 @@
-package tiposprenda;
+package tiposPrenda;
 
 public class Pantalon implements TipoPrenda 
 {
