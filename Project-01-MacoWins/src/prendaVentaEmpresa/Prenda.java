@@ -1,28 +1,33 @@
 package prendaVentaEmpresa;
 
+import marcas.Marca;
+import tiposOrigen.TipoOrigen;
+import tiposPrenda.TipoPrenda;
+
 public class Prenda {
 	
-	marcas.Marca marca;
-	tiposPrenda.TipoPrenda tipoPrenda;
-	tiposOrigen.TipoOrigen tipoOrigen;
-	Empresa empresa;
+	private Marca marca;
+	private TipoPrenda tipoPrenda;
+	private TipoOrigen tipoOrigen;
+	private Empresa empresa;
 	
-	public Prenda (marcas.Marca unaMarca, tiposPrenda.TipoPrenda unTipoPrenda, tiposOrigen.TipoOrigen unTipoOrigen, Empresa unaEmpresa){
+	public Prenda (Marca unaMarca, TipoPrenda unTipoPrenda, TipoOrigen unTipoOrigen, Empresa unaEmpresa)
+	{
 		marca = unaMarca;
 		tipoPrenda = unTipoPrenda;
 		tipoOrigen = unTipoOrigen;
 		empresa = unaEmpresa;		
 	}
 	
-	public marcas.Marca getMarca(){
+	public Marca getMarca(){
 		return marca;
 	}
 	
-	public tiposPrenda.TipoPrenda getTipoPrenda(){
+	public TipoPrenda getTipoPrenda(){
 		return tipoPrenda;
 	}
 	
-	public tiposOrigen.TipoOrigen getTipoOrigen(){
+	public TipoOrigen getTipoOrigen(){
 		return tipoOrigen;
 	}
 	
@@ -34,12 +39,13 @@ public class Prenda {
 		return tipoOrigen.tasa();
 	}
 	
-	public Double precioParcial(){
-		Double precio = (empresa.getValorFijo() + tipoPrenda.precioBase()) * tasaImportacion();
-		return precio;
+	public Double precioParcial()
+	{
+		return (empresa.getValorFijo() + tipoPrenda.precioBase()) * tasaImportacion();
 	}
 	
-	public Double precioFinal(){
+	public Double precioFinal()
+	{
 		// ...
 		return 4.21; // verdura provisoria solo para que compile
 	}
