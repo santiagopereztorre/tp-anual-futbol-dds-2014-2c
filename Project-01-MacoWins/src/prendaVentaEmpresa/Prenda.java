@@ -46,7 +46,9 @@ public class Prenda {
 	
 	public Double precioFinal()
 	{
-		// ...
-		return 4.21; // verdura provisoria solo para que compile
+		// Quizas conviene mas hacer que el calculo se haga en este metodo
+		// y la marca devuelva el coeficiente unicamente. De la misma forma
+		// que funciona precioParcial con tasaImportacion
+		return marca.precioFinal(precioParcial());
 	}
 }
