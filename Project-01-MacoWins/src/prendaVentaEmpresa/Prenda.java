@@ -39,16 +39,22 @@ public class Prenda {
 		return tipoOrigen.tasa();
 	}
 	
+	/**
+	 * Precio parcial de la prenda, sin incluir el Coeficiente de Marca
+	 * @return
+	 */
 	public Double precioParcial()
 	{
 		return (empresa.getValorFijo() + tipoPrenda.precioBase()) * tasaImportacion();
 	}
 	
+	/**
+	 * Precio final de la prenda
+	 * @return
+	 */
 	public Double precioFinal()
 	{
-		// Quizas conviene mas hacer que el calculo se haga en este metodo
-		// y la marca devuelva el coeficiente unicamente. De la misma forma
-		// que funciona precioParcial con tasaImportacion
-		return marca.precioFinal(precioParcial());
+		Double precioParcial = precioParcial();
+		return precioParcial * marca.coeficiente(precioParcial);
 	}
 }

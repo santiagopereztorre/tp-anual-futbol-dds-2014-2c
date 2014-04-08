@@ -3,9 +3,9 @@ package marcas;
 public interface Marca 
 {
 	/**
-	 * Calcula el precio final de una prenda aplicando el coeficiente de marca
+	 * Calcula el coeficiente de marca segun el precio
 	 * @param unPrecio
-	 * @return precio de la prenda con coeficiente de marca incluido
+	 * @return coeficiente de marca
 	 */
-	public Double precioFinal(Double unPrecio);
+	public Double coeficiente(Double unPrecio);
 }

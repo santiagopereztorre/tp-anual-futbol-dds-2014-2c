@@ -6,9 +6,9 @@ public class Armani implements Marca
 	/**
 	 * {@inheritDoc}
 	 */
-	public Double precioFinal(Double unPrecio) 
+	public Double coeficiente(Double unPrecio) 
 	{
-		return unPrecio * 1.65;
+		return 1.65;
 	}
 
 }

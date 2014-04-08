@@ -5,9 +5,9 @@ public class Sarkany implements Marca {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Double precioFinal(Double unPrecio) 
+	public Double coeficiente(Double unPrecio) 
 	{
-		return unPrecio > 500 ? unPrecio * 1.35 : unPrecio * 1.1;
+		return unPrecio > 500 ? 1.35 : 1.1;
 	}
 
 }
