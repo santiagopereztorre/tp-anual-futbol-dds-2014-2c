@@ -20,7 +20,7 @@ public class Pantalon implements TipoPrenda
 	 */
 	public Double precioBase() 
 	{
-		return  ((Integer)(250 + cmTela)).doubleValue();
+		return  250.0 + cmTela;
 	}
 	
 }

@@ -2,8 +2,8 @@ package tiposOrigen;
 
 public class Importado implements TipoOrigen {
 
-	public double tasa() {
-		// TODO Auto-generated method stub
+	public Double tasa() 
+	{
 		return 1.30;
 	}
 

@@ -4,6 +4,6 @@ public interface TipoOrigen {
 	
 	/* Retorna la tasa de interes segun el tipo de origen 
 	 */
-	public double tasa();
+	public Double tasa();
 
 }

@@ -15,9 +15,9 @@ public class Zapato implements TipoPrenda
 	/**
 	 * @inheritDoc
 	 */
-	public Double precioBase() 
+	public Double precioBase()
 	{
-		return ((Integer)(400 + 5 * getTalle())).doubleValue();
+		return 400.0 + 5 * getTalle();
 	}
 
 }

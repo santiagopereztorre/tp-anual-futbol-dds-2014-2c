@@ -1,7 +1,6 @@
 package prendaVentaEmpresa;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +20,11 @@ public class Empresa {
 		return valorFijo;
 	}
 	
+	/**
+	 * Registra una venta
+	 * @param unaPrenda
+	 * @param unaCant
+	 */
 	public void vender(Prenda unaPrenda, Integer unaCant)
 	{
 		ventas.add(new Venta(new Date(), unaPrenda, unaCant));

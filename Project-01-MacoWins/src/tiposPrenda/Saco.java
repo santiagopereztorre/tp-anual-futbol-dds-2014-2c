@@ -2,14 +2,14 @@ package tiposPrenda;
 
 public class Saco implements TipoPrenda 
 {
-	private int cantBot;
+	private int cantidadBotones;
 
-	public int getCantBot() {
-		return cantBot;
+	public int getcantidadBotones() {
+		return cantidadBotones;
 	}
 
-	public void setCantBot(int cantBot) {
-		this.cantBot = cantBot;
+	public void setcantidadBotones(int cantBot) {
+		this.cantidadBotones = cantBot;
 	}
 
 	/**
@@ -17,7 +17,7 @@ public class Saco implements TipoPrenda
 	 */
 	public Double precioBase() 
 	{
-		return ((Integer)(300 + 10 * getCantBot())).doubleValue();
+		return 300.0 + 10 * getcantidadBotones();
 	}
 
 }

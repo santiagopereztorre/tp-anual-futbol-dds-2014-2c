@@ -43,7 +43,7 @@ public class Prenda {
 	 * Precio parcial de la prenda, sin incluir el Coeficiente de Marca
 	 * @return
 	 */
-	public Double precioParcial()
+	public Double precioOriginal()
 	{
 		return (empresa.getValorFijo() + tipoPrenda.precioBase()) * tasaImportacion();
 	}
@@ -54,7 +54,7 @@ public class Prenda {
 	 */
 	public Double precioFinal()
 	{
-		Double precioParcial = precioParcial();
+		Double precioParcial = precioOriginal();
 		return precioParcial * marca.coeficiente(precioParcial);
 	}
 }

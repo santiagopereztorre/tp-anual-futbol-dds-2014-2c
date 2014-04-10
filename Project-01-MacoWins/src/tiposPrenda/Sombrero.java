@@ -2,15 +2,15 @@ package tiposPrenda;
 
 public class Sombrero implements TipoPrenda 
 {
-	private double coefMet;
+	private Double coeficienteMetrosexuality;
 	
-	public double getCoefMet() {
-		return coefMet;
+	public Double getCoeficienteMetrosexuality() {
+		return coeficienteMetrosexuality;
 	}
 
 
-	public void setCoefMet(double coefMet) {
-		this.coefMet = coefMet;
+	public void setCoeficienteMetrosexuality(Double coefMet) {
+		this.coeficienteMetrosexuality = coefMet;
 	}
 
 
@@ -19,7 +19,7 @@ public class Sombrero implements TipoPrenda
 	 */
 	public Double precioBase() 
 	{
-		return 150 + getCoefMet();
+		return 150 + getCoeficienteMetrosexuality();
 	}
 
 }
