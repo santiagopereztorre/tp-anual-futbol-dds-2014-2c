@@ -2,25 +2,34 @@ package utn.disenio.consigna;
 
 public class MultipleChoice implements Consigna {
 
-	@Override
-	public int peso() {
-		// TODO Auto-generated method stub
-		return 0;
+	private Integer peso;
+	private String respuestaCorrecta;
+	private String respuestaAlumno;
+	private Integer opciones;
+	
+	public MultipleChoice(Integer unPeso, String unaRespuestaCorrecta, String unaRespuestaAlumno, Integer cantidadOpciones){
+		this.peso = unPeso;
+		this.respuestaCorrecta = unaRespuestaCorrecta;
+		this.respuestaAlumno = unaRespuestaAlumno;
+		this.opciones = cantidadOpciones;
+	}
+		
+	public Integer getPeso() {
+		return peso;
 	}
 
 	@Override
-	public String respuestaCorrecta() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getRespuestaCorrecta() {
+		return respuestaCorrecta;
 	}
 
 	@Override
-	public String respuestaAlumno() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getRespuestaAlumno() {
+		return respuestaAlumno;
 	}
-
-
-
+	
+	public Integer cantidadDeOpciones(){
+		return opciones;
+	}
 
 }
