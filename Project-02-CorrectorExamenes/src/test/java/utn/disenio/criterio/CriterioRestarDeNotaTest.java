@@ -31,7 +31,7 @@ public class CriterioRestarDeNotaTest
 	public void notaAlumnoEsLaEsperada()
 	{
 		Criterio criterio = new CriterioRestarDeNota(5);
-		Integer pesoAlumno = 1;
+		Integer pesoAlumno = 14;
 		
 		Assert.assertEquals("La nota del alumno no es la esperada", 9.0, 
 				criterio.calcularNota(pesoAlumno), 0.1);
