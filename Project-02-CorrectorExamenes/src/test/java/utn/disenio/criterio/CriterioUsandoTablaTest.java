@@ -32,7 +32,7 @@ public class CriterioUsandoTablaTest {
 		
 		Double notaAlumno = criterio.calcularNota(pesoAlumno);
 		
-		Assert.assertEquals("La nota del alumno es la esperada", notaAlumno, 10.0, 0.01);
+		Assert.assertEquals("La nota del alumno es la esperada", 10.0, notaAlumno, 0.01);
 	}
 	
 	@Test (expected = NullPointerException.class)

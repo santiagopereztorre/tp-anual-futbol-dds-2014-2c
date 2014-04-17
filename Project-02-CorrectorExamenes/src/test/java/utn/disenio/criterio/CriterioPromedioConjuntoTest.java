@@ -28,7 +28,7 @@ public class CriterioPromedioConjuntoTest {
 		
 		Double notaAlumno = criterio.calcularNota(pesoAlumno);
 		
-		Assert.assertEquals("La nota promedio es 3.5 ya que es ((5+4)/2)", notaAlumno, 3.5, 0.01);
+		Assert.assertEquals("La nota promedio es 3.5 ya que es ((5+4)/2)", 4.5, notaAlumno, 0.01);
 		
 	}
 	
@@ -42,7 +42,7 @@ public class CriterioPromedioConjuntoTest {
 		
 		Double notaAlumno = criterio.calcularNota(pesoAlumno);
 		
-		Assert.assertEquals("La nota debería ser la del único criterio", notaAlumno, 3.0, 0.01);
+		Assert.assertEquals("La nota debería ser la del único criterio", 3.0, notaAlumno, 0.01);
 	}
 	
 	@Test (expected = NoSuchElementException.class)
