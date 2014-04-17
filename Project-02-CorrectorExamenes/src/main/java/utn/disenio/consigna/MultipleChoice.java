@@ -17,7 +17,9 @@ public class MultipleChoice implements Consigna {
 
 	}
 
-	@Override
+	/**
+	 * Compara indices de ArrayList
+	 */
 	public boolean esCorrectaLaRta() {
 		
 		return (this.respuestaAlumno == this.respuestaCorrecta);
