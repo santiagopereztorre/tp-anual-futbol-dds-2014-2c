@@ -11,20 +11,6 @@ public class Pregunta implements Consigna {
 		this.respuestaCorrecta = unaRespuestaCorrecta;
 		this.respuestaAlumno = unaRespuestaAlumno;
 	}
-		
-	public Integer getPeso() {
-		return peso;
-	}
-
-	@Override
-	public String getRespuestaCorrecta() {
-		return respuestaCorrecta;
-	}
-
-	@Override
-	public String getRespuestaAlumno() {
-		return respuestaAlumno;
-	}
 	
 	@Override
 	public Integer getPesoFinal() {
