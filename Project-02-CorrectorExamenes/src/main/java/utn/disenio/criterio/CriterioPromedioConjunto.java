@@ -13,8 +13,12 @@ public class CriterioPromedioConjunto implements Criterio {
 	}
 	
 	@Override
-	public Double calcularNota(Integer pesoAlumno) {
-		return null;
+	public Double calcularNota(Integer pesoAlumno) 
+	{
+		return criterios.stream()
+				.mapToDouble(criterio -> criterio.calcularNota(pesoAlumno))
+				.average()
+				.getAsDouble();
 	}
 
 }
