@@ -32,4 +32,10 @@ public class MultipleChoice implements Consigna {
 		return opciones;
 	}
 
+	@Override
+	public Integer getPesoFinal() {
+		if (this.respuestaAlumno == this.respuestaCorrecta) return this.peso;
+		else return 0;
+	}
+
 }
