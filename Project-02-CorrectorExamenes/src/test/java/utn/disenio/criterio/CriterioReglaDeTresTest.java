@@ -6,7 +6,7 @@ import static org.hamcrest.number.OrderingComparison.*;
 
 import utn.disenio.criterio.CriterioReglaDeTres;
 
-public class CriterioTest {
+public class CriterioReglaDeTresTest {
 
 	@Test
 	public void notaAlumnoMayorIgual1MenorIgual10CriterioReglaDeTres()
