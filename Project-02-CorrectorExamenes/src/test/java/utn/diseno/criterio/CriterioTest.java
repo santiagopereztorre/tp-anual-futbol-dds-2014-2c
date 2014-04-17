@@ -1,24 +1,23 @@
 package utn.diseno.criterio;
 
 import junit.framework.Assert;
-
-import org.junit.Test;
-
+import junit.framework.TestCase;
 import utn.disenio.criterio.CriterioReglaDeTres;
 
-public class CriterioTest {
+public class CriterioTest extends TestCase {
 
-	@Test
-	public void CriterioReglaDeTresConValorMenorAlPesoAlumnoYMayorACero()
+	
+	public void testCriterioReglaDeTresConValorMenorAlPesoAlumnoYMayorACero()
 	{
 		// Precondiciones
-		Integer pesoAlumno = 12;
-		CriterioReglaDeTres criterio = new CriterioReglaDeTres(2);
+		Integer pesoAlumno = 8;
+		CriterioReglaDeTres criterio = new CriterioReglaDeTres(10);
 		
 		// Accion
 		Double notaFinal = criterio.calcularNota(pesoAlumno);
 		
 		// Postcondiciones
-		Assert.assertEquals(10, notaFinal);
+		Assert.assertEquals(8.0, notaFinal);
 	}
+	
 }
