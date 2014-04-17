@@ -14,20 +14,6 @@ public class MultipleChoice implements Consigna {
 		this.opciones = cantidadOpciones;
 	}
 		
-	public Integer getPeso() {
-		return peso;
-	}
-
-	@Override
-	public String getRespuestaCorrecta() {
-		return respuestaCorrecta;
-	}
-
-	@Override
-	public String getRespuestaAlumno() {
-		return respuestaAlumno;
-	}
-	
 	public Integer cantidadDeOpciones(){
 		return opciones;
 	}
