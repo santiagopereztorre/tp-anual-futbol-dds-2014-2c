@@ -1,20 +1,20 @@
 package utn.disenio.criterio;
 
 import java.util.NoSuchElementException;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CriterioNotaMasAltaConjuntoTest {
+public class CriterioPromedioConjuntoTest {
 
-	CriterioNotaMasAltaConjunto criterio;
+	CriterioPromedioConjunto criterio;
 	
 	@Before
-	public void setUp() throws Exception 
-	{
-		criterio = new CriterioNotaMasAltaConjunto();
+	public void setUp() throws Exception {
+		criterio = new CriterioPromedioConjunto();
 	}
-
+	
 	@Test
 	public void notaAlumnoConCriterios()
 	{
@@ -28,7 +28,7 @@ public class CriterioNotaMasAltaConjuntoTest {
 		
 		Double notaAlumno = criterio.calcularNota(pesoAlumno);
 		
-		Assert.assertEquals("La nota más alta es 5 es decir criterio 2", notaAlumno, 5.0, 0.01);
+		Assert.assertEquals("La nota promedio es 3.5 ya que es ((5+4)/2)", notaAlumno, 3.5, 0.01);
 		
 	}
 	
