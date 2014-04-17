@@ -16,8 +16,8 @@ public class CriterioNotaMasAltaConjunto implements Criterio {
 	public Double calcularNota(Integer pesoAlumno) 
 	{
 		return criterios.stream()
-				.mapToInt(criterio -> criterio.calcularNota(pesoAlumno))
+				.mapToDouble(criterio -> criterio.calcularNota(pesoAlumno))
 				.max()
-				.getAsInt();
+				.getAsDouble();
 	}
 }
