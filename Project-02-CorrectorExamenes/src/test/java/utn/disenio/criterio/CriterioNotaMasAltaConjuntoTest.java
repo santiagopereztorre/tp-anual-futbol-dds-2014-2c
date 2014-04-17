@@ -1,7 +1,6 @@
 package utn.disenio.criterio;
 
-import static org.junit.Assert.*;
-
+import java.util.NoSuchElementException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,6 +30,27 @@ public class CriterioNotaMasAltaConjuntoTest {
 		
 		Assert.assertEquals("La nota más alta es 5 es decir criterio 2", notaAlumno, 5.0, 0.01);
 		
+	}
+	
+	@Test
+	public void notaAlumnoConUnSoloCriterio()
+	{
+		Integer pesoAlumno = 4;
+		Integer pesoParaRestar = 1;
+		Criterio criterio1 = new CriterioRestarDeNota(pesoParaRestar);
+		criterio.addCriterio(criterio1);
+		
+		Double notaAlumno = criterio.calcularNota(pesoAlumno);
+		
+		Assert.assertEquals("La nota debería ser la del único criterio", notaAlumno, 3.0, 0.01);
+	}
+	
+	@Test (expected = NoSuchElementException.class)
+	public void notaAlumnoSinCriterios()
+	{
+		Integer pesoAlumno = 6;
+		
+		Double notaAlumno = criterio.calcularNota(pesoAlumno);
 	}
 	
 
