@@ -14,7 +14,7 @@ public class Pregunta implements Consigna {
 	
 	@Override
 	public boolean esCorrectaLaRta() {
-		return (this.respuestaAlumno == this.respuestaCorrecta);
+		return (this.respuestaAlumno.equals(this.respuestaCorrecta));
 	}
 	
 	@Override
