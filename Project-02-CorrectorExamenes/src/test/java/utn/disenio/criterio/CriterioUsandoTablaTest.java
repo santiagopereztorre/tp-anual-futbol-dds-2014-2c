@@ -35,14 +35,12 @@ public class CriterioUsandoTablaTest {
 		Assert.assertEquals("La nota del alumno es la esperada", notaAlumno, 10.0, 0.01);
 	}
 	
-	@Test
+	@Test (expected = NullPointerException.class)
 	public void notaAlumnoNoSeEncuentraEnTabla()
 	{
 		Integer pesoAlumno = 100;
 		
-		Double notaAlumno = criterio.calcularNota(pesoAlumno);
-		
-		Assert.assertEquals("La nota no se encuentra en la tabla", notaAlumno, null);
+		criterio.calcularNota(pesoAlumno);
 	}
 	
 
