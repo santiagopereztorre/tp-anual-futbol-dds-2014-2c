@@ -42,7 +42,7 @@ public class CriterioNotaMasAltaConjuntoTest {
 		
 		Double notaAlumno = criterio.calcularNota(pesoAlumno);
 		
-		Assert.assertEquals("La nota debería ser la del único criterio", 3.0, notaAlumno, 0.01);
+		Assert.assertEquals("La nota deberia ser la del unico criterio", 3.0, notaAlumno, 0.01);
 	}
 	
 	@Test (expected = NoSuchElementException.class)
