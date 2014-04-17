@@ -1,4 +1,4 @@
-package utn.desenio.parcial;
+package utn.disenio.parcial;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package utn.diseno.criterio;
+package utn.disenio.criterio;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
