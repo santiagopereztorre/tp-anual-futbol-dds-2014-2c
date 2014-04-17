@@ -25,6 +25,11 @@ public class VoF implements Consigna {
 	public String getRespuestaAlumno() {
 		return respuestaAlumno;
 	}
-
+	
+	@Override
+	public Integer getPesoFinal() {
+		if (this.respuestaAlumno == this.respuestaCorrecta) return this.peso;
+		else return 0;
+	}
 
 }
