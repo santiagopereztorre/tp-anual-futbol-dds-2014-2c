@@ -13,9 +13,9 @@ public class VoF implements Consigna {
 	}
 	
 	@Override
-	public Integer getPesoFinal() {
-		if (this.respuestaAlumno == this.respuestaCorrecta) return this.peso;
-		else return 0;
+	public Integer getPesoFinal() 
+	{
+		return (this.respuestaAlumno == this.respuestaCorrecta)?this.peso:0;
 	}
 
 }
