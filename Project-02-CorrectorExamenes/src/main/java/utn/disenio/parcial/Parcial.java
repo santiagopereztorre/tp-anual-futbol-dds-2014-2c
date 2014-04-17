@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utn.disenio.consigna.Consigna;
+import utn.disenio.criterio.Criterio;
 
 public class Parcial {
 
-
+	private Criterio criterio;
 	private List<Consigna> consignas;
 	
-	public Parcial()
+	public Parcial(Criterio unCriterio)
 	{
 		super();
 		consignas = new ArrayList<Consigna>();
+		criterio = unCriterio;
 	}
 	
 	public Parcial(List<Consigna> consignas)
@@ -27,10 +29,15 @@ public class Parcial {
 		consignas.add(consigna);
 	}
 
-	public Integer puntajeDelParcial()
+	public Integer pesoDelAlumno()
 	{
 		return consignas.stream()
 				.mapToInt(consigna -> consigna.getPesoFinal())
 				.sum();
+	}
+	
+	public Double notaFinal()
+	{
+		return criterio.calcularNota(pesoDelAlumno());
 	}
 }
