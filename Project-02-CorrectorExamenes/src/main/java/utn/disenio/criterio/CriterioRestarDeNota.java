@@ -2,15 +2,15 @@ package utn.disenio.criterio;
 
 public class CriterioRestarDeNota implements Criterio{
 	
-	Integer pesoMaximo;
+	Integer constanteResta;
 	
-	public CriterioRestarDeNota(Integer pesoMaximo)
+	public CriterioRestarDeNota(Integer constanteResta)
 	{
-		this.pesoMaximo = pesoMaximo;
+		this.constanteResta = constanteResta;
 	}
 	
-	public Integer calcularNota(Integer pesoAlumno) 
+	public Double calcularNota(Integer pesoAlumno) 
 	{	
-		return pesoMaximo - pesoAlumno;
+		return (double) pesoAlumno - constanteResta;
 	}
 }

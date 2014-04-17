@@ -10,9 +10,9 @@ public class CriterioReglaDeTres implements Criterio{
 	}
 	
 	@Override
-	public Integer calcularNota(Integer pesoAlumno) 
+	public Double calcularNota(Integer pesoAlumno) 
 	{
-		return pesoMaximo * 10 / pesoAlumno;
+		return (double) pesoMaximo * 10 / pesoAlumno;
 	}
 
 }
