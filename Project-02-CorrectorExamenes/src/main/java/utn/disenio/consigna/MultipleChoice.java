@@ -1,21 +1,33 @@
 package utn.disenio.consigna;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MultipleChoice implements Consigna {
 
 	private Integer peso;
-	private String respuestaCorrecta;
-	private String respuestaAlumno;
+	private Integer respuestaCorrecta;
+	private List<String> opciones;
+	private Integer respuestaAlumno;
 	
-	public MultipleChoice(Integer unPeso, String unaRespuestaCorrecta, String unaRespuestaAlumno, Integer cantidadOpciones){
+	public MultipleChoice(List<String> unasOpciones, Integer unaRespuestaCorrecta, Integer unaRespuestaAlumno, Integer unPeso){
 		this.peso = unPeso;
 		this.respuestaCorrecta = unaRespuestaCorrecta;
 		this.respuestaAlumno = unaRespuestaAlumno;
+		this.opciones = unasOpciones;
+
 	}
 
 	@Override
+	public boolean esCorrectaLaRta() {
+		
+		return (this.respuestaAlumno == this.respuestaCorrecta);
+	}
+	
+	@Override
 	public Integer getPesoFinal() 
 	{
-		return (this.respuestaAlumno == this.respuestaCorrecta)?this.peso:0;
+		return (esCorrectaLaRta())?this.peso:0;
 	}
 
 }

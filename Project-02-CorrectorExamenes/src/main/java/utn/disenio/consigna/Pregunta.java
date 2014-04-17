@@ -13,9 +13,16 @@ public class Pregunta implements Consigna {
 	}
 	
 	@Override
+	public boolean esCorrectaLaRta() {
+		return (this.respuestaAlumno == this.respuestaCorrecta);
+	}
+	
+	@Override
 	public Integer getPesoFinal() 
 	{
-		return (this.respuestaAlumno == this.respuestaCorrecta)?this.peso:0;
+		return (esCorrectaLaRta())?this.peso:0;
 	}
+
+	
 
 }
