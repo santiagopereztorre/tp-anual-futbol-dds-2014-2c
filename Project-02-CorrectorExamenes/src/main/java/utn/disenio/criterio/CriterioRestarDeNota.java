@@ -11,6 +11,7 @@ public class CriterioRestarDeNota implements Criterio{
 	
 	public Double calcularNota(Integer pesoAlumno) 
 	{	
-		return (double) pesoAlumno - constanteResta;
+		Double nota = (double) pesoAlumno - constanteResta;
+		return (nota > 1)?nota:1.0;
 	}
 }
