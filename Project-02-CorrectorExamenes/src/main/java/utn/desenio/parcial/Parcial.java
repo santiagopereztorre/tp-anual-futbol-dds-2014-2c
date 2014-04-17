@@ -1,21 +1,22 @@
 package utn.desenio.parcial;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import utn.disenio.consigna.Consigna;
 
 public class Parcial {
 
 
-	private ArrayList<Consigna> consignas;
+	private List<Consigna> consignas;
 	
 	public Parcial()
 	{
 		super();
-		consignas = new ArrayList();
+		consignas = new ArrayList<Consigna>();
 	}
 	
-	public Parcial(ArrayList<Consigna> consignas)
+	public Parcial(List<Consigna> consignas)
 	{
 		super();
 		this.consignas = consignas;
@@ -28,11 +29,8 @@ public class Parcial {
 
 	public Integer puntajeDelParcial()
 	{
-		Integer sumatoriaDePuntajes = 0;
-		for(Consigna consigna : consignas)
-		{
-			sumatoriaDePuntajes += consigna.getPesoFinal();
-		}
-		return sumatoriaDePuntajes;
+		return consignas.stream()
+				.mapToInt(consigna -> consigna.getPesoFinal())
+				.sum();
 	}
 }
