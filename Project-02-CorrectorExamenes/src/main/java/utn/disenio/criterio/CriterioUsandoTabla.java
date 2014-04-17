@@ -4,16 +4,15 @@ import java.util.Hashtable;
 
 public class CriterioUsandoTabla implements Criterio{
 	
-	private Hashtable tablaDeNotas;
+	private Hashtable<Integer, Integer> tablaDeNotas;
 	
-	public CriterioUsandoTabla(Hashtable tablaDeNotas)
+	public CriterioUsandoTabla(Hashtable<Integer, Integer> tablaDeNotas)
 	{
 		this.tablaDeNotas = tablaDeNotas;
 	}
 	
-	public Integer calcularNota(Integer pesoAlumno)
+	public Double calcularNota(Integer pesoAlumno)
 	{
-		return (Integer) tablaDeNotas.get(pesoAlumno);
+		return (double) tablaDeNotas.get(pesoAlumno);
 	}
-
 }
