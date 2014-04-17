@@ -24,6 +24,12 @@ public class Parcial {
 		this.consignas = consignas;
 	}
 	
+	public Parcial(List<Consigna> consignas, Criterio unCriterio)
+	{
+		this.consignas = consignas;
+		criterio = unCriterio;
+	}
+	
 	public void addConsigna(Consigna consigna)
 	{
 		consignas.add(consigna);

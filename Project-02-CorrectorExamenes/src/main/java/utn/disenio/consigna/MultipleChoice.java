@@ -9,7 +9,7 @@ public class MultipleChoice implements Consigna {
 	private ArrayList<String> opciones;
 	private Integer respuestaAlumno;
 	
-	public MultipleChoice(ArrayList<String> unasOpciones, Integer unaRespuestaCorrecta, Integer unaRespuestaAlumno, Integer unPeso){
+	public MultipleChoice(ArrayList<String> unasOpciones, Integer unPeso, Integer unaRespuestaCorrecta, Integer unaRespuestaAlumno){
 		this.peso = unPeso;
 		this.respuestaCorrecta = unaRespuestaCorrecta;
 		this.respuestaAlumno = unaRespuestaAlumno;

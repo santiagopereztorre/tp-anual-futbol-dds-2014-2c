@@ -6,7 +6,7 @@ public class VoF implements Consigna {
 	private boolean respuestaCorrecta;
 	private boolean respuestaAlumno;
 	
-	public VoF(boolean unaRespuestaCorrecta, boolean unaRespuestaAlumno, Integer unPeso){
+	public VoF(Integer unPeso, boolean unaRespuestaCorrecta, boolean unaRespuestaAlumno){
 		this.peso = unPeso;
 		this.respuestaCorrecta = unaRespuestaCorrecta;
 		this.respuestaAlumno = unaRespuestaAlumno;

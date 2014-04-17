@@ -1,9 +1,7 @@
 package utn.disenio.criterio;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
 import static org.hamcrest.number.OrderingComparison.*;
 import utn.disenio.criterio.CriterioRestarDeNota;
 
@@ -33,7 +31,7 @@ public class CriterioRestarDeNotaTest
 	public void notaAlumnoEsLaEsperada()
 	{
 		Criterio criterio = new CriterioRestarDeNota(5);
-		Integer pesoAlumno = 14;
+		Integer pesoAlumno = 1;
 		
 		Assert.assertEquals("La nota del alumno no es la esperada", 9.0, 
 				criterio.calcularNota(pesoAlumno), 0.1);
