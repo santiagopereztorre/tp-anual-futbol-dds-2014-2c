@@ -14,8 +14,12 @@ import utn.disenio.criterio.CriterioReglaDeTres;
 
 public class ParcialTest 
 {
+	private static Parcial unParcial;
+	private static Integer pesoAlumno;
+	private static Double notaAlumnoEsperada;
+	
 	@BeforeClass
-	public void init()
+	public static void init()
 	{
 		List<Consigna> consignas = new ArrayList<Consigna>();
 		consignas.add(new Pregunta(5, "si", "si"));
@@ -24,10 +28,26 @@ public class ParcialTest
 		consignas.add(new MultipleChoice(new ArrayList<String>(), 4, 1, 2));
 		consignas.add(new VoF(4, false, true));
 		
+		pesoAlumno = 8;
+		
 		Criterio unCriterio = new CriterioReglaDeTres(20);
 		
-		Parcial unParcial = new Parcial(consignas, unCriterio);
+		notaAlumnoEsperada = 8.0 * 10 / 20;
+		
+		unParcial = new Parcial(consignas, unCriterio);
 	}
 	
+	@Test
+	public void pesoDelAlumnoEsElCorrecto()
+	{
+		Assert.assertEquals("Peso del alumno es incorrecto", 
+				pesoAlumno, unParcial.pesoDelAlumno());
+	}
 	
+	@Test
+	public void notaDeAlumnoEsCorrecta()
+	{
+		Assert.assertEquals("Nota del alumno no es correcta", 
+				notaAlumnoEsperada, unParcial.notaFinal());
+	}
 }
