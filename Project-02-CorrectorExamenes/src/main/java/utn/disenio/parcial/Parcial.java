@@ -11,6 +11,12 @@ public class Parcial {
 	private Criterio criterio;
 	private List<Consigna> consignas;
 	
+	
+	// TODO que se gana haciendo distintos constructores segun el objeto que recibe??
+	// sirve lo que se gana?? Que pierden?? Que pasa si se quiere hacer otro
+	// constructor que tambien reciba un Criterio, pero es otro atributo??
+	// Es consistente hacer un constructor por cada atributo?? es posible??
+	
 	public Parcial(Criterio unCriterio)
 	{
 		super();
