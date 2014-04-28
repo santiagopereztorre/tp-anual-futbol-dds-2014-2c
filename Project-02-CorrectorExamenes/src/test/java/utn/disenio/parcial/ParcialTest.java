@@ -18,6 +18,16 @@ public class ParcialTest
 	private static Integer pesoAlumno;
 	private static Double notaAlumnoEsperada;
 	
+	//TODO OBLIGATORIO como test integrador esta buenisimo! pero si rompe que pasa?
+	// falló parcial o VoF está devolviendo strings en vez de numeros (por ej)
+	// que tan facil es encontrar la falla?? No les parece mejor hacer una
+	// clase ficticia que respete la interfaz de Criterio y devuelva el valor
+	// que querramos?? 
+	// OJO EL TEST NO ESTA MAL pero aca estamos testeando todo a la vez
+	// osea este test no es un test unitario, es un test integrador.
+	// dejenlo, renombrelo y hagan un verdadero ParcialTest.java
+	
+	
 	@BeforeClass
 	public static void init()
 	{
