@@ -50,6 +50,7 @@ public class CriterioNotaMasAltaConjuntoTest {
 	{
 		Integer pesoAlumno = 6;
 		
+		//TODO mucho copy y paste dejan variables que ni se usan xD jeje
 		Double notaAlumno = criterio.calcularNota(pesoAlumno);
 	}
 }

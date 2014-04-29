@@ -8,6 +8,9 @@ import utn.disenio.criterio.CriterioReglaDeTres;
 
 public class CriterioReglaDeTresTest {
 
+	//TODO OBLIGATORIO Porque en un solo test? Si falla el test es facil saber por que falla??
+	// Si falla en el primer assert sigue probando el resto o pierden esa posibilidad
+	// de saber que falla en el 1 y en el 3 pero no en el 2??
 	@Test
 	public void notaAlumnoMayorIgual1MenorIgual10CriterioReglaDeTres()
 	{
