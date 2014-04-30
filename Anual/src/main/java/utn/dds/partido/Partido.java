@@ -31,7 +31,7 @@ public class Partido {
 	}
 		
 	/* Obtencion de tipos de inscripciones */
-	public List<Inscripcion> getInscriptosEstandar() {
+	/*public List<Inscripcion> getInscriptosEstandar() {
 		return inscripciones.stream().filter( x -> x.esEstandar()).collect(Collectors.toList());
 	}
 	
@@ -41,9 +41,9 @@ public class Partido {
 	
 	public List<Inscripcion> getInscriptosSolidarios() {
 		return inscripciones.stream().filter( x -> x.esSolidaria()).collect(Collectors.toList());
-	}
+	}*/
 	
-	public List<Inscripcion> getInscriptos(Class clase) {
+	public List<Inscripcion> getInscriptosDeTipo(Class clase) {
 		return inscripciones.stream().filter( x -> x.esInstanciaDe(clase)).collect(Collectors.toList());
 	}
 }

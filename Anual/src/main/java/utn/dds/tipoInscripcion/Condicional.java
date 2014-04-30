@@ -19,7 +19,7 @@ public class Condicional implements TipoInscripcion{
 	}
 	
 	public boolean cumpleCondicion(Partido partido) {
-		return condicion.test(partido); // lambda.call()
+		return this.condicion.test(partido); // bloque.call()
 	}
 	
 }
