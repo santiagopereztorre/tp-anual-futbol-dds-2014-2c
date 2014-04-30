@@ -45,7 +45,7 @@ public class Inscripcion {
 		return (this.getTipoInscripcion() instanceof Solidaria);
 	}*/
 	
-	public boolean esInstaciaDe(Object obj){
+	public boolean esInstanciaDe(Object obj){
 		return this.getTipoInscripcion().getClass().isAssignableFrom(obj.getClass());
 	}
 	

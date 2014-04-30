@@ -8,6 +8,7 @@ import utn.dds.tipoInscripcion.*;
 import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
 
+
 public class Partido {
 	
 	private List<Inscripcion> inscripciones;
@@ -21,7 +22,7 @@ public class Partido {
 	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion){
 		
 		/* No inscribimos si ya hay suficientes */
-		long inscriptos = inscripciones.stream().filter( x -> x.esEstandar()).count();
+		long inscriptos = inscripciones.stream().filter( x -> x.esInstanciaDe(Estandar.class)).count();
 		
 		if (inscriptos < 10) {
 			Inscripcion inscripcion = new Inscripcion(jugador, tipoInscripcion);

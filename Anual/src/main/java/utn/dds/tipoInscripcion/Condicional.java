@@ -2,7 +2,6 @@ package utn.dds.tipoInscripcion;
 
 import java.util.function.Predicate;
 
-import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
 public class Condicional implements TipoInscripcion{
