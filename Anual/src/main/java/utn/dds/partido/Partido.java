@@ -22,13 +22,10 @@ public class Partido {
 	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion)
 	{		
 		if (hayVacante()) 
-		{
-			Inscripcion inscripcion = new Inscripcion(jugador, tipoInscripcion);
-			inscripciones.add(inscripcion);
-		}
+			inscripciones.add(new Inscripcion(jugador, tipoInscripcion));
 	}
 	
-	boolean hayVacante()
+	private boolean hayVacante()
 	{
 		return inscripciones.stream().filter( x -> x.esInstanciaDe(Estandar.class)).count() < 10;
 	}
