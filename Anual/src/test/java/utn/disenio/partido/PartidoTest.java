@@ -2,10 +2,7 @@ package utn.disenio.partido;
 
 import static org.junit.Assert.*;
 
-import java.io.ObjectInputStream.GetField;
-import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,7 +14,7 @@ import utn.dds.partido.Partido;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
-import utn.dds.tipoInscripcion.TipoInscripcion;
+
 
 public class PartidoTest {
 
