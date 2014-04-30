@@ -45,8 +45,8 @@ public class Inscripcion {
 		return (this.getTipoInscripcion() instanceof Solidaria);
 	}*/
 	
-	public boolean esInstanciaDe(Object obj){
-		return this.getTipoInscripcion().getClass().isAssignableFrom(obj.getClass());
+	public boolean esInstanciaDe(Class clase){
+		return this.getTipoInscripcion().getClass().isAssignableFrom(clase);
 	}
 	
 	/* Se fija si el partido cumple las condiciones */
