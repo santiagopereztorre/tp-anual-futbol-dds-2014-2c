@@ -14,11 +14,11 @@ public class Inscripcion {
 		setTipoInscripcion(nuevoTipoInscripcion);
 	}
 
+	/* Setters y getters */
 	public TipoInscripcion getTipoInscripcion() {
 		return tipoInscripcion;
 	}
 
-	/* Setters y getters */
 	public void setTipoInscripcion(TipoInscripcion tipoInscripcion) {
 		this.tipoInscripcion = tipoInscripcion;
 	}

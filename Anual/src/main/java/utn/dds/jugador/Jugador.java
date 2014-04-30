@@ -6,8 +6,8 @@ import utn.dds.tipoInscripcion.*;
 
 public class Jugador {
 	
-	public void InscribirJugador(Partido partido, TipoInscripcion tipoInscripcion){
-		partido.InscribirJugador(this, tipoInscripcion);
+	public void inscribirseAPartido(Partido partido, TipoInscripcion tipoInscripcion){
+		partido.inscribirJugador(this, tipoInscripcion);
 	}
 	
 	
