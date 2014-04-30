@@ -27,7 +27,7 @@ public class Partido {
 	
 	private boolean hayVacante()
 	{
-		return inscripciones.stream().filter( x -> x.esInstanciaDe(Estandar.class)).count() < 10;
+		return getInscriptosDeTipo(Estandar.class).size() < 10;
 	}
 		
 	/* Obtencion de tipos de inscripciones */
@@ -42,6 +42,7 @@ public class Partido {
 	public List<Inscripcion> getInscriptosSolidarios() {
 		return inscripciones.stream().filter( x -> x.esSolidaria()).collect(Collectors.toList());
 	}*/
+	
 	
 	public List<Inscripcion> getInscriptosDeTipo(Class clase) {
 		return inscripciones.stream().filter( x -> x.esInstanciaDe(clase)).collect(Collectors.toList());
