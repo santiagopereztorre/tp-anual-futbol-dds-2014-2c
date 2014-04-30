@@ -33,7 +33,7 @@ public class Inscripcion {
 	
 	
 	/* Obtencion de tipos de inscripciones */
-	public boolean esEstandar(){
+	/*public boolean esEstandar(){
 		return (this.getTipoInscripcion() instanceof Estandar);
 	}
 	
@@ -43,10 +43,14 @@ public class Inscripcion {
 	
 	public boolean esSolidaria(){
 		return (this.getTipoInscripcion() instanceof Solidaria);
+	}*/
+	
+	public boolean esInstaciaDe(Object obj){
+		return this.getTipoInscripcion().getClass().isAssignableFrom(obj.getClass());
 	}
 	
 	/* Se fija si el partido cumple las condiciones */
-	public boolean CumpleCondicion(Partido partido){
+	public boolean cumpleCondicion(Partido partido){
 		
 		return tipoInscripcion.cumpleCondicion(partido);
 		
