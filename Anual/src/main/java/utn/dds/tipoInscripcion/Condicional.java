@@ -8,13 +8,13 @@ import utn.dds.partido.Partido;
 public class Condicional implements TipoInscripcion{
 	
 	//public Block condicion;
-	private Predicate condicion;
+	private Predicate<Partido> condicion;
 	
-	public Predicate getCondicion() {
+	public Predicate<Partido> getCondicion() {
 		return condicion;
 	}
 
-	public void setCondicion(Predicate condicion) {
+	public void setCondicion(Predicate<Partido> condicion) {
 		this.condicion = condicion;
 	}
 	
