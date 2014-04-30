@@ -6,7 +6,7 @@ import utn.dds.tipoInscripcion.*;
 
 public class Jugador {
 	
-	public void inscribirseAPartido(Partido partido, TipoInscripcion tipoInscripcion){
+	public void inscribirseAPartidoConTipoInscripcion(Partido partido, TipoInscripcion tipoInscripcion){
 		partido.inscribirJugador(this, tipoInscripcion);
 	}
 	

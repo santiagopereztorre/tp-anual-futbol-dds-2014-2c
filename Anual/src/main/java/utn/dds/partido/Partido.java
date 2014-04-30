@@ -28,7 +28,6 @@ public class Partido {
 			inscripciones.add(inscripcion);
 		}
 		
-		
 	}
 		
 	/* Obtencion de tipos de inscripciones */
@@ -44,4 +43,7 @@ public class Partido {
 		return inscripciones.stream().filter( x -> x.esSolidaria()).collect(Collectors.toList());
 	}
 	
+	public List<Inscripcion> getInscriptos(Class clase) {
+		return inscripciones.stream().filter( x -> x.esInstanciaDe(clase)).collect(Collectors.toList());
+	}
 }
