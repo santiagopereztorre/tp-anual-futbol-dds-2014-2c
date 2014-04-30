@@ -19,16 +19,18 @@ public class Partido {
 		inscripciones = new ArrayList<Inscripcion>();
 	}
 	
-	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion){
-		
-		/* No inscribimos si ya hay suficientes */
-		long inscriptos = inscripciones.stream().filter( x -> x.esInstanciaDe(Estandar.class)).count();
-		
-		if (inscriptos < 10) {
+	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion)
+	{		
+		if (hayVacante()) 
+		{
 			Inscripcion inscripcion = new Inscripcion(jugador, tipoInscripcion);
 			inscripciones.add(inscripcion);
 		}
-		
+	}
+	
+	boolean hayVacante()
+	{
+		return inscripciones.stream().filter( x -> x.esInstanciaDe(Estandar.class)).count() < 10;
 	}
 		
 	/* Obtencion de tipos de inscripciones */
