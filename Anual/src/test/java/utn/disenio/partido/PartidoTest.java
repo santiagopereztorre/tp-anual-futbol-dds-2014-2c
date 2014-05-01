@@ -69,6 +69,8 @@ public class PartidoTest {
 			solterosVsCasados.inscribirJugador(new Jugador(), new Estandar());
 		}
 		
+		Assert.assertEquals(solterosVsCasados.cantidadDeInscriptos(), 10);
+		
 	}
 	
 

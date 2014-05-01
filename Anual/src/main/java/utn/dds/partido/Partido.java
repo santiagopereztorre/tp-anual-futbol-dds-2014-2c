@@ -37,4 +37,8 @@ public class Partido {
 	public List<Inscripcion> getInscriptosDeTipo(Class clase) {
 		return inscripciones.stream().filter( x -> x.esInstanciaDe(clase)).collect(Collectors.toList());
 	}
+	
+	public long cantidadDeInscriptos(){
+		return inscripciones.stream().count();
+	}
 }
