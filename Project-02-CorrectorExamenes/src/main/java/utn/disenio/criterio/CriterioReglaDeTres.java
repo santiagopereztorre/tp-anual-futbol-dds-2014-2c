@@ -12,18 +12,9 @@ public class CriterioReglaDeTres implements Criterio{
 	}
 	
 	@Override
-	public Double calcularNota(Integer pesoAlumno) throws PesoAlumnoNoValidoException 
+	public Double calcularNota(Integer pesoAlumno)
 	{
-		Double nota = (double) pesoAlumno * 10 / pesoMaximo;
-		if (nota > 10)
-		{
-			throw new PesoAlumnoNoValidoException();
-		}
-		if (nota < 1)
-		{
-			throw new PesoAlumnoNoValidoException();
-		}
-		return nota;
+		return (double) pesoAlumno * 10 / pesoMaximo;
 	}
 
 }

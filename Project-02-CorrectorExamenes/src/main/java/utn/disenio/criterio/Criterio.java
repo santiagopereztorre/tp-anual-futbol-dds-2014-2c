@@ -4,5 +4,5 @@ import utn.disenio.exceptions.PesoAlumnoNoValidoException;
 
 public interface Criterio {
 	
-	public Double calcularNota(Integer pesoAlumno) throws PesoAlumnoNoValidoException;
+	public Double calcularNota(Integer pesoAlumno);
 }
