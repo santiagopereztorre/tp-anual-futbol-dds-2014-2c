@@ -1,4 +1,4 @@
-package utn.disenio.parcial;
+package utn.disenio.examen;
 
 import java.util.ArrayList;
 import java.util.List;

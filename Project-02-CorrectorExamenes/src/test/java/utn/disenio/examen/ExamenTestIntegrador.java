@@ -1,16 +1,19 @@
-package utn.disenio.parcial;
+package utn.disenio.examen;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import utn.disenio.consigna.Consigna;
 import utn.disenio.consigna.MultipleChoice;
 import utn.disenio.consigna.Pregunta;
 import utn.disenio.consigna.VoF;
 import utn.disenio.criterio.Criterio;
 import utn.disenio.criterio.CriterioReglaDeTres;
+import utn.disenio.examen.Examen;
 
 public class ExamenTestIntegrador 
 {

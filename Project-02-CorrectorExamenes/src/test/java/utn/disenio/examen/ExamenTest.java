@@ -1,16 +1,20 @@
-package utn.disenio.parcial;
+package utn.disenio.examen;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import utn.disenio.consigna.Consigna;
 import utn.disenio.consigna.MultipleChoice;
 import utn.disenio.consigna.Pregunta;
 import utn.disenio.consigna.VoF;
 import utn.disenio.criterio.Criterio;
 import utn.disenio.criterio.CriterioReglaDeTres;
+import utn.disenio.examen.Examen;
+import static org.mockito.Mockito.*;
 
 public class ExamenTest 
 {
@@ -32,11 +36,26 @@ public class ExamenTest
 	public static void init()
 	{
 		List<Consigna> consignas = new ArrayList<Consigna>();
-		consignas.add(new Pregunta(5, "si", "si"));
-		consignas.add(new Pregunta(4, "si", "no"));
-		consignas.add(new VoF(3, true, true));
-		consignas.add(new MultipleChoice(new ArrayList<String>(), 4, 1, 2));
-		consignas.add(new VoF(4, false, true));
+		
+		Consigna mockConsigna1 = mock(Consigna.class);
+		when(mockConsigna1.getPesoFinal()).thenReturn(5);
+		consignas.add(mockConsigna1);
+		
+		Consigna mockConsigna2 = mock(Consigna.class);
+		when(mockConsigna2.getPesoFinal()).thenReturn(0);
+		consignas.add(mockConsigna2);
+		
+		Consigna mockConsigna3 = mock(Consigna.class);
+		when(mockConsigna3.getPesoFinal()).thenReturn(3);
+		consignas.add(mockConsigna3);
+		
+		Consigna mockConsigna4 = mock(Consigna.class);
+		when(mockConsigna4.getPesoFinal()).thenReturn(0);
+		consignas.add(mockConsigna4);
+		
+		Consigna mockConsigna5 = mock(Consigna.class);
+		when(mockConsigna5.getPesoFinal()).thenReturn(0);
+		consignas.add(mockConsigna5);
 		
 		pesoAlumno = 8;
 		
