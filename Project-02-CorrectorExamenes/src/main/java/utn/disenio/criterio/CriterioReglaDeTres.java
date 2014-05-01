@@ -1,5 +1,7 @@
 package utn.disenio.criterio;
 
+import utn.disenio.exceptions.PesoAlumnoNoValidoException;
+
 public class CriterioReglaDeTres implements Criterio{
 
 	private Integer pesoMaximo;
@@ -10,9 +12,18 @@ public class CriterioReglaDeTres implements Criterio{
 	}
 	
 	@Override
-	public Double calcularNota(Integer pesoAlumno) 
+	public Double calcularNota(Integer pesoAlumno) throws PesoAlumnoNoValidoException 
 	{
-		return (double) pesoAlumno * 10 / pesoMaximo;
+		Double nota = (double) pesoAlumno * 10 / pesoMaximo;
+		if (nota > 10)
+		{
+			throw new PesoAlumnoNoValidoException();
+		}
+		if (nota < 1)
+		{
+			throw new PesoAlumnoNoValidoException();
+		}
+		return nota;
 	}
 
 }
