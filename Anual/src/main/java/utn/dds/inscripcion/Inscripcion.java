@@ -30,21 +30,8 @@ public class Inscripcion {
 	public void setJugador(Jugador jugador) {
 		this.jugador = jugador;
 	}
-	
-	
-	/* Obtencion de tipos de inscripciones */
-	/*public boolean esEstandar(){
-		return (this.getTipoInscripcion() instanceof Estandar);
-	}
-	
-	public boolean esCondicional(){
-		return (this.getTipoInscripcion() instanceof Condicional);
-	}
-	
-	public boolean esSolidaria(){
-		return (this.getTipoInscripcion() instanceof Solidaria);
-	}*/
-	
+
+	/* Chequeo de instancia de clase */
 	public boolean esInstanciaDe(Class clase){
 		return this.getTipoInscripcion().getClass().isAssignableFrom(clase);
 	}

@@ -6,7 +6,6 @@ import utn.dds.partido.Partido;
 
 public class Condicional implements TipoInscripcion{
 	
-	//public Block condicion;
 	private Predicate<Partido> condicion;
 	
 	public Predicate<Partido> getCondicion() {
@@ -18,7 +17,7 @@ public class Condicional implements TipoInscripcion{
 	}
 	
 	public boolean cumpleCondicion(Partido partido) {
-		return this.condicion.test(partido); // bloque.call()
+		return this.condicion.test(partido);
 	}
 	
 }

@@ -29,19 +29,6 @@ public class Partido {
 	{
 		return getInscriptosDeTipo(Estandar.class).size() < 10;
 	}
-		
-	/* Obtencion de tipos de inscripciones */
-	/*public List<Inscripcion> getInscriptosEstandar() {
-		return inscripciones.stream().filter( x -> x.esEstandar()).collect(Collectors.toList());
-	}
-	
-	public List<Inscripcion> getInscriptosCondicionales() {
-		return inscripciones.stream().filter( x -> x.esCondicional()).collect(Collectors.toList());
-	}
-	
-	public List<Inscripcion> getInscriptosSolidarios() {
-		return inscripciones.stream().filter( x -> x.esSolidaria()).collect(Collectors.toList());
-	}*/
 	
 	
 	public List<Inscripcion> getInscriptosDeTipo(Class clase) {
