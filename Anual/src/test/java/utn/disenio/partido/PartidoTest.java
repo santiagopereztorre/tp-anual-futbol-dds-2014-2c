@@ -3,6 +3,7 @@ package utn.disenio.partido;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -73,5 +74,14 @@ public class PartidoTest {
 		
 	}
 	
+	@Test
+	public void incribirCondicionalEspecial(){
+		/* Solo se anota si no hay mas de 6 jugadores previamente inscriptos */
+		solterosVsCasados.inscribirJugador(new Jugador(), new Condicional(( x -> x.cantidadDeInscriptos() < 6)));
+		
+		List<Inscripcion> condicionales = solterosVsCasados.getInscriptosDeTipo(Condicional.class);
+		
+		Assert.assertTrue(condicionales.stream().allMatch(( x -> x.cumpleCondicion(solterosVsCasados))));
+	}
 
 }
