@@ -32,7 +32,7 @@ public class Inscripcion {
 	}
 
 	/* Chequeo de instancia de clase */
-	public boolean esInstanciaDe(Class clase){
+	public boolean esInstanciaDe(Class<?> clase){
 		return this.getTipoInscripcion().getClass().isAssignableFrom(clase);
 	}
 	
