@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import utn.dds.partido.exceptions.NoHayVacantesException;
 import utn.dds.tipoInscripcion.*;
 import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
@@ -23,6 +24,8 @@ public class Partido {
 	{		
 		if (hayVacante()) 
 			inscripciones.add(new Inscripcion(jugador, tipoInscripcion));
+		else
+			throw new NoHayVacantesException("Ya no hay mas lugar para inscribir jugadores");
 	}
 	
 	private boolean hayVacante()

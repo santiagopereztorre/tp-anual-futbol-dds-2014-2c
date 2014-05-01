@@ -11,6 +11,7 @@ import org.junit.Test;
 import utn.dds.inscripcion.Inscripcion;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.partido.exceptions.NoHayVacantesException;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
@@ -61,6 +62,14 @@ public class PartidoTest {
 		Assert.assertEquals(listaInscriptosEstandar.size(), 2);
 	}
 	
+	@Test (expected = NoHayVacantesException.class)
+	public void inscribirMasDeDiezEstandar(){
+		
+		for (int i = 0; i < 11; i++){
+			solterosVsCasados.inscribirJugador(new Jugador(), new Estandar());
+		}
+		
+	}
 	
 
 }
