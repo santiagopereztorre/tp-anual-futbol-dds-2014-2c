@@ -12,9 +12,9 @@ import utn.disenio.consigna.VoF;
 import utn.disenio.criterio.Criterio;
 import utn.disenio.criterio.CriterioReglaDeTres;
 
-public class ParcialTest 
+public class ExamenTest 
 {
-	private static Parcial unParcial;
+	private static Examen unExamen;
 	private static Integer pesoAlumno;
 	private static Double notaAlumnoEsperada;
 	
@@ -44,20 +44,20 @@ public class ParcialTest
 		
 		notaAlumnoEsperada = 8.0 * 10 / 20;
 		
-		unParcial = new Parcial(consignas, unCriterio);
+		unExamen = new Examen(consignas, unCriterio);
 	}
 	
 	@Test
 	public void pesoDelAlumnoEsElCorrecto()
 	{
 		Assert.assertEquals("Peso del alumno es incorrecto", 
-				pesoAlumno, unParcial.pesoDelAlumno());
+				pesoAlumno, unExamen.pesoDelAlumno());
 	}
 	
 	@Test
 	public void notaDeAlumnoEsCorrecta()
 	{
 		Assert.assertEquals("Nota del alumno no es correcta", 
-				notaAlumnoEsperada, unParcial.notaFinal());
+				notaAlumnoEsperada, unExamen.notaFinal());
 	}
 }

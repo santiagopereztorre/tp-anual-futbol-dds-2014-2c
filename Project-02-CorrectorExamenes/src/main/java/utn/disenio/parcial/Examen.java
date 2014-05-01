@@ -6,7 +6,7 @@ import java.util.List;
 import utn.disenio.consigna.Consigna;
 import utn.disenio.criterio.Criterio;
 
-public class Parcial {
+public class Examen {
 
 	private Criterio criterio;
 	private List<Consigna> consignas;
@@ -17,20 +17,20 @@ public class Parcial {
 	// constructor que tambien reciba un Criterio, pero es otro atributo??
 	// Es consistente hacer un constructor por cada atributo?? es posible??
 	
-	public Parcial(Criterio unCriterio)
+	public Examen(Criterio unCriterio)
 	{
 		super();
 		consignas = new ArrayList<Consigna>();
 		criterio = unCriterio;
 	}
 	
-	public Parcial(List<Consigna> consignas)
+	public Examen(List<Consigna> consignas)
 	{
 		super();
 		this.consignas = consignas;
 	}
 	
-	public Parcial(List<Consigna> consignas, Criterio unCriterio)
+	public Examen(List<Consigna> consignas, Criterio unCriterio)
 	{
 		this.consignas = consignas;
 		criterio = unCriterio;
