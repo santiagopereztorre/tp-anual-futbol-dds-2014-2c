@@ -1,5 +1,8 @@
 package utn.disenio.examen;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,29 +11,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import utn.disenio.consigna.Consigna;
-import utn.disenio.consigna.MultipleChoice;
-import utn.disenio.consigna.Pregunta;
-import utn.disenio.consigna.VoF;
 import utn.disenio.criterio.Criterio;
 import utn.disenio.criterio.CriterioReglaDeTres;
-import utn.disenio.examen.Examen;
-import static org.mockito.Mockito.*;
 
 public class ExamenTest 
 {
 	private static Examen unExamen;
 	private static Integer pesoAlumno;
-	private static Double notaAlumnoEsperada;
-	
-	//TODO OBLIGATORIO como test integrador esta buenisimo! pero si rompe que pasa?
-	// falló parcial o VoF está devolviendo strings en vez de numeros (por ej)
-	// que tan facil es encontrar la falla?? No les parece mejor hacer una
-	// clase ficticia que respete la interfaz de Criterio y devuelva el valor
-	// que querramos?? 
-	// OJO EL TEST NO ESTA MAL pero aca estamos testeando todo a la vez
-	// osea este test no es un test unitario, es un test integrador.
-	// dejenlo, renombrelo y hagan un verdadero ParcialTest.java
-	
+	private static Double notaAlumnoEsperada;	
 	
 	@BeforeClass
 	public static void init()
