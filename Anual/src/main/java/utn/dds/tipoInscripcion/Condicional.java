@@ -8,6 +8,14 @@ public class Condicional implements TipoInscripcion{
 	
 	private Predicate<Partido> condicion;
 	
+	public Condicional(){
+		this((x -> true));
+	}
+	
+	public Condicional(Predicate<Partido> cond){
+		condicion = cond;
+	}
+	
 	public Predicate<Partido> getCondicion() {
 		return condicion;
 	}
