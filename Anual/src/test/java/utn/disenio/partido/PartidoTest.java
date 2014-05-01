@@ -26,26 +26,41 @@ public class PartidoTest {
 	{
 		solterosVsCasados = new Partido();
 	}
-	
-	@Test
-	public void inscriptosSegunSuTipoDeInscripcion() {
 		
+	@Test
+	public void inscribirEstandar() {
 		Jugador juan = new Jugador();
-		Jugador pepe = new Jugador();
-		Jugador moncho = new Jugador();
 		Jugador carlitos = new Jugador();
-		Jugador lalo = new Jugador();
-				
+		
 		juan.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Estandar());
-		pepe.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Condicional());
-		moncho.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Condicional());
 		carlitos.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Estandar());
-		lalo.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Solidaria());
 		
 		List<Inscripcion> listaInscriptosEstandar = solterosVsCasados.getInscriptosDeTipo(Estandar.class);
-				
 		Assert.assertEquals(listaInscriptosEstandar.size(), 2);
-		
 	}
+	
+	@Test
+	public void inscribirSolidarios(){
+		Jugador lalo = new Jugador();
+		
+		lalo.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Solidaria());
+		
+		List<Inscripcion> listaInscriptosEstandar = solterosVsCasados.getInscriptosDeTipo(Solidaria.class);
+		Assert.assertEquals(listaInscriptosEstandar.size(), 1);
+	}
+	
+	@Test
+	public void inscribirCondicionales(){
+		Jugador pepe = new Jugador();
+		Jugador moncho = new Jugador();
+		
+		pepe.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Condicional());
+		moncho.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Condicional());
+		
+		List<Inscripcion> listaInscriptosEstandar = solterosVsCasados.getInscriptosDeTipo(Condicional.class);
+		Assert.assertEquals(listaInscriptosEstandar.size(), 2);
+	}
+	
+	
 
 }
