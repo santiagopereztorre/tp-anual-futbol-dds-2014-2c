@@ -28,28 +28,4 @@ public class CriterioReglaDeTresTest {
 		Assert.assertEquals("Nota de alumno distinta a la esperada", notaEsperada, notaFinal, 1.0);
 	}
 	
-	@Test (expected = PesoAlumnoNoValidoException.class)
-	public void notaAlumnoMayorIgual1CriterioReglaDeTres() throws PesoAlumnoNoValidoException
-	{
-		// Precondiciones
-		Integer pesoAlumno = 0;
-		Integer notaMaxima = 10;
-		CriterioReglaDeTres criterio = new CriterioReglaDeTres(notaMaxima);
-		
-		// Accion
-		Double notaFinal = criterio.calcularNota(pesoAlumno);
-	}
-	
-	@Test (expected = PesoAlumnoNoValidoException.class)
-	public void notaAlumnoMenorIgual10CriterioReglaDeTres() throws PesoAlumnoNoValidoException
-	{
-		// Precondiciones
-		Integer pesoAlumno = 12;
-		Integer notaMaxima = 10;
-		CriterioReglaDeTres criterio = new CriterioReglaDeTres(notaMaxima);
-		
-		// Accion
-		Double notaFinal = criterio.calcularNota(pesoAlumno);
-	}
-	
 }
