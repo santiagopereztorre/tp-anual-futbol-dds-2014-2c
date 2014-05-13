@@ -69,6 +69,14 @@ public class BajaJugadorTest {
 	}
 	
 	@Test
+	public void noInscribirReemplazoSiElQueSeDaDeBajaNoEstabaInscripto(){
+		Jugador josefa = new Jugador();
+		
+		partido.darseBajaConReemplazo(jugadorNoInscripto, josefa);		
+		Assert.assertTrue(!partido.jugadorInscripto(josefa));
+	}
+	
+	@Test
 	public void jugadorRecibeInfraccionSiDaDeBajaSinReemplazo(){
 		Jugador juanDomingo = new Jugador();
 		partido.inscribirJugador(juanDomingo, new Condicional());
