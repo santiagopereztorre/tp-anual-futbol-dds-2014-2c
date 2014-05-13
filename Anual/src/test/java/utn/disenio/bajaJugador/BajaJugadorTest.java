@@ -48,5 +48,34 @@ public class BajaJugadorTest {
 		Assert.assertEquals(partido.cantidadDeInscriptos(),cantInscriptos);
 	}
 	
-	// testear que el jugador que se dió de baja ya no esté en la lista de inscriptos.
+	@Test
+	public void jugadorDadoDeBajaYaNoEstaInscripto(){
+		Jugador juanDomingo = new Jugador();
+		partido.inscribirJugador(juanDomingo, new Condicional());
+		
+		partido.darseBaja(juanDomingo);		
+		Assert.assertTrue(!partido.jugadorInscripto(juanDomingo));
+	}
+
+	@Test
+	public void inscribirReemplazo(){
+		Jugador juanDomingo = new Jugador();
+		partido.inscribirJugador(juanDomingo, new Condicional());
+		
+		Jugador evita = new Jugador();
+		
+		partido.darseBajaConReemplazo(juanDomingo, evita);		
+		Assert.assertTrue(partido.jugadorInscripto(evita));
+	}
+	
+	@Test
+	public void jugadorRecibeInfraccionSiDaDeBajaSinReemplazo(){
+		Jugador juanDomingo = new Jugador();
+		partido.inscribirJugador(juanDomingo, new Condicional());
+		
+		int cantInfracciones = juanDomingo.cantidadInfracciones();
+		
+		partido.darseBaja(juanDomingo);		
+		Assert.assertTrue(juanDomingo.cantidadInfracciones(), cantInfracciones + 1);
+	}
 }
