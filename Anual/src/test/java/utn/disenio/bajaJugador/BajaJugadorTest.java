@@ -54,7 +54,7 @@ public class BajaJugadorTest {
 		partido.inscribirJugador(juanDomingo, new Condicional());
 		
 		partido.darseBaja(juanDomingo);		
-		Assert.assertTrue(!partido.jugadorInscripto(juanDomingo));
+		Assert.assertFalse(partido.jugadorInscripto(juanDomingo));
 	}
 
 	@Test
@@ -73,7 +73,7 @@ public class BajaJugadorTest {
 		Jugador josefa = new Jugador();
 		
 		partido.darseBajaConReemplazo(jugadorNoInscripto, josefa);		
-		Assert.assertTrue(!partido.jugadorInscripto(josefa));
+		Assert.assertFalse(partido.jugadorInscripto(josefa));
 	}
 	
 	@Test
@@ -85,5 +85,6 @@ public class BajaJugadorTest {
 		
 		partido.darseBaja(juanDomingo);		
 		Assert.assertTrue(juanDomingo.cantidadInfracciones(), cantInfracciones + 1);
+		Assert.
 	}
 }
