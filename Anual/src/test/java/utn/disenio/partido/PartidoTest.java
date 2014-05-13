@@ -35,11 +35,11 @@ public class PartidoTest {
 		Jugador moncho = new Jugador();
 		Jugador lalo = new Jugador();
 		
-		lalo.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Solidaria());
-		pepe.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Condicional());
-		moncho.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Condicional());
-		juan.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Estandar());
-		carlitos.inscribirseAPartidoConTipoInscripcion(solterosVsCasados, new Estandar());
+		solterosVsCasados.inscribirJugador(lalo, new Solidaria());
+		solterosVsCasados.inscribirJugador(pepe, new Condicional());
+		solterosVsCasados.inscribirJugador(moncho, new Condicional());
+		solterosVsCasados.inscribirJugador(juan, new Estandar());
+		solterosVsCasados.inscribirJugador(carlitos, new Estandar());
 		
 		List<Inscripcion> listaInscriptosEstandar = solterosVsCasados.getInscriptosDeTipo(Estandar.class);
 		List<Inscripcion> listaInscriptosSolidarios = solterosVsCasados.getInscriptosDeTipo(Solidaria.class);
