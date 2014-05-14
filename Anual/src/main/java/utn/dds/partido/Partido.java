@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+import utn.dds.observers.ObsPartidoCompleto;
+import utn.dds.observers.ObsPartidoDescompleto;
+import utn.dds.observers.ObsPartidoInscripcion;
 import utn.dds.partido.exceptions.NoHayVacantesException;
 import utn.dds.tipoInscripcion.*;
 import utn.dds.infraccion.Infraccion;
@@ -100,6 +103,21 @@ public class Partido {
 		} 
 		
 		
+		
+	}
+
+	public void setObsPartidoDescompleto(List<ObsPartidoDescompleto> obsPartidoDescompleto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setObsPartidoCompleto(List<ObsPartidoCompleto> obsPartidoCompleto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setObsPartidoInscripcion(List<ObsPartidoInscripcion> obsPartidoInscripcion) {
+		// TODO Auto-generated method stub
 		
 	}
 }

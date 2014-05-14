@@ -7,9 +7,9 @@ import utn.dds.jugador.Jugador;
 public class ObsInscripcionJugador implements ObsPartidoInscripcion {
 
 	@Override
-	public void notificar(List<Jugador> jugadores) {
-		// TODO Auto-generated method stub
-
+	public Boolean notificar(List<Jugador> jugadores) {
+		// ...
+		return true;
 	}
 
 }

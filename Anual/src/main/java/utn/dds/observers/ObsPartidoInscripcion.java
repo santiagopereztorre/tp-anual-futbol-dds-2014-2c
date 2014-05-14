@@ -5,6 +5,6 @@ import java.util.*;
 
 public interface ObsPartidoInscripcion {
 
-	public void notificar(List<Jugador> jugadores);
+	public Boolean notificar(List<Jugador> jugadores);
 	
 }

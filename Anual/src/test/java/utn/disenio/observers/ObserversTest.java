@@ -22,6 +22,7 @@ public class ObserversTest {
 	List<ObsPartidoDescompleto> obsPartidoDescompleto = new ArrayList<ObsPartidoDescompleto>();
 	List<ObsPartidoCompleto> obsPartidoCompleto = new ArrayList<ObsPartidoCompleto>();
 	List<ObsPartidoInscripcion> obsPartidoInscripcion = new ArrayList<ObsPartidoInscripcion>();
+	List<Jugador> listaAmigos = new ArrayList<Jugador>();
 	
 	Jugador jugador1 = new Jugador();
 	Jugador jugador2 = new Jugador();
@@ -47,7 +48,7 @@ public class ObserversTest {
 		obsPartidoCompleto.add(mockObsPartidoCompleto);
 		
 		ObsInscripcionJugador mockObsInscripcion = mock(ObsInscripcionJugador.class);
-		when(mockObsInscripcion.notificar()).thenReturn(true);
+		when(mockObsInscripcion.notificar(listaAmigos)).thenReturn(true);
 		obsPartidoInscripcion.add(mockObsInscripcion);
 	}
 	
@@ -56,8 +57,8 @@ public class ObserversTest {
 	{
 		partido = new Partido();
 		partido.setObsPartidoDescompleto(obsPartidoDescompleto);
-		partido.obsPartidoCompleto(obsPartidoCompleto);
-		partido.obsPartidoInscripcion(obsPartidoInscripcion);
+		partido.setObsPartidoCompleto(obsPartidoCompleto);
+		partido.setObsPartidoInscripcion(obsPartidoInscripcion);
 		
 		partido.inscribirJugador(jugador1, new Condicional());
 		partido.inscribirJugador(jugador2, new Estandar());
@@ -73,19 +74,19 @@ public class ObserversTest {
 	@Test
 	public void seNotificaCuandoHay10Confirmados(){
 		partido.inscribirJugador(jugador10, new Estandar());		
-		Assert.assertTrue(mockObsPartidoCompleto.notificar());
+		Assert.assertTrue(obsPartidoCompleto.notificar());
 	}
 	
 	@Test
 	public void seNotificaCuandoYaNoHay10Confirmados(){
-		partido.darseBaja(jugador1);		
-		Assert.assertTrue(mockObsPartidoDescompleto.notificar());
+		partido.darDeBaja(jugador1);		
+		Assert.assertTrue(obsPartidoDescompleto.notificar());
 	}
 	
 	@Test
 	public void seNotificaAAmigosCuandoUnJugadorSeInscribeAUnPartido(){
 		partido.inscribirJugador(jugador1, new Estandar());
 		
-		Assert.assertTrue(mockObsInscripcion.notificar());
+		Assert.assertTrue(obsInscripcion.notificar(listaAmigos));
 	}
 }
