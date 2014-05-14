@@ -52,9 +52,13 @@ public class Partido {
 			}	
 		} 
 		
-		jugador.recibirInfraccion(new Infraccion("Darse de baja sin reemplazo"));
+		this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
 	}
 
+	public void infraccionarPorDarseDeBajaSinReemplazo(Jugador jugador){
+		jugador.recibirInfraccion(new Infraccion("Darse de baja sin reemplazo"));
+	}
+	
 	public boolean jugadorInscripto(Jugador jugador) {
 		int i;
 		
