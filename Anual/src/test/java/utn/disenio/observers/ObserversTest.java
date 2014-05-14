@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -65,14 +66,14 @@ public class ObserversTest {
 	@Test
 	public void seNotificaCuandoHay10Confirmados(){
 		partido.inscribirJugador(jugador10, new Estandar());
-		Assert.assertTrue(verify(mockObsPartidoCompleto).notificar()); // otra opción al .times para probar
+		Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // otra opción al .times para probar
 		//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
 	}
 	
 	@Test
 	public void seNotificaCuandoYaNoHay10Confirmados(){
 		partido.darDeBaja(jugador1);
-		Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, notificar.times(1)));
+		Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1)));
 	}
 	
 	@Test
