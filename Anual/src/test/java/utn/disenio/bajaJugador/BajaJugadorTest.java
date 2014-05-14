@@ -84,6 +84,6 @@ public class BajaJugadorTest {
 		int cantInfracciones = juanDomingo.cantidadInfracciones();
 		
 		partido.darseBaja(juanDomingo);		
-		Assert.assertTrue(juanDomingo.cantidadInfracciones(), cantInfracciones + 1);
+		Assert.assertEquals(juanDomingo.cantidadInfracciones(), cantInfracciones + 1);
 	}
 }

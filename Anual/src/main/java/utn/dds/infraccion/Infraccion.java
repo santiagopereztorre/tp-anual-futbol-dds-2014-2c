@@ -2,9 +2,6 @@ package utn.dds.infraccion;
 
 import java.util.Date;
 
-import utn.dds.jugador.Jugador;
-import utn.dds.tipoInscripcion.TipoInscripcion;
-
 public class Infraccion {
 	
 	private String motivo;

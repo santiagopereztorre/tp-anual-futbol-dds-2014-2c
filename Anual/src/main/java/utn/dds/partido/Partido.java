@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import utn.dds.partido.exceptions.NoHayVacantesException;
 import utn.dds.tipoInscripcion.*;
+import utn.dds.infraccion.Infraccion;
 import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
 
@@ -46,13 +47,12 @@ public class Partido {
 		int i;
 		
 		for(i=0; i<inscripciones.size(); ++i){
-			
 			if(jugador.equals(inscripciones.get(i).getJugador())){
 				inscripciones.remove(i);
-			}
-			
+			}	
 		} 
 		
+		jugador.recibirInfraccion(new Infraccion("Darse de baja sin reemplazo"));
 	}
 
 	public boolean jugadorInscripto(Jugador jugador) {
