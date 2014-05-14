@@ -38,15 +38,15 @@ public class ObserversTest {
 	@BeforeClass
 	public void init()
 	{	
-		ObsAdm10Conf mockObsPartidoDescompleto = mock(ObsAdm10Conf.class);
+		ObsAdmBaja10Jugadores mockObsPartidoDescompleto = mock(ObsAdmBaja10Jugadores.class);
 		when(mockObsPartidoDescompleto.notificar()).thenReturn(true);
 		obsPartidoDescompleto.add(mockObsPartidoDescompleto);
 		
-		ObsAdm10Conf mockObsPartidoCompleto = mock(ObsAdm10YaNoConf.class);
+		ObsAdm10Conf mockObsPartidoCompleto = mock(ObsAdm10Conf.class);
 		when(mockObsPartidoCompleto.notificar()).thenReturn(true);
 		obsPartidoCompleto.add(mockObsPartidoCompleto);
 		
-		ObsAdm10Conf mockObsInscripcion = mock(ObsAmigosInsc.class);
+		ObsInscripcionJugador mockObsInscripcion = mock(ObsInscripcionJugador.class);
 		when(mockObsInscripcion.notificar()).thenReturn(true);
 		obsPartidoInscripcion.add(mockObsInscripcion);
 	}
