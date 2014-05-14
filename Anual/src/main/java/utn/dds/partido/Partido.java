@@ -49,16 +49,13 @@ public class Partido {
 
 	public void darDeBaja(Jugador jugador) 
 	{
-		int i;
-		
-		for(i=0; i<inscripciones.size(); ++i){
-			if(jugador.equals(inscripciones.get(i).getJugador())){
-				inscripciones.remove(i);
-			}	
-		} 
-		
-		
-		this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
+		try{
+			Inscripcion inscripcion = this.getInscripcionDe(jugador);	
+			inscripciones.remove(inscripcion);
+			this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
+		}catch (NoSuchElementException e){
+			
+		}
 	}
 
 	public void infraccionarPorDarseDeBajaSinReemplazo(Jugador jugador)
@@ -70,7 +67,7 @@ public class Partido {
 	{
 		try
 		{
-			getInscripcionDe(jugador);
+			this.getInscripcionDe(jugador);
 		}
 		catch (NoSuchElementException e)
 		{// Jugador no existe
@@ -91,19 +88,14 @@ public class Partido {
 
 	public void darDeBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) 
 	{
-		int i;
-		TipoInscripcion tipo;
-		for(i=0; i<inscripciones.size(); ++i){
+		try{
+			Inscripcion inscripcion = this.getInscripcionDe(jugadorQueSale);
+			inscripciones.remove(inscripcion);
+			this.inscribirJugador(jugadorQueEntra, inscripcion.getTipoInscripcion());
+		}catch (NoSuchElementException e){
 			
-			if(jugadorQueSale.equals(inscripciones.get(i).getJugador())){		
-				tipo = inscripciones.get(i).getTipoInscripcion();
-				inscripciones.remove(i);
-				this.inscribirJugador(jugadorQueEntra, tipo);
-			}
-		} 
-		
-		
-		
+		}
+			
 	}
 
 	public void setObsPartidoDescompleto(List<ObsPartidoDescompleto> obsPartidoDescompleto) {
