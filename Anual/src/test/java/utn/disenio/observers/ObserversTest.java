@@ -35,22 +35,9 @@ public class ObserversTest {
 	Jugador jugador9 = new Jugador();
 	Jugador jugador10 = new Jugador();
 	
-	
-	@BeforeClass
-	public void init()
-	{	
-		ObsAdmBaja10Jugadores mockObsPartidoDescompleto = mock(ObsAdmBaja10Jugadores.class);
-		//when(mockObsPartidoDescompleto.notificar()).thenReturn(true);
-		obsPartidoDescompleto.add(mockObsPartidoDescompleto);
-		
-		ObsAdm10Conf mockObsPartidoCompleto = mock(ObsAdm10Conf.class);
-		//when(mockObsPartidoCompleto.notificar()).thenReturn(true);
-		obsPartidoCompleto.add(mockObsPartidoCompleto);
-		
-		ObsInscripcionJugador mockObsInscripcion = mock(ObsInscripcionJugador.class);
-		//when(mockObsInscripcion.notificar(listaAmigos)).thenReturn(true);
-		obsPartidoInscripcion.add(mockObsInscripcion);
-	}
+	ObsAdmBaja10Jugadores mockObsPartidoDescompleto = mock(ObsAdmBaja10Jugadores.class);
+	ObsAdm10Conf mockObsPartidoCompleto = mock(ObsAdm10Conf.class);
+	ObsInscripcionJugador mockObsInscripcion = mock(ObsInscripcionJugador.class);
 	
 	@Before
 	public void setUp() throws Exception 
@@ -69,26 +56,28 @@ public class ObserversTest {
 		partido.inscribirJugador(jugador7, new Condicional());
 		partido.inscribirJugador(jugador8, new Estandar());
 		partido.inscribirJugador(jugador9, new Estandar());
+		
+		obsPartidoDescompleto.add(mockObsPartidoDescompleto);
+		obsPartidoCompleto.add(mockObsPartidoCompleto);
+		obsPartidoInscripcion.add(mockObsInscripcion);
 	}
 	
 	@Test
 	public void seNotificaCuandoHay10Confirmados(){
 		partido.inscribirJugador(jugador10, new Estandar());
-		Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
-		//Assert.assertTrue(mockObsPartidoCompleto.notificar());
+		Assert.assertTrue(verify(mockObsPartidoCompleto).notificar()); // otra opción al .times para probar
+		//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
 	}
 	
 	@Test
 	public void seNotificaCuandoYaNoHay10Confirmados(){
 		partido.darDeBaja(jugador1);
 		Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, notificar.times(1)));
-		//Assert.assertTrue(mockObsPartidoDescompleto.notificar());
 	}
 	
 	@Test
 	public void seNotificaAAmigosCuandoUnJugadorSeInscribeAUnPartido(){
 		partido.inscribirJugador(jugador1, new Estandar());
 		Assert.assertTrue(Mockito.verify(mockObsInscripcion, notificar.times(1)));
-		//Assert.assertTrue(mockObsInscripcion.notificar(listaAmigos));
 	}
 }
