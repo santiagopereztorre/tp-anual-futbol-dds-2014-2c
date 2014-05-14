@@ -52,6 +52,7 @@ public class Partido {
 			}	
 		} 
 		
+		
 		this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
 	}
 
@@ -59,17 +60,9 @@ public class Partido {
 		jugador.recibirInfraccion(new Infraccion("Darse de baja sin reemplazo"));
 	}
 	
-	public boolean jugadorInscripto(Jugador jugador) {
-		int i;
-		
-		for(i=0; i<inscripciones.size(); ++i){
-			
-			if(jugador.equals(inscripciones.get(i).getJugador())){
-				return true;
-			}
-			
-		}
-		return false;
+	public boolean jugadorInscripto(Jugador jugador) 
+	{
+		return inscripciones.contains(jugador);
 	}
 
 	public void darDeBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) {
