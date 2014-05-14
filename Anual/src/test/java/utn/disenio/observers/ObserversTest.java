@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-//import static org.mockito.Mockito.mock;
-//import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 import utn.dds.tipoInscripcion.Condicional;
