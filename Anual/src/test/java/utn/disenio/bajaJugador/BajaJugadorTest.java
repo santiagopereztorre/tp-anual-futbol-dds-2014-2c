@@ -36,7 +36,7 @@ public class BajaJugadorTest {
 	public void bajaJugador(){
 		long cantInscriptos = partido.cantidadDeInscriptos();
 		
-		partido.darseBaja(juan);		
+		partido.darDeBaja(juan);		
 		Assert.assertEquals(partido.cantidadDeInscriptos(),cantInscriptos-1);
 	}
 	
@@ -44,7 +44,7 @@ public class BajaJugadorTest {
 	public void bajaJugadorNoInscripto(){
 		long cantInscriptos = partido.cantidadDeInscriptos();
 		
-		partido.darseBaja(jugadorNoInscripto);		
+		partido.darDeBaja(jugadorNoInscripto);		
 		Assert.assertEquals(partido.cantidadDeInscriptos(),cantInscriptos);
 	}
 	
@@ -53,7 +53,7 @@ public class BajaJugadorTest {
 		Jugador juanDomingo = new Jugador();
 		partido.inscribirJugador(juanDomingo, new Condicional());
 		
-		partido.darseBaja(juanDomingo);		
+		partido.darDeBaja(juanDomingo);		
 		Assert.assertFalse(partido.jugadorInscripto(juanDomingo));
 	}
 
@@ -64,7 +64,7 @@ public class BajaJugadorTest {
 		
 		Jugador evita = new Jugador();
 		
-		partido.darseBajaConReemplazo(juanDomingo, evita);		
+		partido.darDeBajaConReemplazo(juanDomingo, evita);		
 		Assert.assertTrue(partido.jugadorInscripto(evita));
 	}
 	
@@ -72,7 +72,7 @@ public class BajaJugadorTest {
 	public void noInscribirReemplazoSiElQueSeDaDeBajaNoEstabaInscripto(){
 		Jugador josefa = new Jugador();
 		
-		partido.darseBajaConReemplazo(jugadorNoInscripto, josefa);		
+		partido.darDeBajaConReemplazo(jugadorNoInscripto, josefa);		
 		Assert.assertFalse(partido.jugadorInscripto(josefa));
 	}
 	
@@ -83,7 +83,7 @@ public class BajaJugadorTest {
 		
 		int cantInfracciones = juanDomingo.cantidadInfracciones();
 		
-		partido.darseBaja(juanDomingo);		
+		partido.darDeBaja(juanDomingo);		
 		Assert.assertEquals(juanDomingo.cantidadInfracciones(), cantInfracciones + 1);
 	}
 }

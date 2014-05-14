@@ -43,7 +43,7 @@ public class Partido {
 		return inscripciones.stream().count();
 	}
 
-	public void darseBaja(Jugador jugador) {
+	public void darDeBaja(Jugador jugador) {
 		int i;
 		
 		for(i=0; i<inscripciones.size(); ++i){
@@ -72,7 +72,7 @@ public class Partido {
 		return false;
 	}
 
-	public void darseBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) {
+	public void darDeBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) {
 		int i;
 		TipoInscripcion tipo;
 		for(i=0; i<inscripciones.size(); ++i){
