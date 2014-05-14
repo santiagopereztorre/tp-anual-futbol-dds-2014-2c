@@ -1,16 +1,19 @@
 package utn.disenio.observers;
 
+import java.util.*;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+//import static org.mockito.Mockito.mock;
+//import static org.mockito.Mockito.when;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
+import utn.dds.observers.*;
 
 public class ObserversTest {
 	
@@ -33,7 +36,7 @@ public class ObserversTest {
 	
 	
 	@BeforeClass
-	public static void init()
+	public void init()
 	{	
 		ObsAdm10Conf mockObsPartidoDescompleto = mock(ObsAdm10Conf.class);
 		when(mockObsPartidoDescompleto.notificar()).thenReturn(true);
