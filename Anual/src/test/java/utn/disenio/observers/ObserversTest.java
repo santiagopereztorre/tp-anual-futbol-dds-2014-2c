@@ -40,15 +40,15 @@ public class ObserversTest {
 	public void init()
 	{	
 		ObsAdmBaja10Jugadores mockObsPartidoDescompleto = mock(ObsAdmBaja10Jugadores.class);
-		when(mockObsPartidoDescompleto.notificar()).thenReturn(true);
+		//when(mockObsPartidoDescompleto.notificar()).thenReturn(true);
 		obsPartidoDescompleto.add(mockObsPartidoDescompleto);
 		
 		ObsAdm10Conf mockObsPartidoCompleto = mock(ObsAdm10Conf.class);
-		when(mockObsPartidoCompleto.notificar()).thenReturn(true);
+		//when(mockObsPartidoCompleto.notificar()).thenReturn(true);
 		obsPartidoCompleto.add(mockObsPartidoCompleto);
 		
 		ObsInscripcionJugador mockObsInscripcion = mock(ObsInscripcionJugador.class);
-		when(mockObsInscripcion.notificar(listaAmigos)).thenReturn(true);
+		//when(mockObsInscripcion.notificar(listaAmigos)).thenReturn(true);
 		obsPartidoInscripcion.add(mockObsInscripcion);
 	}
 	
@@ -73,20 +73,22 @@ public class ObserversTest {
 	
 	@Test
 	public void seNotificaCuandoHay10Confirmados(){
-		partido.inscribirJugador(jugador10, new Estandar());		
-		Assert.assertTrue(mockObsPartidoCompleto.notificar());
+		partido.inscribirJugador(jugador10, new Estandar());
+		Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
+		//Assert.assertTrue(mockObsPartidoCompleto.notificar());
 	}
 	
 	@Test
 	public void seNotificaCuandoYaNoHay10Confirmados(){
-		partido.darDeBaja(jugador1);		
-		Assert.assertTrue(mockObsPartidoDescompleto.notificar());
+		partido.darDeBaja(jugador1);
+		Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, notificar.times(1)));
+		//Assert.assertTrue(mockObsPartidoDescompleto.notificar());
 	}
 	
 	@Test
 	public void seNotificaAAmigosCuandoUnJugadorSeInscribeAUnPartido(){
 		partido.inscribirJugador(jugador1, new Estandar());
-		
-		Assert.assertTrue(mockObsInscripcion.notificar(listaAmigos));
+		Assert.assertTrue(Mockito.verify(mockObsInscripcion, notificar.times(1)));
+		//Assert.assertTrue(mockObsInscripcion.notificar(listaAmigos));
 	}
 }
