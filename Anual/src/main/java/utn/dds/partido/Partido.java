@@ -2,6 +2,7 @@ package utn.dds.partido;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import utn.dds.partido.exceptions.NoHayVacantesException;
@@ -43,7 +44,8 @@ public class Partido {
 		return inscripciones.stream().count();
 	}
 
-	public void darDeBaja(Jugador jugador) {
+	public void darDeBaja(Jugador jugador) 
+	{
 		int i;
 		
 		for(i=0; i<inscripciones.size(); ++i){
@@ -56,16 +58,36 @@ public class Partido {
 		this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
 	}
 
-	public void infraccionarPorDarseDeBajaSinReemplazo(Jugador jugador){
+	public void infraccionarPorDarseDeBajaSinReemplazo(Jugador jugador)
+	{
 		jugador.recibirInfraccion(new Infraccion("Darse de baja sin reemplazo"));
 	}
 	
 	public boolean jugadorInscripto(Jugador jugador) 
 	{
-		return inscripciones.contains(jugador);
+		try
+		{
+			getInscripcionDe(jugador);
+		}
+		catch (NoSuchElementException e)
+		{// Jugador no existe
+			return false;
+		}
+		
+		return true;
+	}
+	
+	private Inscripcion getInscripcionDe(Jugador unJugador) throws NoSuchElementException
+	{
+		return inscripciones
+			.stream()
+			.filter(insc -> insc.getJugador().equals(unJugador))
+			.findFirst()
+			.get();		
 	}
 
-	public void darDeBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) {
+	public void darDeBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) 
+	{
 		int i;
 		TipoInscripcion tipo;
 		for(i=0; i<inscripciones.size(); ++i){
