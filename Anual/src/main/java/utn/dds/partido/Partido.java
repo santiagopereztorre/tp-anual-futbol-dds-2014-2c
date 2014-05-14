@@ -54,4 +54,8 @@ public class Partido {
 		} 
 		
 	}
+
+	public boolean jugadorInscripto(Jugador jugador) {
+		return inscripciones.contains(jugador);
+	}
 }
