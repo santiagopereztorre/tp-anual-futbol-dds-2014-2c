@@ -74,19 +74,19 @@ public class ObserversTest {
 	@Test
 	public void seNotificaCuandoHay10Confirmados(){
 		partido.inscribirJugador(jugador10, new Estandar());		
-		Assert.assertTrue(obsPartidoCompleto.notificar());
+		Assert.assertTrue(mockObsPartidoCompleto.notificar());
 	}
 	
 	@Test
 	public void seNotificaCuandoYaNoHay10Confirmados(){
 		partido.darDeBaja(jugador1);		
-		Assert.assertTrue(obsPartidoDescompleto.notificar());
+		Assert.assertTrue(mockObsPartidoDescompleto.notificar());
 	}
 	
 	@Test
 	public void seNotificaAAmigosCuandoUnJugadorSeInscribeAUnPartido(){
 		partido.inscribirJugador(jugador1, new Estandar());
 		
-		Assert.assertTrue(obsInscripcion.notificar(listaAmigos));
+		Assert.assertTrue(mockObsInscripcion.notificar(listaAmigos));
 	}
 }
