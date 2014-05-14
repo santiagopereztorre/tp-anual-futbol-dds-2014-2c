@@ -41,4 +41,17 @@ public class Partido {
 	public long cantidadDeInscriptos(){
 		return inscripciones.stream().count();
 	}
+
+	public void darseBaja(Jugador jugador) {
+		int i;
+		
+		for(i=0; i<inscripciones.size(); ++i){
+			
+			if(jugador.equals(inscripciones.get(i).getJugador())){
+				inscripciones.remove(i);
+			}
+			
+		} 
+		
+	}
 }
