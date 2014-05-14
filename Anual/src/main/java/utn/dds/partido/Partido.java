@@ -56,6 +56,31 @@ public class Partido {
 	}
 
 	public boolean jugadorInscripto(Jugador jugador) {
-		return inscripciones.contains(jugador);
+		int i;
+		
+		for(i=0; i<inscripciones.size(); ++i){
+			
+			if(jugador.equals(inscripciones.get(i).getJugador())){
+				return true;
+			}
+			
+		}
+		return false;
+	}
+
+	public void darseBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) {
+		int i;
+		TipoInscripcion tipo;
+		for(i=0; i<inscripciones.size(); ++i){
+			
+			if(jugadorQueSale.equals(inscripciones.get(i).getJugador())){		
+				tipo = inscripciones.get(i).getTipoInscripcion();
+				inscripciones.remove(i);
+				this.inscribirJugador(jugadorQueEntra, tipo);
+			}
+		} 
+		
+		
+		
 	}
 }
