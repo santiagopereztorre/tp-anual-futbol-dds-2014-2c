@@ -1,6 +1,7 @@
 package utn.disenio.bajaJugador;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -40,12 +41,11 @@ public class BajaJugadorTest {
 		Assert.assertEquals(partido.cantidadDeInscriptos(),cantInscriptos-1);
 	}
 	
-	@Test
-	public void bajaJugadorNoInscripto(){
+	@Test(expected = NoSuchElementException.class)
+	public void bajaJugadorNoInscriptoDebeFallar(){
 		long cantInscriptos = partido.cantidadDeInscriptos();
 		
-		partido.darDeBaja(jugadorNoInscripto);		
-		Assert.assertEquals(partido.cantidadDeInscriptos(),cantInscriptos);
+		partido.darDeBaja(jugadorNoInscripto);
 	}
 	
 	@Test
@@ -68,12 +68,11 @@ public class BajaJugadorTest {
 		Assert.assertTrue(partido.jugadorInscripto(evita));
 	}
 	
-	@Test
+	@Test(expected = NoSuchElementException.class)
 	public void noInscribirReemplazoSiElQueSeDaDeBajaNoEstabaInscripto(){
 		Jugador josefa = new Jugador();
 		
-		partido.darDeBajaConReemplazo(jugadorNoInscripto, josefa);		
-		Assert.assertFalse(partido.jugadorInscripto(josefa));
+		partido.darDeBajaConReemplazo(jugadorNoInscripto, josefa);
 	}
 	
 	@Test

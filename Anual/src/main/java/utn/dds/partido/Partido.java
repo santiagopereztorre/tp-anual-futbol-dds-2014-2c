@@ -25,12 +25,12 @@ public class Partido {
 	private List<Inscripcion> equipo2;
 	
 	private List<ObsPartidoCompleto> observadoresCompleto;
-	private List<ObsPartidoDescompleto> observadoresIncompleto;
+	private List<ObsPartidoDescompleto> observadoresDescompleto;
 	private List<ObsPartidoInscripcion> observadoresInscripcion;
 	
 	public Partido(){
 		inscripciones = new ArrayList<Inscripcion>();
-		observadoresIncompleto = new ArrayList<ObsPartidoDescompleto>();
+		observadoresDescompleto = new ArrayList<ObsPartidoDescompleto>();
 		observadoresCompleto = new ArrayList<ObsPartidoCompleto>();
 		observadoresInscripcion = new ArrayList<ObsPartidoInscripcion>();
 	}
@@ -40,7 +40,7 @@ public class Partido {
 	}
 	
 	public void agregarObservadorIncompleto(ObsPartidoDescompleto obs){
-		observadoresIncompleto.add(obs);
+		observadoresDescompleto.add(obs);
 	}
 	
 	public void agregarObservadorInscripcion(ObsPartidoInscripcion obs){
@@ -129,7 +129,7 @@ public class Partido {
 	}
 
 	public void setObsPartidoDescompleto(List<ObsPartidoDescompleto> obsPartidoIncompleto) {
-		observadoresIncompleto = obsPartidoIncompleto;
+		observadoresDescompleto = obsPartidoIncompleto;
 		
 	}
 
@@ -147,7 +147,7 @@ public class Partido {
 	}
 	
 	public void notificarYaNo10Confirmados(){
-		observadoresIncompleto.forEach(x-> x.notificar());
+		observadoresDescompleto.forEach(x-> x.notificar());
 	}
 
 	public void notificarAmigos(Jugador jugador){
