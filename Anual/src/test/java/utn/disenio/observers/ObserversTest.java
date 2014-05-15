@@ -2,20 +2,21 @@ package utn.disenio.observers;
 
 import java.util.*;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.observers.*;
+
+import static org.mockito.Mockito.validateMockitoUsage;
 
 public class ObserversTest {
 	
@@ -93,5 +94,10 @@ public class ObserversTest {
 		Assert.assertTrue(Mockito.verify(mockObsInscripcion).notificar(argument.capture())); 
 		
 		//Mockito.verify(mockObsInscripcion, Mockito.times(1));
+	}
+	
+	@After
+	public void validate() {
+		validateMockitoUsage();
 	}
 }
