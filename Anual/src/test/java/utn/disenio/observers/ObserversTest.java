@@ -68,32 +68,35 @@ public class ObserversTest {
 	@Test
 	public void seNotificaCuandoHay10Confirmados(){
 		partido.inscribirJugador(jugador10, new Estandar());
-		//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // aparentemente anda bien así
-		Mockito.verify(mockObsPartidoCompleto).notificar(); // probar si anda
 		
+		Mockito.verify(mockObsPartidoCompleto).notificar();
+		
+					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // aparentemente anda bien así
 					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
 	}
 	
 	@Test
 	public void seNotificaCuandoYaNoHay10Confirmados(){
 		partido.darDeBaja(jugador1);
-		//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto).notificar());
-		Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1)); // probar si testea lo que queremos. probar si hace assert o no.
 		
-		//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1))); // probar si testea lo que queremos. 
+		Mockito.verify(mockObsPartidoDescompleto).notificar();
+		
+					//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto).notificar());
+					//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1))); // probar si testea lo que queremos. 
 	}
 	
 	@Test
 	public void seNotificaAAmigosCuandoUnJugadorSeInscribeAUnPartido(){
 		partido.inscribirJugador(jugador1, new Estandar());
 		
-		
 		Class<ArrayList<Jugador>> listClass = (Class<ArrayList<Jugador>>)(Class)ArrayList.class;
 		ArgumentCaptor<ArrayList<Jugador>> argument = ArgumentCaptor.forClass(listClass);
 		
-		Assert.assertTrue(Mockito.verify(mockObsInscripcion).notificar(argument.capture())); 
+		Mockito.verify(mockObsInscripcion).notificar(argument.capture());
 		
-		//Mockito.verify(mockObsInscripcion, Mockito.times(1));
+		
+				//Assert.assertTrue(Mockito.verify(mockObsInscripcion).notificar(argument.capture())); 
+				//Mockito.verify(mockObsInscripcion, Mockito.times(1));
 	}
 	
 	@After
