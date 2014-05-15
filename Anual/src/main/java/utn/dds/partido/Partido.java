@@ -67,6 +67,17 @@ public class Partido {
 		return getInscriptosDeTipo(Estandar.class).size() < 10;
 	}
 	
+	/**
+	 * Devuelve una lista con los jugadores confirmados para el partido hasta el momento
+	 * @return
+	 */
+	private List<Inscripcion> getInscripcionesJugadoresConfirmados()
+	{
+		return inscripciones
+				.stream()
+				.filter(unaInscripcion -> unaInscripcion.cumpleCondicion(this))
+				.collect(Collectors.toList());
+	}
 	
 	public List<Inscripcion> getInscriptosDeTipo(Class clase) {
 		return inscripciones.stream().filter( x -> x.esInstanciaDe(clase)).collect(Collectors.toList());
@@ -78,13 +89,15 @@ public class Partido {
 
 	public void darDeBaja(Jugador jugador) 
 	{
+		int inscriptosConfirmadosInicial = getInscripcionesJugadoresConfirmados().size();
+		
 		Inscripcion inscripcion = this.getInscripcionDe(jugador);	
 		inscripciones.remove(inscripcion);
 		this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
 		
-		if(inscripciones.size()==9){
+		// Inscriptos confirmados inicialmente 10, y ahora 9 -> Avisar al admin
+		if(getInscripcionesJugadoresConfirmados().size() == 9 && inscriptosConfirmadosInicial == 10)
 			this.notificarYaNo10Confirmados();
-		}
 	}
 	
 	
