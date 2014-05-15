@@ -73,10 +73,12 @@ public class ObserversTest {
 		
 					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // aparentemente anda bien así
 					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
+		partido.darDeBaja(jugador10);
 	}
 	
 	@Test
 	public void seNotificaCuandoYaNoHay10Confirmados(){
+		partido.inscribirJugador(jugador10, new Estandar());
 		partido.darDeBaja(jugador1);
 		
 		Mockito.verify(mockObsPartidoDescompleto).notificar();
