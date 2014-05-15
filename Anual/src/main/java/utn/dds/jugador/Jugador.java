@@ -12,18 +12,26 @@ import utn.dds.tipoInscripcion.*;
 public class Jugador {
 	
 	private List<Infraccion> infracciones;
+	private List<Jugador> amigos;
 	
 	public Jugador(){
 		infracciones = new ArrayList<Infraccion>();
 	}
 
+	public void agregarAmigo(Jugador unAmigo){
+		amigos.add(unAmigo);
+	}
+	
 	public void recibirInfraccion(Infraccion infraccion) {
-
 		infracciones.add(infraccion);
 	}
 	
 	public int cantidadInfracciones() {
 		return infracciones.size();
+	}
+	
+	public List<Jugador> getAmigos(){
+		return amigos;
 	}
 	
 	
