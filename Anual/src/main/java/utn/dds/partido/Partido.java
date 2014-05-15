@@ -49,11 +49,11 @@ public class Partido {
 	
 	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion)
 	{		
-		if (hayVacante()) {
+		if (hayVacante())
 			inscripciones.add(new Inscripcion(jugador, tipoInscripcion));
-		}else{
+		else
 			throw new NoHayVacantesException("Ya no hay mas lugar para inscribir jugadores");
-		}
+		
 		
 		if(inscripciones.size()==10){
 			this.notificar10Confirmados();
@@ -78,19 +78,16 @@ public class Partido {
 
 	public void darDeBaja(Jugador jugador) 
 	{
-		try{
-			Inscripcion inscripcion = this.getInscripcionDe(jugador);	
-			inscripciones.remove(inscripcion);
-			this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
-			
-			if(inscripciones.size()==9){
-				this.notificarYaNo10Confirmados();
-			}
-			
-		}catch (NoSuchElementException e){
-			
+		Inscripcion inscripcion = this.getInscripcionDe(jugador);	
+		inscripciones.remove(inscripcion);
+		this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
+		
+		if(inscripciones.size()==9){
+			this.notificarYaNo10Confirmados();
 		}
 	}
+	
+	
 
 	public void infraccionarPorDarseDeBajaSinReemplazo(Jugador jugador)
 	{
@@ -120,16 +117,15 @@ public class Partido {
 			.get();		
 	}
 
+	/**
+	 * Reemplaza a jugadorQueSale con jugadorQueEntra. Mantiene el tipo y posicion de la inscripcion
+	 * @param jugadorQueSale
+	 * @param jugadorQueEntra
+	 */
 	public void darDeBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) 
 	{
-		try{
-			Inscripcion inscripcion = this.getInscripcionDe(jugadorQueSale);
-			inscripciones.remove(inscripcion);
-			this.inscribirJugador(jugadorQueEntra, inscripcion.getTipoInscripcion());
-		}catch (NoSuchElementException e){
-			
-		}
-			
+		Inscripcion inscripcion = this.getInscripcionDe(jugadorQueSale);
+		inscripcion.setJugador(jugadorQueEntra);
 	}
 
 	public void setObsPartidoDescompleto(List<ObsPartidoDescompleto> obsPartidoIncompleto) {
