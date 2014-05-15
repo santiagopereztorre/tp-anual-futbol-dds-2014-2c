@@ -30,6 +30,21 @@ public class Partido {
 	
 	public Partido(){
 		inscripciones = new ArrayList<Inscripcion>();
+		observadoresIncompleto = new ArrayList<ObsPartidoDescompleto>();
+		observadoresCompleto = new ArrayList<ObsPartidoCompleto>();
+		observadoresInscripcion = new ArrayList<ObsPartidoInscripcion>();
+	}
+	
+	public void agregarObservadorCompleto(ObsPartidoCompleto obs){
+		observadoresCompleto.add(obs);
+	}
+	
+	public void agregarObservadorIncompleto(ObsPartidoDescompleto obs){
+		observadoresIncompleto.add(obs);
+	}
+	
+	public void agregarObservadorInscripcion(ObsPartidoInscripcion obs){
+		observadoresInscripcion.add(obs);
 	}
 	
 	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion)

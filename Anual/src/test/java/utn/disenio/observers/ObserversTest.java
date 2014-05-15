@@ -22,9 +22,7 @@ public class ObserversTest {
 	
 	Partido partido;
 	
-	List<ObsPartidoDescompleto> obsPartidoDescompleto = new ArrayList<ObsPartidoDescompleto>();
-	List<ObsPartidoCompleto> obsPartidoCompleto = new ArrayList<ObsPartidoCompleto>();
-	List<ObsPartidoInscripcion> obsPartidoInscripcion = new ArrayList<ObsPartidoInscripcion>();
+	
 	List<Jugador> listaAmigos = new ArrayList<Jugador>();
 	
 	Jugador jugador1 = new Jugador();
@@ -37,6 +35,7 @@ public class ObserversTest {
 	Jugador jugador8 = new Jugador();
 	Jugador jugador9 = new Jugador();
 	Jugador jugador10 = new Jugador();
+	Jugador jugador11 = new Jugador();
 	
 	ObsAdmBaja10Jugadores mockObsPartidoDescompleto = mock(ObsAdmBaja10Jugadores.class);
 	ObsAdm10Conf mockObsPartidoCompleto = mock(ObsAdm10Conf.class);
@@ -46,9 +45,6 @@ public class ObserversTest {
 	public void setUp() throws Exception 
 	{
 		partido = new Partido();
-		partido.setObsPartidoDescompleto(obsPartidoDescompleto);
-		partido.setObsPartidoCompleto(obsPartidoCompleto);
-		partido.setObsPartidoInscripcion(obsPartidoInscripcion);
 		
 		partido.inscribirJugador(jugador1, new Condicional());
 		partido.inscribirJugador(jugador2, new Estandar());
@@ -60,9 +56,9 @@ public class ObserversTest {
 		partido.inscribirJugador(jugador8, new Estandar());
 		partido.inscribirJugador(jugador9, new Estandar());
 		
-		obsPartidoDescompleto.add(mockObsPartidoDescompleto);
-		obsPartidoCompleto.add(mockObsPartidoCompleto);
-		obsPartidoInscripcion.add(mockObsInscripcion);
+		partido.agregarObservadorIncompleto(mockObsPartidoDescompleto);
+		partido.agregarObservadorCompleto(mockObsPartidoCompleto);
+		partido.agregarObservadorInscripcion(mockObsInscripcion);
 	}
 	
 	@Test
@@ -73,12 +69,13 @@ public class ObserversTest {
 		
 					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // aparentemente anda bien así
 					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
-		partido.darDeBaja(jugador10);
+	//	partido.darDeBaja(jugador10);
+	
 	}
 	
 	@Test
 	public void seNotificaCuandoYaNoHay10Confirmados(){
-		partido.inscribirJugador(jugador10, new Estandar());
+		partido.inscribirJugador(jugador11, new Estandar());
 		partido.darDeBaja(jugador1);
 		
 		Mockito.verify(mockObsPartidoDescompleto).notificar();
