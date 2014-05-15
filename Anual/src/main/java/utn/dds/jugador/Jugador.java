@@ -16,10 +16,6 @@ public class Jugador {
 	public Jugador(){
 		infracciones = new ArrayList<Infraccion>();
 	}
-	
-	public void inscribirseAPartidoConTipoInscripcion(Partido partido, TipoInscripcion tipoInscripcion){
-		partido.inscribirJugador(this, tipoInscripcion);
-	}
 
 	public void recibirInfraccion(Infraccion infraccion) {
 
