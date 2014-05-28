@@ -6,6 +6,7 @@ import java.util.List;
 import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.inscripcion.Inscripcion;
+import utn.dds.jugador.excepciones.NoJugaronJuntosException;
 import utn.dds.partido.*;
 import utn.dds.tipoInscripcion.*;
 
@@ -49,7 +50,7 @@ public class Jugador {
 	
 	public void calificar (Jugador unJugador, Partido unPartido, String unTexto) throws Exception {
 		if (!(unPartido.jugo(this) && unPartido.jugo(unJugador))) 
-			throw new Exception("No jugaron en ese partido.");
+			throw new NoJugaronJuntosException();
 		
 		unJugador.agregarCalificacion(this, unPartido, unTexto);
 	}
@@ -57,7 +58,7 @@ public class Jugador {
 
 	public void agregarCalificacion(Jugador otroJugador, Partido unPartido, String unTexto) throws Exception{
 		if (this.fuiCalificado(otroJugador, unPartido)) 
-			throw new Exception("No jugaron en ese partido.");
+			throw new NoJugaronJuntosException();
 		
 		this.calificaciones.add(new Calificacion(otroJugador, unPartido, unTexto));
 	}
