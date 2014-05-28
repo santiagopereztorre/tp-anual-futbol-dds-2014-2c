@@ -7,8 +7,10 @@ import utn.dds.admin.Admin;
 import utn.dds.admin.Sugerencia;
 import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
+import utn.dds.jugador.excepciones.JugadorNoJugoElPartidoException;
 import utn.dds.jugador.excepciones.NoEsAmigoException;
 import utn.dds.jugador.excepciones.NoJugaronJuntosException;
+import utn.dds.jugador.excepciones.NoPodesCalificarteAVosMismoException;
 import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.partido.*;
 import utn.dds.tipoInscripcion.TipoInscripcion;
@@ -59,7 +61,7 @@ public class Jugador {
 	 */
 	public Boolean jugueCon(Jugador unJugador, Partido unPartido)
 	{
-		return unPartido.jugo(this) && unPartido.jugo(unJugador);
+		return unPartido.jugo(unJugador);
 	}
 	
 	/**
@@ -71,6 +73,12 @@ public class Jugador {
 	 */
 	public void calificar(Jugador unJugador, Partido unPartido, String unTexto)
 	{
+		if (this == unJugador)
+			throw new NoPodesCalificarteAVosMismoException();
+		
+		if (!unPartido.jugo(this))
+			throw new JugadorNoJugoElPartidoException();
+		
 		if (!this.jugueCon(unJugador, unPartido)) 
 			throw new NoJugaronJuntosException("Los jugadores no jugaron juntos el partido indicado");
 		

@@ -6,7 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import utn.dds.jugador.Jugador;
-import utn.dds.jugador.excepciones.JugadorNoJugoElPartido;
+import utn.dds.jugador.excepciones.JugadorNoJugoElPartidoException;
+import utn.dds.jugador.excepciones.NoPodesCalificarteAVosMismoException;
 import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.jugador.excepciones.NoJugaronJuntosException;
 import utn.dds.partido.Partido;
@@ -80,16 +81,15 @@ public class CalificarTest {
 		jugador1.calificar(jugador2, partido1, "Me gusto");
 	}
 	
-	@Test
+	@Test (expected = NoPodesCalificarteAVosMismoException.class)
 	public void unJugadorNoPuedeCalificarseASiMismo()
 	{
 		partido1.inscribirJugador(jugador1, inscripcionEstandar);
 		int cantidadCalificaciones = jugador1.cantidadCalificaciones();
 		jugador1.calificar(jugador1, partido1, "Me gusto");
-		assertEquals(cantidadCalificaciones, jugador1.cantidadCalificaciones());
 	}
 
-	@Test (expected = JugadorNoJugoElPartido.class)
+	@Test (expected = JugadorNoJugoElPartidoException.class)
 	public void unJugadorNoPuedeCalificarSinoJugoElPartido()
 	{
 		partido1.inscribirJugador(jugador2, inscripcionEstandar);
