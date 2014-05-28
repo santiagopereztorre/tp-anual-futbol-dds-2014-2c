@@ -26,4 +26,10 @@ public class Admin
 		unaSugerencia.aceptar();
 		sugerencias.remove(unaSugerencia);
 	}
+	
+	public void rechazarSugerencia(Sugerencia unaSugerencia, String motivo)
+	{
+		unaSugerencia.rechazar(motivo);
+		sugerencias.remove(unaSugerencia);
+	}
 }
