@@ -9,6 +9,7 @@ import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.excepciones.NoEsAmigoException;
 import utn.dds.jugador.excepciones.NoJugaronJuntosException;
+import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.partido.*;
 import utn.dds.tipoInscripcion.TipoInscripcion;
 
@@ -73,15 +74,17 @@ public class Jugador {
 		if (!this.jugueCon(unJugador, unPartido)) 
 			throw new NoJugaronJuntosException("Los jugadores no jugaron juntos el partido indicado");
 		
-		unJugador.agregarCalificacion(this, unPartido, unTexto);
+		Calificacion calificacion = new Calificacion(this, unPartido, unTexto);
+		
+		unJugador.agregarCalificacion(calificacion);
 	}
 	
-	public void agregarCalificacion(Jugador otroJugador, Partido unPartido, String unTexto)
+	public void agregarCalificacion(Calificacion calificacion)
 	{
-		if (this.fuiCalificado(otroJugador, unPartido)) 
-			throw new NoJugaronJuntosException("Los jugadores no jugaron juntos el partido indicado");
+		if (this.fuiCalificado(calificacion.getCalificador(), calificacion.getPartido())) 
+			throw new YaFueCalificadoException();
 		
-		this.calificaciones.add(new Calificacion(otroJugador, unPartido, unTexto));
+		this.calificaciones.add(calificacion);
 	}
 	
 	public Boolean fuiCalificado(Jugador unJugador, Partido unPartido){
@@ -106,6 +109,9 @@ public class Jugador {
 	public Boolean esAmigo(Jugador unJugador){		// TODO HACER UN TEST?
 		
 		return amigos.contains(unJugador);
-		
+	}
+
+	public int cantidadCalificaciones() {
+		return this.calificaciones.size();
 	}
 }
