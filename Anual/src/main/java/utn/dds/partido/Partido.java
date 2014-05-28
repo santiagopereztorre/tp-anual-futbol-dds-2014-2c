@@ -183,7 +183,7 @@ public class Partido {
 	}
 	
 	public Boolean jugo(Jugador unJugador){
-		return (this.inscripciones.stream().filter( x -> x.getJugador() == unJugador).count()) > 0;
+		return (this.inscripciones.stream().anyMatch( x -> x.getJugador() == unJugador));
 		
 	}
 }
