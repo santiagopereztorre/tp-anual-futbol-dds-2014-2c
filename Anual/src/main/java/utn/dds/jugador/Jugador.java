@@ -63,14 +63,16 @@ public class Jugador {
 	 * @param unTexto
 	 * @throws Exception
 	 */
-	public void calificar(Jugador unJugador, Partido unPartido, String unTexto) throws Exception {
+	public void calificar(Jugador unJugador, Partido unPartido, String unTexto)
+	{
 		if (!this.jugueCon(unJugador, unPartido)) 
 			throw new NoJugaronJuntosException();
 		
 		unJugador.agregarCalificacion(this, unPartido, unTexto);
 	}
 	
-	public void agregarCalificacion(Jugador otroJugador, Partido unPartido, String unTexto) throws Exception{
+	public void agregarCalificacion(Jugador otroJugador, Partido unPartido, String unTexto)
+	{
 		if (this.fuiCalificado(otroJugador, unPartido)) 
 			throw new NoJugaronJuntosException();
 		
