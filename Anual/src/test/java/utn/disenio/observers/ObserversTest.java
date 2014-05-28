@@ -78,7 +78,7 @@ public class ObserversTest {
 		partido.inscribirJugador(jugador11, new Estandar());
 		partido.darDeBaja(jugador1);
 		
-		Mockito.verify(mockObsPartidoDescompleto).completo();
+		Mockito.verify(mockObsPartidoDescompleto).descompleto();
 		
 					//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto).notificar());
 					//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1))); // probar si testea lo que queremos. 
