@@ -130,7 +130,7 @@ public class Partido {
 	}
 	
 	public long cantidadDeInscriptos(){
-		return inscripciones.stream().count();
+		return inscripciones.size();
 	}
 	
 	public void agregarRechazoSugerencia(Rechazo unRechazo)
