@@ -92,13 +92,13 @@ public class Jugador {
 	 * 
 	 */
 	 
-	public void sugerirAmigo(Jugador unAmigo, Partido unPartido, TipoInscripcion Insc){
-
-		Admin administradorDeSistema = Admin.getInstancia();
-		
+	public void sugerirAmigo(Jugador unAmigo, Partido unPartido, TipoInscripcion insc)
+	{
 		/* Se fija que sea un amigo suyo */
-		if (esAmigo(unAmigo)) administradorDeSistema.sugerir(unAmigo, unPartido, Insc);
-		else throw new NoEsAmigoException("El jugador no es amigo");
+		if (!esAmigo(unAmigo))
+			throw new NoEsAmigoException("El jugador no es amigo");
+		
+		Admin.getInstancia().sugerir(unAmigo, unPartido, insc);
 			
 	}
 	
