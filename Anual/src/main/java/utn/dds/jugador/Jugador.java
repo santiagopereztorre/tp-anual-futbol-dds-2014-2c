@@ -5,9 +5,7 @@ import java.util.List;
 
 import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
-import utn.dds.inscripcion.Inscripcion;
 import utn.dds.partido.*;
-import utn.dds.tipoInscripcion.*;
 
 
 public class Jugador {
