@@ -30,6 +30,7 @@ public class Jugador {
 	public Jugador(){
 		infracciones = new ArrayList<Infraccion>();
 		calificaciones = new ArrayList<Calificacion>();
+		amigos = new ArrayList<Jugador>();
 	}
 
 	public void agregarAmigo(Jugador unAmigo){
