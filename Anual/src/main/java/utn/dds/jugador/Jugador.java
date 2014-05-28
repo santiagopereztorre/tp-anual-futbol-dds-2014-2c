@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import utn.dds.admin.Admin;
+import utn.dds.admin.Sugerencia;
 import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.excepciones.NoEsAmigoException;
@@ -98,7 +99,7 @@ public class Jugador {
 		if (!esAmigo(unAmigo))
 			throw new NoEsAmigoException("El jugador no es amigo");
 		
-		Admin.getInstancia().sugerir(unAmigo, unPartido, insc);
+		Admin.getInstancia().sugerir(new Sugerencia(unAmigo, unPartido, insc));
 			
 	}
 	
