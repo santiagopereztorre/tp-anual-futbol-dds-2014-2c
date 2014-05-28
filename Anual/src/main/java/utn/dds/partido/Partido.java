@@ -188,4 +188,10 @@ public class Partido {
 		return (this.inscripciones.stream().filter( x -> x.getJugador() == unJugador).count()) > 0;
 		
 	}
+	
+	/* Setters y getters de rechazo */
+	
+	public List<Rechazo> getRechazados(){
+		return rechazosSugerencias;
+	}
 }
