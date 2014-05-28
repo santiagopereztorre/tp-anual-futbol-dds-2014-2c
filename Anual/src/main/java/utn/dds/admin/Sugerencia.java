@@ -39,4 +39,9 @@ public class Sugerencia
 	{
 		partido.inscribirJugador(jugador, inscripcion);
 	}
+	
+	public void rechazar(String motivo)
+	{
+		partido.agregarRechazoSugerencia(new Rechazo(jugador, inscripcion, motivo));
+	}
 }
