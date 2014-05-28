@@ -3,10 +3,13 @@ package utn.dds.jugador;
 import java.util.ArrayList;
 import java.util.List;
 
+import utn.dds.admin.Admin;
 import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
+import utn.dds.jugador.excepciones.NoEsAmigoException;
 import utn.dds.jugador.excepciones.NoJugaronJuntosException;
 import utn.dds.partido.*;
+import utn.dds.tipoInscripcion.TipoInscripcion;
 
 
 public class Jugador {
@@ -81,5 +84,26 @@ public class Jugador {
 	
 	public Boolean fuiCalificado(Jugador unJugador, Partido unPartido){
 		return (this.calificaciones.stream().filter( x -> x.getCalificador() == unJugador && x.getPartido() == unPartido).count()) > 0; 
+	}
+	
+	/**
+	 * Sugiere amigos al administrador de sistema.
+	 * 
+	 */
+	 
+	public void sugerirAmigo(Jugador unAmigo, Partido unPartido, TipoInscripcion Insc){
+
+		Admin administradorDeSistema = Admin.getInstancia();
+		
+		/* Se fija que sea un amigo suyo */
+		if (esAmigo(unAmigo)) administradorDeSistema.sugerir(unAmigo, unPartido, Insc);
+		else throw new NoEsAmigoException("El jugador no es amigo");
+			
+	}
+	
+	public Boolean esAmigo(Jugador unJugador){		// TODO HACER UN TEST?
+		
+		return amigos.contains(unJugador);
+		
 	}
 }
