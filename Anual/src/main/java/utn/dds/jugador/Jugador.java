@@ -6,6 +6,7 @@ import java.util.List;
 import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.excepciones.NoJugaronJuntosException;
+import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.partido.*;
 
 
@@ -68,18 +69,24 @@ public class Jugador {
 		if (!this.jugueCon(unJugador, unPartido)) 
 			throw new NoJugaronJuntosException();
 		
-		unJugador.agregarCalificacion(this, unPartido, unTexto);
+		Calificacion calificacion = new Calificacion(this, unPartido, unTexto);
+		
+		unJugador.agregarCalificacion(calificacion);
 	}
 	
-	public void agregarCalificacion(Jugador otroJugador, Partido unPartido, String unTexto)
+	public void agregarCalificacion(Calificacion calificacion)
 	{
-		if (this.fuiCalificado(otroJugador, unPartido)) 
-			throw new NoJugaronJuntosException();
+		if (this.fuiCalificado(calificacion.getCalificador(), calificacion.getPartido())) 
+			throw new YaFueCalificadoException();
 		
-		this.calificaciones.add(new Calificacion(otroJugador, unPartido, unTexto));
+		this.calificaciones.add(calificacion);
 	}
 	
 	public Boolean fuiCalificado(Jugador unJugador, Partido unPartido){
 		return (this.calificaciones.stream().filter( x -> x.getCalificador() == unJugador && x.getPartido() == unPartido).count()) > 0; 
+	}
+
+	public int cantidadCalificaciones() {
+		return this.calificaciones.size();
 	}
 }
