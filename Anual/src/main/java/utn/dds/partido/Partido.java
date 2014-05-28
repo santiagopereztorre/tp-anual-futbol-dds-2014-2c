@@ -39,10 +39,10 @@ public class Partido {
 	
 	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion)
 	{		
-		if (hayVacante())
-			inscripciones.add(new Inscripcion(jugador, tipoInscripcion));
-		else
+		if (!hayVacante())
 			throw new NoHayVacantesException("Ya no hay mas lugar para inscribir jugadores");
+		
+		inscripciones.add(new Inscripcion(jugador, tipoInscripcion));
 		
 		
 		if(inscripciones.size()==10){

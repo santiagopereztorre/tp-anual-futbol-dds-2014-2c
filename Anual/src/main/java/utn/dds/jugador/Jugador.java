@@ -66,7 +66,7 @@ public class Jugador {
 	public void calificar(Jugador unJugador, Partido unPartido, String unTexto)
 	{
 		if (!this.jugueCon(unJugador, unPartido)) 
-			throw new NoJugaronJuntosException();
+			throw new NoJugaronJuntosException("Los jugadores no jugaron juntos el partido indicado");
 		
 		unJugador.agregarCalificacion(this, unPartido, unTexto);
 	}
@@ -74,7 +74,7 @@ public class Jugador {
 	public void agregarCalificacion(Jugador otroJugador, Partido unPartido, String unTexto)
 	{
 		if (this.fuiCalificado(otroJugador, unPartido)) 
-			throw new NoJugaronJuntosException();
+			throw new NoJugaronJuntosException("Los jugadores no jugaron juntos el partido indicado");
 		
 		this.calificaciones.add(new Calificacion(otroJugador, unPartido, unTexto));
 	}
