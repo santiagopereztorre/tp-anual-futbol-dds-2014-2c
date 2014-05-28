@@ -11,7 +11,7 @@ public class Admin
 {
 	private List<Sugerencia> sugerencias;
 	
-	private Admin instancia = null;
+	private static Admin instancia = null;
 	
 	public Admin()
 
@@ -19,7 +19,7 @@ public class Admin
 		sugerencias = new ArrayList<Sugerencia>();
 	}
 	
-	public Admin getInstancia()
+	public static Admin getInstancia()
 	{
 		if(instancia == null)
 			instancia = new Admin();
