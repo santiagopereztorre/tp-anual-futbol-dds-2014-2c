@@ -1,7 +1,16 @@
 package utn.dds.mail;
 
-public interface Mail {
+public class Mail {
 	
-	public void enviarMail(String mensaje, String direccionEmail);
+	String para;
+	String de;
+	String mensaje;
 
+	public Mail(String para, String de, String mensaje)
+	{
+		this.para = para;
+		this.de = de;
+		this.mensaje = mensaje;
+	}
+	
 }

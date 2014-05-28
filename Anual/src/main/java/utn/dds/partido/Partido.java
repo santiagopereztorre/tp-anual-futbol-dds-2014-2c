@@ -35,17 +35,7 @@ public class Partido {
 		observadoresInscripcion = new ArrayList<ObsPartidoInscripcion>();
 	}
 	
-	public void agregarObservadorCompleto(ObsPartidoCompleto obs){
-		observadoresCompleto.add(obs);
-	}
-	
-	public void agregarObservadorIncompleto(ObsPartidoDescompleto obs){
-		observadoresDescompleto.add(obs);
-	}
-	
-	public void agregarObservadorInscripcion(ObsPartidoInscripcion obs){
-		observadoresInscripcion.add(obs);
-	}
+	// Inscripcion de jugadores
 	
 	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion)
 	{		
@@ -61,7 +51,63 @@ public class Partido {
 		
 		this.notificarAmigos(jugador);
 	}
+
+	// Darse de baja
 	
+	public void darDeBaja(Jugador jugador) 
+	{
+		int inscriptosConfirmadosInicial = getInscripcionesJugadoresConfirmados().size();
+		
+		Inscripcion inscripcion = this.getInscripcionDe(jugador);	
+		inscripciones.remove(inscripcion);
+		this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
+		
+		// Inscriptos confirmados inicialmente 10, y ahora 9 -> Avisar al admin
+		if(getInscripcionesJugadoresConfirmados().size() == 9 && inscriptosConfirmadosInicial == 10)
+			this.notificarYaNo10Confirmados();
+	}
+	
+	/**
+	 * Reemplaza a jugadorQueSale con jugadorQueEntra. Mantiene el tipo y posicion de la inscripcion
+	 * @param jugadorQueSale
+	 * @param jugadorQueEntra
+	 */
+	public void darDeBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) 
+	{
+		Inscripcion inscripcion = this.getInscripcionDe(jugadorQueSale);
+		inscripcion.setJugador(jugadorQueEntra);
+	}
+
+	public void infraccionarPorDarseDeBajaSinReemplazo(Jugador jugador)
+	{
+		jugador.recibirInfraccion(new Infraccion("Darse de baja sin reemplazo"));
+	}
+	
+	// Metodos adicionales
+	
+	public boolean jugadorInscripto(Jugador jugador) 
+	{
+		try
+		{
+			this.getInscripcionDe(jugador);
+		}
+		catch (NoSuchElementException e)
+		{// Jugador no existe
+			return false;
+		}
+		
+		return true;
+	}
+	
+	private Inscripcion getInscripcionDe(Jugador unJugador) throws NoSuchElementException
+	{
+		return inscripciones
+			.stream()
+			.filter(insc -> insc.getJugador().equals(unJugador))
+			.findFirst()
+			.get();		
+	}
+
 	private boolean hayVacante()
 	{
 		return getInscriptosDeTipo(Estandar.class).size() < 10;
@@ -87,60 +133,8 @@ public class Partido {
 		return inscripciones.stream().count();
 	}
 
-	public void darDeBaja(Jugador jugador) 
-	{
-		int inscriptosConfirmadosInicial = getInscripcionesJugadoresConfirmados().size();
-		
-		Inscripcion inscripcion = this.getInscripcionDe(jugador);	
-		inscripciones.remove(inscripcion);
-		this.infraccionarPorDarseDeBajaSinReemplazo(jugador);
-		
-		// Inscriptos confirmados inicialmente 10, y ahora 9 -> Avisar al admin
-		if(getInscripcionesJugadoresConfirmados().size() == 9 && inscriptosConfirmadosInicial == 10)
-			this.notificarYaNo10Confirmados();
-	}
+	// Agregar lista de observadores
 	
-	
-
-	public void infraccionarPorDarseDeBajaSinReemplazo(Jugador jugador)
-	{
-		jugador.recibirInfraccion(new Infraccion("Darse de baja sin reemplazo"));
-	}
-	
-	public boolean jugadorInscripto(Jugador jugador) 
-	{
-		try
-		{
-			this.getInscripcionDe(jugador);
-		}
-		catch (NoSuchElementException e)
-		{// Jugador no existe
-			return false;
-		}
-		
-		return true;
-	}
-	
-	private Inscripcion getInscripcionDe(Jugador unJugador) throws NoSuchElementException
-	{
-		return inscripciones
-			.stream()
-			.filter(insc -> insc.getJugador().equals(unJugador))
-			.findFirst()
-			.get();		
-	}
-
-	/**
-	 * Reemplaza a jugadorQueSale con jugadorQueEntra. Mantiene el tipo y posicion de la inscripcion
-	 * @param jugadorQueSale
-	 * @param jugadorQueEntra
-	 */
-	public void darDeBajaConReemplazo(Jugador jugadorQueSale, Jugador jugadorQueEntra) 
-	{
-		Inscripcion inscripcion = this.getInscripcionDe(jugadorQueSale);
-		inscripcion.setJugador(jugadorQueEntra);
-	}
-
 	public void setObsPartidoDescompleto(List<ObsPartidoDescompleto> obsPartidoIncompleto) {
 		observadoresDescompleto = obsPartidoIncompleto;
 		
@@ -155,15 +149,31 @@ public class Partido {
 		observadoresInscripcion = obsPartidoInscripcion;
 	}
 	
+	// Agregar observadores
+	
+	public void agregarObservadorCompleto(ObsPartidoCompleto obs){
+		observadoresCompleto.add(obs);
+	}
+	
+	public void agregarObservadorIncompleto(ObsPartidoDescompleto obs){
+		observadoresDescompleto.add(obs);
+	}
+	
+	public void agregarObservadorInscripcion(ObsPartidoInscripcion obs){
+		observadoresInscripcion.add(obs);
+	}
+	
+	// Metodos para notificar
+	
 	public void notificar10Confirmados(){
-		observadoresCompleto.forEach(x-> x.notificar());
+		observadoresCompleto.forEach(x-> x.completo());
 	}
 	
 	public void notificarYaNo10Confirmados(){
-		observadoresDescompleto.forEach(x-> x.notificar());
+		observadoresDescompleto.forEach(x-> x.descompleto());
 	}
 
 	public void notificarAmigos(Jugador jugador){
-		observadoresInscripcion.forEach(x-> x.notificar(jugador.getAmigos()));
+		observadoresInscripcion.forEach(x-> x.notificar(jugador.getAmigos(), jugador));
 	}
 }
