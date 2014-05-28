@@ -47,9 +47,14 @@ public class Jugador {
 		return amigos;
 	}
 	
+	public Boolean jugueCon(Jugador unJugador, Partido unPartido)
+	{
+		return unPartido.jugo(this) && unPartido.jugo(unJugador);
+	}
+	
 	
 	public void calificar (Jugador unJugador, Partido unPartido, String unTexto) throws Exception {
-		if (!(unPartido.jugo(this) && unPartido.jugo(unJugador))) 
+		if (!this.jugueCon(unJugador, unPartido)) 
 			throw new NoJugaronJuntosException();
 		
 		unJugador.agregarCalificacion(this, unPartido, unTexto);
