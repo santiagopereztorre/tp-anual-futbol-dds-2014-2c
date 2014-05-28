@@ -11,7 +11,7 @@ public class Admin
 {
 	private List<Sugerencia> sugerencias;
 	
-	Admin()
+	public Admin()
 	{
 		sugerencias = new ArrayList<Sugerencia>();
 	}
