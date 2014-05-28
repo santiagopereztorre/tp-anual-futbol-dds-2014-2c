@@ -10,6 +10,7 @@ import utn.dds.observers.ObsPartidoDescompleto;
 import utn.dds.observers.ObsPartidoInscripcion;
 import utn.dds.partido.exceptions.NoHayVacantesException;
 import utn.dds.tipoInscripcion.*;
+import utn.dds.admin.Rechazo;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
@@ -24,6 +25,8 @@ public class Partido {
 	private List<ObsPartidoCompleto> observadoresCompleto;
 	private List<ObsPartidoDescompleto> observadoresDescompleto;
 	private List<ObsPartidoInscripcion> observadoresInscripcion;
+	
+	private List<Rechazo> rechazosSugerencias;
 	
 	public Partido(){
 		inscripciones = new ArrayList<Inscripcion>();
@@ -128,6 +131,11 @@ public class Partido {
 	
 	public long cantidadDeInscriptos(){
 		return inscripciones.stream().count();
+	}
+	
+	public void agregarRechazoSugerencia(Rechazo unRechazo)
+	{
+		rechazosSugerencias.add(unRechazo);
 	}
 
 	// Agregar lista de observadores
