@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import utn.dds.observers.ObsAdm10Conf;
-import utn.dds.observers.ObsAdmBaja10Jugadores;
-import utn.dds.observers.ObsInscripcionJugador;
 import utn.dds.observers.ObsPartidoCompleto;
 import utn.dds.observers.ObsPartidoDescompleto;
 import utn.dds.observers.ObsPartidoInscripcion;

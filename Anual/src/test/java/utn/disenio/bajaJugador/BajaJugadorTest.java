@@ -1,19 +1,15 @@
 package utn.disenio.bajaJugador;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import utn.dds.inscripcion.Inscripcion;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
-import utn.dds.partido.exceptions.NoHayVacantesException;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
-import utn.dds.tipoInscripcion.Solidaria;
 
 public class BajaJugadorTest {
 	
@@ -43,8 +39,6 @@ public class BajaJugadorTest {
 	
 	@Test(expected = NoSuchElementException.class)
 	public void bajaJugadorNoInscriptoDebeFallar(){
-		long cantInscriptos = partido.cantidadDeInscriptos();
-		
 		partido.darDeBaja(jugadorNoInscripto);
 	}
 	
