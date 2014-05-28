@@ -48,13 +48,17 @@ public class Jugador {
 	
 	
 	public void calificar (Jugador unJugador, Partido unPartido, String unTexto) throws Exception {
-		if (!(unPartido.jugo(this) && unPartido.jugo(unJugador))) throw new Exception("No jugaron en ése partido.");
+		if (!(unPartido.jugo(this) && unPartido.jugo(unJugador))) 
+			throw new Exception("No jugaron en ese partido.");
+		
 		unJugador.agregarCalificacion(this, unPartido, unTexto);
 	}
 	
 
 	public void agregarCalificacion(Jugador otroJugador, Partido unPartido, String unTexto) throws Exception{
-		if (this.fuiCalificado(otroJugador, unPartido)) throw new Exception("No jugaron en ése partido.");
+		if (this.fuiCalificado(otroJugador, unPartido)) 
+			throw new Exception("No jugaron en ese partido.");
+		
 		this.calificaciones.add(new Calificacion(otroJugador, unPartido, unTexto));
 	}
 	
