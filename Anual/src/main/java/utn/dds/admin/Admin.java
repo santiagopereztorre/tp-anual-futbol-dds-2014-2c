@@ -19,6 +19,10 @@ public class Admin
 		sugerencias = new ArrayList<Sugerencia>();
 	}
 	
+	public List<Sugerencia> getSugerencias(){
+		return sugerencias;
+	}
+	
 	public static Admin getInstancia()
 	{
 		if(instancia == null)
