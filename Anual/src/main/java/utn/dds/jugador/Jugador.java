@@ -5,10 +5,8 @@ import java.util.List;
 
 import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
-import utn.dds.inscripcion.Inscripcion;
 import utn.dds.jugador.excepciones.NoJugaronJuntosException;
 import utn.dds.partido.*;
-import utn.dds.tipoInscripcion.*;
 
 
 public class Jugador {
@@ -47,20 +45,31 @@ public class Jugador {
 		return amigos;
 	}
 	
+	/**
+	 * Evalua si dos jugadores participaron del mismo partido
+	 * @param unJugador
+	 * @param unPartido
+	 * @return True cuando jugaron juntos en unPartido
+	 */
 	public Boolean jugueCon(Jugador unJugador, Partido unPartido)
 	{
 		return unPartido.jugo(this) && unPartido.jugo(unJugador);
 	}
 	
-	
-	public void calificar (Jugador unJugador, Partido unPartido, String unTexto) throws Exception {
+	/**
+	 * Califica a unJugador por su participacion en unPartido
+	 * @param unJugador
+	 * @param unPartido
+	 * @param unTexto
+	 * @throws Exception
+	 */
+	public void calificar(Jugador unJugador, Partido unPartido, String unTexto) throws Exception {
 		if (!this.jugueCon(unJugador, unPartido)) 
 			throw new NoJugaronJuntosException();
 		
 		unJugador.agregarCalificacion(this, unPartido, unTexto);
 	}
 	
-
 	public void agregarCalificacion(Jugador otroJugador, Partido unPartido, String unTexto) throws Exception{
 		if (this.fuiCalificado(otroJugador, unPartido)) 
 			throw new NoJugaronJuntosException();
