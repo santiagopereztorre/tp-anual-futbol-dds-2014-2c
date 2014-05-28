@@ -25,6 +25,7 @@ public class CalificarTest {
 	@Before
 	public void setUp() throws Exception {
 		partido1 = new Partido();
+		partido2 = new Partido();
 		jugador1 = new Jugador();
 		jugador2 = new Jugador();
 		jugador3 = new Jugador();
