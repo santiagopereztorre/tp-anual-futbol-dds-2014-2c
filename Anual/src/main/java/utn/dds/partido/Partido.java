@@ -176,4 +176,9 @@ public class Partido {
 	public void notificarAmigos(Jugador jugador){
 		observadoresInscripcion.forEach(x-> x.notificar(jugador.getAmigos(), jugador));
 	}
+	
+	public Boolean jugo(Jugador unJugador){
+		return (this.inscripciones.stream().filter( x -> x.getJugador() == unJugador).count()) > 0;
+		
+	}
 }
