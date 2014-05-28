@@ -11,10 +11,21 @@ public class Admin
 {
 	private List<Sugerencia> sugerencias;
 	
+	private Admin instancia = null;
+	
 	Admin()
 	{
 		sugerencias = new ArrayList<Sugerencia>();
 	}
+	
+	public Admin getInstancia()
+	{
+		if(instancia == null)
+			instancia = new Admin();
+		
+		return instancia;
+	}
+	
 	
 	public void sugerir(Jugador unJugador, Partido unPartido, TipoInscripcion inscripcion)
 	{
