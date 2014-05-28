@@ -13,7 +13,16 @@ public class Jugador {
 	
 	private List<Infraccion> infracciones;
 	private List<Jugador> amigos;
+	private String mail;
 	
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
 	public Jugador(){
 		infracciones = new ArrayList<Infraccion>();
 	}

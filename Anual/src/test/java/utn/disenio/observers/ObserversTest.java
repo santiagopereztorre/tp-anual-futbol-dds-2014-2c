@@ -15,7 +15,6 @@ import utn.dds.partido.Partido;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.observers.*;
-
 import static org.mockito.Mockito.validateMockitoUsage;
 
 public class ObserversTest {
@@ -65,12 +64,7 @@ public class ObserversTest {
 	public void seNotificaCuandoHay10Confirmados(){
 		partido.inscribirJugador(jugador10, new Estandar());
 		
-		Mockito.verify(mockObsPartidoCompleto).notificar();
-		
-					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // aparentemente anda bien así
-					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
-	//	partido.darDeBaja(jugador10);
-	
+		Mockito.verify(mockObsPartidoCompleto).completo();
 	}
 	
 	@Test
@@ -78,24 +72,18 @@ public class ObserversTest {
 		partido.inscribirJugador(jugador11, new Estandar());
 		partido.darDeBaja(jugador1);
 		
-		Mockito.verify(mockObsPartidoDescompleto).notificar();
-		
-					//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto).notificar());
-					//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1))); // probar si testea lo que queremos. 
+		Mockito.verify(mockObsPartidoDescompleto).descompleto();
 	}
 	
 	@Test
 	public void seNotificaAAmigosCuandoUnJugadorSeInscribeAUnPartido(){
 		partido.inscribirJugador(jugador1, new Estandar());
 		
-		Class<ArrayList<Jugador>> listClass = (Class<ArrayList<Jugador>>)(Class)ArrayList.class;
-		ArgumentCaptor<ArrayList<Jugador>> argument = ArgumentCaptor.forClass(listClass);
+
+	//	Class<ArrayList<Jugador>> listClass = (Class<ArrayList<Jugador>>)(Class)ArrayList.class;
+	//	ArgumentCaptor<ArrayList<Jugador>> argument = ArgumentCaptor.forClass(listClass);
 		
-		Mockito.verify(mockObsInscripcion).notificar(argument.capture());
-		
-		
-				//Assert.assertTrue(Mockito.verify(mockObsInscripcion).notificar(argument.capture())); 
-				//Mockito.verify(mockObsInscripcion, Mockito.times(1));
+		Mockito.verify(mockObsInscripcion).notificar(jugador1.getAmigos(), jugador1);
 	}
 	
 	@After
