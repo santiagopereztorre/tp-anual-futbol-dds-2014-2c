@@ -15,7 +15,6 @@ import utn.dds.partido.Partido;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.observers.*;
-
 import static org.mockito.Mockito.validateMockitoUsage;
 
 public class ObserversTest {
@@ -67,8 +66,8 @@ public class ObserversTest {
 		
 		Mockito.verify(mockObsPartidoCompleto).completo();
 		
-					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // aparentemente anda bien así
-					//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
+	//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // aparentemente anda bien así
+	//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
 	//	partido.darDeBaja(jugador10);
 	
 	}
@@ -80,22 +79,22 @@ public class ObserversTest {
 		
 		Mockito.verify(mockObsPartidoDescompleto).descompleto();
 		
-					//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto).notificar());
-					//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1))); // probar si testea lo que queremos. 
+		//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto).notificar());
+		//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1))); // probar si testea lo que queremos. 
 	}
 	
 	@Test
 	public void seNotificaAAmigosCuandoUnJugadorSeInscribeAUnPartido(){
 		partido.inscribirJugador(jugador1, new Estandar());
 		
-		Class<ArrayList<Jugador>> listClass = (Class<ArrayList<Jugador>>)(Class)ArrayList.class;
-		ArgumentCaptor<ArrayList<Jugador>> argument = ArgumentCaptor.forClass(listClass);
+
+	//	Class<ArrayList<Jugador>> listClass = (Class<ArrayList<Jugador>>)(Class)ArrayList.class;
+	//	ArgumentCaptor<ArrayList<Jugador>> argument = ArgumentCaptor.forClass(listClass);
 		
-		Mockito.verify(mockObsInscripcion).notificar(argument.capture(), null);
-		
-		
-				//Assert.assertTrue(Mockito.verify(mockObsInscripcion).notificar(argument.capture())); 
-				//Mockito.verify(mockObsInscripcion, Mockito.times(1));
+		Mockito.verify(mockObsInscripcion).notificar(jugador1.getAmigos(), jugador1);
+				
+		//Assert.assertTrue(Mockito.verify(mockObsInscripcion).notificar(argument.capture())); 
+		//Mockito.verify(mockObsInscripcion, Mockito.times(1));
 	}
 	
 	@After
