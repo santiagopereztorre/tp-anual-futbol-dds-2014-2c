@@ -20,4 +20,10 @@ public class Admin
 	{
 		sugerencias.add(new Sugerencia(unJugador, unPartido, inscripcion));
 	}
+	
+	public void aceptarSugerencia(Sugerencia unaSugerencia)
+	{
+		unaSugerencia.aceptar();
+		sugerencias.remove(unaSugerencia);
+	}
 }

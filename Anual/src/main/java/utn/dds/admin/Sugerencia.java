@@ -35,5 +35,8 @@ public class Sugerencia
 		return inscripcion;
 	}
 	
-	
+	public void aceptar()
+	{
+		partido.inscribirJugador(jugador, inscripcion);
+	}
 }
