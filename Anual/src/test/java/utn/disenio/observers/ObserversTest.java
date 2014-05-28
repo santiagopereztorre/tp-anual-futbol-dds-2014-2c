@@ -65,11 +65,6 @@ public class ObserversTest {
 		partido.inscribirJugador(jugador10, new Estandar());
 		
 		Mockito.verify(mockObsPartidoCompleto).completo();
-		
-	//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto).notificar()); // aparentemente anda bien así
-	//Assert.assertTrue(Mockito.verify(mockObsPartidoCompleto, notificar.times(1)));
-	//	partido.darDeBaja(jugador10);
-	
 	}
 	
 	@Test
@@ -78,9 +73,6 @@ public class ObserversTest {
 		partido.darDeBaja(jugador1);
 		
 		Mockito.verify(mockObsPartidoDescompleto).descompleto();
-		
-		//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto).notificar());
-		//Assert.assertTrue(Mockito.verify(mockObsPartidoDescompleto, Mockito.times(1))); // probar si testea lo que queremos. 
 	}
 	
 	@Test
@@ -92,9 +84,6 @@ public class ObserversTest {
 	//	ArgumentCaptor<ArrayList<Jugador>> argument = ArgumentCaptor.forClass(listClass);
 		
 		Mockito.verify(mockObsInscripcion).notificar(jugador1.getAmigos(), jugador1);
-				
-		//Assert.assertTrue(Mockito.verify(mockObsInscripcion).notificar(argument.capture())); 
-		//Mockito.verify(mockObsInscripcion, Mockito.times(1));
 	}
 	
 	@After
