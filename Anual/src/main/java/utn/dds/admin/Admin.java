@@ -27,7 +27,6 @@ public class Admin
 		return instancia;
 	}
 	
-	
 	public void sugerir(Sugerencia unaSugerencia)
 	{
 		sugerencias.add(unaSugerencia);

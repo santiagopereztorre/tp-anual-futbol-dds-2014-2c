@@ -85,7 +85,6 @@ public class CalificarTest {
 	public void unJugadorNoPuedeCalificarseASiMismo()
 	{
 		partido1.inscribirJugador(jugador1, inscripcionEstandar);
-		int cantidadCalificaciones = jugador1.cantidadCalificaciones();
 		jugador1.calificar(jugador1, partido1, "Me gusto");
 	}
 

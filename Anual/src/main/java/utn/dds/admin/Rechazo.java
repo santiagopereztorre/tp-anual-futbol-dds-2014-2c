@@ -15,7 +15,6 @@ public class Rechazo
 		this.setInscripcion(inscripcion);
 		this.setMotivo(motivo);
 	}
-
 	
 	/* Setters y Getters */
 	public Jugador getJugador() {
