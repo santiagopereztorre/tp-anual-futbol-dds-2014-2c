@@ -44,7 +44,8 @@ public class Partido {
 		observadoresDescompleto = new ArrayList<ObsPartidoDescompleto>();
 		observadoresCompleto = new ArrayList<ObsPartidoCompleto>();
 		observadoresInscripcion = new ArrayList<ObsPartidoInscripcion>();
-		
+		equipo1 = new ArrayList<Jugador>();
+		equipo2 = new ArrayList<Jugador>();
 		inscriptosCalificados = new ArrayList<JugadorConCalificacion>();
 		rechazosSugerencias = new ArrayList<Rechazo>();
 	}

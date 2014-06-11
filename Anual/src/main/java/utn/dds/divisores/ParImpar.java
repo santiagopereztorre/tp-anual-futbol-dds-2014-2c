@@ -1,5 +1,6 @@
 package utn.dds.divisores;
 
+import java.util.Collections;
 import java.util.List;
 
 import utn.dds.inscripcion.Inscripcion;
@@ -11,16 +12,16 @@ public class ParImpar implements Divisor {
 	@Override
 	public void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
 			List<JugadorConCalificacion> jugadoresCalificados) {
-		List<JugadorConCalificacion> jugadoresCalificadosOrdenados = (List<JugadorConCalificacion>) jugadoresCalificados.stream().sorted();
-		for (int i = 0; i < jugadoresCalificadosOrdenados.size(); i ++)
+		Collections.sort(jugadoresCalificados);
+		for (int i = 0; i < jugadoresCalificados.size(); i ++)
 		{
 			if (esPar(i))
 			{
-				equipo1.add(jugadoresCalificadosOrdenados.get(i).getJugador());
+				equipo1.add(jugadoresCalificados.get(i).getJugador());
 			}
 			else
 			{
-				equipo2.add(jugadoresCalificadosOrdenados.get(i).getJugador());
+				equipo2.add(jugadoresCalificados.get(i).getJugador());
 			}
 		}
 	}

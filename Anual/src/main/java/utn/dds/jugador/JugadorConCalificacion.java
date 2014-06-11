@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import utn.dds.inscripcion.Inscripcion;
 
-public class JugadorConCalificacion implements Comparator {
+public class JugadorConCalificacion implements Comparable<JugadorConCalificacion> {
 	
 	private Jugador jugador;
 	private Integer calificacion;
@@ -23,14 +23,12 @@ public class JugadorConCalificacion implements Comparator {
 	}
 	
 	@Override
-	public int compare(Object o1, Object o2) {
-		JugadorConCalificacion jugador1 = (JugadorConCalificacion) o1;
-		JugadorConCalificacion jugador2 = (JugadorConCalificacion) o2;
-		if (jugador1.getCalificacion() > jugador2.getCalificacion())
+	public int compareTo(JugadorConCalificacion o) {
+		if (this.getCalificacion() > o.getCalificacion())
 		{
 			return 1;
 		} 
-		else if (jugador1.getCalificacion() == jugador2.getCalificacion()) 
+		else if (this.getCalificacion() == o.getCalificacion()) 
 		{
 			return 0;
 		} 
