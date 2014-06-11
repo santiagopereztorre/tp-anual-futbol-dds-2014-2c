@@ -73,7 +73,7 @@ public class Jugador {
 	 * @param unTexto
 	 * @throws Exception
 	 */
-	public void calificar(Jugador unJugador, Partido unPartido, String unTexto)
+	public void calificar(Jugador unJugador, Partido unPartido, Integer unPuntaje, String unTexto)
 	{
 		if (this == unJugador)
 			throw new NoPodesCalificarteAVosMismoException();
@@ -84,7 +84,7 @@ public class Jugador {
 		if (!this.jugueCon(unJugador, unPartido)) 
 			throw new NoJugaronJuntosException("Los jugadores no jugaron juntos el partido indicado");
 		
-		Calificacion calificacion = new Calificacion(this, unPartido, unTexto);
+		Calificacion calificacion = new Calificacion(this, unPartido, unPuntaje, unTexto);
 		
 		unJugador.agregarCalificacion(calificacion);
 	}

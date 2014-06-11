@@ -53,7 +53,7 @@ public class CalificarTest {
 		partido1.inscribirJugador(jugador1, inscripcionEstandar);
 		partido1.inscribirJugador(jugador2, inscripcionEstandar);
 		Integer cantidadCalificaciones = jugador2.cantidadCalificaciones();
-		jugador1.calificar(jugador2, partido1, "Me gusto");
+		jugador1.calificar(jugador2, partido1, 7, "Me gusto");
 		assertEquals(cantidadCalificaciones + 1, jugador2.cantidadCalificaciones());
 	}
 	
@@ -62,8 +62,8 @@ public class CalificarTest {
 	{
 		partido1.inscribirJugador(jugador1, inscripcionEstandar);
 		partido1.inscribirJugador(jugador2, inscripcionEstandar);
-		jugador1.calificar(jugador2, partido1, "Me gusto");
-		jugador1.calificar(jugador2, partido1, "Me gusto mucho");
+		jugador1.calificar(jugador2, partido1, 8, "Me gusto");
+		jugador1.calificar(jugador2, partido1, 10, "Me gusto mucho");
 	}
 	
 	@Test (expected = NoJugaronJuntosException.class)
@@ -71,21 +71,21 @@ public class CalificarTest {
 	{
 		partido1.inscribirJugador(jugador1, inscripcionEstandar);
 		partido2.inscribirJugador(jugador2, inscripcionEstandar);
-		jugador1.calificar(jugador2, partido1, "Me gusto");
+		jugador1.calificar(jugador2, partido1, 6, "Me gusto");
 	}
 	
 	@Test (expected = NoJugaronJuntosException.class)
 	public void unJugadorNoPuedeCalificarSiNoJugoElPartido()
 	{
 		partido1.inscribirJugador(jugador1, inscripcionEstandar);
-		jugador1.calificar(jugador2, partido1, "Me gusto");
+		jugador1.calificar(jugador2, partido1, 5, "Me gusto");
 	}
 	
 	@Test (expected = NoPodesCalificarteAVosMismoException.class)
 	public void unJugadorNoPuedeCalificarseASiMismo()
 	{
 		partido1.inscribirJugador(jugador1, inscripcionEstandar);
-		jugador1.calificar(jugador1, partido1, "Me gusto");
+		jugador1.calificar(jugador1, partido1, 7, "Me gusto");
 	}
 
 	@Test (expected = JugadorNoJugoElPartidoException.class)
@@ -93,7 +93,7 @@ public class CalificarTest {
 	{
 		partido1.inscribirJugador(jugador2, inscripcionEstandar);
 		int cantidadCalificaciones = jugador2.cantidadCalificaciones();
-		jugador1.calificar(jugador2, partido1, "Me gusto");
+		jugador1.calificar(jugador2, partido1, 9, "Me gusto");
 		assertEquals(cantidadCalificaciones, jugador2.cantidadCalificaciones());
 	}
 

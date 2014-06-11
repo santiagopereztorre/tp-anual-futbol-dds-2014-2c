@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import utn.dds.criterios.Handicap;
+import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
 import utn.dds.jugador.Jugador;
@@ -63,9 +64,6 @@ public class GenerarEquipos {
 		lalo.setHandicap(3);
 		lucas.setHandicap(9);
 		
-		Handicap handicap = new Handicap();
-		ParImpar parImpar = new ParImpar();
-		
 		List<Jugador> primerEquipo = new ArrayList<Jugador>();
 		List<Jugador> segundoEquipo = new ArrayList<Jugador>();
 		
@@ -81,7 +79,7 @@ public class GenerarEquipos {
 		segundoEquipo.add(lalo);
 		segundoEquipo.add(pepito);
 	
-		dopartiConLosPibes.armarEquipos(handicap, parImpar);
+		dopartiConLosPibes.armarEquipos(new Handicap(), new ParImpar());
 		
 		Assert.assertEquals(dopartiConLosPibes.getEquipo1(), primerEquipo);
 		Assert.assertEquals(dopartiConLosPibes.getEquipo2(), segundoEquipo);
@@ -100,9 +98,6 @@ public class GenerarEquipos {
 		lalo.setHandicap(3);
 		lucas.setHandicap(9);
 		
-		Handicap handicap = new Handicap();
-		UnoParaAcaDosParaAllaDosParaAca orden = new UnoParaAcaDosParaAllaDosParaAca();
-		
 		List<Jugador> primerEquipo = new ArrayList<Jugador>();
 		List<Jugador> segundoEquipo = new ArrayList<Jugador>();
 		
@@ -118,7 +113,7 @@ public class GenerarEquipos {
 		segundoEquipo.add(marcelo);
 		segundoEquipo.add(pepito);
 	
-		dopartiConLosPibes.armarEquipos(handicap, orden);
+		dopartiConLosPibes.armarEquipos(new Handicap(), new UnoParaAcaDosParaAllaDosParaAca());
 		
 		Assert.assertEquals(dopartiConLosPibes.getEquipo1(), primerEquipo);
 		Assert.assertEquals(dopartiConLosPibes.getEquipo2(), segundoEquipo);
@@ -126,9 +121,7 @@ public class GenerarEquipos {
 	
 	@Test (expected = FaltaCargarHandicapJugadorException.class)
 	public void ordenarPorHandicapSinSetearHandicap(){
-		Handicap handicap = new Handicap();
-		UnoParaAcaDosParaAllaDosParaAca orden = new UnoParaAcaDosParaAllaDosParaAca();
-			
+		
 		List<Jugador> primerEquipo = new ArrayList<Jugador>();
 		List<Jugador> segundoEquipo = new ArrayList<Jugador>();
 		
@@ -144,11 +137,40 @@ public class GenerarEquipos {
 		segundoEquipo.add(marcelo);
 		segundoEquipo.add(pepito);
 	
-		dopartiConLosPibes.armarEquipos(handicap, orden);
+		dopartiConLosPibes.armarEquipos(new Handicap(), new UnoParaAcaDosParaAllaDosParaAca());
 		
 		Assert.assertEquals(dopartiConLosPibes.getEquipo1(), primerEquipo);
 		Assert.assertEquals(dopartiConLosPibes.getEquipo2(), segundoEquipo);
 		
 	}
 
+	@Test
+	public void ordenarPorPromedioCalificacionesUltimoPartidoParImpar(){
+		Partido riverboca = new Partido();
+		
+		riverboca.inscribirJugador(carlos, new Estandar());
+		riverboca.inscribirJugador(juancho, new Estandar());
+		riverboca.inscribirJugador(juan, new Estandar());
+		riverboca.inscribirJugador(lucas, new Estandar());
+		riverboca.inscribirJugador(pato, new Estandar());
+		riverboca.inscribirJugador(martin, new Estandar());
+		riverboca.inscribirJugador(leandro, new Estandar());
+		riverboca.inscribirJugador(marcelo, new Estandar());
+		riverboca.inscribirJugador(lalo, new Estandar());
+		riverboca.inscribirJugador(pepito, new Estandar());
+		
+		carlos.calificar(juancho, riverboca, 2, "Es horrible");
+		carlos.calificar(juan, riverboca, 3, "Arquero manco");
+		carlos.calificar(pato, riverboca, 1, "Es ma malo que el cigarro");
+		carlos.calificar(lucas, riverboca, 6, "Jugo bien");
+		carlos.calificar(martin, riverboca, 10, "La estrella");
+		carlos.calificar(marcelo, riverboca, 9, "Sabella marcelito es argentino");
+		carlos.calificar(lalo, riverboca, 5, "Regular");
+		carlos.calificar(pepito, riverboca, 7, "Lateral con proyeccion");
+		carlos.calificar(leandro, riverboca, 4, "Defensor rustico");
+		martin.calificar(carlos, riverboca, 8, "Un volante con magia");
+		
+		dopartiConLosPibes.armarEquipos(new PromedioCalificacionesUltimoPartido(), new ParImpar());
+	}
+	
 }

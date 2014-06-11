@@ -9,10 +9,11 @@ public class Calificacion {
 	private String critica;
 	private Integer puntaje;
 	
-	public Calificacion(Jugador otroJugador, Partido unPartido, String unTexto){
+	public Calificacion(Jugador otroJugador, Partido unPartido, Integer puntaje, String unTexto){
 		this.setCalificador(otroJugador);
 		this.setPartido(unPartido);
 		this.setCritica(unTexto);
+		this.setPuntaje(puntaje);
 	}
 	
 	public void setPuntaje(int unPuntaje) {
