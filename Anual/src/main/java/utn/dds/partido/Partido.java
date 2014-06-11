@@ -14,6 +14,7 @@ import utn.dds.partido.exceptions.NoHayVacantesException;
 import utn.dds.tipoInscripcion.*;
 import utn.dds.admin.Rechazo;
 import utn.dds.criterios.Criterio;
+import utn.dds.divisores.Divisor;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
