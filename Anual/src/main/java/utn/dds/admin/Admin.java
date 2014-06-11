@@ -3,6 +3,8 @@ package utn.dds.admin;
 import java.util.ArrayList;
 import java.util.List;
 
+import utn.dds.jugador.Jugador;
+
 public class Admin 
 {
 	private List<Sugerencia> sugerencias;
@@ -42,5 +44,9 @@ public class Admin
 	{
 		unaSugerencia.rechazar(motivo);
 		sugerencias.remove(unaSugerencia);
+	}
+	
+	public void definirHandicap(Jugador unJugador, int handicap){
+		unJugador.setHandicap(handicap);
 	}
 }
