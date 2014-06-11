@@ -8,7 +8,7 @@ import utn.dds.jugador.Jugador;
 
 public interface Divisor {
 
-	void armarEquipos(List<Inscripcion> equipo1, List<Inscripcion> equipo2,
+	void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
 			Hashtable<Jugador, Integer> inscriptosCalificados);
 
 	

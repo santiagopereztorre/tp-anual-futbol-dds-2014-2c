@@ -23,8 +23,8 @@ import utn.dds.jugador.*;
 public class Partido {
 	
 	private List<Inscripcion> inscripciones;
-	private List<Inscripcion> equipo1;
-	private List<Inscripcion> equipo2;
+	private List<Jugador> equipo1;
+	private List<Jugador> equipo2;
 	private Hashtable<Jugador, Integer> inscriptosCalificados;
 	
 	private List<ObsPartidoCompleto> observadoresCompleto;
@@ -216,11 +216,11 @@ public class Partido {
 		return this.fecha;
 	}
 	
-	public List<Inscripcion> getEquipo1(){
+	public List<Jugador> getEquipo1(){
 		return this.equipo1;
 	}
 	
-	public List<Inscripcion> getEquipo2(){
+	public List<Jugador> getEquipo2(){
 		return this.equipo2;
 	}
 }

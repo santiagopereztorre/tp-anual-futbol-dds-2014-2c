@@ -9,8 +9,8 @@ import utn.dds.jugador.Jugador;
 public class ParImpar implements Divisor {
 
 	@Override
-	public void armarEquipos(List<Inscripcion> equipo1,
-			List<Inscripcion> equipo2,
+	public void armarEquipos(List<Jugador> equipo1,
+			List<Jugador> equipo2,
 			Hashtable<Jugador, Integer> inscriptosCalificados) {
 		// TODO Auto-generated method stub
 
