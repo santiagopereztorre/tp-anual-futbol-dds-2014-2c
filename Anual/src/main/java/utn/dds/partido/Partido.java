@@ -25,7 +25,7 @@ public class Partido {
 	private List<Inscripcion> inscripciones;
 	private List<Jugador> equipo1;
 	private List<Jugador> equipo2;
-	private Hashtable<Jugador, Integer> inscriptosCalificados;
+	private List<JugadorConCalificacion> inscriptosCalificados;
 	
 	private List<ObsPartidoCompleto> observadoresCompleto;
 	private List<ObsPartidoDescompleto> observadoresDescompleto;
@@ -45,7 +45,7 @@ public class Partido {
 		observadoresCompleto = new ArrayList<ObsPartidoCompleto>();
 		observadoresInscripcion = new ArrayList<ObsPartidoInscripcion>();
 		
-		inscriptosCalificados = new Hashtable<Jugador, Integer>();
+		inscriptosCalificados = new ArrayList<JugadorConCalificacion>();
 		rechazosSugerencias = new ArrayList<Rechazo>();
 	}
 	// Inscripcion de jugadores
@@ -207,8 +207,8 @@ public class Partido {
 	}
 	
 	public void armarEquipos(Criterio unCriterio, Divisor unDivisor){
-		inscriptosCalificados = new Hashtable<Jugador, Integer>();
-		inscripciones.forEach(x-> inscriptosCalificados.put(x.getJugador(), unCriterio.calificar(x.getJugador())));
+		inscriptosCalificados = new ArrayList<JugadorConCalificacion>();
+		inscripciones.forEach(x-> inscriptosCalificados.add(new JugadorConCalificacion(x.getJugador(), unCriterio.calificar(x.getJugador()))));
 		unDivisor.armarEquipos(this.equipo1, this.equipo2, this.inscriptosCalificados);
 	}
 	

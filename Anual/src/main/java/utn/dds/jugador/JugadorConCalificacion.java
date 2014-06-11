@@ -5,15 +5,21 @@ import java.util.Comparator;
 import utn.dds.inscripcion.Inscripcion;
 
 public class JugadorConCalificacion implements Comparator {
-	
-	private Inscripcion inscripcion;
+		
+	private Jugador jugador;
 	private Integer calificacion;
 	
-	public Inscripcion getInscripcion() {
-		return inscripcion;
+	
+	public JugadorConCalificacion(Jugador unJugador, Integer calificacion){
+		this.jugador = unJugador;
+		this.calificacion = calificacion;
 	}
-	public void setInscripcion(Inscripcion jugador) {
-		this.inscripcion = jugador;
+	
+	public Jugador getJugador() {
+		return jugador;
+	}
+	public void setJugador(Jugador unJugador) {
+		this.jugador = unJugador;
 	}
 	public Integer getCalificacion() {
 		return calificacion;
