@@ -11,9 +11,12 @@ import org.junit.Test;
 
 import utn.dds.criterios.Handicap;
 import utn.dds.divisores.ParImpar;
+import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
 import utn.dds.inscripcion.Inscripcion;
 import utn.dds.jugador.Jugador;
+import utn.dds.jugador.excepciones.FaltaCargarHandicapJugadorException;
 import utn.dds.partido.Partido;
+import utn.dds.partido.exceptions.NoHayVacantesException;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
@@ -50,7 +53,7 @@ public class GenerarEquipos {
 	}
 	
 	@Test
-	public void ordenarPorHandicap() {
+	public void ordenarPorHandicapParImpar() {
 		juan.setHandicap(10);
 		pepito.setHandicap(1);
 		marcelo.setHandicap(4);
@@ -84,6 +87,70 @@ public class GenerarEquipos {
 		
 		Assert.assertEquals(dopartiConLosPibes.getEquipo1(), primerEquipo);
 		Assert.assertEquals(dopartiConLosPibes.getEquipo2(), segundoEquipo);
+	}
+	
+	@Test
+	public void ordenarPorHandicapUnoParaAcaDosParaAllaDosParaAca() {
+		juan.setHandicap(10);
+		pepito.setHandicap(1);
+		marcelo.setHandicap(4);
+		leandro.setHandicap(5);
+		martin.setHandicap(6);
+		juancho.setHandicap(7);
+		carlos.setHandicap(2);
+		pato.setHandicap(8);
+		lalo.setHandicap(3);
+		lucas.setHandicap(9);
+		
+		Handicap handicap = new Handicap();
+		UnoParaAcaDosParaAllaDosParaAca orden = new UnoParaAcaDosParaAllaDosParaAca();
+		
+		List<Jugador> primerEquipo = new ArrayList<Jugador>();
+		List<Jugador> segundoEquipo = new ArrayList<Jugador>();
+		
+		primerEquipo.add(juan);
+		primerEquipo.add(juancho);
+		primerEquipo.add(martin);
+		primerEquipo.add(lalo);
+		primerEquipo.add(carlos);
+		
+		segundoEquipo.add(lucas);
+		segundoEquipo.add(pato);
+		segundoEquipo.add(leandro);
+		segundoEquipo.add(marcelo);
+		segundoEquipo.add(pepito);
+	
+		dopartiConLosPibes.armarEquipos(handicap, orden);
+		
+		Assert.assertEquals(dopartiConLosPibes.getEquipo1(), primerEquipo);
+		Assert.assertEquals(dopartiConLosPibes.getEquipo2(), segundoEquipo);
+	}
+	
+	@Test (expected = FaltaCargarHandicapJugadorException.class)
+	public void ordenarPorHandicapSinSetearHandicap(){
+		Handicap handicap = new Handicap();
+		UnoParaAcaDosParaAllaDosParaAca orden = new UnoParaAcaDosParaAllaDosParaAca();
+			
+		List<Jugador> primerEquipo = new ArrayList<Jugador>();
+		List<Jugador> segundoEquipo = new ArrayList<Jugador>();
+		
+		primerEquipo.add(juan);
+		primerEquipo.add(juancho);
+		primerEquipo.add(martin);
+		primerEquipo.add(lalo);
+		primerEquipo.add(carlos);
+		
+		segundoEquipo.add(lucas);
+		segundoEquipo.add(pato);
+		segundoEquipo.add(leandro);
+		segundoEquipo.add(marcelo);
+		segundoEquipo.add(pepito);
+	
+		dopartiConLosPibes.armarEquipos(handicap, orden);
+		
+		Assert.assertEquals(dopartiConLosPibes.getEquipo1(), primerEquipo);
+		Assert.assertEquals(dopartiConLosPibes.getEquipo2(), segundoEquipo);
+		
 	}
 
 }
