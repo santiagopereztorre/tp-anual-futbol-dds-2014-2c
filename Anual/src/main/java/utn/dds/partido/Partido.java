@@ -23,8 +23,8 @@ import utn.dds.jugador.*;
 public class Partido {
 	
 	private List<Inscripcion> inscripciones;
-	private List<Inscripcion> equipo1;
-	private List<Inscripcion> equipo2;
+	private List<Jugador> equipo1;
+	private List<Jugador> equipo2;
 	private Hashtable<Jugador, Integer> inscriptosCalificados;
 	
 	private List<ObsPartidoCompleto> observadoresCompleto;
@@ -33,6 +33,11 @@ public class Partido {
 	
 	private List<Rechazo> rechazosSugerencias;
 	private Date fecha;
+	
+	public Partido(Date fecha){
+		this();
+		this.fecha = fecha;
+	}
 	
 	public Partido(){
 		inscripciones = new ArrayList<Inscripcion>();
@@ -43,7 +48,6 @@ public class Partido {
 		inscriptosCalificados = new Hashtable<Jugador, Integer>();
 		rechazosSugerencias = new ArrayList<Rechazo>();
 	}
-	
 	// Inscripcion de jugadores
 	
 	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion)
@@ -206,5 +210,17 @@ public class Partido {
 		inscriptosCalificados = new Hashtable<Jugador, Integer>();
 		inscripciones.forEach(x-> inscriptosCalificados.put(x.getJugador(), unCriterio.calificar(x.getJugador())));
 		unDivisor.armarEquipos(this.equipo1, this.equipo2, this.inscriptosCalificados);
+	}
+	
+	public Date getFecha(){
+		return this.fecha;
+	}
+	
+	public List<Jugador> getEquipo1(){
+		return this.equipo1;
+	}
+	
+	public List<Jugador> getEquipo2(){
+		return this.equipo2;
 	}
 }
