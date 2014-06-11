@@ -55,22 +55,35 @@ public class GenerarEquipos {
 		pepito.setHandicap(1);
 		marcelo.setHandicap(4);
 		leandro.setHandicap(5);
-		martin.setHandicap(9);
-		juancho.setHandicap(3);
-		carlos.setHandicap(10);
+		martin.setHandicap(6);
+		juancho.setHandicap(7);
+		carlos.setHandicap(2);
 		pato.setHandicap(8);
-		lalo.setHandicap(10);
-		lucas.setHandicap(5);
+		lalo.setHandicap(3);
+		lucas.setHandicap(9);
 		
 		Handicap handicap = new Handicap();
 		ParImpar parImpar = new ParImpar();
 		
 		List<Jugador> primerEquipo = new ArrayList<Jugador>();
+		List<Jugador> segundoEquipo = new ArrayList<Jugador>();
 		
-		//primerEquipo.add()
+		primerEquipo.add(juan);
+		primerEquipo.add(pato);
+		primerEquipo.add(martin);
+		primerEquipo.add(marcelo);
+		primerEquipo.add(carlos);
 		
+		segundoEquipo.add(lucas);
+		segundoEquipo.add(juancho);
+		segundoEquipo.add(leandro);
+		segundoEquipo.add(lalo);
+		segundoEquipo.add(pepito);
+	
 		dopartiConLosPibes.armarEquipos(handicap, parImpar);
-		//Assert.assertEquals(dopartiConLosPibes.getEquipo1(), );
+		
+		Assert.assertEquals(dopartiConLosPibes.getEquipo1(), primerEquipo);
+		Assert.assertEquals(dopartiConLosPibes.getEquipo2(), segundoEquipo);
 	}
 
 }
