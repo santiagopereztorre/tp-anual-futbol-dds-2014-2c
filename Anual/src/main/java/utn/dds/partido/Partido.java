@@ -200,6 +200,7 @@ public class Partido {
 	}
 	
 	public void armarEquipos(Criterio unCriterio, Divisor unDivisor){
+		inscriptosCalificados = new Hashtable<Jugador, Integer>();
 		observadoresInscripcion.forEach(x-> inscriptosCalificados.put(x, unDivisor.calificar(x)));
 		unDivisor.armarEquipos(this.equipo1, this.equipo2, this.inscriptosCalificados);
 	}
