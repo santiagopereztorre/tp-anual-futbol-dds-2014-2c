@@ -22,6 +22,7 @@ public class Jugador {
 	private List<Jugador> amigos;
 	private List<Calificacion> calificaciones;
 	private String mail;
+	private int handicap;
 	
 	public String getMail() {
 		return mail;
@@ -35,6 +36,7 @@ public class Jugador {
 		infracciones = new ArrayList<Infraccion>();
 		calificaciones = new ArrayList<Calificacion>();
 		amigos = new ArrayList<Jugador>();
+		this.handicap = -1;
 	}
 
 	public void agregarAmigo(Jugador unAmigo){
@@ -125,5 +127,13 @@ public class Jugador {
 	
 	public List<Calificacion> getCalificaciones() {
 		return this.calificaciones;
+	}
+	
+	public int getHandicap(){
+		return this.handicap;
+	}
+	
+	public void setHandicap(int unHandicap){
+		this.handicap = unHandicap;
 	}
 }
