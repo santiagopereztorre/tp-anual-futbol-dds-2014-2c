@@ -122,4 +122,8 @@ public class Jugador {
 	public int cantidadCalificaciones() {
 		return this.calificaciones.size();
 	}
+	
+	public List<Calificacion> getCalificaciones() {
+		return this.calificaciones;
+	}
 }

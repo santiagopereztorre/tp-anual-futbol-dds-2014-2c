@@ -1,6 +1,7 @@
 package utn.dds.partido;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -21,6 +22,7 @@ public class Partido {
 	private List<Inscripcion> inscripciones;
 	private List<Inscripcion> equipo1;
 	private List<Inscripcion> equipo2;
+	private Hashtable<Jugador, Integer> inscriptosCalificados;
 	
 	private List<ObsPartidoCompleto> observadoresCompleto;
 	private List<ObsPartidoDescompleto> observadoresDescompleto;
@@ -34,6 +36,7 @@ public class Partido {
 		observadoresCompleto = new ArrayList<ObsPartidoCompleto>();
 		observadoresInscripcion = new ArrayList<ObsPartidoInscripcion>();
 		
+		inscriptosCalificados = new Hashtable<Jugador, Integer>();
 		rechazosSugerencias = new ArrayList<Rechazo>();
 	}
 	
@@ -193,5 +196,10 @@ public class Partido {
 	
 	public List<Rechazo> getRechazados(){
 		return rechazosSugerencias;
+	}
+	
+	public void armarEquipos(Criterio unCriterio, Divisor unDivisor){
+		observadoresInscripcion.forEach(x-> inscriptosCalificados.put(x, unDivisor.calificar(x)));
+		unDivisor.armarEquipos(this.equipo1, this.equipo2, this.inscriptosCalificados);
 	}
 }
