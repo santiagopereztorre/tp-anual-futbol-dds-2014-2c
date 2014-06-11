@@ -203,7 +203,7 @@ public class Partido {
 	
 	public void armarEquipos(Criterio unCriterio, Divisor unDivisor){
 		inscriptosCalificados = new Hashtable<Jugador, Integer>();
-		inscripciones.forEach(x-> inscriptosCalificados.put(x, unDivisor.calificar(x)));
+		inscripciones.forEach(x-> inscriptosCalificados.put(x.getJugador(), unCriterio.calificar(x.getJugador())));
 		unDivisor.armarEquipos(this.equipo1, this.equipo2, this.inscriptosCalificados);
 	}
 }
