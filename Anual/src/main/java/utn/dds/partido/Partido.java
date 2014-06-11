@@ -214,4 +214,12 @@ public class Partido {
 	public Date getFecha(){
 		return this.fecha;
 	}
+	
+	public List<Inscripcion> getEquipo1(){
+		return this.equipo1;
+	}
+	
+	public List<Inscripcion> getEquipo2(){
+		return this.equipo2;
+	}
 }
