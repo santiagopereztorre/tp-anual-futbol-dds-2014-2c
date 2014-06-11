@@ -1,6 +1,7 @@
 package utn.dds.partido;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -30,6 +31,7 @@ public class Partido {
 	private List<ObsPartidoInscripcion> observadoresInscripcion;
 	
 	private List<Rechazo> rechazosSugerencias;
+	private Date fecha;
 	
 	public Partido(){
 		inscripciones = new ArrayList<Inscripcion>();
@@ -201,7 +203,7 @@ public class Partido {
 	
 	public void armarEquipos(Criterio unCriterio, Divisor unDivisor){
 		inscriptosCalificados = new Hashtable<Jugador, Integer>();
-		observadoresInscripcion.forEach(x-> inscriptosCalificados.put(x, unDivisor.calificar(x)));
+		inscripciones.forEach(x-> inscriptosCalificados.put(x, unDivisor.calificar(x)));
 		unDivisor.armarEquipos(this.equipo1, this.equipo2, this.inscriptosCalificados);
 	}
 }

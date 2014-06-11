@@ -7,7 +7,7 @@ public class Calificacion {
 	private Jugador calificador;
 	private Partido partido;
 	private String critica;
-	private int puntaje;
+	private Integer puntaje;
 	
 	public Calificacion(Jugador otroJugador, Partido unPartido, String unTexto){
 		this.setCalificador(otroJugador);
@@ -19,7 +19,7 @@ public class Calificacion {
 		this.puntaje = unPuntaje;
 	}
 	
-	public int getPuntaje() {
+	public Integer getPuntaje() {
 		return this.puntaje;
 	}
 	

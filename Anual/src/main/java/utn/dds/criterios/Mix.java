@@ -15,7 +15,7 @@ public class Mix implements Criterio{
 	
 	@Override
 	public Integer calificar(Jugador unJugador) {
-		int sumPuntajesCriterios = this.criterios.stream().mapToInt(x -> x.calificar(unJugador)).sum();
+		Integer sumPuntajesCriterios = this.criterios.stream().mapToInt(x -> x.calificar(unJugador)).sum();
 			
 		return sumPuntajesCriterios / unJugador.cantidadCalificaciones();
 	}
