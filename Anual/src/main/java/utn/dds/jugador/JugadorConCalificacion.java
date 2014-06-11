@@ -6,14 +6,14 @@ import utn.dds.inscripcion.Inscripcion;
 
 public class JugadorConCalificacion implements Comparator {
 	
-	private Inscripcion inscripcion;
+	private Jugador jugador;
 	private Integer calificacion;
 	
-	public Inscripcion getInscripcion() {
-		return inscripcion;
+	public Jugador getJugador() {
+		return jugador;
 	}
-	public void setInscripcion(Inscripcion jugador) {
-		this.inscripcion = jugador;
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
 	}
 	public Integer getCalificacion() {
 		return calificacion;
