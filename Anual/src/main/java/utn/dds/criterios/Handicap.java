@@ -2,7 +2,6 @@ package utn.dds.criterios;
 
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.excepciones.FaltaCargarHandicapJugadorException;
-import utn.dds.jugador.excepciones.NoJugaronJuntosException;
 
 public class Handicap implements Criterio {
 

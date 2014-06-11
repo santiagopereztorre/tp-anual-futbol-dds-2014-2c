@@ -12,8 +12,12 @@ public class PromedioUltimasNCalificaciones implements Criterio {
 	
 	@Override
 	public Integer calificar(Jugador unJugador) {
-		// TODO Auto-generated method stub
-		return null;
+		int sumPuntajes = unJugador.getCalificaciones().stream()
+				.limit(this.cantCalificaciones)
+                .mapToInt(c -> c.getPuntaje())
+                .sum();
+			
+		return sumPuntajes / unJugador.cantidadCalificaciones();
 	}
 
 }
