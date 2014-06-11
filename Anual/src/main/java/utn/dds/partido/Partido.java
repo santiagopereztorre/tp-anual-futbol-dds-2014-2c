@@ -33,6 +33,11 @@ public class Partido {
 	private List<Rechazo> rechazosSugerencias;
 	private Date fecha;
 	
+	public Partido(Date fecha){
+		this();
+		this.fecha = fecha;
+	}
+	
 	public Partido(){
 		inscripciones = new ArrayList<Inscripcion>();
 		observadoresDescompleto = new ArrayList<ObsPartidoDescompleto>();
@@ -42,7 +47,6 @@ public class Partido {
 		inscriptosCalificados = new Hashtable<Jugador, Integer>();
 		rechazosSugerencias = new ArrayList<Rechazo>();
 	}
-	
 	// Inscripcion de jugadores
 	
 	public void inscribirJugador(Jugador jugador, TipoInscripcion tipoInscripcion)
@@ -205,5 +209,9 @@ public class Partido {
 		inscriptosCalificados = new Hashtable<Jugador, Integer>();
 		inscripciones.forEach(x-> inscriptosCalificados.put(x.getJugador(), unCriterio.calificar(x.getJugador())));
 		unDivisor.armarEquipos(this.equipo1, this.equipo2, this.inscriptosCalificados);
+	}
+	
+	public Date getFecha(){
+		return this.fecha;
 	}
 }
