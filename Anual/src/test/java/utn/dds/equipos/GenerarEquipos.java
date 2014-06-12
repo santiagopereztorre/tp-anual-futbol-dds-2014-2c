@@ -3,6 +3,7 @@ package utn.dds.equipos;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -39,7 +40,7 @@ public class GenerarEquipos {
 	@Before
 	public void setUp()
 	{
-		dopartiConLosPibes = new Partido();
+		dopartiConLosPibes = new Partido(new Date());
 		dopartiConLosPibes.inscribirJugador(lalo, new Solidaria());
 		dopartiConLosPibes.inscribirJugador(juan, new Estandar());
 		dopartiConLosPibes.inscribirJugador(lucas, new Solidaria());
@@ -122,8 +123,7 @@ public class GenerarEquipos {
 
 	@Test
 	public void ordenarPorPromedioCalificacionesUltimoPartido(){
-		Partido riverboca = new Partido();
-		
+		Partido riverboca = new Partido(new Date());
 		riverboca.inscribirJugador(carlos, new Estandar());
 		riverboca.inscribirJugador(juancho, new Estandar());
 		riverboca.inscribirJugador(juan, new Estandar());

@@ -2,7 +2,6 @@ package utn.dds.partido;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;

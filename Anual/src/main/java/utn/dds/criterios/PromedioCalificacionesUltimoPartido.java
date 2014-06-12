@@ -13,7 +13,7 @@ public class PromedioCalificacionesUltimoPartido implements Criterio{
 			    
 		Comparator<Partido> comparator = (p, o) -> p.getFecha().compareTo(o.getFecha());
 	 
-		Date ultimoPartido = ((Partido)unJugador.getCalificaciones().stream().map(x -> x.getPartido()).sorted(comparator).limit(1)).getFecha();
+		Date ultimoPartido = (unJugador.getCalificaciones().stream().map(x -> x.getPartido()).sorted(comparator).findFirst().get()).getFecha();
 				
 		Integer sumPuntajes = unJugador.getCalificaciones().stream()
 				 .filter(x -> x.getPartido().getFecha() == ultimoPartido)
