@@ -1,7 +1,6 @@
 package utn.dds.criterios;
 
 import java.util.List;
-import java.util.stream.IntStream;
 
 import utn.dds.jugador.Jugador;
 

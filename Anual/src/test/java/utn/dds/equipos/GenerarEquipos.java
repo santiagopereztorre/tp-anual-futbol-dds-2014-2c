@@ -10,7 +10,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import utn.dds.criterios.Criterio;
 import utn.dds.criterios.Handicap;
+import utn.dds.criterios.Mix;
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.divisores.ParImpar;
@@ -70,7 +72,6 @@ public class GenerarEquipos {
 		
 		List<Jugador> primerEquipo = dopartiConLosPibes.getEquipo1();
 		List<Jugador> segundoEquipo = dopartiConLosPibes.getEquipo2();
-		
 		
 		Assert.assertTrue(segundoEquipo.contains(juan));
 		Assert.assertTrue(segundoEquipo.contains(pato));
@@ -268,5 +269,78 @@ public class GenerarEquipos {
 		Assert.assertTrue(primerEquipo.contains(pato));
 	}
 	
-	
+	@Test
+	public void ordenarPorCriterioMix(){
+		juan.setHandicap(10);
+		pepito.setHandicap(1);
+		marcelo.setHandicap(4);
+		leandro.setHandicap(5);
+		martin.setHandicap(10);
+		juancho.setHandicap(4);
+		carlos.setHandicap(2);
+		pato.setHandicap(1);
+		lalo.setHandicap(9);
+		lucas.setHandicap(9);
+		
+		Partido riverboca = new Partido();
+		riverboca.inscribirJugador(carlos, new Estandar());
+		riverboca.inscribirJugador(juancho, new Estandar());
+		riverboca.inscribirJugador(juan, new Estandar());
+		riverboca.inscribirJugador(lucas, new Estandar());
+		riverboca.inscribirJugador(pato, new Estandar());
+		riverboca.inscribirJugador(martin, new Estandar());
+		riverboca.inscribirJugador(leandro, new Estandar());
+		riverboca.inscribirJugador(marcelo, new Estandar());
+		riverboca.inscribirJugador(lalo, new Estandar());
+		riverboca.inscribirJugador(pepito, new Estandar());
+		
+		leandro.calificar(juancho, riverboca, 2, "Es horrible");
+		pato.calificar(juan, riverboca, 2, "Arquero manco");
+		carlos.calificar(pato, riverboca, 1, "Es ma malo que el cigarro");
+		pato.calificar(lucas, riverboca, 9, "Jugo muy bien");
+		leandro.calificar(martin, riverboca, 10, "La estrella");
+		carlos.calificar(marcelo, riverboca, 10, "Sabella marcelito es argentino");
+		marcelo.calificar(lalo, riverboca, 5, "Regular");
+		lalo.calificar(pepito, riverboca, 7, "Lateral con proyeccion");
+		juan.calificar(leandro, riverboca, 5, "Defensor rustico pero efectivo");
+		martin.calificar(carlos, riverboca, 2, "Muy feo jugo");
+		
+		List<Criterio> mix = new ArrayList<Criterio>();
+		mix.add(new Handicap());
+		mix.add(new PromedioCalificacionesUltimoPartido());
+		
+		dopartiConLosPibes.armarEquipos(new Mix(mix), new ParImpar());
+		
+		List<Jugador> equipoPar = dopartiConLosPibes.getEquipo1();
+		List<Jugador> equipoImpar= dopartiConLosPibes.getEquipo2();
+		
+		Assert.assertTrue(equipoPar.contains(lucas));
+		Assert.assertTrue(equipoPar.contains(leandro));
+		Assert.assertTrue(equipoPar.contains(lalo));
+		Assert.assertTrue(equipoPar.contains(juancho));
+		Assert.assertTrue(equipoPar.contains(pato));
+		
+		Assert.assertTrue(equipoImpar.contains(martin));
+		Assert.assertTrue(equipoImpar.contains(marcelo));
+		Assert.assertTrue(equipoImpar.contains(juan));
+		Assert.assertTrue(equipoImpar.contains(pepito));
+		Assert.assertTrue(equipoImpar.contains(carlos));
+		
+		dopartiConLosPibes.armarEquipos(new Mix(mix), new UnoParaAcaDosParaAllaDosParaAca());
+		
+		List<Jugador> primerEquipo = dopartiConLosPibes.getEquipo1();
+		List<Jugador> segundoEquipo = dopartiConLosPibes.getEquipo2();
+		
+		Assert.assertTrue(segundoEquipo.contains(martin));
+		Assert.assertTrue(segundoEquipo.contains(lalo));
+		Assert.assertTrue(segundoEquipo.contains(juan));
+		Assert.assertTrue(segundoEquipo.contains(juancho));
+		Assert.assertTrue(segundoEquipo.contains(carlos));
+		
+		Assert.assertTrue(primerEquipo.contains(lucas));
+		Assert.assertTrue(primerEquipo.contains(marcelo));
+		Assert.assertTrue(primerEquipo.contains(leandro));
+		Assert.assertTrue(primerEquipo.contains(pepito));
+		Assert.assertTrue(primerEquipo.contains(pato));
+	}
 }
