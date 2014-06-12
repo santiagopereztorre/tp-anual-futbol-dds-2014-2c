@@ -71,17 +71,17 @@ public class GenerarEquipos {
 		List<Jugador> segundoEquipo = dopartiConLosPibes.getEquipo2();
 		
 		
-		Assert.assertTrue(primerEquipo.contains(juan));
-		Assert.assertTrue(primerEquipo.contains(pato));
-		Assert.assertTrue(primerEquipo.contains(martin));
-		Assert.assertTrue(primerEquipo.contains(marcelo));
-		Assert.assertTrue(primerEquipo.contains(carlos));
+		Assert.assertTrue(segundoEquipo.contains(juan));
+		Assert.assertTrue(segundoEquipo.contains(pato));
+		Assert.assertTrue(segundoEquipo.contains(martin));
+		Assert.assertTrue(segundoEquipo.contains(marcelo));
+		Assert.assertTrue(segundoEquipo.contains(carlos));
 		
-		Assert.assertTrue(segundoEquipo.contains(lucas));
-		Assert.assertTrue(segundoEquipo.contains(juancho));
-		Assert.assertTrue(segundoEquipo.contains(leandro));
-		Assert.assertTrue(segundoEquipo.contains(lalo));
-		Assert.assertTrue(segundoEquipo.contains(pepito));
+		Assert.assertTrue(primerEquipo.contains(lucas));
+		Assert.assertTrue(primerEquipo.contains(juancho));
+		Assert.assertTrue(primerEquipo.contains(leandro));
+		Assert.assertTrue(primerEquipo.contains(lalo));
+		Assert.assertTrue(primerEquipo.contains(pepito));
 	}
 	
 	@Test
@@ -102,17 +102,17 @@ public class GenerarEquipos {
 		List<Jugador> primerEquipo = dopartiConLosPibes.getEquipo1();
 		List<Jugador> segundoEquipo = dopartiConLosPibes.getEquipo2();
 		
-		Assert.assertTrue(primerEquipo.contains(juan));
-		Assert.assertTrue(primerEquipo.contains(juancho));
-		Assert.assertTrue(primerEquipo.contains(martin));
-		Assert.assertTrue(primerEquipo.contains(lalo));
-		Assert.assertTrue(primerEquipo.contains(carlos));
+		Assert.assertTrue(segundoEquipo.contains(juan));
+		Assert.assertTrue(segundoEquipo.contains(juancho));
+		Assert.assertTrue(segundoEquipo.contains(martin));
+		Assert.assertTrue(segundoEquipo.contains(lalo));
+		Assert.assertTrue(segundoEquipo.contains(carlos));
 		
-		Assert.assertTrue(segundoEquipo.contains(lucas));
-		Assert.assertTrue(segundoEquipo.contains(pato));
-		Assert.assertTrue(segundoEquipo.contains(leandro));
-		Assert.assertTrue(segundoEquipo.contains(marcelo));
-		Assert.assertTrue(segundoEquipo.contains(pepito));
+		Assert.assertTrue(primerEquipo.contains(lucas));
+		Assert.assertTrue(primerEquipo.contains(pato));
+		Assert.assertTrue(primerEquipo.contains(leandro));
+		Assert.assertTrue(primerEquipo.contains(marcelo));
+		Assert.assertTrue(primerEquipo.contains(pepito));
 	}
 	
 	@Test (expected = FaltaCargarHandicapJugadorException.class)
@@ -237,17 +237,17 @@ public class GenerarEquipos {
 		List<Jugador> equipoImpar = dopartiConLosPibes.getEquipo1();
 		List<Jugador> equipoPar = dopartiConLosPibes.getEquipo2();
 		
-		Assert.assertTrue(equipoImpar.contains(martin));
-		Assert.assertTrue(equipoImpar.contains(carlos));
-		Assert.assertTrue(equipoImpar.contains(lalo));
-		Assert.assertTrue(equipoImpar.contains(lucas));
-		Assert.assertTrue(equipoImpar.contains(juan));
+		Assert.assertTrue(equipoPar.contains(martin));
+		Assert.assertTrue(equipoPar.contains(carlos));
+		Assert.assertTrue(equipoPar.contains(lalo));
+		Assert.assertTrue(equipoPar.contains(lucas));
+		Assert.assertTrue(equipoPar.contains(juan));
 		
-		Assert.assertTrue(equipoPar.contains(marcelo));
-		Assert.assertTrue(equipoPar.contains(leandro));
-		Assert.assertTrue(equipoPar.contains(pepito));
-		Assert.assertTrue(equipoPar.contains(juancho));
-		Assert.assertTrue(equipoPar.contains(pato));
+		Assert.assertTrue(equipoImpar.contains(marcelo));
+		Assert.assertTrue(equipoImpar.contains(leandro));
+		Assert.assertTrue(equipoImpar.contains(pepito));
+		Assert.assertTrue(equipoImpar.contains(juancho));
+		Assert.assertTrue(equipoImpar.contains(pato));
 		
 	
 		dopartiConLosPibes.armarEquipos(new PromedioUltimasNCalificaciones(2), new UnoParaAcaDosParaAllaDosParaAca());
@@ -255,17 +255,17 @@ public class GenerarEquipos {
 		List<Jugador> primerEquipo = dopartiConLosPibes.getEquipo1();
 		List<Jugador> segundoEquipo = dopartiConLosPibes.getEquipo2();
 		
-		Assert.assertTrue(primerEquipo.contains(martin));
-		Assert.assertTrue(primerEquipo.contains(leandro));
-		Assert.assertTrue(primerEquipo.contains(lalo));
-		Assert.assertTrue(primerEquipo.contains(juancho));
-		Assert.assertTrue(primerEquipo.contains(juan));
+		Assert.assertTrue(segundoEquipo.contains(martin));
+		Assert.assertTrue(segundoEquipo.contains(leandro));
+		Assert.assertTrue(segundoEquipo.contains(lalo));
+		Assert.assertTrue(segundoEquipo.contains(juancho));
+		Assert.assertTrue(segundoEquipo.contains(juan));
 		
-		Assert.assertTrue(segundoEquipo.contains(marcelo));
-		Assert.assertTrue(segundoEquipo.contains(carlos));
-		Assert.assertTrue(segundoEquipo.contains(pepito));
-		Assert.assertTrue(segundoEquipo.contains(lucas));
-		Assert.assertTrue(segundoEquipo.contains(pato));
+		Assert.assertTrue(primerEquipo.contains(marcelo));
+		Assert.assertTrue(primerEquipo.contains(carlos));
+		Assert.assertTrue(primerEquipo.contains(pepito));
+		Assert.assertTrue(primerEquipo.contains(lucas));
+		Assert.assertTrue(primerEquipo.contains(pato));
 	}
 	
 	
