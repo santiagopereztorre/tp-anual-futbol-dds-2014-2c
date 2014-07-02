@@ -25,26 +25,17 @@ public class Partido {
 	}
 
 	public void generarEquipos() {
-		if (this.validarInscripcion() == -1) {
+		if (this.validarInscripcion()) {
 			throw new BusinessException("Hubo un error");
 		}
 		this.distribuirEquipos(this.ordenarEquipos());
 		estado = "G";
 	}
 
-	private int validarInscripcion() {
-		if (inscriptos.size() < 10) {
-			return -1;
-		}
-		if (estado.equalsIgnoreCase("A")) {
-			return -1;
-		}
-		if (estado.equalsIgnoreCase("G")) {
-			return -1;
-		}
-		return 0;
+	private boolean validarInscripcion() {
+		return (inscriptos.size() < 10  || estado.equalsIgnoreCase("A") || estado.equalsIgnoreCase("G"));
 	}
-
+	
 	private void distribuirEquipos(List<Jugador> jugadores) {
 		equipo1 = new Equipo();
 		equipo2 = new Equipo();
