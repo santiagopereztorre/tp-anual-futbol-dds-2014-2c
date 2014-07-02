@@ -1,0 +1,6 @@
+# Ignored paths and documents
+bin/
+.classpath
+.project
+target/
+.settings/
