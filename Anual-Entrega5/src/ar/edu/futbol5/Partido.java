@@ -67,18 +67,14 @@ public class Partido {
 	}
 
 	private Jugador jugadorQueCedeLugar() {
-		if (!hayAlgunJugadorQueCedaLugar()) {
-			return null;
-		}
 		
-		List<Jugador> jugadores=new ArrayList<Jugador>();
 		for (Jugador inscripto : inscriptos) {
 			if(inscripto.dejaLugarAOtro()){
-				jugadores.add(inscripto);
+				return inscripto;
 			}
 		}
 		
-		return jugadores.get(0);
+		return null;
 	}
 
 	public void cerrar() {
