@@ -1,10 +1,8 @@
 package ar.edu.futbol5;
 
 import ar.edu.futbol5.distribucionEquipo.DistribucionEquipo;
-import ar.edu.futbol5.distribucionEquipo.DistribucionParImpar;
 import ar.edu.futbol5.excepciones.BusinessException;
 import ar.edu.futbol5.ordenamiento.CriterioOrdenamiento;
-import ar.edu.futbol5.ordenamiento.OrdenamientoPorHandicap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +16,11 @@ public class Partido {
 	private CriterioOrdenamiento criterioOrdenamiento;
 	private DistribucionEquipo distribucionEquipos; // 5 es par/impar, 16 = 1,4,5,8,9 vs. 2,3,6,7,10
 
-	public Partido() {
+	public Partido(DistribucionEquipo distribucion, CriterioOrdenamiento ordenamiento) {
 		inscriptos = new ArrayList<Jugador>();
 		estado = "A";
-		distribucionEquipos = new DistribucionParImpar(); // par/impar
-		criterioOrdenamiento = new OrdenamientoPorHandicap();
+		distribucionEquipos = distribucion;
+		criterioOrdenamiento = ordenamiento;
 	}
 
 	public void generarEquipos() {
@@ -92,14 +90,6 @@ public class Partido {
 
 	public List<Jugador> getInscriptos() {
 		return inscriptos;
-	}
-
-	public void setCriterioOrdenamiento(CriterioOrdenamiento criterioOrdenamiento) {
-		this.criterioOrdenamiento = criterioOrdenamiento;
-	}
-
-	public void setDistribucionEquipos(DistribucionEquipo distribucionEquipos) {
-		this.distribucionEquipos = distribucionEquipos;
 	}
 
 	public Equipo getEquipo1() {

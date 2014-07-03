@@ -2,13 +2,13 @@ package ar.edu.futbol5;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import ar.edu.futbol5.distribucionEquipo.Distribucion16;
+import ar.edu.futbol5.distribucionEquipo.DistribucionParImpar;
 import ar.edu.futbol5.excepciones.BusinessException;
 import ar.edu.futbol5.ordenamiento.OrdenamientoCalificacionUltimos2Partidos;
 import ar.edu.futbol5.ordenamiento.OrdenamientoMix;
@@ -30,17 +30,24 @@ public class TestGenerarEquipo {
 	private Jugador eric;
 	private Jugador leo;
 	private Jugador ferme;
-
+	
+	DistribucionParImpar distribucionParImpar = new DistribucionParImpar();
+	OrdenamientoPorHandicap handicap = new OrdenamientoPorHandicap();
+	Distribucion16 distribucion16 = new Distribucion16();
+	OrdenamientoCalificacionUltimos2Partidos calificacion = new OrdenamientoCalificacionUltimos2Partidos();
+	OrdenamientoMix mix = new OrdenamientoMix();
+	
 	@Before
 	public void init() {
-		partidoPocosJugadores = new Partido();
+		
+		partidoPocosJugadores = new Partido(distribucionParImpar,handicap);
 		
 		for (int i = 0; i < 6; i++) {
 			inscribir(partidoPocosJugadores, new Jugador());
 		}
 		
-		partidoOk = new Partido();
-		partido1 = new Partido();
+		partidoOk = new Partido(distribucionParImpar,handicap);
+		partido1 = new Partido(distribucionParImpar,handicap);
 		sytek = new Jugador("sytek", 3d,Lists.newArrayList(5d,8d) );
 		chicho = new Jugador("chicho", 5d, Lists.newArrayList(6d, 8d, 6d));
 		pato = new Jugador("pato", 8d, Lists.newArrayList(9d, 8d));
@@ -113,10 +120,21 @@ public class TestGenerarEquipo {
 
 	@Test
 	public void generarEquiposPorCalificacionUltimos2Partidos() {
-		partido1.setCriterioOrdenamiento(new OrdenamientoCalificacionUltimos2Partidos());
+		Partido partido2 = new Partido(distribucionParImpar, calificacion);
+		inscribir(partido2, sytek);
+		inscribir(partido2, chicho);
+		inscribir(partido2, pato);
+		inscribir(partido2, lechu);
+		inscribir(partido2, rodri);
+		inscribir(partido2, mike);
+		inscribir(partido2, dodi);
+		inscribir(partido2, roly);
+		inscribir(partido2, eric);
+		inscribir(partido2, leo);
+		inscribir(partido2, ferme);
 		System.out.println("******************************************");
 		System.out.println("ordenamiento por ultimas 2 calificaciones");
-		List<Jugador> jugadores=partido1.ordenarEquipos();
+		List<Jugador> jugadores=partido2.ordenarEquipos();
 		for (Jugador jugador : jugadores) {
 			//Tomando los 2 últimos puntajes
 			List<Double> puntajes=jugador.getPuntajes();
@@ -143,13 +161,23 @@ public class TestGenerarEquipo {
 
 	@Test
 	public void generarEquiposPorMixDeCriterios() {
-		OrdenamientoMix ordenamientoMix = new OrdenamientoMix();
-		ordenamientoMix.addCriterio(new OrdenamientoCalificacionUltimos2Partidos());
-		ordenamientoMix.addCriterio(new OrdenamientoPorHandicap());
-		partido1.setCriterioOrdenamiento(ordenamientoMix);
+		mix.addCriterio(new OrdenamientoCalificacionUltimos2Partidos());
+		mix.addCriterio(new OrdenamientoPorHandicap());
+		Partido partido2 = new Partido(distribucionParImpar, mix);
+		inscribir(partido2, sytek);
+		inscribir(partido2, chicho);
+		inscribir(partido2, pato);
+		inscribir(partido2, lechu);
+		inscribir(partido2, rodri);
+		inscribir(partido2, mike);
+		inscribir(partido2, dodi);
+		inscribir(partido2, roly);
+		inscribir(partido2, eric);
+		inscribir(partido2, leo);
+		inscribir(partido2, ferme);
 		System.out.println("******************************************");
 		System.out.println("ordenamiento por mix");
-		List<Jugador> jugadores=partido1.ordenarEquipos();
+		List<Jugador> jugadores=partido2.ordenarEquipos();
 		System.out.println(jugadores);
 		Assert.assertEquals(Lists.newArrayList(ferme, roly, pato, lechu, dodi, chicho, rodri, sytek, leo, mike),
 				jugadores);
@@ -164,16 +192,38 @@ public class TestGenerarEquipo {
 	}
 	@Test
 	public void distribuirEquipos14589() {
-		partido1.setDistribucionEquipos(new Distribucion16()); // ordenamiento
-		partido1.cerrar();
-		partido1.generarEquipos();
-		Assert.assertEquals(Lists.newArrayList(ferme, dodi, lechu, sytek, leo), partido1.getEquipo1().getJugadores());
-		Assert.assertEquals(Lists.newArrayList(roly, pato, chicho, rodri, mike), partido1.getEquipo2().getJugadores());
+		Partido partido2 = new Partido(distribucion16, handicap);
+		inscribir(partido2, sytek);
+		inscribir(partido2, chicho);
+		inscribir(partido2, pato);
+		inscribir(partido2, lechu);
+		inscribir(partido2, rodri);
+		inscribir(partido2, mike);
+		inscribir(partido2, dodi);
+		inscribir(partido2, roly);
+		inscribir(partido2, eric);
+		inscribir(partido2, leo);
+		inscribir(partido2, ferme);
+		partido2.cerrar();
+		partido2.generarEquipos();
+		Assert.assertEquals(Lists.newArrayList(ferme, dodi, lechu, sytek, leo), partido2.getEquipo1().getJugadores());
+		Assert.assertEquals(Lists.newArrayList(roly, pato, chicho, rodri, mike), partido2.getEquipo2().getJugadores());
 	}
 	
 	@Test(expected=BusinessException.class)
 	public void generarEquiposCuandoSeCierra() {
-		partido1.setDistribucionEquipos(new Distribucion16()); // ordenamiento
+		Partido partido2 = new Partido(distribucion16, handicap);
+		inscribir(partido2, sytek);
+		inscribir(partido2, chicho);
+		inscribir(partido2, pato);
+		inscribir(partido2, lechu);
+		inscribir(partido2, rodri);
+		inscribir(partido2, mike);
+		inscribir(partido2, dodi);
+		inscribir(partido2, roly);
+		inscribir(partido2, eric);
+		inscribir(partido2, leo);
+		inscribir(partido2, ferme);
 		partido1.cerrar();
 		partido1.generarEquipos();
 		partido1.generarEquipos();
