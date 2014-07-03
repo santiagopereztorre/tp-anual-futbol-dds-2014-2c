@@ -58,15 +58,6 @@ public class Partido {
 		}
 	}
 
-	private boolean hayAlgunJugadorQueCedaLugar() {
-		for (Jugador inscripto : inscriptos) {
-			if(inscripto.dejaLugarAOtro()){
-				return true;
-			}
-		}
-		return false;
-	}
-
 	private Jugador jugadorQueCedeLugar() {
 		
 		for (Jugador inscripto : inscriptos) {
