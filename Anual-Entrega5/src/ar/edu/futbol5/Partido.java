@@ -25,17 +25,13 @@ public class Partido {
 	}
 
 	public void generarEquipos() {
-		if (this.validarInscripcion()) {
+		if (estado.validarInscripcion(inscriptos)) {
 			throw new BusinessException("Hubo un error");
 		}
 		this.distribuirEquipos(this.ordenarEquipos());
 		estado = new PartidoGenerado();
 	}
 
-	private boolean validarInscripcion() {
-		return (estado.validarInscripcion(inscriptos));
-	}
-	
 	private void distribuirEquipos(List<Jugador> jugadores) {
 		equipo1 = new Equipo();
 		equipo2 = new Equipo();
