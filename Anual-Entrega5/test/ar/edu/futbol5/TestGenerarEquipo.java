@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import ar.edu.futbol5.distribucionEquipo.Distribucion16;
 import ar.edu.futbol5.excepciones.BusinessException;
 import ar.edu.futbol5.ordenamiento.OrdenamientoCalificacionUltimos2Partidos;
 import ar.edu.futbol5.ordenamiento.OrdenamientoMix;
@@ -163,7 +164,7 @@ public class TestGenerarEquipo {
 	}
 	@Test
 	public void distribuirEquipos14589() {
-		partido1.setDistribucionEquipos(16); // ordenamiento
+		partido1.setDistribucionEquipos(new Distribucion16()); // ordenamiento
 		partido1.cerrar();
 		partido1.generarEquipos();
 		Assert.assertEquals(Lists.newArrayList(ferme, dodi, lechu, sytek, leo), partido1.getEquipo1().getJugadores());
@@ -172,7 +173,7 @@ public class TestGenerarEquipo {
 	
 	@Test(expected=BusinessException.class)
 	public void generarEquiposCuandoSeCierra() {
-		partido1.setDistribucionEquipos(16); // ordenamiento
+		partido1.setDistribucionEquipos(new Distribucion16()); // ordenamiento
 		partido1.cerrar();
 		partido1.generarEquipos();
 		partido1.generarEquipos();

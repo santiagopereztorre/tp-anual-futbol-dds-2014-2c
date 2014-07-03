@@ -2,7 +2,7 @@ package ar.edu.futbol5;
 
 import java.util.List;
 
-class Equipo {
+public class Equipo {
 	
 	private List<Jugador> jugadores;
 
