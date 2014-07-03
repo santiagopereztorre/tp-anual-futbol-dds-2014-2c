@@ -48,5 +48,9 @@ public class Jugador {
 	public List<Double> getPuntajes() {
 		return puntajes;
 	}
+	
+	public Double obtenerUnPuntaje(int pos){
+		return puntajes.get(pos);
+	}
 }
 
