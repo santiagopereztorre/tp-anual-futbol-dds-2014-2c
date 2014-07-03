@@ -1,9 +1,10 @@
 package ar.edu.futbol5;
 
+import ar.edu.futbol5.distribucionEquipo.DistribucionEquipo;
+import ar.edu.futbol5.distribucionEquipo.DistribucionParImpar;
 import ar.edu.futbol5.excepciones.BusinessException;
 import ar.edu.futbol5.ordenamiento.CriterioOrdenamiento;
 import ar.edu.futbol5.ordenamiento.OrdenamientoPorHandicap;
-import ar.edu.futbol5.utilitarios.Lists;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +16,12 @@ public class Partido {
 	private Equipo equipo2;
 	private String estado;
 	private CriterioOrdenamiento criterioOrdenamiento;
-	private int distribucionEquipos; // 5 es par/impar, 16 = 1,4,5,8,9 vs. 2,3,6,7,10
+	private DistribucionEquipo distribucionEquipos; // 5 es par/impar, 16 = 1,4,5,8,9 vs. 2,3,6,7,10
 
 	public Partido() {
 		inscriptos = new ArrayList<Jugador>();
 		estado = "A";
-		distribucionEquipos = 5; // par/impar
+		distribucionEquipos = new DistribucionParImpar(); // par/impar
 		criterioOrdenamiento = new OrdenamientoPorHandicap();
 	}
 
@@ -39,16 +40,9 @@ public class Partido {
 	private void distribuirEquipos(List<Jugador> jugadores) {
 		equipo1 = new Equipo();
 		equipo2 = new Equipo();
-		if (distribucionEquipos == 5) {
-			equipo1.setJugadores(Lists.newArrayList(jugadores.get(0),jugadores.get(2),jugadores.get(4),jugadores.get(6),jugadores.get(8)));
-			
-			equipo2.setJugadores(Lists.newArrayList(jugadores.get(1),jugadores.get(3),jugadores.get(5),jugadores.get(7),jugadores.get(9)));
-		} else {
-			// distribucionEquipos == 16 que ordena de esta manera
-			equipo1.setJugadores(Lists.newArrayList(jugadores.get(0),jugadores.get(3),jugadores.get(4),jugadores.get(7),jugadores.get(8)));
-			
-			equipo2.setJugadores(Lists.newArrayList(jugadores.get(1),jugadores.get(2),jugadores.get(5),jugadores.get(6),jugadores.get(9)));
-		}
+		
+		// Se delega en otro objeto la distribucion de los jugadores en equipos
+		distribucionEquipos.distribuirJugadores(jugadores, equipo1, equipo2);
 	}
 
 	public List<Jugador> ordenarEquipos() {
@@ -104,7 +98,7 @@ public class Partido {
 		this.criterioOrdenamiento = criterioOrdenamiento;
 	}
 
-	public void setDistribucionEquipos(int distribucionEquipos) {
+	public void setDistribucionEquipos(DistribucionEquipo distribucionEquipos) {
 		this.distribucionEquipos = distribucionEquipos;
 	}
 
