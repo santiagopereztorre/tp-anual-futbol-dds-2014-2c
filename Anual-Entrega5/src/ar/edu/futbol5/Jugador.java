@@ -17,7 +17,6 @@ public class Jugador {
 	
 	public Jugador() {
 		this.puntajes = new ArrayList<Double>();
-		this.calificacion = null;
 		this.criterioInscripcion = new ModoEstandar();
 		this.nombre = "";
 	}
@@ -34,11 +33,7 @@ public class Jugador {
 	}
 	
 	boolean dejaLugarAOtro() {
-		if(criterioInscripcion instanceof ModoSolidario){
-			return true;
-		} else {
-			return false;
-		}
+		return criterioInscripcion instanceof ModoSolidario;
 	}
 
 	public String toString() {
