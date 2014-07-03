@@ -1,6 +1,7 @@
 package ar.edu.futbol5;
 
 import ar.edu.futbol5.distribucionEquipo.DistribucionEquipo;
+import ar.edu.futbol5.estadoPartido.*;
 import ar.edu.futbol5.excepciones.BusinessException;
 import ar.edu.futbol5.ordenamiento.CriterioOrdenamiento;
 
@@ -12,13 +13,13 @@ public class Partido {
 	private List<Jugador> inscriptos;
 	private Equipo equipo1;
 	private Equipo equipo2;
-	private String estado;
+	private EstadoDelPartido estado;
 	private CriterioOrdenamiento criterioOrdenamiento;
 	private DistribucionEquipo distribucionEquipos; // 5 es par/impar, 16 = 1,4,5,8,9 vs. 2,3,6,7,10
 
 	public Partido(DistribucionEquipo distribucion, CriterioOrdenamiento ordenamiento) {
 		inscriptos = new ArrayList<Jugador>();
-		estado = "A";
+		estado = new PartidoAbierto();
 		distribucionEquipos = distribucion;
 		criterioOrdenamiento = ordenamiento;
 	}
@@ -28,11 +29,11 @@ public class Partido {
 			throw new BusinessException("Hubo un error");
 		}
 		this.distribuirEquipos(this.ordenarEquipos());
-		estado = "G";
+		estado = new PartidoGenerado();
 	}
 
 	private boolean validarInscripcion() {
-		return (inscriptos.size() < 10  || estado.equalsIgnoreCase("A") || estado.equalsIgnoreCase("G"));
+		return (estado.validarInscripcion(inscriptos));
 	}
 	
 	private void distribuirEquipos(List<Jugador> jugadores) {
@@ -85,7 +86,7 @@ public class Partido {
 	}
 
 	public void cerrar() {
-		estado = "C";
+		estado = new PartidoCerrado();
 	}
 
 	public List<Jugador> getInscriptos() {
