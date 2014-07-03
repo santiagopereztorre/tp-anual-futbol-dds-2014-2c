@@ -3,6 +3,7 @@ package ar.edu.futbol5;
 import ar.edu.futbol5.distribucionEquipo.DistribucionEquipo;
 import ar.edu.futbol5.estadoPartido.*;
 import ar.edu.futbol5.excepciones.BusinessException;
+import ar.edu.futbol5.excepciones.NoHaySolidariosException;
 import ar.edu.futbol5.ordenamiento.CriterioOrdenamiento;
 
 import java.util.ArrayList;
@@ -48,10 +49,10 @@ public class Partido {
 		if (inscriptos.size() < 10) {
 			this.inscriptos.add(jugador);
 		} else {
-			if (this.hayAlgunJugadorQueCedaLugar()) {
+			try {
 				this.inscriptos.remove(this.jugadorQueCedeLugar());
 				this.inscriptos.add(jugador);
-			} else {
+			} catch (NoHaySolidariosException e) {
 				throw new BusinessException("No hay más lugar");
 			}
 		}
@@ -74,7 +75,7 @@ public class Partido {
 			}
 		}
 		
-		return null;
+		throw new NoHaySolidariosException("No Hay Solidarios");
 	}
 
 	public void cerrar() {
