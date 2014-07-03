@@ -5,6 +5,7 @@ import ar.edu.futbol5.inscripcion.ModoSolidario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import ar.edu.futbol5.inscripcion.ModoEstandar;
 
@@ -50,7 +51,14 @@ public class Jugador {
 	}
 	
 	public Double obtenerUnPuntaje(int pos){
-		return puntajes.get(pos);
+		try{
+			return puntajes.get(pos);
+		} 
+		catch (NoSuchElementException e){
+			// No hay elementos en esa posicion.
+			return (double) 0;
+		}
+		
 	}
 }
 
