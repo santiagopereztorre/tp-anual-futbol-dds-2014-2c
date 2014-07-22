@@ -8,6 +8,7 @@ import ar.edu.futbol5.ordenamiento.CriterioOrdenamiento;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Partido {
 
@@ -49,24 +50,17 @@ public class Partido {
 		if (inscriptos.size() < 10) {
 			this.inscriptos.add(jugador);
 		} else {
-			try {
-				this.inscriptos.remove(this.jugadorQueCedeLugar());
-				this.inscriptos.add(jugador);
-			} catch (NoHaySolidariosException e) {
-				throw new BusinessException("No hay más lugar");
-			}
+			Jugador jugadorQueCede = this.jugadorQueCedeLugar();
+			this.inscriptos.remove(jugadorQueCede);
+			this.inscriptos.add(jugador);
 		}
 	}
 
 	private Jugador jugadorQueCedeLugar() {
-		
-		for (Jugador inscripto : inscriptos) {
-			if(inscripto.dejaLugarAOtro()){
-				return inscripto;
-			}
-		}
-		
-		throw new NoHaySolidariosException("No Hay Solidarios");
+		return inscriptos.stream()
+				.filter(Jugador::dejaLugarAOtro)
+				.findFirst()
+				.orElseThrow(() -> new BusinessException("No hay más lugar"));
 	}
 
 	public void cerrar() {
