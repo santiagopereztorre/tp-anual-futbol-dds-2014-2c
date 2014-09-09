@@ -5,7 +5,9 @@ import java.util.List;
 
 import utn.dds.criterios.Criterio;
 import utn.dds.criterios.Handicap;
+import utn.dds.criterios.Mix;
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
+import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.divisores.Divisor;
 import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
