@@ -34,8 +34,7 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		radioSelectorDivisores.bindValueToProperty("divisorSeleccionado");
 		radioSelectorDivisores.bindItemsToProperty("divisores");
 
-		
-	//	new Label(mainPanel).setText("Criterio");
+		//	new Label(mainPanel).setText("Criterio");
 	//	new Label(mainPanel).bindValueToProperty("criterioSeleccionado");
 		
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
