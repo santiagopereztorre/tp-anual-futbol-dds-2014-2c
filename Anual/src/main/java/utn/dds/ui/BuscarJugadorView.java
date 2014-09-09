@@ -35,9 +35,7 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		
 		new Label(mainPanel).setText("Comienza por: ");
 		new TextBox(mainPanel);
-		
-		
-		
+				
 		Jugador jugador = new Jugador();
 		jugador.setNombre("santi");		
 		List<Jugador> jugadores = JugadorHome.getInstancia().searchByExample(jugador);
