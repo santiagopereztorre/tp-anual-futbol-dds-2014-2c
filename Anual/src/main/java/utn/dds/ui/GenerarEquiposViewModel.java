@@ -112,7 +112,8 @@ public class GenerarEquiposViewModel {
 	private List<Jugador> equipo2;
 	private Partido partido;
 	private int parametroN;
-		
+	private Boolean visibilidadParametroN = false;	
+	
 	public int getParametroN() {
 		return parametroN;
 	}
@@ -155,7 +156,25 @@ public class GenerarEquiposViewModel {
 	}
 
 	public void setCriterioSeleccionado(Criterio criterioSeleccionado) {
-		this.criterioSeleccionado = criterioSeleccionado;
+		this.criterioSeleccionado = criterioSeleccionado;	
+						
+		
+		if (criterioSeleccionado.getClass().equals(new PromedioUltimasNCalificaciones().getClass()) ){
+			this.setVisibilidadParametroN(true);
+		} else {
+			this.setVisibilidadParametroN(false);
+		}
+		
+		ObservableUtils.firePropertyChanged(this, "visibilidadParametroN", this.getVisibilidadParametroN());
+			
+	}
+
+	public Boolean getVisibilidadParametroN() {
+		return visibilidadParametroN;
+	}
+
+	public void setVisibilidadParametroN(Boolean visibilidadParametroN) {
+		this.visibilidadParametroN = visibilidadParametroN;
 	}
 
 	public Partido getPartido() {
