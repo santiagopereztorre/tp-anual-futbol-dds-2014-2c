@@ -62,7 +62,7 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 
-		new Button(mainPanel).setCaption("Confirmar equipos");
+		new Button(mainPanel).setCaption("Confirmar equipos").onClick(()-> getModelObject().confirmarEquipos());
 		
 		new Button(mainPanel)
 			.setCaption("VER JUGADOR PRUEBA")
@@ -86,7 +86,7 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 	public static void main(String[] args) {
 		 new GenerarEquiposView().startApplication();
 	}
-	
+		
 	private void manejarVisibilidadTxtParametro(TextBox parametro){
 		
 		if (PromedioUltimasNCalificaciones.class.getClass().isInstance(this.getModelObject().getCriterioSeleccionado())){
