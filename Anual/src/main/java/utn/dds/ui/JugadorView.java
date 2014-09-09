@@ -3,16 +3,19 @@ package utn.dds.ui;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.widgets.tables.Column;
+import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
 import utn.dds.ui.JugadorViewModel;
 import utn.dds.jugador.Jugador;
+import utn.dds.infraccion.*;
 
 @SuppressWarnings("serial")
 public class JugadorView extends Window<JugadorViewModel> {
 
-	private static final WindowOwner GenerarEquiposView = null;
+	//private static final WindowOwner GenerarEquiposView = null;
 	private WindowOwner winOwner;
 
 	public JugadorView(Jugador unJugador, WindowOwner ventanaPadre)
@@ -52,10 +55,26 @@ public class JugadorView extends Window<JugadorViewModel> {
 		
 		// Infracciones
 		new Label(mainPanel).setText("Infracciones:");
+		Table<Infraccion> table = new Table<Infraccion>(mainPanel, Infraccion.class); 
+		table.setHeigth(200); 
+		table.setWidth(300); 
+		armarTablaInfracciones(table);
+		table.bindItemsToProperty("infracciones");
 		
 		// Cant partidos jugados
 		new Label(mainPanel).setText("Cantidad de partidos:");
 		new Label(mainPanel).bindValueToProperty("cantidadPartidosJugados");
+	}
+	
+	void armarTablaInfracciones(Table<Infraccion> tabla)
+	{
+		new Column<Infraccion>(tabla)
+			.setTitle("Fecha")
+			.setFixedSize(100);
+
+		new Column<Infraccion>(tabla)
+			.setTitle("Motivo")
+			.setFixedSize(100);
 	}
 	
 	/*public static void main(String[] args)
