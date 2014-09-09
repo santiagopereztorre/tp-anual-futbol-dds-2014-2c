@@ -14,4 +14,7 @@ public class Handicap implements Criterio {
 			throw new FaltaCargarHandicapJugadorException("El administrador a�n no carg� ning�n handicap para este jugador.");
 	}
 	
+	public String toString(){
+		return "Por handicap";
+	}
 }

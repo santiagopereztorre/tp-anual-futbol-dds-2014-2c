@@ -18,5 +18,9 @@ public class Mix implements Criterio{
 			
 		return sumPuntajesCriterios / unJugador.cantidadCalificaciones();
 	}
-
+	
+	public String toString(){
+		return "Mixto";
+	}
+	
 }

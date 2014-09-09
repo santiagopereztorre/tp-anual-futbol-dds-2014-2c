@@ -26,4 +26,7 @@ public class PromedioCalificacionesUltimoPartido implements Criterio{
 		return sumPuntajes / unJugador.cantidadCalificaciones();
 	}
 	
+	public String toString(){
+		return "Por promedio de notas del último partido";
+	}
 }
