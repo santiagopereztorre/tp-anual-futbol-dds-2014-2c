@@ -3,6 +3,12 @@ package utn.dds.ui;
 import java.util.Arrays;
 import java.util.List;
 
+import utn.dds.criterios.Criterio;
+import utn.dds.criterios.Handicap;
+import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
+import utn.dds.divisores.Divisor;
+import utn.dds.divisores.ParImpar;
+import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
@@ -12,14 +18,15 @@ import org.uqbar.commons.utils.Observable;
 public class GenerarEquiposViewModel {
 
 	public GenerarEquiposViewModel(Partido partido) {
-
+		this.partido = partido;
 	}
 	
-	private String criterioSeleccionado;
-	private String ordenamientoSeleccionado;
+	private Divisor divisorSeleccionado;
+	private Criterio criterioSeleccionado;
 	private List<Jugador> equipo1;
 	private List<Jugador> equipo2;
-	
+	private Partido partido;
+		
 	public List<Jugador> getEquipo1() {
 		return equipo1;
 	}
@@ -36,28 +43,42 @@ public class GenerarEquiposViewModel {
 		this.equipo2 = equipo2;
 	}
 
-	public String getOrdenamientoSeleccionado() {
-		return ordenamientoSeleccionado;
+	public List<Divisor> getDivisores(){
+		return Arrays.asList(new ParImpar(), new UnoParaAcaDosParaAllaDosParaAca());
+		//return Arrays.asList("Par/impar", "1,4,5,8,9");
+	}
+	
+	public Divisor getDivisorSeleccionado() {
+		return divisorSeleccionado;
 	}
 
-	public void setOrdenamientoSeleccionado(String ordenamientoSeleccionado) {
-		this.ordenamientoSeleccionado = ordenamientoSeleccionado;
+	public void setDivisorSeleccionado(Divisor divisorSeleccionado) {
+		this.divisorSeleccionado = divisorSeleccionado;
 	}
 
-	public String getCriterioSeleccionado() {
+	public Criterio getCriterioSeleccionado() {
 		return criterioSeleccionado;
 	}
 
-	public void setCriterioSeleccionado(String criterioSeleccionado) {
+	public void setCriterioSeleccionado(Criterio criterioSeleccionado) {
 		this.criterioSeleccionado = criterioSeleccionado;
-	}	
-	
-	public List<String> getCriterios(){
-		return Arrays.asList("Par/impar", "1,4,5,8,9");
+	}
+
+	public Partido getPartido() {
+		return partido;
+	}
+
+	public void setPartido(Partido partido) {
+		this.partido = partido;
+	}
+
+	public List<Criterio> getCriterios(){
+		return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido());
+		//return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones(), new Mix());
 	}
 	
-	public List<String> getOrdenamientos(){
-		return Arrays.asList("Por hándicap", "Por promedio de notas del último partido", "Por promedio de notas de los últimos n partidos", "Mixto");
+	public void armarEquipos() {
+		partido.armarEquipos(this.criterioSeleccionado, this.divisorSeleccionado);
 	}
 	
 }
