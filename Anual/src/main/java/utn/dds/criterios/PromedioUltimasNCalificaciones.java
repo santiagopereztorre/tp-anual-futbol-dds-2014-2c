@@ -7,7 +7,19 @@ public class PromedioUltimasNCalificaciones implements Criterio {
 	public static final int TODAS = -1;
 	private int cantCalificaciones;
 	
+	
+	public PromedioUltimasNCalificaciones(){
+	}
+	
 	public PromedioUltimasNCalificaciones(int cantCalificaciones){
+		this.cantCalificaciones = cantCalificaciones;
+	}
+	
+	public int getCantCalificaciones() {
+		return cantCalificaciones;
+	}
+
+	public void setCantCalificaciones(int cantCalificaciones) {
 		this.cantCalificaciones = cantCalificaciones;
 	}
 	

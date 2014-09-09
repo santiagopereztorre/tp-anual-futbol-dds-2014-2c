@@ -18,7 +18,6 @@ import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
 
-import org.junit.Before;
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
@@ -112,8 +111,16 @@ public class GenerarEquiposViewModel {
 	private List<Jugador> equipo1;
 	private List<Jugador> equipo2;
 	private Partido partido;
-	
+	private int parametroN;
 		
+	public int getParametroN() {
+		return parametroN;
+	}
+
+	public void setParametroN(int parametroN) {
+		this.parametroN = parametroN;
+	}
+
 	public List<Jugador> getEquipo1() {
 		return equipo1;
 	}
@@ -160,7 +167,7 @@ public class GenerarEquiposViewModel {
 	}
 
 	public List<Criterio> getCriterios(){
-		return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido());
+		return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones());
 		//return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones(), new Mix());
 	}
 	

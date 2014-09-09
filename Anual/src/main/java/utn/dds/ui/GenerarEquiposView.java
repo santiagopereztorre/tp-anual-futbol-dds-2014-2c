@@ -28,7 +28,7 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		setTitle("Generar equipos");
 		mainPanel.setLayout(new VerticalLayout());
 		mainPanel.setWidth(400);
-
+		
 		new Label(mainPanel).setText("Criterio de Seleccion de Jugadores");
 		RadioSelector<Divisor> radioSelectorDivisores = new RadioSelector<>(mainPanel);
 		radioSelectorDivisores.setWidth(300);
@@ -44,10 +44,13 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		radioSelectorCriteriosOrdenamiento.bindValueToProperty("criterioSeleccionado");
 		radioSelectorCriteriosOrdenamiento.bindItemsToProperty("criterios");
 		
+		
 	//	 new Label(mainPanel).setText("Ordenamiento");
 	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
 		
-	//	new TextBox(mainPanel).bindValueToProperty("parametroCriterio")
+		TextBox parametro = new TextBox(mainPanel);
+		parametro.bindValueToProperty("parametroN");
+	//	radioSelectorCriteriosOrdenamiento.onSelection()
 		
 		new Button(mainPanel)
 			.setCaption("Generar equipos")
