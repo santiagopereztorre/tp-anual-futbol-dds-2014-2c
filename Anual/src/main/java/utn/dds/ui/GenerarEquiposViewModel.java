@@ -12,7 +12,7 @@ import org.uqbar.commons.utils.Observable;
 public class GenerarEquiposViewModel {
 
 	public GenerarEquiposViewModel(Partido partido) {
-
+		
 	}
 	
 	private String criterioSeleccionado;

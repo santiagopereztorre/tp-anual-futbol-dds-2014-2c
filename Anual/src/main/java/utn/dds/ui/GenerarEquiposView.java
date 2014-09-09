@@ -7,6 +7,7 @@ import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
 import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.lacar.ui.model.Action;
 
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
@@ -53,7 +54,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Label(mainPanel).setText("Equipo 2:");
 		new List<Jugador>(mainPanel).bindItemsToProperty("equipo2");
 		
-		new Button(mainPanel).setCaption("Confirmar equipos");
+		new Button(mainPanel).setCaption("Confirmar equipos").setHeigth(20);
+		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 		
 	}
 	
