@@ -157,16 +157,9 @@ public class GenerarEquiposViewModel {
 
 	public void setCriterioSeleccionado(Criterio criterioSeleccionado) {
 		this.criterioSeleccionado = criterioSeleccionado;	
-						
-		
-		if (criterioSeleccionado.getClass().equals(new PromedioUltimasNCalificaciones().getClass()) ){
-			this.setVisibilidadParametroN(true);
-		} else {
-			this.setVisibilidadParametroN(false);
-		}
-		
-		ObservableUtils.firePropertyChanged(this, "visibilidadParametroN", this.getVisibilidadParametroN());
 			
+		this.setVisibilidadParametroN(criterioSeleccionado.getClass().equals(new PromedioUltimasNCalificaciones().getClass()));
+		ObservableUtils.firePropertyChanged(this, "visibilidadParametroN", this.getVisibilidadParametroN());		
 	}
 
 	public Boolean getVisibilidadParametroN() {
