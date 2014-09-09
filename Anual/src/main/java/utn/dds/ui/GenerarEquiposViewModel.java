@@ -1,9 +1,12 @@
 package utn.dds.ui;
 
+<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.List;
 
 import utn.dds.equipos.*;
+=======
+>>>>>>> origin/master
 import utn.dds.partido.Partido;
 import org.uqbar.commons.utils.Observable;
 
@@ -11,7 +14,7 @@ import org.uqbar.commons.utils.Observable;
 public class GenerarEquiposViewModel {
 
 	public GenerarEquiposViewModel(Partido partido) {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	private String criterioSeleccionado;
