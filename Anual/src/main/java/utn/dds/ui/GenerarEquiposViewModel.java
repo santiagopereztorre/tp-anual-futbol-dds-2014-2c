@@ -13,6 +13,7 @@ import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.partido.PartidoHome;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
@@ -189,5 +190,10 @@ public class GenerarEquiposViewModel {
 		ObservableUtils.firePropertyChanged(this, "equipo1", getEquipo1());
 		ObservableUtils.firePropertyChanged(this, "equipo2", getEquipo2());
 	}
+	
+	public void confirmarEquipos(){
+		PartidoHome.getInstancia().create(partido);
+	}
+	
 	
 }
