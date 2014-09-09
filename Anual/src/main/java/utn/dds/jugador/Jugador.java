@@ -1,6 +1,7 @@
 package utn.dds.jugador;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.uqbar.commons.model.Entity;
@@ -28,7 +29,7 @@ public class Jugador extends Entity{
 	
 	private String nombre;
 	private String apodo;
-
+	private Date fechaDeNacimiento;
 	
 	public String getNombre()
 	{
@@ -175,5 +176,13 @@ public class Jugador extends Entity{
 	
 	public String toString(){
 		return this.nombre;
+	}
+
+	public Date getFechaDeNacimiento() {
+		return fechaDeNacimiento;
+	}
+
+	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
+		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 }

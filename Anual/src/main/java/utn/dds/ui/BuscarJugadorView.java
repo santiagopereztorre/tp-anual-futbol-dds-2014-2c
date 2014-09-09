@@ -1,9 +1,11 @@
 package utn.dds.ui;
 
+import java.util.Date;
 import java.util.List;
 
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
@@ -20,6 +22,7 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 
 		Jugador jugador = new Jugador();
 		jugador.setNombre("santi");
+		jugador.setApodo("diego");
 		JugadorHome.getInstancia().create(jugador);
 		
 		winOwner = ventanaPadre;
@@ -30,9 +33,28 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 	public void createContents(Panel mainPanel) {
 		setTitle("Buscar jugador");
 		
+		new Label(mainPanel).setText("Comienza por: ");
+		new TextBox(mainPanel);
+		
+		
+		
 		Jugador jugador = new Jugador();
 		jugador.setNombre("santi");		
 		List<Jugador> jugadores = JugadorHome.getInstancia().searchByExample(jugador);
+		
+		new Label(mainPanel).setText("Esta vacio: " + jugadores.isEmpty());
+		new Label(mainPanel).setText("El nombre es: " + jugadores.get(0).getNombre());
+		
+		jugador = new Jugador();
+		jugador.setApodo("diego");		
+		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
+		
+		new Label(mainPanel).setText("Esta vacio: " + jugadores.isEmpty());
+		new Label(mainPanel).setText("El nombre es: " + jugadores.get(0).getNombre());
+		
+		jugador = new Jugador();
+		jugador.setFechaDeNacimiento(new Date());		
+		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
 		
 		new Label(mainPanel).setText("Esta vacio: " + jugadores.isEmpty());
 		new Label(mainPanel).setText("El nombre es: " + jugadores.get(0).getNombre());
