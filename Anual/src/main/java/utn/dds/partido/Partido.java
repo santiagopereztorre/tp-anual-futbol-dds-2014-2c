@@ -138,7 +138,7 @@ public class Partido {
 				.collect(Collectors.toList());
 	}
 	
-	public List<Inscripcion> getInscriptosDeTipo(Class clase) {
+	public List<Inscripcion> getInscriptosDeTipo(Class<?> clase) {
 		return inscripciones.stream().filter( x -> x.esInstanciaDe(clase)).collect(Collectors.toList());
 	}
 	

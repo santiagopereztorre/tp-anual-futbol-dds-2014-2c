@@ -1,9 +1,5 @@
 package utn.dds.jugador;
 
-import java.util.Comparator;
-
-import utn.dds.inscripcion.Inscripcion;
-
 public class JugadorConCalificacion implements Comparable<JugadorConCalificacion> {
 	
 	private Jugador jugador;
