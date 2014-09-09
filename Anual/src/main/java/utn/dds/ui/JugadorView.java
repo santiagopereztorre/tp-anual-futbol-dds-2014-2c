@@ -13,10 +13,12 @@ import utn.dds.jugador.Jugador;
 public class JugadorView extends Window<JugadorViewModel> {
 
 	private static final WindowOwner GenerarEquiposView = null;
+	private WindowOwner winOwner;
 
-	public JugadorView(Jugador unJugador)
+	public JugadorView(Jugador unJugador, WindowOwner ventanaPadre)
 	{
-		super(GenerarEquiposView, new JugadorViewModel(unJugador));
+		super(ventanaPadre, new JugadorViewModel(unJugador));
+		winOwner = ventanaPadre;
 	}
 
 	@Override
@@ -55,5 +57,15 @@ public class JugadorView extends Window<JugadorViewModel> {
 		new Label(mainPanel).setText("Cantidad de partidos:");
 		new Label(mainPanel).bindValueToProperty("cantidadPartidosJugados");
 	}
+	
+	/*public static void main(String[] args)
+	{
+		Jugador unJugador = new Jugador();
+		unJugador.setApodo("Jose");
+		unJugador.setNombre("Roberto Carlo");
+		unJugador.setHandicap(5);
+		
+		new JugadorView(unJugador).open();
+	}*/
 
 }
