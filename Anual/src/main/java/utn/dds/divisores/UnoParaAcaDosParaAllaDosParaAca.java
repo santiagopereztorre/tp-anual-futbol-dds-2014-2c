@@ -28,6 +28,8 @@ public class UnoParaAcaDosParaAllaDosParaAca implements Divisor {
 		equipo2.add(jugadoresCalificados.get(9).getJugador());
 	}
 
-	
+	public String toString(){
+		return "1,4,5,8,9";
+	}
 
 }

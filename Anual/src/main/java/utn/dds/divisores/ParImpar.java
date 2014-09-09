@@ -32,4 +32,8 @@ public class ParImpar implements Divisor {
 	private boolean esPar(int numero) {
 		if (numero%2==0) return true; else return false;
 	}
+	
+	public String toString(){
+		return "Par/impar";
+	}
 }
