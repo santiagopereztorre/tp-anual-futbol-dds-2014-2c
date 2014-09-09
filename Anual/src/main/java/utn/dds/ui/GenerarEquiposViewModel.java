@@ -160,7 +160,7 @@ public class GenerarEquiposViewModel {
 	}
 
 	public List<Criterio> getCriterios(){
-		return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido());
+		return Arrays.asList(new Handicap(), new PromedioCalificacionesUltimoPartido());
 		//return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones(), new Mix());
 	}
 	
