@@ -3,10 +3,12 @@ package utn.dds.ui;
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
+import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
 import org.uqbar.arena.windows.MainWindow;
 
+import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
 public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
@@ -45,6 +47,12 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Button(mainPanel).setCaption("Generar equipos");
 		
 		new Label(mainPanel).setText("Resultado:");
+		
+		new Label(mainPanel).setText("Equipo 1:");
+		new List<Jugador>(mainPanel).bindItemsToProperty("equipo1");
+		
+		new Label(mainPanel).setText("Equipo 2:");
+		new List<Jugador>(mainPanel).bindItemsToProperty("equipo2");
 		
 		new Button(mainPanel).setCaption("Confirmar equipos");
 		

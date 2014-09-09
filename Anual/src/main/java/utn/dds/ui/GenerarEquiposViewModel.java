@@ -3,7 +3,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import utn.dds.equipos.*;
+import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+
 import org.uqbar.commons.utils.Observable;
 
 @Observable
@@ -15,7 +17,25 @@ public class GenerarEquiposViewModel {
 	
 	private String criterioSeleccionado;
 	private String ordenamientoSeleccionado;
+	private List<Jugador> equipo1;
+	private List<Jugador> equipo2;
 	
+	public List<Jugador> getEquipo1() {
+		return equipo1;
+	}
+
+	public void setEquipo1(List<Jugador> equipo1) {
+		this.equipo1 = equipo1;
+	}
+
+	public List<Jugador> getEquipo2() {
+		return equipo2;
+	}
+
+	public void setEquipo2(List<Jugador> equipo2) {
+		this.equipo2 = equipo2;
+	}
+
 	public String getOrdenamientoSeleccionado() {
 		return ordenamientoSeleccionado;
 	}
