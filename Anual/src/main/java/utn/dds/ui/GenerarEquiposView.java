@@ -11,6 +11,7 @@ import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.lacar.ui.model.Action;
 
 import utn.dds.criterios.Criterio;
+import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.divisores.Divisor;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
@@ -40,6 +41,7 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
 		RadioSelector<Criterio> radioSelectorCriteriosOrdenamiento = new RadioSelector<>(mainPanel);
+		radioSelectorCriteriosOrdenamiento.onSelection(() -> this.manejarVisibilidadTxtParametro() );
 		radioSelectorCriteriosOrdenamiento.setWidth(300);
 		radioSelectorCriteriosOrdenamiento.bindValueToProperty("criterioSeleccionado");
 		radioSelectorCriteriosOrdenamiento.bindItemsToProperty("criterios");
@@ -71,7 +73,6 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Button(mainPanel)
 			.setCaption("VER JUGADOR PRUEBA")
 			.onClick(() -> new JugadorView(jugadorPrueba(), this).open());
-			
 		}
 	
 	private Jugador jugadorPrueba()
@@ -90,5 +91,13 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 	
 	public static void main(String[] args) {
 		 new GenerarEquiposView().startApplication();
+	}
+	
+	private void manejarVisibilidadTxtParametro(){
+		
+		if (PromedioUltimasNCalificaciones.class.getClass().isInstance(this.getModelObject().getCriterioSeleccionado())){
+			
+		}
+			
 	}
 }
