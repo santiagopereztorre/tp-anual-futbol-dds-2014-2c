@@ -25,20 +25,20 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		mainPanel.setWidth(400);
 
 		new Label(mainPanel).setText("Criterio de Seleccion de Jugadores");
-		RadioSelector<String> radioSelectorCriterios = new RadioSelector<>(mainPanel);
-		radioSelectorCriterios.setWidth(300);
-		radioSelectorCriterios.setHeigth(30);
-		radioSelectorCriterios.bindValueToProperty("divisorSeleccionado");
-		radioSelectorCriterios.bindItemsToProperty("divisores");
+		RadioSelector<String> radioSelectorDivisores = new RadioSelector<>(mainPanel);
+		radioSelectorDivisores.setWidth(300);
+		radioSelectorDivisores.setHeigth(60);
+		radioSelectorDivisores.bindValueToProperty("divisorSeleccionado");
+		radioSelectorDivisores.bindItemsToProperty("divisores");
 		
 	//	new Label(mainPanel).setText("Criterio");
 	//	new Label(mainPanel).bindValueToProperty("criterioSeleccionado");
 		
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
-		RadioSelector<String> radioSelectorOrdenamiento = new RadioSelector<>(mainPanel);
-		radioSelectorOrdenamiento.setWidth(300);
-		radioSelectorOrdenamiento.bindValueToProperty("criterioSeleccionado");
-		radioSelectorOrdenamiento.bindItemsToProperty("criterios");
+		RadioSelector<String> radioSelectorCriteriosOrdenamiento = new RadioSelector<>(mainPanel);
+		radioSelectorCriteriosOrdenamiento.setWidth(300);
+		radioSelectorCriteriosOrdenamiento.bindValueToProperty("criterioSeleccionado");
+		radioSelectorCriteriosOrdenamiento.bindItemsToProperty("criterios");
 		
 	//	 new Label(mainPanel).setText("Ordenamiento");
 	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");

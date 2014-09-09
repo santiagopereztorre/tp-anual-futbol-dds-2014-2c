@@ -20,6 +20,7 @@ import org.uqbar.commons.utils.Observable;
 public class GenerarEquiposViewModel {
 
 	public GenerarEquiposViewModel(Partido partido) {
+		
 		this.partido = partido;
 	}
 	
@@ -81,6 +82,8 @@ public class GenerarEquiposViewModel {
 	
 	public void armarEquipos() {
 		partido.armarEquipos(this.criterioSeleccionado, this.divisorSeleccionado);
+		this.setEquipo1(this.partido.getEquipo1());
+		this.setEquipo2(this.partido.getEquipo2());
 	}
 	
 }
