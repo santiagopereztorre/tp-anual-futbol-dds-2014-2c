@@ -3,6 +3,8 @@ package utn.dds.jugador;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.uqbar.commons.model.Entity;
+
 import utn.dds.admin.Admin;
 import utn.dds.admin.Sugerencia;
 import utn.dds.calificacion.Calificacion;
@@ -15,8 +17,8 @@ import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.partido.*;
 import utn.dds.tipoInscripcion.TipoInscripcion;
 
-
-public class Jugador {
+@SuppressWarnings("serial")
+public class Jugador extends Entity{
 	
 	private List<Infraccion> infracciones;
 	private List<Jugador> amigos;
