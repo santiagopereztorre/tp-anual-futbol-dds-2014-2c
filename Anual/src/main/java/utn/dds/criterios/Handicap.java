@@ -11,7 +11,7 @@ public class Handicap implements Criterio {
 		if (unJugador.getHandicap() > 0)
 			return unJugador.getHandicap();
 		else
-			throw new FaltaCargarHandicapJugadorException("El administrador aún no cargó ningún handicap para este jugador.");
+			throw new FaltaCargarHandicapJugadorException("El administrador aï¿½n no cargï¿½ ningï¿½n handicap para este jugador.");
 	}
 	
 }

@@ -5,7 +5,9 @@ import java.util.List;
 
 import utn.dds.criterios.Criterio;
 import utn.dds.criterios.Handicap;
+import utn.dds.criterios.Mix;
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
+import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.divisores.Divisor;
 import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
@@ -18,6 +20,7 @@ import org.uqbar.commons.utils.Observable;
 public class GenerarEquiposViewModel {
 
 	public GenerarEquiposViewModel(Partido partido) {
+		
 		this.partido = partido;
 	}
 	
@@ -79,6 +82,8 @@ public class GenerarEquiposViewModel {
 	
 	public void armarEquipos() {
 		partido.armarEquipos(this.criterioSeleccionado, this.divisorSeleccionado);
+		this.setEquipo1(this.partido.getEquipo1());
+		this.setEquipo2(this.partido.getEquipo2());
 	}
 	
 }

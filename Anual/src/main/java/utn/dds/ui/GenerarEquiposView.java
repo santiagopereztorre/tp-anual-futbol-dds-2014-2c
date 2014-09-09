@@ -7,7 +7,10 @@ import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
 import org.uqbar.arena.windows.MainWindow;
+import org.uqbar.lacar.ui.model.Action;
 
+import utn.dds.criterios.Criterio;
+import utn.dds.divisores.Divisor;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
@@ -25,20 +28,21 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		mainPanel.setWidth(400);
 
 		new Label(mainPanel).setText("Criterio de Seleccion de Jugadores");
-		RadioSelector<String> radioSelectorCriterios = new RadioSelector<>(mainPanel);
-		radioSelectorCriterios.setWidth(300);
-		radioSelectorCriterios.setHeigth(30);
-		radioSelectorCriterios.bindValueToProperty("divisorSeleccionado");
-		radioSelectorCriterios.bindItemsToProperty("divisores");
+		RadioSelector<Divisor> radioSelectorDivisores = new RadioSelector<>(mainPanel);
+		radioSelectorDivisores.setWidth(300);
+		radioSelectorDivisores.setHeigth(60);
+		radioSelectorDivisores.bindValueToProperty("divisorSeleccionado");
+		radioSelectorDivisores.bindItemsToProperty("divisores");
+
 		
 	//	new Label(mainPanel).setText("Criterio");
 	//	new Label(mainPanel).bindValueToProperty("criterioSeleccionado");
 		
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
-		RadioSelector<String> radioSelectorOrdenamiento = new RadioSelector<>(mainPanel);
-		radioSelectorOrdenamiento.setWidth(300);
-		radioSelectorOrdenamiento.bindValueToProperty("criterioSeleccionado");
-		radioSelectorOrdenamiento.bindItemsToProperty("criterios");
+		RadioSelector<Criterio> radioSelectorCriteriosOrdenamiento = new RadioSelector<>(mainPanel);
+		radioSelectorCriteriosOrdenamiento.setWidth(300);
+		radioSelectorCriteriosOrdenamiento.bindValueToProperty("criterioSeleccionado");
+		radioSelectorCriteriosOrdenamiento.bindItemsToProperty("criterios");
 		
 	//	 new Label(mainPanel).setText("Ordenamiento");
 	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
@@ -53,6 +57,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Label(mainPanel).setText("Equipo 2:");
 		new List<Jugador>(mainPanel).bindItemsToProperty("equipo2");
 		
+		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
+
 		new Button(mainPanel)
 			.setCaption("Confirmar equipos")
 			.onClick(() -> getModelObject().armarEquipos());

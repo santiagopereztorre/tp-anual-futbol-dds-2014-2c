@@ -11,4 +11,10 @@ public interface Divisor {
 	void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
 			List<JugadorConCalificacion> jugadoresCalificados);
 	
+/*	
+  	default public String toString(){
+		return this.getClass().getSimpleName();
+	} 
+*/
+	
 }
