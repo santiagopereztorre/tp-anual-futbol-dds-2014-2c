@@ -10,6 +10,9 @@ public class PromedioCalificacionesUltimoPartido implements Criterio{
 
 	@Override
 	public Integer calificar(Jugador unJugador) {
+		// Si no se jugo ningun partido
+		if(unJugador.getCalificaciones().size() == 0)
+			return 0;
 			    
 		Comparator<Partido> comparator = (p, o) -> p.getFecha().compareTo(o.getFecha());
 	 

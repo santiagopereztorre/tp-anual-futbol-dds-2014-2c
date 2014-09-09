@@ -13,6 +13,10 @@ public class PromedioUltimasNCalificaciones implements Criterio {
 	
 	@Override
 	public Integer calificar(Jugador unJugador) {
+		// Si no se tienen calificaciones
+		if(unJugador.getCalificaciones().size() == 0)
+			return 0;
+		
 		// En caso de que se quieran todas las calificaciones
 		if(cantCalificaciones == TODAS)
 			cantCalificaciones = unJugador.getCalificaciones().size();

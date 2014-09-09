@@ -6,9 +6,13 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
+import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.lacar.ui.model.Action;
 
+import utn.dds.criterios.Criterio;
+import utn.dds.divisores.Divisor;
+import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
@@ -26,24 +30,29 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		mainPanel.setWidth(400);
 
 		new Label(mainPanel).setText("Criterio de Seleccion de Jugadores");
-		RadioSelector<String> radioSelectorCriterios = new RadioSelector<>(mainPanel);
-		radioSelectorCriterios.setWidth(300);
-		radioSelectorCriterios.bindValueToProperty("divisorSeleccionado");
-		radioSelectorCriterios.bindItemsToProperty("divisores");
-		
-	//	new Label(mainPanel).setText("Criterio");
+		RadioSelector<Divisor> radioSelectorDivisores = new RadioSelector<>(mainPanel);
+		radioSelectorDivisores.setWidth(300);
+		radioSelectorDivisores.setHeigth(60);
+		radioSelectorDivisores.bindValueToProperty("divisorSeleccionado");
+		radioSelectorDivisores.bindItemsToProperty("divisores");
+
+		//	new Label(mainPanel).setText("Criterio");
 	//	new Label(mainPanel).bindValueToProperty("criterioSeleccionado");
 		
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
-		RadioSelector<String> radioSelectorOrdenamiento = new RadioSelector<>(mainPanel);
-		radioSelectorOrdenamiento.setWidth(300);
-		radioSelectorOrdenamiento.bindValueToProperty("criterioSeleccionado");
-		radioSelectorOrdenamiento.bindItemsToProperty("criterios");
+		RadioSelector<Criterio> radioSelectorCriteriosOrdenamiento = new RadioSelector<>(mainPanel);
+		radioSelectorCriteriosOrdenamiento.setWidth(300);
+		radioSelectorCriteriosOrdenamiento.bindValueToProperty("criterioSeleccionado");
+		radioSelectorCriteriosOrdenamiento.bindItemsToProperty("criterios");
 		
 	//	 new Label(mainPanel).setText("Ordenamiento");
 	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
 		
-		new Button(mainPanel).setCaption("Generar equipos");
+	//	new TextBox(mainPanel).bindValueToProperty("parametroCriterio")
+		
+		new Button(mainPanel)
+			.setCaption("Generar equipos")
+			.onClick(() -> getModelObject().armarEquipos());
 		
 		new Label(mainPanel).setText("Resultado:");
 		
@@ -55,10 +64,26 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 
-		new Button(mainPanel)
-			.setCaption("Confirmar equipos")
-			.onClick(() -> getModelObject().armarEquipos());
+		new Button(mainPanel).setCaption("Confirmar equipos");
 		
+		new Button(mainPanel)
+			.setCaption("VER JUGADOR PRUEBA")
+			.onClick(() -> new JugadorView(jugadorPrueba(), this).open());
+			
+		}
+	
+	private Jugador jugadorPrueba()
+	{
+		Jugador unJugador = new Jugador();
+		unJugador.setApodo("Jose");
+		unJugador.setNombre("Roberto Carlo");
+		unJugador.setHandicap(5);
+		
+		unJugador.recibirInfraccion(new Infraccion("Malo"));
+		unJugador.recibirInfraccion(new Infraccion("-Malo"));
+		unJugador.recibirInfraccion(new Infraccion("Ere"));
+		
+		return unJugador;
 	}
 	
 	public static void main(String[] args) {

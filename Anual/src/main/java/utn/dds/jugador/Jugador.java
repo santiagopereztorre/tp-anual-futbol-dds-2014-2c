@@ -81,6 +81,16 @@ public class Jugador extends Entity{
 		return amigos;
 	}
 	
+	public List<Infraccion> getInfracciones()
+	{
+		return infracciones;
+	}
+
+	public void setInfracciones(List<Infraccion> infracciones)
+	{
+		this.infracciones = infracciones;
+	}
+	
 	/**
 	 * Evalua si dos jugadores participaron del mismo partido
 	 * @param unJugador
@@ -155,11 +165,15 @@ public class Jugador extends Entity{
 		return this.calificaciones;
 	}
 	
-	public int getHandicap(){
+	public Integer getHandicap(){
 		return this.handicap;
 	}
 	
 	public void setHandicap(int unHandicap){
 		this.handicap = unHandicap;
+	}
+	
+	public String toString(){
+		return this.nombre;
 	}
 }

@@ -1,6 +1,7 @@
 package utn.dds.ui;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import utn.dds.criterios.Criterio;
@@ -13,13 +14,95 @@ import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.tipoInscripcion.Condicional;
+import utn.dds.tipoInscripcion.Estandar;
+import utn.dds.tipoInscripcion.Solidaria;
 
+import org.junit.Before;
 import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class GenerarEquiposViewModel {
 
 	public GenerarEquiposViewModel(Partido partido) {
+
+		Jugador juan = new Jugador();
+		juan.setNombre("juan");
+		
+		Jugador lalo = new Jugador();
+		lalo.setNombre("lalo");
+		
+		Jugador juancho = new Jugador();
+		juancho.setNombre("juancho");
+		
+		Jugador carlos = new Jugador();
+		carlos.setNombre("carlos");
+		
+		Jugador pepito = new Jugador();
+		pepito.setNombre("pepito");
+		
+		Jugador martin = new Jugador();
+		martin.setNombre("martin");
+		
+		Jugador lucas = new Jugador();
+		lucas.setNombre("lucas");
+		
+		Jugador pato = new Jugador();
+		pato.setNombre("pato");
+		
+		Jugador marcelo = new Jugador();
+		marcelo.setNombre("marcelo");
+		
+		Jugador leandro = new Jugador();
+		leandro.setNombre("leandro");
+		
+		Partido riverboca = new Partido(new Date());
+		riverboca.inscribirJugador(carlos, new Estandar());
+		riverboca.inscribirJugador(juancho, new Estandar());
+		riverboca.inscribirJugador(juan, new Estandar());
+		riverboca.inscribirJugador(lucas, new Estandar());
+		riverboca.inscribirJugador(pato, new Estandar());
+		riverboca.inscribirJugador(martin, new Estandar());
+		riverboca.inscribirJugador(leandro, new Estandar());
+		riverboca.inscribirJugador(marcelo, new Estandar());
+		riverboca.inscribirJugador(lalo, new Estandar());
+		riverboca.inscribirJugador(pepito, new Estandar());
+		
+		carlos.calificar(juancho, riverboca, 2, "Es horrible");
+		carlos.calificar(juan, riverboca, 3, "Arquero manco");
+		carlos.calificar(pato, riverboca, 1, "Es ma malo que el cigarro");
+		carlos.calificar(lucas, riverboca, 6, "Jugo bien");
+		carlos.calificar(martin, riverboca, 10, "La estrella");
+		carlos.calificar(marcelo, riverboca, 9, "Sabella marcelito es argentino");
+		carlos.calificar(lalo, riverboca, 5, "Regular");
+		carlos.calificar(pepito, riverboca, 7, "Lateral con proyeccion");
+		carlos.calificar(leandro, riverboca, 4, "Defensor rustico");
+		martin.calificar(carlos, riverboca, 8, "Un volante con magia");
+		
+		
+		partido = new Partido(new Date());
+		partido.inscribirJugador(lalo, new Solidaria());
+		partido.inscribirJugador(juan, new Estandar());
+		partido.inscribirJugador(lucas, new Solidaria());
+		partido.inscribirJugador(pepito, new Condicional());
+		partido.inscribirJugador(martin, new Condicional());
+		partido.inscribirJugador(juancho, new Estandar());
+		partido.inscribirJugador(carlos, new Estandar());
+		partido.inscribirJugador(marcelo, new Condicional());
+		partido.inscribirJugador(leandro, new Estandar());
+		partido.inscribirJugador(pato, new Estandar());		
+	
+		juan.setHandicap(10);
+		pepito.setHandicap(1);
+		marcelo.setHandicap(4);
+		leandro.setHandicap(5);
+		martin.setHandicap(6);
+		juancho.setHandicap(7);
+		carlos.setHandicap(2);
+		pato.setHandicap(8);
+		lalo.setHandicap(3);
+		lucas.setHandicap(9);
+	
 		this.partido = partido;
 	}
 	
@@ -28,6 +111,7 @@ public class GenerarEquiposViewModel {
 	private List<Jugador> equipo1;
 	private List<Jugador> equipo2;
 	private Partido partido;
+	
 		
 	public List<Jugador> getEquipo1() {
 		return equipo1;
@@ -81,6 +165,8 @@ public class GenerarEquiposViewModel {
 	
 	public void armarEquipos() {
 		partido.armarEquipos(this.criterioSeleccionado, this.divisorSeleccionado);
+		this.setEquipo1(this.partido.getEquipo1());
+		this.setEquipo2(this.partido.getEquipo2());
 	}
 	
 }
