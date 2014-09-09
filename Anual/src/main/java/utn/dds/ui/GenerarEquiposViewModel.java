@@ -1,12 +1,8 @@
 package utn.dds.ui;
-
-<<<<<<< HEAD
 import java.util.Arrays;
 import java.util.List;
 
 import utn.dds.equipos.*;
-=======
->>>>>>> origin/master
 import utn.dds.partido.Partido;
 import org.uqbar.commons.utils.Observable;
 
