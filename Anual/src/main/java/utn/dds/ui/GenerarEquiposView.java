@@ -47,7 +47,9 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 	//	 new Label(mainPanel).setText("Ordenamiento");
 	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
 		
-		new Button(mainPanel).setCaption("Generar equipos");
+		new Button(mainPanel)
+			.setCaption("Generar equipos")
+			.onClick(() -> getModelObject().armarEquipos());
 		
 		new Label(mainPanel).setText("Resultado:");
 		
@@ -59,9 +61,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 
-		new Button(mainPanel)
-			.setCaption("Confirmar equipos")
-			.onClick(() -> getModelObject().armarEquipos());
+		new Button(mainPanel).setCaption("Confirmar equipos");
+			
 		
 	}
 	

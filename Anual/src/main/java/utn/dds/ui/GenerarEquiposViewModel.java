@@ -1,6 +1,7 @@
 package utn.dds.ui;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import utn.dds.criterios.Criterio;
@@ -13,14 +14,52 @@ import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.tipoInscripcion.Condicional;
+import utn.dds.tipoInscripcion.Estandar;
+import utn.dds.tipoInscripcion.Solidaria;
 
+import org.junit.Before;
 import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class GenerarEquiposViewModel {
 
 	public GenerarEquiposViewModel(Partido partido) {
-		
+
+		Jugador juan = new Jugador();
+		Jugador lalo = new Jugador();
+		Jugador juancho = new Jugador();
+		Jugador carlos = new Jugador();
+		Jugador pepito = new Jugador();
+		Jugador martin = new Jugador();
+		Jugador lucas = new Jugador();
+		Jugador pato = new Jugador();
+		Jugador marcelo = new Jugador();
+		Jugador leandro = new Jugador();
+
+		partido = new Partido(new Date());
+		partido.inscribirJugador(lalo, new Solidaria());
+		partido.inscribirJugador(juan, new Estandar());
+		partido.inscribirJugador(lucas, new Solidaria());
+		partido.inscribirJugador(pepito, new Condicional());
+		partido.inscribirJugador(martin, new Condicional());
+		partido.inscribirJugador(juancho, new Estandar());
+		partido.inscribirJugador(carlos, new Estandar());
+		partido.inscribirJugador(marcelo, new Condicional());
+		partido.inscribirJugador(leandro, new Estandar());
+		partido.inscribirJugador(pato, new Estandar());		
+	
+		juan.setHandicap(10);
+		pepito.setHandicap(1);
+		marcelo.setHandicap(4);
+		leandro.setHandicap(5);
+		martin.setHandicap(6);
+		juancho.setHandicap(7);
+		carlos.setHandicap(2);
+		pato.setHandicap(8);
+		lalo.setHandicap(3);
+		lucas.setHandicap(9);
+	
 		this.partido = partido;
 	}
 	
