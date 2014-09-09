@@ -1,4 +1,5 @@
 package utn.dds.ui;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,7 +11,6 @@ import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.divisores.Divisor;
 import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
-import utn.dds.equipos.*;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
