@@ -16,6 +16,7 @@ import utn.dds.divisores.Divisor;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.partido.PartidoHome;
 
 @SuppressWarnings("serial")
 public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
@@ -85,6 +86,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 	
 	public static void main(String[] args) {
 		 new GenerarEquiposView().startApplication();
+		 java.util.List<Partido> listaDePartidos = PartidoHome.getInstancia().allInstances();
+		 listaDePartidos.forEach(System.out::println);
 	}
 		
 	private void manejarVisibilidadTxtParametro(TextBox parametro){

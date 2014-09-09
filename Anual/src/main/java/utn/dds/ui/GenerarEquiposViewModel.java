@@ -24,8 +24,7 @@ import org.uqbar.commons.utils.Observable;
 @Observable
 public class GenerarEquiposViewModel {
 
-	public GenerarEquiposViewModel(Partido partido) {
-
+	private void inicializarPartido(){
 		Jugador juan = new Jugador();
 		juan.setNombre("juan");
 		
@@ -102,8 +101,11 @@ public class GenerarEquiposViewModel {
 		pato.setHandicap(8);
 		lalo.setHandicap(3);
 		lucas.setHandicap(9);
+	}
 	
+	public GenerarEquiposViewModel(Partido partido) {
 		this.partido = partido;
+		this.inicializarPartido();
 	}
 	
 	private Divisor divisorSeleccionado;
@@ -193,6 +195,8 @@ public class GenerarEquiposViewModel {
 	
 	public void confirmarEquipos(){
 		PartidoHome.getInstancia().create(partido);
+		partido = new Partido();
+		this.inicializarPartido();
 	}
 	
 	
