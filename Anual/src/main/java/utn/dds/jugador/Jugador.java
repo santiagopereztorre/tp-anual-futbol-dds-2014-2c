@@ -31,6 +31,14 @@ public class Jugador extends Entity{
 	private String apodo;
 	private Date fechaDeNacimiento;
 	
+	public Jugador(){
+		infracciones = new ArrayList<Infraccion>();
+		calificaciones = new ArrayList<Calificacion>();
+		amigos = new ArrayList<Jugador>();
+		this.handicap = -1;
+		fechaDeNacimiento = new Date();
+	}
+	
 	public String getNombre()
 	{
 		return nombre;
@@ -57,13 +65,6 @@ public class Jugador extends Entity{
 
 	public void setMail(String mail) {
 		this.mail = mail;
-	}
-
-	public Jugador(){
-		infracciones = new ArrayList<Infraccion>();
-		calificaciones = new ArrayList<Calificacion>();
-		amigos = new ArrayList<Jugador>();
-		this.handicap = -1;
 	}
 
 	public void agregarAmigo(Jugador unAmigo){
