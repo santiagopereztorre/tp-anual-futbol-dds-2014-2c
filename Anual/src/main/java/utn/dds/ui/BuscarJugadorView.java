@@ -18,7 +18,7 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 	
 	@Override
 	public void createContents(Panel mainPanel) {
-		// TODO Auto-generated method stub
+		setTitle("Buscar jugador");
 		
 	}
 
