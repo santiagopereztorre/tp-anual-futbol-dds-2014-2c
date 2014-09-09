@@ -40,11 +40,7 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		return new Predicate<Jugador>() {
 			@Override
 			public boolean evaluate(Jugador jugador) {
-				if (jugador.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
-					return true;
-				} else {
-					return false;
-				}
+				return jugador.getNombre().toLowerCase().equals(nombre.toLowerCase());
 			}
 		};
 	}
@@ -53,11 +49,7 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		return new Predicate<Jugador>() {
 			@Override
 			public boolean evaluate(Jugador jugador) {
-				if (jugador.getApodo().toLowerCase().contains(apodo.toLowerCase())) {
-					return true;
-				} else {
-					return false;
-				}
+				return jugador.getApodo().toLowerCase().contains(apodo.toLowerCase());
 			}
 		};
 	}
@@ -66,14 +58,11 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		return new Predicate<Jugador>() {
 			@Override
 			public boolean evaluate(Jugador jugador) {
-				if (fechaDeNacimiento.after(jugador.getFechaDeNacimiento())) {
-					return true;
-				} else {
-					return false;
-				}
+				return fechaDeNacimiento.after(jugador.getFechaDeNacimiento());
 			}
 		};
 	}
+	
 	
 	public static JugadorHome getInstancia() {
 		if (instancia == null) {

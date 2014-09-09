@@ -3,12 +3,15 @@ package utn.dds.ui;
 import java.util.Date;
 import java.util.List;
 
+import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.widgets.RadioSelector;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
+import utn.dds.divisores.Divisor;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
 
@@ -33,9 +36,16 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 	public void createContents(Panel mainPanel) {
 		setTitle("Buscar jugador");
 		
+		RadioSelector<String> criterioBusqueda = new RadioSelector<>(mainPanel);
+		criterioBusqueda.bindValueToProperty("criterioSeleccionado");
+		criterioBusqueda.bindItemsToProperty("criterios");
+		
 		new Label(mainPanel).setText("Comienza por: ");
 		new TextBox(mainPanel);
-				
+		
+		
+		new Button(mainPanel).setCaption("Buscar");
+		
 		Jugador jugador = new Jugador();
 		jugador.setNombre("santi");		
 		List<Jugador> jugadores = JugadorHome.getInstancia().searchByExample(jugador);
