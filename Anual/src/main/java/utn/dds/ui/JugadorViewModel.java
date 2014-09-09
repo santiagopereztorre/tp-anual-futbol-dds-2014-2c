@@ -1,5 +1,7 @@
 package utn.dds.ui;
 
+import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
+import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.jugador.Jugador;
 
 public class JugadorViewModel {
@@ -14,6 +16,23 @@ public class JugadorViewModel {
 	public String getNombre()
 	{
 		return jugador.getNombre();
+	}
+	
+	public String getApodo()
+	{
+		return jugador.getApodo();
+	}
+	
+	public String getPromedioUltimoPartido()
+	{
+		return new PromedioCalificacionesUltimoPartido().calificar(jugador).toString();
+	}
+	
+	public String getPromedioGeneral()
+	{
+		return new PromedioUltimasNCalificaciones(PromedioUltimasNCalificaciones.TODAS)
+					.calificar(jugador)
+					.toString();
 	}
 
 }
