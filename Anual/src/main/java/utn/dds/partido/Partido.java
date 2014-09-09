@@ -231,4 +231,14 @@ public class Partido {
 	public List<Jugador> getEquipo2(){
 		return this.equipo2;
 	}
+	
+	/**
+	 * Evalua si unJugador jugo este partido
+	 * @param unJugador
+	 * @return True si unJugador jugo el partido. Falso caso contrario
+	 */
+	public Boolean jugoPartido(Jugador unJugador)
+	{
+		return equipo1.contains(unJugador) || equipo2.contains(unJugador);
+	}
 }
