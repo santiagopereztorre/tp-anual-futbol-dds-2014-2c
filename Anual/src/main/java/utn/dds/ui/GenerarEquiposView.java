@@ -1,6 +1,7 @@
 package utn.dds.ui;
 
 import org.uqbar.arena.layout.VerticalLayout;
+import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
@@ -12,12 +13,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 
 	public GenerarEquiposView() {
 		super(new GenerarEquiposViewModel(new Partido()));
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -28,21 +25,30 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 
 		new Label(mainPanel).setText("Criterio de Seleccion de Jugadores");
 		RadioSelector<String> radioSelectorCriterios = new RadioSelector<>(mainPanel);
-		radioSelectorCriterios.setWidth(100);
+		radioSelectorCriterios.setWidth(300);
+		radioSelectorCriterios.setHeigth(30);
 		radioSelectorCriterios.bindValueToProperty("criterioSeleccionado");
 		radioSelectorCriterios.bindItemsToProperty("criterios");
 		
-		new Label(mainPanel).setText("Criterio");
-		new Label(mainPanel).bindValueToProperty("criterioSeleccionado");
+	//	new Label(mainPanel).setText("Criterio");
+	//	new Label(mainPanel).bindValueToProperty("criterioSeleccionado");
 		
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
 		RadioSelector<String> radioSelectorOrdenamiento = new RadioSelector<>(mainPanel);
-		radioSelectorOrdenamiento.setWidth(200);
+		radioSelectorOrdenamiento.setWidth(300);
 		radioSelectorOrdenamiento.bindValueToProperty("ordenamientoSeleccionado");
 		radioSelectorOrdenamiento.bindItemsToProperty("ordenamientos");
 		
-		 new Label(mainPanel).setText("Ordenamiento");
-		 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
+	//	 new Label(mainPanel).setText("Ordenamiento");
+	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
+		
+		new Button(mainPanel).setCaption("Generar equipos");
+		
+		new Label(mainPanel).setText("Resultado:");
+		
+		new Button(mainPanel).setCaption("Confirmar equipos");
+		
+		
 	}
 	
 	public static void main(String[] args) {
