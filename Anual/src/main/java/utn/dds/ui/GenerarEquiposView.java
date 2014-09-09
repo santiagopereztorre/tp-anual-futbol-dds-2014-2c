@@ -4,11 +4,12 @@ import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
 import org.uqbar.arena.windows.MainWindow;
+import utn.dds.partido.Partido;
 
 public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 
-	public GenerarEquiposView(GenerarEquiposViewModel model) {
-		super(model);
+	public GenerarEquiposView() {
+		super(new GenerarEquiposViewModel(new Partido()));
 		// TODO Auto-generated constructor stub
 	}
 
@@ -25,4 +26,7 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new RadioSelector<>(mainPanel);
 	}
 	
+	public static void main(String[] args) {
+		 new GenerarEquiposView().startApplication();
+	}
 }
