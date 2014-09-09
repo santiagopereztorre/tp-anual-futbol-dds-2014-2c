@@ -79,6 +79,16 @@ public class Jugador {
 		return amigos;
 	}
 	
+	public List<Infraccion> getInfracciones()
+	{
+		return infracciones;
+	}
+
+	public void setInfracciones(List<Infraccion> infracciones)
+	{
+		this.infracciones = infracciones;
+	}
+	
 	/**
 	 * Evalua si dos jugadores participaron del mismo partido
 	 * @param unJugador

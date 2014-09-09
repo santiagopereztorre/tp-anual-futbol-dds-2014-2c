@@ -1,7 +1,10 @@
 package utn.dds.ui;
 
+import java.util.List;
+
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.criterios.PromedioUltimasNCalificaciones;
+import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
 
 public class JugadorViewModel {
@@ -21,6 +24,11 @@ public class JugadorViewModel {
 	public String getApodo()
 	{
 		return jugador.getApodo();
+	}
+	
+	public List<Infraccion> getInfracciones()
+	{
+		return jugador.getInfracciones();
 	}
 	
 	public String getPromedioUltimoPartido()
