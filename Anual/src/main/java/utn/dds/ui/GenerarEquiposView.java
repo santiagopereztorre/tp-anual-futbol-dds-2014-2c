@@ -11,13 +11,12 @@ import org.uqbar.arena.windows.MainWindow;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
+@SuppressWarnings("serial")
 public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 
 	public GenerarEquiposView() {
 		super(new GenerarEquiposViewModel(new Partido()));
 	}
-
-	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void createContents(Panel mainPanel) {
@@ -55,7 +54,6 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new List<Jugador>(mainPanel).bindItemsToProperty("equipo2");
 		
 		new Button(mainPanel).setCaption("Confirmar equipos");
-		
 		
 	}
 	
