@@ -24,6 +24,30 @@ public class Jugador {
 	private String mail;
 	private int handicap;
 	
+	private String nombre;
+	private String apodo;
+
+	
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	public void setNombre(String nombre)
+	{
+		this.nombre = nombre;
+	}
+
+	public String getApodo()
+	{
+		return apodo;
+	}
+
+	public void setApodo(String apodo)
+	{
+		this.apodo = apodo;
+	}
+
 	public String getMail() {
 		return mail;
 	}

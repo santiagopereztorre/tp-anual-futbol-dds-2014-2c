@@ -10,5 +10,10 @@ public class JugadorViewModel {
 	{
 		this.jugador = jugador;
 	}
+	
+	public String getNombre()
+	{
+		return jugador.getNombre();
+	}
 
 }
