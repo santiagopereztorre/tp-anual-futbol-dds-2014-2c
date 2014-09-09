@@ -6,7 +6,6 @@ import java.util.List;
 
 import utn.dds.criterios.Criterio;
 import utn.dds.criterios.Handicap;
-import utn.dds.criterios.Mix;
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.divisores.Divisor;
@@ -140,7 +139,6 @@ public class GenerarEquiposViewModel {
 
 	public List<Divisor> getDivisores(){
 		return Arrays.asList(new ParImpar(), new UnoParaAcaDosParaAllaDosParaAca());
-		//return Arrays.asList("Par/impar", "1,4,5,8,9");
 	}
 	
 	public Divisor getDivisorSeleccionado() {
@@ -180,8 +178,6 @@ public class GenerarEquiposViewModel {
 
 	public List<Criterio> getCriterios(){
 		return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones());
-		//return Arrays.asList(new Handicap(), new PromedioCalificacionesUltimoPartido());
-		//return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones(), new Mix());
 	}
 	
 	public void armarEquipos() {

@@ -36,18 +36,11 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		radioSelectorDivisores.bindValueToProperty("divisorSeleccionado");
 		radioSelectorDivisores.bindItemsToProperty("divisores");
 
-		//	new Label(mainPanel).setText("Criterio");
-	//	new Label(mainPanel).bindValueToProperty("criterioSeleccionado");
-		
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
 		RadioSelector<Criterio> radioSelectorCriteriosOrdenamiento = new RadioSelector<>(mainPanel);
 		radioSelectorCriteriosOrdenamiento.setWidth(300);
 		radioSelectorCriteriosOrdenamiento.bindValueToProperty("criterioSeleccionado");
 		radioSelectorCriteriosOrdenamiento.bindItemsToProperty("criterios");
-		
-		
-	//	 new Label(mainPanel).setText("Ordenamiento");
-	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
 		
 		TextBox parametro = new TextBox(mainPanel);
 		parametro.bindValueToProperty("parametroN");
