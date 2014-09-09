@@ -19,6 +19,7 @@ import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
 
 import org.junit.Before;
+import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
 @Observable
@@ -165,8 +166,12 @@ public class GenerarEquiposViewModel {
 	
 	public void armarEquipos() {
 		partido.armarEquipos(this.criterioSeleccionado, this.divisorSeleccionado);
+		
 		this.setEquipo1(this.partido.getEquipo1());
 		this.setEquipo2(this.partido.getEquipo2());
+		
+		ObservableUtils.firePropertyChanged(this, "equipo1", getEquipo1());
+		ObservableUtils.firePropertyChanged(this, "equipo2", getEquipo2());
 	}
 	
 }
