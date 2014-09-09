@@ -41,7 +41,6 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
 		RadioSelector<Criterio> radioSelectorCriteriosOrdenamiento = new RadioSelector<>(mainPanel);
-		radioSelectorCriteriosOrdenamiento.onSelection(() -> this.manejarVisibilidadTxtParametro() );
 		radioSelectorCriteriosOrdenamiento.setWidth(300);
 		radioSelectorCriteriosOrdenamiento.bindValueToProperty("criterioSeleccionado");
 		radioSelectorCriteriosOrdenamiento.bindItemsToProperty("criterios");
@@ -52,7 +51,9 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		
 		TextBox parametro = new TextBox(mainPanel);
 		parametro.bindValueToProperty("parametroN");
-	//	radioSelectorCriteriosOrdenamiento.onSelection()
+		parametro.bindVisibleToProperty("visibilidadParametroN");
+		
+		radioSelectorCriteriosOrdenamiento.onSelection(() -> this.manejarVisibilidadTxtParametro(parametro) );
 		
 		new Button(mainPanel)
 			.setCaption("Generar equipos")
@@ -93,10 +94,12 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		 new GenerarEquiposView().startApplication();
 	}
 	
-	private void manejarVisibilidadTxtParametro(){
+	private void manejarVisibilidadTxtParametro(TextBox parametro){
 		
 		if (PromedioUltimasNCalificaciones.class.getClass().isInstance(this.getModelObject().getCriterioSeleccionado())){
-			
+			parametro.setHeigth(30);
+		}else{
+			parametro.setHeigth(00);
 		}
 			
 	}
