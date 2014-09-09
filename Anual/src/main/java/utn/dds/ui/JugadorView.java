@@ -9,9 +9,10 @@ import org.uqbar.arena.windows.WindowOwner;
 import utn.dds.ui.JugadorViewModel;
 import utn.dds.jugador.Jugador;
 
+@SuppressWarnings("serial")
 public class JugadorView extends Window<JugadorViewModel> {
 
-	private static final long serialVersionUID = 1L;
+	private static final WindowOwner GenerarEquiposView = null;
 	private WindowOwner winOwner;
 
 	public JugadorView(Jugador unJugador, WindowOwner ventanaPadre)

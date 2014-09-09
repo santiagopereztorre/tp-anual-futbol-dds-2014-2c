@@ -29,8 +29,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		RadioSelector<String> radioSelectorCriterios = new RadioSelector<>(mainPanel);
 		radioSelectorCriterios.setWidth(300);
 		radioSelectorCriterios.setHeigth(30);
-		radioSelectorCriterios.bindValueToProperty("criterioSeleccionado");
-		radioSelectorCriterios.bindItemsToProperty("criterios");
+		radioSelectorCriterios.bindValueToProperty("divisorSeleccionado");
+		radioSelectorCriterios.bindItemsToProperty("divisores");
 		
 	//	new Label(mainPanel).setText("Criterio");
 	//	new Label(mainPanel).bindValueToProperty("criterioSeleccionado");
@@ -38,8 +38,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Label(mainPanel).setText("Criterio de Ordenamiento de Jugadores");
 		RadioSelector<String> radioSelectorOrdenamiento = new RadioSelector<>(mainPanel);
 		radioSelectorOrdenamiento.setWidth(300);
-		radioSelectorOrdenamiento.bindValueToProperty("ordenamientoSeleccionado");
-		radioSelectorOrdenamiento.bindItemsToProperty("ordenamientos");
+		radioSelectorOrdenamiento.bindValueToProperty("criterioSeleccionado");
+		radioSelectorOrdenamiento.bindItemsToProperty("criterios");
 		
 	//	 new Label(mainPanel).setText("Ordenamiento");
 	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
@@ -54,8 +54,14 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Label(mainPanel).setText("Equipo 2:");
 		new List<Jugador>(mainPanel).bindItemsToProperty("equipo2");
 		
+<<<<<<< HEAD
 		new Button(mainPanel).setCaption("Confirmar equipos").setHeigth(20);
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
+=======
+		new Button(mainPanel)
+			.setCaption("Confirmar equipos")
+			.onClick(() -> getModelObject().armarEquipos());
+>>>>>>> origin/master
 		
 	}
 	
