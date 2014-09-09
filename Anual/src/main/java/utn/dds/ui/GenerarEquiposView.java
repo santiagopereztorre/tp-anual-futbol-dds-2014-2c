@@ -54,14 +54,12 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Label(mainPanel).setText("Equipo 2:");
 		new List<Jugador>(mainPanel).bindItemsToProperty("equipo2");
 		
-<<<<<<< HEAD
 		new Button(mainPanel).setCaption("Confirmar equipos").setHeigth(20);
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
-=======
+
 		new Button(mainPanel)
 			.setCaption("Confirmar equipos")
 			.onClick(() -> getModelObject().armarEquipos());
->>>>>>> origin/master
 		
 	}
 	

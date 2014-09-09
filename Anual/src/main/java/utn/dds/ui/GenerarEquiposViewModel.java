@@ -18,11 +18,7 @@ import org.uqbar.commons.utils.Observable;
 public class GenerarEquiposViewModel {
 
 	public GenerarEquiposViewModel(Partido partido) {
-<<<<<<< HEAD
-		
-=======
 		this.partido = partido;
->>>>>>> origin/master
 	}
 	
 	private Divisor divisorSeleccionado;
