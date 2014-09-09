@@ -163,7 +163,7 @@ public class Jugador {
 		return this.calificaciones;
 	}
 	
-	public int getHandicap(){
+	public Integer getHandicap(){
 		return this.handicap;
 	}
 	

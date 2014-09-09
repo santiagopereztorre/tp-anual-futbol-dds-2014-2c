@@ -56,7 +56,30 @@ public class GenerarEquiposViewModel {
 		Jugador leandro = new Jugador();
 		leandro.setNombre("leandro");
 		
-
+		Partido riverboca = new Partido(new Date());
+		riverboca.inscribirJugador(carlos, new Estandar());
+		riverboca.inscribirJugador(juancho, new Estandar());
+		riverboca.inscribirJugador(juan, new Estandar());
+		riverboca.inscribirJugador(lucas, new Estandar());
+		riverboca.inscribirJugador(pato, new Estandar());
+		riverboca.inscribirJugador(martin, new Estandar());
+		riverboca.inscribirJugador(leandro, new Estandar());
+		riverboca.inscribirJugador(marcelo, new Estandar());
+		riverboca.inscribirJugador(lalo, new Estandar());
+		riverboca.inscribirJugador(pepito, new Estandar());
+		
+		carlos.calificar(juancho, riverboca, 2, "Es horrible");
+		carlos.calificar(juan, riverboca, 3, "Arquero manco");
+		carlos.calificar(pato, riverboca, 1, "Es ma malo que el cigarro");
+		carlos.calificar(lucas, riverboca, 6, "Jugo bien");
+		carlos.calificar(martin, riverboca, 10, "La estrella");
+		carlos.calificar(marcelo, riverboca, 9, "Sabella marcelito es argentino");
+		carlos.calificar(lalo, riverboca, 5, "Regular");
+		carlos.calificar(pepito, riverboca, 7, "Lateral con proyeccion");
+		carlos.calificar(leandro, riverboca, 4, "Defensor rustico");
+		martin.calificar(carlos, riverboca, 8, "Un volante con magia");
+		
+		
 		partido = new Partido(new Date());
 		partido.inscribirJugador(lalo, new Solidaria());
 		partido.inscribirJugador(juan, new Estandar());

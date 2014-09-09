@@ -2,6 +2,9 @@ package utn.dds.infraccion;
 
 import java.util.Date;
 
+import org.uqbar.commons.utils.Observable;
+
+@Observable
 public class Infraccion {
 	
 	private String motivo;

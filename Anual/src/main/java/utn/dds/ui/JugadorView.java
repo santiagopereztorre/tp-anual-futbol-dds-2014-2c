@@ -55,26 +55,32 @@ public class JugadorView extends Window<JugadorViewModel> {
 		
 		// Infracciones
 		new Label(mainPanel).setText("Infracciones:");
-		Table<Infraccion> table = new Table<Infraccion>(mainPanel, Infraccion.class); 
-		table.setHeigth(200); 
-		table.setWidth(300); 
-		armarTablaInfracciones(table);
+		Table<Infraccion> table = armarTablaInfracciones(mainPanel);
 		table.bindItemsToProperty("infracciones");
 		
 		// Cant partidos jugados
 		new Label(mainPanel).setText("Cantidad de partidos:");
-		new Label(mainPanel).bindValueToProperty("cantidadPartidosJugados");
+		//new Label(mainPanel).bindValueToProperty("cantidadPartidosJugados");
 	}
 	
-	void armarTablaInfracciones(Table<Infraccion> tabla)
+	private Table<Infraccion> armarTablaInfracciones(Panel mainPanel)
 	{
+		Table<Infraccion> tabla = new Table<Infraccion>(mainPanel, Infraccion.class);
+		
+		tabla.setHeigth(200); 
+		tabla.setWidth(300);
+		
 		new Column<Infraccion>(tabla)
 			.setTitle("Fecha")
-			.setFixedSize(100);
+			.setFixedSize(100)
+			.bindContentsToProperty("fecha");
 
 		new Column<Infraccion>(tabla)
 			.setTitle("Motivo")
-			.setFixedSize(100);
+			.setFixedSize(100)
+			.bindContentsToProperty("motivo");
+		
+		return tabla;
 	}
 	
 	/*public static void main(String[] args)
