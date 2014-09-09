@@ -11,6 +11,7 @@ import org.uqbar.lacar.ui.model.Action;
 
 import utn.dds.criterios.Criterio;
 import utn.dds.divisores.Divisor;
+import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
@@ -62,8 +63,26 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 
 		new Button(mainPanel).setCaption("Confirmar equipos");
+		
+		new Button(mainPanel)
+			.setCaption("VER JUGADOR PRUEBA")
+			.onClick(() -> new JugadorView(jugadorPrueba(), this).open());
 			
 		
+	}
+	
+	private Jugador jugadorPrueba()
+	{
+		Jugador unJugador = new Jugador();
+		unJugador.setApodo("Jose");
+		unJugador.setNombre("Roberto Carlo");
+		unJugador.setHandicap(5);
+		
+		unJugador.recibirInfraccion(new Infraccion("Malo"));
+		unJugador.recibirInfraccion(new Infraccion("-Malo"));
+		unJugador.recibirInfraccion(new Infraccion("Ere"));
+		
+		return unJugador;
 	}
 	
 	public static void main(String[] args) {

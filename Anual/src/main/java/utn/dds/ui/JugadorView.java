@@ -60,7 +60,7 @@ public class JugadorView extends Window<JugadorViewModel> {
 		
 		// Cant partidos jugados
 		new Label(mainPanel).setText("Cantidad de partidos:");
-		new Label(mainPanel).bindValueToProperty("cantidadPartidosJugados");
+		//new Label(mainPanel).bindValueToProperty("cantidadPartidosJugados");
 	}
 	
 	private Table<Infraccion> armarTablaInfracciones(Panel mainPanel)
@@ -72,11 +72,13 @@ public class JugadorView extends Window<JugadorViewModel> {
 		
 		new Column<Infraccion>(tabla)
 			.setTitle("Fecha")
-			.setFixedSize(100);
+			.setFixedSize(100)
+			.bindContentsToProperty("fecha");
 
 		new Column<Infraccion>(tabla)
 			.setTitle("Motivo")
-			.setFixedSize(100);
+			.setFixedSize(100)
+			.bindContentsToProperty("motivo");
 		
 		return tabla;
 	}
