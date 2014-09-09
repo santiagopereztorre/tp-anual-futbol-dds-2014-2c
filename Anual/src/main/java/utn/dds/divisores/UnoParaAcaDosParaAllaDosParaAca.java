@@ -12,6 +12,10 @@ public class UnoParaAcaDosParaAllaDosParaAca implements Divisor {
 	public void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
 			List<JugadorConCalificacion> jugadoresCalificados) {
 		Collections.sort(jugadoresCalificados);
+		
+		equipo1.clear();
+		equipo2.clear();
+		
 		equipo1.add(jugadoresCalificados.get(0).getJugador());
 		equipo2.add(jugadoresCalificados.get(1).getJugador());
 		equipo2.add(jugadoresCalificados.get(2).getJugador());

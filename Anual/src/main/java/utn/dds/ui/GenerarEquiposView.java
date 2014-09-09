@@ -6,6 +6,7 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
+import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.lacar.ui.model.Action;
 
@@ -47,6 +48,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 	//	 new Label(mainPanel).setText("Ordenamiento");
 	//	 new Label(mainPanel).bindValueToProperty("ordenamientoSeleccionado");
 		
+	//	new TextBox(mainPanel).bindValueToProperty("parametroCriterio")
+		
 		new Button(mainPanel)
 			.setCaption("Generar equipos")
 			.onClick(() -> getModelObject().armarEquipos());
@@ -62,8 +65,6 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 
 		new Button(mainPanel).setCaption("Confirmar equipos");
-			
-		
 	}
 	
 	public static void main(String[] args) {

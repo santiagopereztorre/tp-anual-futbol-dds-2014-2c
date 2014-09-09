@@ -170,4 +170,8 @@ public class Jugador {
 	public void setHandicap(int unHandicap){
 		this.handicap = unHandicap;
 	}
+	
+	public String toString(){
+		return this.nombre;
+	}
 }

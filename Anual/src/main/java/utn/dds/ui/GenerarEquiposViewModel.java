@@ -27,15 +27,35 @@ public class GenerarEquiposViewModel {
 	public GenerarEquiposViewModel(Partido partido) {
 
 		Jugador juan = new Jugador();
+		juan.setNombre("juan");
+		
 		Jugador lalo = new Jugador();
+		lalo.setNombre("lalo");
+		
 		Jugador juancho = new Jugador();
+		juancho.setNombre("juancho");
+		
 		Jugador carlos = new Jugador();
+		carlos.setNombre("carlos");
+		
 		Jugador pepito = new Jugador();
+		pepito.setNombre("pepito");
+		
 		Jugador martin = new Jugador();
+		martin.setNombre("martin");
+		
 		Jugador lucas = new Jugador();
+		lucas.setNombre("lucas");
+		
 		Jugador pato = new Jugador();
+		pato.setNombre("pato");
+		
 		Jugador marcelo = new Jugador();
+		marcelo.setNombre("marcelo");
+		
 		Jugador leandro = new Jugador();
+		leandro.setNombre("leandro");
+		
 
 		partido = new Partido(new Date());
 		partido.inscribirJugador(lalo, new Solidaria());
@@ -68,6 +88,7 @@ public class GenerarEquiposViewModel {
 	private List<Jugador> equipo1;
 	private List<Jugador> equipo2;
 	private Partido partido;
+	
 		
 	public List<Jugador> getEquipo1() {
 		return equipo1;

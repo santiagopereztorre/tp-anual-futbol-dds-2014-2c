@@ -12,6 +12,10 @@ public class ParImpar implements Divisor {
 	public void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
 			List<JugadorConCalificacion> jugadoresCalificados) {
 		Collections.sort(jugadoresCalificados);
+		
+		equipo1.clear();
+		equipo2.clear();
+		
 		for (int i = 0; i < jugadoresCalificados.size(); i ++)
 		{
 			if (esPar(i))
