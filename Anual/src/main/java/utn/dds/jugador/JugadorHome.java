@@ -62,7 +62,7 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 			}
 		};
 	}
-	
+
 	public static JugadorHome getInstancia() {
 		if (instancia == null) {
 			instancia = new JugadorHome();

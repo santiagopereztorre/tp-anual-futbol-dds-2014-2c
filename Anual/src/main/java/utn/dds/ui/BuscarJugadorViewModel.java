@@ -7,6 +7,7 @@ import org.uqbar.commons.utils.Observable;
 
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
+import utn.dds.jugador.JugadorWrapper;
 
 @Observable
 public class BuscarJugadorViewModel {
@@ -15,7 +16,7 @@ public class BuscarJugadorViewModel {
 	private List<Jugador> jugadores;
 	
 	public BuscarJugadorViewModel() {
-		jugador = new Jugador();
+		jugador = new JugadorWrapper();
 		jugador.setFechaDeNacimiento(null);
 	}
 	
@@ -36,6 +37,7 @@ public class BuscarJugadorViewModel {
 	public void setApodo(String apodo)
 	{
 		jugador.setApodo(apodo);
+		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
 	public List<Jugador> getJugadores() {

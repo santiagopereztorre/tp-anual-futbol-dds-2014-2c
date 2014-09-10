@@ -50,8 +50,8 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		
 		new Label(mainPanel).setText("Handicap");
 		List<String> listaDeOpciones = new ArrayList<String>();
-		listaDeOpciones.add("desde");
-		listaDeOpciones.add("hasta");
+		listaDeOpciones.add("Desde");
+		listaDeOpciones.add("Hasta");
 		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description");
 //		new TextBox(mainPanel).bindValueToProperty("handicap");
 		
