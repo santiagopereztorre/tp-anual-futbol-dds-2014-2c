@@ -222,7 +222,7 @@ public class GenerarEquiposViewModel {
 	public void confirmarEquipos(){
 		PartidoHome.getInstancia().create(partido);
 		partido = new Partido();
-		this.inicializarPartido();
+		this.inicializarPartido();	
 	}
 	
 	public Jugador abrirJugadorSeleccionado(){

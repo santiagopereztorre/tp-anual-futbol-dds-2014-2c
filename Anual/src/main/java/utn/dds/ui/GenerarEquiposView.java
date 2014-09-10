@@ -59,13 +59,11 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		List<Jugador> equipo1  = new List<Jugador>(mainPanel);
 		equipo1.bindItemsToProperty("equipo1");
 		equipo1.bindValueToProperty("jugadorSeleccionado");
-	//	equipo1.onSelection(() -> new JugadorView(getModelObject().abrirJugadorSeleccionado(), this).open());
 		
 		new Label(mainPanel).setText("Equipo 2:");
 		List<Jugador> equipo2 = new List<Jugador>(mainPanel);
 		equipo2.bindItemsToProperty("equipo2");
 		equipo2.bindValueToProperty("jugadorSeleccionado");
-	//	equipo2.onSelection(() -> new JugadorView(getModelObject().abrirJugadorSeleccionado(), this).open());
 		
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 
