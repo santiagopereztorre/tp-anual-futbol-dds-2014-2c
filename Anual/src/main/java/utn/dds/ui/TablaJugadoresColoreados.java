@@ -30,6 +30,9 @@ public class TablaJugadoresColoreados extends Table<Jugador>{
 		.setTitle("Handicap")
 		.setFixedSize(100)
 		.bindContentsToProperty("handicap");
+	//	.setBackground(()-> {if);
+		
+		
 		
 		return tabla;
 	}
