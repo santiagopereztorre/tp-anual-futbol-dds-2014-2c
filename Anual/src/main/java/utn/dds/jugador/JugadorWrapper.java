@@ -11,11 +11,28 @@ public class JugadorWrapper extends Jugador{
 	
 	private int handicapDesdeOHasta;
 	private int promedioDesdeOHasta;
-	
+	private Integer promedio;
+	private Boolean fueInfraccionado;
+
+	public Boolean getFueInfraccionado() {
+		return fueInfraccionado;
+	}
+
+	public void setFueInfraccionado(Boolean fueInfraccionado) {
+		this.fueInfraccionado = fueInfraccionado;
+	}
+
 	public JugadorWrapper() {
 		handicapDesdeOHasta = HASTA;
+		promedioDesdeOHasta = HASTA;
 	}
 	
+	public Integer getPromedio() {
+		return promedio;
+	}
+	public void setPromedio(Integer promedio) {
+		this.promedio = promedio;
+	}
 	public int getHandicapDesdeOHasta() {
 		return handicapDesdeOHasta;
 	}

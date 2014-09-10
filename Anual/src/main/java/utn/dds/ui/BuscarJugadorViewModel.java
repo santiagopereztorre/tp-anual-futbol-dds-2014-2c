@@ -5,6 +5,7 @@ import java.util.List;
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
+import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
 import utn.dds.jugador.JugadorWrapper;
@@ -64,10 +65,47 @@ public class BuscarJugadorViewModel {
 	public void setHandicap(String handicap)
 	{
 		if (handicap.equals("")) {
-			jugador.setHandicap(5);
+			jugador.setHandicap(-1);
 		} else {
 			jugador.setHandicap(Integer.parseInt(handicap));
 		}
+		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+	}
+	
+	public String getPromedioModificador() {
+		return jugador.getPromedioDesdeOHasta() == DESDE ? "Desde" : "Hasta";
+	}
+	
+	public void setPromedioModificador(String modificador) {
+		jugador.setPromedioDesdeOHasta(modificador.equals("Desde") ? DESDE : HASTA);
+		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+	}
+	
+	public String getPromedio()
+	{
+		if (jugador.getPromedio() == null) {
+			return "";
+		} else {
+			return Integer.toString(jugador.getPromedio());
+		}
+	}
+
+	public void setPromedio(String promedio)
+	{
+		if (promedio.equals("")) {
+			jugador.setPromedio(null);
+		} else {
+			jugador.setPromedio(Integer.parseInt(promedio));
+		}
+		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+	}
+	
+	public Boolean getInfracciones() {
+		return jugador.getFueInfraccionado();
+	}
+	
+	public void setInfracciones(Boolean fueInfraccionado) {
+		jugador.setFueInfraccionado(fueInfraccionado);
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	

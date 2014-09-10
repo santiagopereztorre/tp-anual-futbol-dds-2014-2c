@@ -14,6 +14,7 @@ import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
+import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
@@ -30,6 +31,8 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		jugador.setNombre("santi");
 		jugador.setApodo("diego");
 		jugador.setHandicap(6);
+		Infraccion inf1 = new Infraccion("san");
+		jugador.recibirInfraccion(inf1);
 		JugadorHome.getInstancia().create(jugador);
 		
 		winOwner = ventanaPadre;
@@ -57,11 +60,11 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		new TextBox(mainPanel).bindValueToProperty("handicap");
 		
 		new Label(mainPanel).setText("Promedio del ultimo partido");
-		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description");
-//		new TextBox(mainPanel).bindValueToProperty("promedio");
+		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description").bindValueToProperty("promedioModificador");
+		new TextBox(mainPanel).bindValueToProperty("promedio");
 		
 		new Label(mainPanel).setText("Tuvo infracciones: ");
-//		new CheckBox(mainPanel).bindValueToProperty("infraciones");
+		new CheckBox(mainPanel).bindValueToProperty("infracciones");
 		
 		Table<Jugador> table = armarTablaInfracciones(mainPanel);
 		table.bindItemsToProperty("jugadores");
