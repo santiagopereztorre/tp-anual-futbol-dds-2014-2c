@@ -21,8 +21,8 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 	}
 
 	@Override
-	protected Predicate<Jugador> getCriterio(
-			Jugador example) {
+	protected Predicate<Jugador> getCriterio(Jugador example2) {
+		JugadorWrapper example = (JugadorWrapper) example2;
 		Predicate<Jugador> predicate = this.getCriterioTodas();
 		if (example.getNombre() != null && !example.getNombre().equals("")) {
 			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorNombre(example.getNombre()));

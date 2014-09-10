@@ -40,6 +40,17 @@ public class BuscarJugadorViewModel {
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
+	public String getHandicap()
+	{
+		return jugador.getApodo();
+	}
+
+	public void setHandicap(String handicap)
+	{
+		jugador.setApodo(handicap);
+		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+	}
+	
 	public List<Jugador> getJugadores() {
 		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
 		return jugadores;
