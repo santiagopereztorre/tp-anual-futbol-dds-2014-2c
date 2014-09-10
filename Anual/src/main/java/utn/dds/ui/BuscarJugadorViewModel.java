@@ -11,8 +11,11 @@ import utn.dds.jugador.JugadorWrapper;
 
 @Observable
 public class BuscarJugadorViewModel {
+
+	public static final int DESDE = 0;
+	public static final int HASTA = 1;
 	
-	private Jugador jugador;
+	private JugadorWrapper jugador;
 	private List<Jugador> jugadores;
 	
 	public BuscarJugadorViewModel() {
@@ -40,14 +43,31 @@ public class BuscarJugadorViewModel {
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
+	public String getHandicapModificador() {
+		return jugador.getHandicapDesdeOHasta() == DESDE ? "Desde" : "Hasta";
+	}
+	
+	public void setHandicapModificador(String modificador) {
+		jugador.setHandicapDesdeOHasta(modificador.equals("Desde") ? DESDE : HASTA);
+		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+	}
+	
 	public String getHandicap()
 	{
-		return jugador.getApodo();
+		if (jugador.getHandicap() == -1) {
+			return "";
+		} else {
+			return jugador.getHandicap().toString();
+		}
 	}
 
 	public void setHandicap(String handicap)
 	{
-		jugador.setApodo(handicap);
+		if (handicap.equals("")) {
+			jugador.setHandicap(5);
+		} else {
+			jugador.setHandicap(Integer.parseInt(handicap));
+		}
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	

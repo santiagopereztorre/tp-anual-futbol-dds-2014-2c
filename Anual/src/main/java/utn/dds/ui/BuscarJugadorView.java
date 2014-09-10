@@ -29,6 +29,7 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		Jugador jugador = new Jugador();
 		jugador.setNombre("santi");
 		jugador.setApodo("diego");
+		jugador.setHandicap(6);
 		JugadorHome.getInstancia().create(jugador);
 		
 		winOwner = ventanaPadre;
@@ -52,8 +53,8 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		List<String> listaDeOpciones = new ArrayList<String>();
 		listaDeOpciones.add("Desde");
 		listaDeOpciones.add("Hasta");
-		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description");
-//		new TextBox(mainPanel).bindValueToProperty("handicap");
+		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description").bindValueToProperty("handicapModificador");
+		new TextBox(mainPanel).bindValueToProperty("handicap");
 		
 		new Label(mainPanel).setText("Promedio del ultimo partido");
 		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description");

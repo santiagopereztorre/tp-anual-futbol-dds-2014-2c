@@ -7,6 +7,9 @@ import org.apache.commons.collections15.functors.AndPredicate;
 import org.uqbar.commons.model.*;
 
 public class JugadorHome extends CollectionBasedHome<Jugador> {
+
+	public static final int DESDE = 0;
+	public static final int HASTA = 1;
 	
 	private static JugadorHome instancia;
 	
@@ -33,7 +36,25 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		if (example.getFechaDeNacimiento() != null) {
 			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorFechaDeNacimiento(example.getFechaDeNacimiento()));
 		}
+		if (example.getHandicapDesdeOHasta() != -1 && example.getHandicap() != null) {
+			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorHandicap(example.getHandicapDesdeOHasta(), example.getHandicap()));
+		}
 		return predicate;
+	}
+
+	private Predicate<? super Jugador> getCriterioPorHandicap(int handicapDesdeOHasta, Integer handicap) {
+		return new Predicate<Jugador>() {
+			@Override
+			public boolean evaluate(Jugador jugador) {
+				if (handicapDesdeOHasta == DESDE) {
+					return jugador.getHandicap() < handicap;
+				} else if (handicapDesdeOHasta == HASTA) {
+					return jugador.getHandicap() > handicap;
+				} else {
+					return false;
+				}
+			}
+		};
 	}
 
 	private Predicate<Jugador> getCriterioPorNombre(String nombre) {

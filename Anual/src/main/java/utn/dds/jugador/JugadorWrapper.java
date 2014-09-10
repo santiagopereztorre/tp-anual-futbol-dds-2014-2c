@@ -12,6 +12,10 @@ public class JugadorWrapper extends Jugador{
 	private int handicapDesdeOHasta;
 	private int promedioDesdeOHasta;
 	
+	public JugadorWrapper() {
+		handicapDesdeOHasta = HASTA;
+	}
+	
 	public int getHandicapDesdeOHasta() {
 		return handicapDesdeOHasta;
 	}
