@@ -47,8 +47,6 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		parametro.bindValueToProperty("parametroN");
 		parametro.bindVisibleToProperty("visibilidadParametroN");
 		
-		radioSelectorCriteriosOrdenamiento.onSelection(() -> this.manejarVisibilidadTxtParametro(parametro) );
-		
 		new Button(mainPanel)
 			.setCaption("Generar equipos")
 			.onClick(() -> getModelObject().armarEquipos());
@@ -88,15 +86,5 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		 new GenerarEquiposView().startApplication();
 		 java.util.List<Partido> listaDePartidos = PartidoHome.getInstancia().allInstances();
 		 listaDePartidos.forEach(System.out::println);
-	}
-		
-	private void manejarVisibilidadTxtParametro(TextBox parametro){
-		
-		if (PromedioUltimasNCalificaciones.class.getClass().isInstance(this.getModelObject().getCriterioSeleccionado())){
-			parametro.setHeigth(30);
-		}else{
-			parametro.setHeigth(00);
-		}
-			
 	}
 }

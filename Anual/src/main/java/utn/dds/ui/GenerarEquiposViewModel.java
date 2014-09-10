@@ -141,7 +141,9 @@ public class GenerarEquiposViewModel {
 	}
 
 	public List<Divisor> getDivisores(){
-		return Arrays.asList(new ParImpar(), new UnoParaAcaDosParaAllaDosParaAca());
+		Divisor parImpar = new ParImpar();
+		this.setDivisorSeleccionado(parImpar);
+		return Arrays.asList(parImpar, new UnoParaAcaDosParaAllaDosParaAca());
 	}
 	
 	public Divisor getDivisorSeleccionado() {
@@ -180,7 +182,9 @@ public class GenerarEquiposViewModel {
 	}
 
 	public List<Criterio> getCriterios(){
-		return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones());
+		Criterio handicap = new Handicap();
+		this.setCriterioSeleccionado(handicap);
+		return Arrays.asList(handicap, new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones());
 	}
 	
 	public void armarEquipos() {
