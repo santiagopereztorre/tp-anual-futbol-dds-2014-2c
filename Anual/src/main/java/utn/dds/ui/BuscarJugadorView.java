@@ -29,7 +29,7 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		Jugador jugador = new Jugador();
 		jugador.setNombre("santi");
 		jugador.setApodo("diego");
-		jugador.setHandicap(6);
+		jugador.setHandicap(12);
 		Infraccion inf1 = new Infraccion("san");
 		jugador.recibirInfraccion(inf1);
 		JugadorHome.getInstancia().create(jugador);
@@ -65,11 +65,13 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		new Label(mainPanel).setText("Tuvo infracciones: ");
 		new CheckBox(mainPanel).bindValueToProperty("infracciones");
 		
-		Table<Jugador> table = armarTablaInfracciones(mainPanel);
+		
+//		Table<Jugador> table = armarTabla(mainPanel);
+		Table<Jugador> table = TablaJugadoresColoreados.armarTabla(mainPanel);
 		table.bindItemsToProperty("jugadores");
 	}
-	
-	private Table<Jugador> armarTablaInfracciones(Panel mainPanel)
+//	
+	private Table<Jugador> armarTabla(Panel mainPanel)
 	{
 		Table<Jugador> tabla = new Table<Jugador>(mainPanel, Jugador.class);
 		

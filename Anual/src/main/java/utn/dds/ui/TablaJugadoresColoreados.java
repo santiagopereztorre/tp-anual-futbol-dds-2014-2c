@@ -17,6 +17,37 @@ public class TablaJugadoresColoreados extends Table<Jugador>{
 		super(container);
 	}
 
+//	public static Table<Jugador> armarTabla(Panel mainPanel)
+//	{
+//		Table<Jugador> tabla = new Table<Jugador>(mainPanel, Jugador.class);
+//		
+//		tabla.setHeigth(200); 
+//		tabla.setWidth(300);
+//		
+//		new Column<Jugador>(tabla)
+//			.setTitle("Nombre")
+//			.setFixedSize(100)
+//			.bindContentsToProperty("nombre");
+//		
+//		new Column<Jugador>(tabla)
+//		.setTitle("Handicap")
+//		.setFixedSize(100)
+//		.bindContentsToProperty("handicap")
+//		.bindBackground("handicap", new Transformer<Integer, Color>() {
+//			@Override
+//			public Color transform(Integer hand) {
+//				if(hand > 8){
+//					return Color.BLUE;
+//				}else
+//				{
+//					return Color.WHITE;
+//				}
+//			}
+//		});
+//		
+//		return tabla;
+//	}
+	
 	public static Table<Jugador> armarTabla(Panel mainPanel)
 	{
 		Table<Jugador> tabla = new Table<Jugador>(mainPanel, Jugador.class);
@@ -28,6 +59,11 @@ public class TablaJugadoresColoreados extends Table<Jugador>{
 			.setTitle("Nombre")
 			.setFixedSize(100)
 			.bindContentsToProperty("nombre");
+		
+		new Column<Jugador>(tabla)
+		.setTitle("Apodo")
+		.setFixedSize(100)
+		.bindContentsToProperty("apodo");
 		
 		new Column<Jugador>(tabla)
 		.setTitle("Handicap")
@@ -45,8 +81,14 @@ public class TablaJugadoresColoreados extends Table<Jugador>{
 			}
 		});
 		
+		new Column<Jugador>(tabla)
+		.setTitle("Promedio")
+		.setFixedSize(100)
+		.bindContentsToProperty("promedio");
+		
 		return tabla;
 	}
+
 	private static final long serialVersionUID = 1L;
 
 }
