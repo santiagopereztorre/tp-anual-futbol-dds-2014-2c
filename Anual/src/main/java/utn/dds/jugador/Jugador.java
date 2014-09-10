@@ -10,6 +10,7 @@ import org.uqbar.commons.utils.Observable;
 import utn.dds.admin.Admin;
 import utn.dds.admin.Sugerencia;
 import utn.dds.calificacion.Calificacion;
+import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.excepciones.JugadorNoJugoElPartidoException;
 import utn.dds.jugador.excepciones.NoEsAmigoException;
@@ -187,5 +188,10 @@ public class Jugador extends Entity{
 
 	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
+	}
+	
+	public Integer getPromedio() {
+		PromedioCalificacionesUltimoPartido criterio = new PromedioCalificacionesUltimoPartido();
+		return criterio.calificar(this);
 	}
 }

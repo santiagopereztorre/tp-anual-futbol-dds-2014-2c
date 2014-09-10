@@ -86,6 +86,16 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 			.setFixedSize(100)
 			.bindContentsToProperty("apodo");
 		
+		new Column<Jugador>(tabla)
+			.setTitle("Handicap")
+			.setFixedSize(100)
+			.bindContentsToProperty("handicap");
+		
+		new Column<Jugador>(tabla)
+			.setTitle("Promedio")
+			.setFixedSize(100)
+			.bindContentsToProperty("promedio");
+		
 		return tabla;
 	}
 
