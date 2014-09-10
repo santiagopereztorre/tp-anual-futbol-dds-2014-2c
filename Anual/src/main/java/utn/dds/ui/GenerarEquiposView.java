@@ -7,6 +7,7 @@ import org.uqbar.arena.widgets.List;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
 import org.uqbar.arena.widgets.TextBox;
+import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.lacar.ui.model.Action;
 
@@ -56,14 +57,16 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Label(mainPanel).setText("Resultado:");
 		
 		new Label(mainPanel).setText("Equipo 1:");
-		List<Jugador> equipo1  = new List<Jugador>(mainPanel);
-		equipo1.bindItemsToProperty("equipo1");
-		equipo1.bindValueToProperty("jugadorSeleccionado");
+		Table<Jugador> tablita = TablaJugadoresColoreados.armarTabla(mainPanel);
+		tablita.bindItemsToProperty("equipo1");
+		tablita.bindValueToProperty("jugadorSeleccionado");
+		tablita.setHeigth(120);
 		
 		new Label(mainPanel).setText("Equipo 2:");
-		List<Jugador> equipo2 = new List<Jugador>(mainPanel);
-		equipo2.bindItemsToProperty("equipo2");
-		equipo2.bindValueToProperty("jugadorSeleccionado");
+		Table<Jugador> tablita2 = TablaJugadoresColoreados.armarTabla(mainPanel);
+		tablita2.bindItemsToProperty("equipo2");
+		tablita2.bindValueToProperty("jugadorSeleccionado");
+		tablita2.setHeigth(120);
 		
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 
