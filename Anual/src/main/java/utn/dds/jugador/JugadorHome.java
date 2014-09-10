@@ -50,15 +50,33 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		return predicate;
 	}
 
-	private Predicate<? super Jugador> getCriterioPorInfracciones(Boolean fueInfraccionado) {
+	private Predicate<Jugador> getCriterioPorNombre(String nombre) {
 		return new Predicate<Jugador>() {
 			@Override
 			public boolean evaluate(Jugador jugador) {
-				return jugador.getInfracciones().isEmpty() != fueInfraccionado;
+				return jugador.getNombre().toLowerCase().startsWith(nombre.toLowerCase());
 			}
 		};
 	}
 
+	private Predicate<Jugador> getCriterioPorApodo(String apodo) {
+		return new Predicate<Jugador>() {
+			@Override
+			public boolean evaluate(Jugador jugador) {
+				return jugador.getApodo().toLowerCase().contains(apodo.toLowerCase());
+			}
+		};
+	}
+	
+	private Predicate<Jugador> getCriterioPorFechaDeNacimiento(Date fechaDeNacimiento) {
+		return new Predicate<Jugador>() {
+			@Override
+			public boolean evaluate(Jugador jugador) {
+				return fechaDeNacimiento.after(jugador.getFechaDeNacimiento());
+			}
+		};
+	}
+	
 	private Predicate<? super Jugador> getCriterioPorPromedio(int promedioDesdeOHasta, Integer promedio) {
 		return new Predicate<Jugador>() {
 			@Override
@@ -91,29 +109,11 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		};
 	}
 
-	private Predicate<Jugador> getCriterioPorNombre(String nombre) {
+	private Predicate<? super Jugador> getCriterioPorInfracciones(Boolean fueInfraccionado) {
 		return new Predicate<Jugador>() {
 			@Override
 			public boolean evaluate(Jugador jugador) {
-				return jugador.getNombre().toLowerCase().startsWith(nombre.toLowerCase());
-			}
-		};
-	}
-
-	private Predicate<Jugador> getCriterioPorApodo(String apodo) {
-		return new Predicate<Jugador>() {
-			@Override
-			public boolean evaluate(Jugador jugador) {
-				return jugador.getApodo().toLowerCase().contains(apodo.toLowerCase());
-			}
-		};
-	}
-	
-	private Predicate<Jugador> getCriterioPorFechaDeNacimiento(Date fechaDeNacimiento) {
-		return new Predicate<Jugador>() {
-			@Override
-			public boolean evaluate(Jugador jugador) {
-				return fechaDeNacimiento.after(jugador.getFechaDeNacimiento());
+				return jugador.getInfracciones().isEmpty() != fueInfraccionado;
 			}
 		};
 	}

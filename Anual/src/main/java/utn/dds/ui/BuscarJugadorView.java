@@ -8,14 +8,11 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.Selector;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
-import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
-import utn.dds.jugador.JugadorHome;
 
 @SuppressWarnings("serial")
 public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
@@ -25,18 +22,9 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 
 	public BuscarJugadorView(WindowOwner ventanaPadre, BuscarJugadorViewModel unJugador) {
 		super(ventanaPadre, unJugador);
-
-		Jugador jugador = new Jugador();
-		jugador.setNombre("santi");
-		jugador.setApodo("diego");
-		jugador.setHandicap(12);
-		Infraccion inf1 = new Infraccion("san");
-		jugador.recibirInfraccion(inf1);
-		JugadorHome.getInstancia().create(jugador);
 		
 		winOwner = ventanaPadre;
 	}
-
 	
 	@Override
 	public void createContents(Panel mainPanel) {
@@ -65,40 +53,7 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		new Label(mainPanel).setText("Tuvo infracciones: ");
 		new CheckBox(mainPanel).bindValueToProperty("infracciones");
 		
-		
-//		Table<Jugador> table = armarTabla(mainPanel);
 		Table<Jugador> table = TablaJugadoresColoreados.armarTabla(mainPanel);
 		table.bindItemsToProperty("jugadores");
 	}
-//	
-	private Table<Jugador> armarTabla(Panel mainPanel)
-	{
-		Table<Jugador> tabla = new Table<Jugador>(mainPanel, Jugador.class);
-		
-		tabla.setHeigth(200); 
-		tabla.setWidth(300);
-		
-		new Column<Jugador>(tabla)
-			.setTitle("Nombre")
-			.setFixedSize(100)
-			.bindContentsToProperty("nombre");
-
-		new Column<Jugador>(tabla)
-			.setTitle("Apodo")
-			.setFixedSize(100)
-			.bindContentsToProperty("apodo");
-		
-		new Column<Jugador>(tabla)
-			.setTitle("Handicap")
-			.setFixedSize(100)
-			.bindContentsToProperty("handicap");
-		
-		new Column<Jugador>(tabla)
-			.setTitle("Promedio")
-			.setFixedSize(100)
-			.bindContentsToProperty("promedio");
-		
-		return tabla;
-	}
-
 }
