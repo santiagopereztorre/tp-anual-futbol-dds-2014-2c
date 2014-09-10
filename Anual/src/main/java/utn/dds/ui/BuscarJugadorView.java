@@ -1,17 +1,20 @@
 package utn.dds.ui;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.widgets.CheckBox;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.widgets.RadioSelector;
+import org.uqbar.arena.widgets.Selector;
 import org.uqbar.arena.widgets.TextBox;
+import org.uqbar.arena.widgets.tables.Column;
+import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
-import utn.dds.divisores.Divisor;
+import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
 
@@ -36,36 +39,51 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 	public void createContents(Panel mainPanel) {
 		setTitle("Buscar jugador");
 		
-		RadioSelector<String> criterioBusqueda = new RadioSelector<>(mainPanel);
-		criterioBusqueda.bindValueToProperty("criterioSeleccionado");
-		criterioBusqueda.bindItemsToProperty("criterios");
+		new Label(mainPanel).setText("Nombre comienza por: ");
+		new TextBox(mainPanel).bindValueToProperty("nombre");
 		
-		new Label(mainPanel).setText("Comienza por: ");
-		new TextBox(mainPanel);
+		new Label(mainPanel).setText("Apodo contiene: ");
+		new TextBox(mainPanel).bindValueToProperty("apodo");
 		
+		new Label(mainPanel).setText("Fecha de nacimiento anterior a (dd/mm/aaaa): ");
+//		new TextBox(mainPanel);
 		
-		new Button(mainPanel).setCaption("Buscar");
+		new Label(mainPanel).setText("Handicap");
+		List<String> listaDeOpciones = new ArrayList<String>();
+		listaDeOpciones.add("desde");
+		listaDeOpciones.add("hasta");
+		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description");
+//		new TextBox(mainPanel).bindValueToProperty("handicap");
 		
-		Jugador jugador = new Jugador();
-		jugador.setNombre("santi");		
-		List<Jugador> jugadores = JugadorHome.getInstancia().searchByExample(jugador);
+		new Label(mainPanel).setText("Promedio del ultimo partido");
+		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description");
+//		new TextBox(mainPanel).bindValueToProperty("promedio");
 		
-		new Label(mainPanel).setText("Esta vacio: " + jugadores.isEmpty());
-		new Label(mainPanel).setText("El nombre es: " + jugadores.get(0).getNombre());
+		new Label(mainPanel).setText("Tuvo infracciones: ");
+//		new CheckBox(mainPanel).bindValueToProperty("infraciones");
 		
-		jugador = new Jugador();
-		jugador.setApodo("diego");		
-		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
+		Table<Jugador> table = armarTablaInfracciones(mainPanel);
+		table.bindItemsToProperty("jugadores");
+	}
+	
+	private Table<Jugador> armarTablaInfracciones(Panel mainPanel)
+	{
+		Table<Jugador> tabla = new Table<Jugador>(mainPanel, Jugador.class);
 		
-		new Label(mainPanel).setText("Esta vacio: " + jugadores.isEmpty());
-		new Label(mainPanel).setText("El nombre es: " + jugadores.get(0).getNombre());
+		tabla.setHeigth(200); 
+		tabla.setWidth(300);
 		
-		jugador = new Jugador();
-		jugador.setFechaDeNacimiento(new Date());		
-		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
+		new Column<Jugador>(tabla)
+			.setTitle("Nombre")
+			.setFixedSize(100)
+			.bindContentsToProperty("nombre");
+
+		new Column<Jugador>(tabla)
+			.setTitle("Apodo")
+			.setFixedSize(100)
+			.bindContentsToProperty("apodo");
 		
-		new Label(mainPanel).setText("Esta vacio: " + jugadores.isEmpty());
-		new Label(mainPanel).setText("El nombre es: " + jugadores.get(0).getNombre());
+		return tabla;
 	}
 
 }

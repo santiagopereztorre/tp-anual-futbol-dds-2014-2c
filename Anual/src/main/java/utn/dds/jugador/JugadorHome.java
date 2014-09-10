@@ -24,10 +24,10 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 	protected Predicate<Jugador> getCriterio(
 			Jugador example) {
 		Predicate<Jugador> predicate = this.getCriterioTodas();
-		if (example.getNombre() != null) {
+		if (example.getNombre() != null && !example.getNombre().equals("")) {
 			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorNombre(example.getNombre()));
 		}
-		if (example.getApodo() != null) {
+		if (example.getApodo() != null && !example.getApodo().equals("")) {
 			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorApodo(example.getApodo()));
 		}
 		if (example.getFechaDeNacimiento() != null) {
@@ -40,7 +40,7 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		return new Predicate<Jugador>() {
 			@Override
 			public boolean evaluate(Jugador jugador) {
-				return jugador.getNombre().toLowerCase().equals(nombre.toLowerCase());
+				return jugador.getNombre().toLowerCase().startsWith(nombre.toLowerCase());
 			}
 		};
 	}
@@ -62,7 +62,6 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 			}
 		};
 	}
-	
 	
 	public static JugadorHome getInstancia() {
 		if (instancia == null) {

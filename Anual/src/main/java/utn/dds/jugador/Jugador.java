@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.uqbar.commons.model.Entity;
+import org.uqbar.commons.utils.Observable;
 
 import utn.dds.admin.Admin;
 import utn.dds.admin.Sugerencia;
@@ -18,6 +19,7 @@ import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.partido.*;
 import utn.dds.tipoInscripcion.TipoInscripcion;
 
+@Observable
 @SuppressWarnings("serial")
 public class Jugador extends Entity{
 	
