@@ -27,6 +27,8 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 
 	@Override
 	public void createContents(Panel mainPanel) {
+		this.getModelObject().setWo(this);
+		
 		setTitle("Generar equipos");
 		mainPanel.setLayout(new VerticalLayout());
 		mainPanel.setWidth(400);
@@ -54,10 +56,16 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		new Label(mainPanel).setText("Resultado:");
 		
 		new Label(mainPanel).setText("Equipo 1:");
-		new List<Jugador>(mainPanel).bindItemsToProperty("equipo1");
+		List<Jugador> equipo1  = new List<Jugador>(mainPanel);
+		equipo1.bindItemsToProperty("equipo1");
+		equipo1.bindValueToProperty("jugadorSeleccionado");
+	//	equipo1.onSelection(() -> new JugadorView(getModelObject().abrirJugadorSeleccionado(), this).open());
 		
 		new Label(mainPanel).setText("Equipo 2:");
-		new List<Jugador>(mainPanel).bindItemsToProperty("equipo2");
+		List<Jugador> equipo2 = new List<Jugador>(mainPanel);
+		equipo2.bindItemsToProperty("equipo2");
+		equipo2.bindValueToProperty("jugadorSeleccionado");
+	//	equipo2.onSelection(() -> new JugadorView(getModelObject().abrirJugadorSeleccionado(), this).open());
 		
 		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 

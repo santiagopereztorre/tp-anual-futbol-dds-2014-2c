@@ -18,8 +18,10 @@ import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
 
+import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
+import org.uqbar.lacar.ui.model.WindowFactory;
 
 @Observable
 public class GenerarEquiposViewModel {
@@ -115,7 +117,27 @@ public class GenerarEquiposViewModel {
 	private Partido partido;
 	private int parametroN;
 	private Boolean visibilidadParametroN = false;	
+	private Jugador jugadorSeleccionado;
+	private GenerarEquiposView wo;
 	
+	public GenerarEquiposView getWo() {
+		return wo;
+	}
+
+	public void setWo(GenerarEquiposView wo) {
+		this.wo = wo;
+	}
+
+	public Jugador getJugadorSeleccionado() {
+		return jugadorSeleccionado;
+	}
+
+	public void setJugadorSeleccionado(Jugador jugadorSeleccionado) {
+		this.jugadorSeleccionado = jugadorSeleccionado;
+		new JugadorView(this.abrirJugadorSeleccionado(), getWo()).open();
+		
+	}
+
 	public int getParametroN() {
 		return parametroN;
 	}
@@ -201,6 +223,10 @@ public class GenerarEquiposViewModel {
 		PartidoHome.getInstancia().create(partido);
 		partido = new Partido();
 		this.inicializarPartido();
+	}
+	
+	public Jugador abrirJugadorSeleccionado(){
+		return getJugadorSeleccionado();
 	}
 	
 	
