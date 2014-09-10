@@ -3,7 +3,6 @@ package utn.dds.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.CheckBox;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
@@ -14,7 +13,6 @@ import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
-import utn.dds.calificacion.Calificacion;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
@@ -22,6 +20,7 @@ import utn.dds.jugador.JugadorHome;
 @SuppressWarnings("serial")
 public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 
+	@SuppressWarnings("unused")
 	private WindowOwner winOwner;
 
 	public BuscarJugadorView(WindowOwner ventanaPadre, BuscarJugadorViewModel unJugador) {

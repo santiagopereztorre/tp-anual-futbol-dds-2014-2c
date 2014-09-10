@@ -18,10 +18,8 @@ import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
 
-import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
-import org.uqbar.lacar.ui.model.WindowFactory;
 
 @Observable
 public class GenerarEquiposViewModel {

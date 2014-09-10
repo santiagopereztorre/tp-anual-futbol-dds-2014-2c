@@ -5,7 +5,6 @@ import java.util.List;
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
-import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
 import utn.dds.jugador.JugadorWrapper;

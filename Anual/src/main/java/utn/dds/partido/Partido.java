@@ -21,6 +21,7 @@ import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
 
 
+@SuppressWarnings("serial")
 public class Partido extends Entity{
 	
 	private List<Inscripcion> inscripciones;

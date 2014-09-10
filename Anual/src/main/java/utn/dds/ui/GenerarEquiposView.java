@@ -8,10 +8,8 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.RadioSelector;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
-import org.uqbar.lacar.ui.model.Action;
 
 import utn.dds.criterios.Criterio;
-import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.divisores.Divisor;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
