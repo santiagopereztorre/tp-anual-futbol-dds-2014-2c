@@ -28,8 +28,7 @@ public class Jugador extends Entity{
 	private List<Jugador> amigos;
 	private List<Calificacion> calificaciones;
 	private String mail;
-	private int handicap;
-	
+	private Integer handicap;
 	private String nombre;
 	private String apodo;
 	private Date fechaDeNacimiento;
@@ -174,7 +173,7 @@ public class Jugador extends Entity{
 		return this.handicap;
 	}
 	
-	public void setHandicap(int unHandicap){
+	public void setHandicap(Integer unHandicap){
 		this.handicap = unHandicap;
 	}
 	

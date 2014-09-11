@@ -11,7 +11,6 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import utn.dds.delimitadores.Delimitador;
 import utn.dds.jugador.Jugador;
-import utn.dds.jugador.JugadorHome;
 
 @SuppressWarnings("serial")
 public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{

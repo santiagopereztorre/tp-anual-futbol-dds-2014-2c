@@ -41,7 +41,7 @@ public class BuscarJugadorViewModel {
 	public void setNombre(String nombre)
 	{
 		jugador.setNombre(nombre);
-		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+		recargarJugadores();
 	}
 	
 	public String getApodo()
@@ -52,7 +52,7 @@ public class BuscarJugadorViewModel {
 	public void setApodo(String apodo)
 	{
 		jugador.setApodo(apodo);
-		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+		recargarJugadores();
 	}
 	
 	public Delimitador getHandicapDelimitador()
@@ -63,7 +63,7 @@ public class BuscarJugadorViewModel {
 	public void setHandicapDelimitador(Delimitador delimitador)
 	{
 		jugador.setHandicapDelimitador(delimitador);
-		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+		recargarJugadores();
 	}
 	
 	public String getHandicap()
@@ -82,7 +82,7 @@ public class BuscarJugadorViewModel {
 		} else {
 			jugador.setHandicap(Integer.parseInt(handicap));
 		}
-		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+		recargarJugadores();
 	}
 	
 	public Delimitador getPromedioDelimitador()
@@ -93,7 +93,7 @@ public class BuscarJugadorViewModel {
 	public void setPromedioDelimitador(Delimitador delimitador)
 	{
 		jugador.setPromedioDelimitador(delimitador);
-		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+		recargarJugadores();
 	}
 	
 	public String getPromedio()
@@ -112,7 +112,7 @@ public class BuscarJugadorViewModel {
 		} else {
 			jugador.setPromedio(Integer.parseInt(promedio));
 		}
-		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+		recargarJugadores();
 	}
 	
 	public Boolean getInfracciones()
@@ -123,12 +123,16 @@ public class BuscarJugadorViewModel {
 	public void setInfracciones(Boolean fueInfraccionado)
 	{
 		jugador.setFueInfraccionado(fueInfraccionado);
-		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
+		recargarJugadores();
 	}
 	
 	public List<Delimitador> getDelimitadores()
 	{
 		return delimitadores;
+	}
+
+	private void recargarJugadores() {
+		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
 	public List<Jugador> getJugadores()
