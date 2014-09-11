@@ -21,13 +21,6 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 
 	public BuscarJugadorView(WindowOwner ventanaPadre, BuscarJugadorViewModel unJugador) {
 		super(ventanaPadre, unJugador);
-		
-		Jugador jugador = new Jugador();
-		jugador.setNombre("Santi");
-		jugador.setApodo("Diego");
-		jugador.setHandicap(5);
-		JugadorHome.getInstancia().create(jugador);
-		
 		winOwner = ventanaPadre;
 	}
 	
