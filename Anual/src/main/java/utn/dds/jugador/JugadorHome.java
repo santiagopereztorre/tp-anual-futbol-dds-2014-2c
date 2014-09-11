@@ -47,10 +47,36 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		if (example.getPromedioDesdeOHasta() != -1 && example.getPromedio() != null) {
 			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorPromedio(example.getPromedioDesdeOHasta(), example.getPromedio()));
 		}
+		if (example.getHandicap() != null) {
+			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorHandicap1(example.getHandicapDelimitador(), example.getHandicap()));
+		}
+		if (example.getPromedio() != null) {
+			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorPromedio1(example.getPromedioDelimitador(), example.getPromedio()));
+		}
 		if (example.getFueInfraccionado() != null) {
 			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorInfracciones(example.getFueInfraccionado()));
 		}
 		return predicate;
+	}
+
+	private Predicate<? super Jugador> getCriterioPorPromedio1(Delimitador delimitador, Integer promedio) {
+		return new Predicate<Jugador>() {
+			@Override
+			public boolean evaluate(Jugador jugador) {
+				PromedioCalificacionesUltimoPartido criterio = new PromedioCalificacionesUltimoPartido();
+				Integer promedioDelJugador = criterio.calificar(jugador);
+				return delimitador.cumpleCondicion(promedioDelJugador, promedio);
+			}
+		};
+	}
+
+	private Predicate<? super Jugador> getCriterioPorHandicap1(Delimitador delimitador, Integer handicap) {
+		return new Predicate<Jugador>() {
+			@Override
+			public boolean evaluate(Jugador jugador) {
+				return delimitador.cumpleCondicion(jugador.getHandicap(), handicap);
+			}
+		};
 	}
 
 	private Predicate<Jugador> getCriterioPorNombre(String nombre) {

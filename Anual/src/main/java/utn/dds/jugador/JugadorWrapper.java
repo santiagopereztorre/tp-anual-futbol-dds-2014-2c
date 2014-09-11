@@ -2,6 +2,10 @@ package utn.dds.jugador;
 
 import org.uqbar.commons.utils.Observable;
 
+import utn.dds.delimitadores.Delimitador;
+import utn.dds.delimitadores.Desde;
+import utn.dds.delimitadores.Hasta;
+
 @Observable
 @SuppressWarnings("serial")
 public class JugadorWrapper extends Jugador{
@@ -13,6 +17,9 @@ public class JugadorWrapper extends Jugador{
 	private int promedioDesdeOHasta;
 	private Integer promedio;
 	private Boolean fueInfraccionado;
+	
+	private Delimitador handicapDelimitador;
+	private Delimitador promedioDelimitador;
 
 	public Boolean getFueInfraccionado() {
 		return fueInfraccionado;
@@ -23,8 +30,10 @@ public class JugadorWrapper extends Jugador{
 	}
 
 	public JugadorWrapper() {
-		handicapDesdeOHasta = HASTA;
-		promedioDesdeOHasta = HASTA;
+		handicapDesdeOHasta = DESDE;
+		promedioDesdeOHasta = DESDE;
+		handicapDelimitador = new Desde();
+		promedioDelimitador = new Hasta();
 	}
 	
 	public Integer getPromedio() {
@@ -45,4 +54,22 @@ public class JugadorWrapper extends Jugador{
 	public void setPromedioDesdeOHasta(int promedioDesdeOHasta) {
 		this.promedioDesdeOHasta = promedioDesdeOHasta;
 	}
+
+	public Delimitador getHandicapDelimitador() {
+		return handicapDelimitador;
+	}
+
+	public void setHandicapDelimitador(Delimitador handicapDelimitador) {
+		this.handicapDelimitador = handicapDelimitador;
+	}
+
+	public Delimitador getPromedioDelimitador() {
+		return promedioDelimitador;
+	}
+
+	public void setPromedioDelimitador(Delimitador promedioDelimitador) {
+		this.promedioDelimitador = promedioDelimitador;
+	}
+	
+	
 }

@@ -6,5 +6,10 @@ public class Hasta implements Delimitador {
 	public Boolean cumpleCondicion(Integer jugador, Integer example) {
 		return jugador <= example;
 	}
+	
+	@Override
+	public String toString() {
+		return "Hasta";
+	}
 
 }

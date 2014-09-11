@@ -5,6 +5,8 @@ import java.util.List;
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
+import utn.dds.delimitadores.Desde;
+import utn.dds.delimitadores.Hasta;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
 import utn.dds.jugador.JugadorWrapper;
@@ -49,6 +51,7 @@ public class BuscarJugadorViewModel {
 	
 	public void setHandicapModificador(String modificador) {
 		jugador.setHandicapDesdeOHasta(modificador.equals("Desde") ? DESDE : HASTA);
+		jugador.setHandicapDelimitador(modificador.equals("Desde") ? new Desde() : new Hasta());
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
@@ -77,6 +80,7 @@ public class BuscarJugadorViewModel {
 	
 	public void setPromedioModificador(String modificador) {
 		jugador.setPromedioDesdeOHasta(modificador.equals("Desde") ? DESDE : HASTA);
+		jugador.setPromedioDelimitador(modificador.equals("Desde") ? new Desde() : new Hasta());
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
