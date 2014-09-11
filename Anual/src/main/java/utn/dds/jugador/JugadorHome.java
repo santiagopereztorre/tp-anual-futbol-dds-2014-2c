@@ -7,6 +7,9 @@ import org.apache.commons.collections15.functors.AndPredicate;
 import org.uqbar.commons.model.*;
 
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
+import utn.dds.delimitadores.Delimitador;
+import utn.dds.delimitadores.Desde;
+import utn.dds.delimitadores.Hasta;
 
 public class JugadorHome extends CollectionBasedHome<Jugador> {
 
@@ -83,28 +86,28 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 			public boolean evaluate(Jugador jugador) {
 				PromedioCalificacionesUltimoPartido criterio = new PromedioCalificacionesUltimoPartido();
 				Integer promedioDelJugador = criterio.calificar(jugador);
+				Delimitador delimitador = null;
 				if (promedioDesdeOHasta == DESDE) {
-					return promedioDelJugador < promedio;
-				} else if (promedioDesdeOHasta == HASTA) {
-					return promedioDelJugador > promedio;
+					delimitador = new Desde();
 				} else {
-					return false;
+					delimitador = new Hasta();
 				}
+				return delimitador.cumpleCondicion(promedioDelJugador, promedio);
 			}
 		};
 	}
-
+	
 	private Predicate<? super Jugador> getCriterioPorHandicap(int handicapDesdeOHasta, Integer handicap) {
 		return new Predicate<Jugador>() {
 			@Override
 			public boolean evaluate(Jugador jugador) {
+				Delimitador delimitador = null;
 				if (handicapDesdeOHasta == DESDE) {
-					return jugador.getHandicap() < handicap;
-				} else if (handicapDesdeOHasta == HASTA) {
-					return jugador.getHandicap() > handicap;
+					delimitador = new Desde();
 				} else {
-					return false;
+					delimitador = new Hasta();
 				}
+				return delimitador.cumpleCondicion(jugador.getHandicap(), handicap);
 			}
 		};
 	}

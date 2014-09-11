@@ -13,6 +13,7 @@ import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
 import utn.dds.jugador.Jugador;
+import utn.dds.jugador.JugadorHome;
 
 @SuppressWarnings("serial")
 public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
@@ -22,6 +23,12 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 
 	public BuscarJugadorView(WindowOwner ventanaPadre, BuscarJugadorViewModel unJugador) {
 		super(ventanaPadre, unJugador);
+		
+		Jugador jugador = new Jugador();
+		jugador.setNombre("Santi");
+		jugador.setApodo("Diego");
+		jugador.setHandicap(5);
+		JugadorHome.getInstancia().create(jugador);
 		
 		winOwner = ventanaPadre;
 	}
