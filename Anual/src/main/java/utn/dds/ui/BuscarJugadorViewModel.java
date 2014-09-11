@@ -1,10 +1,12 @@
 package utn.dds.ui;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
+import utn.dds.delimitadores.Delimitador;
 import utn.dds.delimitadores.Desde;
 import utn.dds.delimitadores.Hasta;
 import utn.dds.jugador.Jugador;
@@ -14,22 +16,30 @@ import utn.dds.jugador.JugadorWrapper;
 @Observable
 public class BuscarJugadorViewModel {
 
-	public static final int DESDE = 0;
-	public static final int HASTA = 1;
-	
 	private JugadorWrapper jugador;
 	private List<Jugador> jugadores;
+	private List<Delimitador> delimitadores;
+	private Delimitador desde;
+	private Delimitador hasta;
 	
-	public BuscarJugadorViewModel() {
+	public BuscarJugadorViewModel()
+	{
 		jugador = new JugadorWrapper();
 		jugador.setFechaDeNacimiento(null);
+		delimitadores = new ArrayList<Delimitador>();
+		desde = new Desde();
+		hasta = new Hasta();
+		delimitadores.add(desde);
+		delimitadores.add(hasta);
 	}
 	
-	public String getNombre() {
+	public String getNombre()
+	{
 		return jugador.getNombre();
 	}
 	
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre)
+	{
 		jugador.setNombre(nombre);
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
@@ -45,13 +55,14 @@ public class BuscarJugadorViewModel {
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
-	public String getHandicapModificador() {
-		return jugador.getHandicapDesdeOHasta() == DESDE ? "Desde" : "Hasta";
+	public Delimitador getHandicapDelimitador()
+	{
+		return desde;
 	}
 	
-	public void setHandicapModificador(String modificador) {
-		jugador.setHandicapDesdeOHasta(modificador.equals("Desde") ? DESDE : HASTA);
-		jugador.setHandicapDelimitador(modificador.equals("Desde") ? new Desde() : new Hasta());
+	public void setHandicapDelimitador(Delimitador delimitador)
+	{
+		jugador.setHandicapDelimitador(delimitador);
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
@@ -74,13 +85,14 @@ public class BuscarJugadorViewModel {
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
-	public String getPromedioModificador() {
-		return jugador.getPromedioDesdeOHasta() == DESDE ? "Desde" : "Hasta";
+	public Delimitador getPromedioDelimitador()
+	{
+		return desde;
 	}
 	
-	public void setPromedioModificador(String modificador) {
-		jugador.setPromedioDesdeOHasta(modificador.equals("Desde") ? DESDE : HASTA);
-		jugador.setPromedioDelimitador(modificador.equals("Desde") ? new Desde() : new Hasta());
+	public void setPromedioDelimitador(Delimitador delimitador)
+	{
+		jugador.setPromedioDelimitador(delimitador);
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
@@ -103,16 +115,24 @@ public class BuscarJugadorViewModel {
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
-	public Boolean getInfracciones() {
+	public Boolean getInfracciones()
+	{
 		return jugador.getFueInfraccionado();
 	}
 	
-	public void setInfracciones(Boolean fueInfraccionado) {
+	public void setInfracciones(Boolean fueInfraccionado)
+	{
 		jugador.setFueInfraccionado(fueInfraccionado);
 		ObservableUtils.firePropertyChanged(this, "jugadores", getJugadores());
 	}
 	
-	public List<Jugador> getJugadores() {
+	public List<Delimitador> getDelimitadores()
+	{
+		return delimitadores;
+	}
+	
+	public List<Jugador> getJugadores()
+	{
 		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
 		return jugadores;
 	}

@@ -8,14 +8,10 @@ import org.uqbar.commons.model.*;
 
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.delimitadores.Delimitador;
-import utn.dds.delimitadores.Desde;
-import utn.dds.delimitadores.Hasta;
+import utn.dds.jugador.JugadorWrapper;
 
 public class JugadorHome extends CollectionBasedHome<Jugador> {
 
-	public static final int DESDE = 0;
-	public static final int HASTA = 1;
-	
 	private static JugadorHome instancia;
 	
 	@Override
@@ -40,12 +36,6 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		}
 		if (example.getFechaDeNacimiento() != null) {
 			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorFechaDeNacimiento(example.getFechaDeNacimiento()));
-		}
-		if (example.getHandicapDesdeOHasta() != -1 && example.getHandicap() != null) {
-			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorHandicap(example.getHandicapDesdeOHasta(), example.getHandicap()));
-		}
-		if (example.getPromedioDesdeOHasta() != -1 && example.getPromedio() != null) {
-			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorPromedio(example.getPromedioDesdeOHasta(), example.getPromedio()));
 		}
 		if (example.getHandicap() != null) {
 			predicate = new AndPredicate<Jugador>(predicate, this.getCriterioPorHandicap1(example.getHandicapDelimitador(), example.getHandicap()));
@@ -106,38 +96,6 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		};
 	}
 	
-	private Predicate<? super Jugador> getCriterioPorPromedio(int promedioDesdeOHasta, Integer promedio) {
-		return new Predicate<Jugador>() {
-			@Override
-			public boolean evaluate(Jugador jugador) {
-				PromedioCalificacionesUltimoPartido criterio = new PromedioCalificacionesUltimoPartido();
-				Integer promedioDelJugador = criterio.calificar(jugador);
-				Delimitador delimitador = null;
-				if (promedioDesdeOHasta == DESDE) {
-					delimitador = new Desde();
-				} else {
-					delimitador = new Hasta();
-				}
-				return delimitador.cumpleCondicion(promedioDelJugador, promedio);
-			}
-		};
-	}
-	
-	private Predicate<? super Jugador> getCriterioPorHandicap(int handicapDesdeOHasta, Integer handicap) {
-		return new Predicate<Jugador>() {
-			@Override
-			public boolean evaluate(Jugador jugador) {
-				Delimitador delimitador = null;
-				if (handicapDesdeOHasta == DESDE) {
-					delimitador = new Desde();
-				} else {
-					delimitador = new Hasta();
-				}
-				return delimitador.cumpleCondicion(jugador.getHandicap(), handicap);
-			}
-		};
-	}
-
 	private Predicate<? super Jugador> getCriterioPorInfracciones(Boolean fueInfraccionado) {
 		return new Predicate<Jugador>() {
 			@Override

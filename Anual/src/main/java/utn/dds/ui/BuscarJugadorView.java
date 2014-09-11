@@ -1,8 +1,5 @@
 package utn.dds.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uqbar.arena.widgets.CheckBox;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
@@ -12,6 +9,9 @@ import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
+import utn.dds.delimitadores.Delimitador;
+import utn.dds.delimitadores.Desde;
+import utn.dds.delimitadores.Hasta;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorHome;
 
@@ -47,14 +47,15 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 //		new TextBox(mainPanel);
 		
 		new Label(mainPanel).setText("Handicap");
-		List<String> listaDeOpciones = new ArrayList<String>();
-		listaDeOpciones.add("Desde");
-		listaDeOpciones.add("Hasta");
-		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description").bindValueToProperty("handicapModificador");
+		Selector<Delimitador> selectorHandicap = new Selector<Delimitador>(mainPanel);
+		selectorHandicap.bindItemsToProperty("delimitadores");
+		selectorHandicap.bindValueToProperty("handicapDelimitador");
 		new TextBox(mainPanel).bindValueToProperty("handicap");
 		
 		new Label(mainPanel).setText("Promedio del ultimo partido");
-		new Selector<String>(mainPanel).setContents(listaDeOpciones, "description").bindValueToProperty("promedioModificador");
+		Selector<Delimitador> selectorPromedio = new Selector<Delimitador>(mainPanel);
+		selectorPromedio.bindItemsToProperty("delimitadores");
+		selectorPromedio.bindValueToProperty("promedioDelimitador");
 		new TextBox(mainPanel).bindValueToProperty("promedio");
 		
 		new Label(mainPanel).setText("Tuvo infracciones: ");
