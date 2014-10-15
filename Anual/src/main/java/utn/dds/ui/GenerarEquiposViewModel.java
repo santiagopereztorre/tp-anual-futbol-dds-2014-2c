@@ -13,6 +13,7 @@ import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.partido.PartidoHome;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
@@ -23,8 +24,7 @@ import org.uqbar.commons.utils.Observable;
 @Observable
 public class GenerarEquiposViewModel {
 
-	public GenerarEquiposViewModel(Partido partido) {
-
+	private void inicializarPartido(){
 		Jugador juan = new Jugador();
 		juan.setNombre("juan");
 		
@@ -101,8 +101,11 @@ public class GenerarEquiposViewModel {
 		pato.setHandicap(8);
 		lalo.setHandicap(3);
 		lucas.setHandicap(9);
+	}
 	
+	public GenerarEquiposViewModel(Partido partido) {
 		this.partido = partido;
+		this.inicializarPartido();
 	}
 	
 	private Divisor divisorSeleccionado;
@@ -112,7 +115,27 @@ public class GenerarEquiposViewModel {
 	private Partido partido;
 	private int parametroN;
 	private Boolean visibilidadParametroN = false;	
+	private Jugador jugadorSeleccionado;
+	private GenerarEquiposView wo;
 	
+	public GenerarEquiposView getWo() {
+		return wo;
+	}
+
+	public void setWo(GenerarEquiposView wo) {
+		this.wo = wo;
+	}
+
+	public Jugador getJugadorSeleccionado() {
+		return jugadorSeleccionado;
+	}
+
+	public void setJugadorSeleccionado(Jugador jugadorSeleccionado) {
+		this.jugadorSeleccionado = jugadorSeleccionado;
+		new JugadorView(this.abrirJugadorSeleccionado(), getWo()).open();
+		
+	}
+
 	public int getParametroN() {
 		return parametroN;
 	}
@@ -138,7 +161,9 @@ public class GenerarEquiposViewModel {
 	}
 
 	public List<Divisor> getDivisores(){
-		return Arrays.asList(new ParImpar(), new UnoParaAcaDosParaAllaDosParaAca());
+		Divisor parImpar = new ParImpar();
+		this.setDivisorSeleccionado(parImpar);
+		return Arrays.asList(parImpar, new UnoParaAcaDosParaAllaDosParaAca());
 	}
 	
 	public Divisor getDivisorSeleccionado() {
@@ -177,7 +202,9 @@ public class GenerarEquiposViewModel {
 	}
 
 	public List<Criterio> getCriterios(){
-		return Arrays.asList( new Handicap(), new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones());
+		Criterio handicap = new Handicap();
+		this.setCriterioSeleccionado(handicap);
+		return Arrays.asList(handicap, new PromedioCalificacionesUltimoPartido(), new PromedioUltimasNCalificaciones());
 	}
 	
 	public void armarEquipos() {
@@ -189,5 +216,16 @@ public class GenerarEquiposViewModel {
 		ObservableUtils.firePropertyChanged(this, "equipo1", getEquipo1());
 		ObservableUtils.firePropertyChanged(this, "equipo2", getEquipo2());
 	}
+	
+	public void confirmarEquipos(){
+		PartidoHome.getInstancia().create(partido);
+		partido = new Partido();
+		this.inicializarPartido();	
+	}
+	
+	public Jugador abrirJugadorSeleccionado(){
+		return getJugadorSeleccionado();
+	}
+	
 	
 }

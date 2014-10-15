@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+import org.uqbar.commons.model.Entity;
+
 import utn.dds.observers.ObsPartidoCompleto;
 import utn.dds.observers.ObsPartidoDescompleto;
 import utn.dds.observers.ObsPartidoInscripcion;
@@ -19,7 +21,8 @@ import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
 
 
-public class Partido {
+@SuppressWarnings("serial")
+public class Partido extends Entity{
 	
 	private List<Inscripcion> inscripciones;
 	private List<Jugador> equipo1;

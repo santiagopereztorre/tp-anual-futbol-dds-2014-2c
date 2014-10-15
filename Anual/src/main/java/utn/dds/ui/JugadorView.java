@@ -16,6 +16,7 @@ import utn.dds.infraccion.*;
 public class JugadorView extends Window<JugadorViewModel> {
 
 	//private static final WindowOwner GenerarEquiposView = null;
+	@SuppressWarnings("unused")
 	private WindowOwner winOwner;
 
 	public JugadorView(Jugador unJugador, WindowOwner ventanaPadre)

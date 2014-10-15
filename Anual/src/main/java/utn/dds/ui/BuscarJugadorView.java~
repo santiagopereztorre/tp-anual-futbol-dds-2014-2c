@@ -36,6 +36,14 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		new Label(mainPanel).setText("Fecha de nacimiento anterior a (dd/mm/aaaa): ");
 //		new TextBox(mainPanel);
 		
+<<<<<<< HEAD
+		jugador = new Jugador();
+		jugador.setApodo("diegos");		
+		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
+		
+		new Label(mainPanel).setText("Esta vacio: " + jugadores.isEmpty());
+		new Label(mainPanel).setText("El nombre es: " + jugadores.stream().findFirst().orElse(new Jugador()));
+=======
 		new Label(mainPanel).setText("Handicap");
 		Selector<Delimitador> selectorHandicap = new Selector<Delimitador>(mainPanel);
 		selectorHandicap.bindItemsToProperty("delimitadores");
@@ -47,6 +55,7 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		selectorPromedio.bindItemsToProperty("delimitadores");
 		selectorPromedio.bindValueToProperty("promedioDelimitador");
 		new TextBox(mainPanel).bindValueToProperty("promedio");
+>>>>>>> 6debc203b4947bb3b6cc3457f14d3e980fe04d09
 		
 		new Label(mainPanel).setText("Tuvo infracciones: ");
 		new CheckBox(mainPanel).bindValueToProperty("infracciones");

@@ -5,10 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.uqbar.commons.model.Entity;
+import org.uqbar.commons.utils.Observable;
 
 import utn.dds.admin.Admin;
 import utn.dds.admin.Sugerencia;
 import utn.dds.calificacion.Calificacion;
+import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.excepciones.JugadorNoJugoElPartidoException;
 import utn.dds.jugador.excepciones.NoEsAmigoException;
@@ -18,6 +20,7 @@ import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.partido.*;
 import utn.dds.tipoInscripcion.TipoInscripcion;
 
+@Observable
 @SuppressWarnings("serial")
 public class Jugador extends Entity{
 	
@@ -25,8 +28,7 @@ public class Jugador extends Entity{
 	private List<Jugador> amigos;
 	private List<Calificacion> calificaciones;
 	private String mail;
-	private int handicap;
-	
+	private Integer handicap;
 	private String nombre;
 	private String apodo;
 	private Date fechaDeNacimiento;
@@ -171,7 +173,7 @@ public class Jugador extends Entity{
 		return this.handicap;
 	}
 	
-	public void setHandicap(int unHandicap){
+	public void setHandicap(Integer unHandicap){
 		this.handicap = unHandicap;
 	}
 	
@@ -185,5 +187,10 @@ public class Jugador extends Entity{
 
 	public void setFechaDeNacimiento(Date fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
+	}
+	
+	public Integer getPromedio() {
+		PromedioCalificacionesUltimoPartido criterio = new PromedioCalificacionesUltimoPartido();
+		return criterio.calificar(this);
 	}
 }
