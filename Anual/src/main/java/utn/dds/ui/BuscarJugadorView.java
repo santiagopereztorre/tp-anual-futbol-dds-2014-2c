@@ -44,11 +44,11 @@ public class BuscarJugadorView  extends Window<BuscarJugadorViewModel>{
 		new Label(mainPanel).setText("El nombre es: " + jugadores.get(0).getNombre());
 		
 		jugador = new Jugador();
-		jugador.setApodo("diego");		
+		jugador.setApodo("diegos");		
 		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
 		
 		new Label(mainPanel).setText("Esta vacio: " + jugadores.isEmpty());
-		new Label(mainPanel).setText("El nombre es: " + jugadores.get(0).getNombre());
+		new Label(mainPanel).setText("El nombre es: " + jugadores.stream().findFirst().orElse(new Jugador()));
 		
 		jugador = new Jugador();
 		jugador.setFechaDeNacimiento(new Date());		
