@@ -237,37 +237,52 @@ ENGINE = InnoDB;
 
 
 -- Funcion Jugador Malo
-CREATE FUNCTION es_malo(handicap INTEGER)
-RETURNS BOOLEAN
+DROP FUNCTION IF EXISTS mydb.es_malo;
+DELIMITER $$
+CREATE FUNCTION mydb.es_malo(handicap INTEGER)
+RETURNS BOOL
 BEGIN
   RETURN handicap <= 5;
-END
+END;
+$$
+DELIMITER ;
 
 -- Funcion Jugador Traicionero
-CREATE FUNCTION es_traicionero(id_jugador INTEGER)
-RETURNS BOOLEAN
+DROP FUNCTION IF EXISTS mydb.es_traicionero;
+DELIMITER $$
+CREATE FUNCTION mydb.es_traicionero(id_jugador INTEGER)
+RETURNS BOOL
 BEGIN
 	RETURN (SELECT COUNT(*) 
-	FROM Infracciones 
+	FROM mydb.Infracciones 
 	WHERE Jugadores_id_jugador = id_jugador
 	AND YEAR(fecha_infraccion) = YEAR(NOW()) 
-	AND MONTH(fecha_infraccion) = MONTH(NOW()) ) > 3
-END
+	AND MONTH(fecha_infraccion) = MONTH(NOW()) ) > 3;
+END;
+$$
+DELIMITER ;
+
 
 -- Vista de Jugadores Malos
-CREATE VIEW JugadoresMalos AS
-	SELECT * FROM Jugadores WHERE es_malo(handicap_jugador);
+DROP VIEW IF EXISTS mydb.JugadoresMalos;
+CREATE VIEW mydb.JugadoresMalos AS
+	SELECT * FROM Jugadores WHERE mydb.es_malo(handicap_jugador);
+
 
 -- Vista de Jugadores Traicionero
-CREATE VIEW JugadoresTraicioneros AS
+DROP VIEW IF EXISTS mydb.JugadoresTraicioneros;
+CREATE VIEW mydb.JugadoresTraicioneros AS
 	SELECT * FROM Jugadores WHERE es_traicionero(id_jugador);
 
+
 -- Vista de Jugadores que Pueden Mejorar
-CREATE VIEW JugadoresQueMejoraran AS
+DROP VIEW IF EXISTS mydb.JugadoresQueMejoraran;
+CREATE VIEW mydb.JugadoresQueMejoraran AS
 	SELECT * 
 	FROM JugadoresMalos 
 	WHERE (YEAR(fecha_nac_jugador) - YEAR(NOW()) - (DATE_FORMAT(fecha_nac_jugador, '%m%d') < DATE_FORMAT(NOW(), '%m%d'))) < 25;
- 
+
+/*
 -- Procedimiento para dar de baja un jugador de un partido
 CREATE PROCEDURE dar_de_baja(id_jugador INTEGER, id_partido INTEGER, id_jugador_reemplazo INTEGER)
 BEGIN
@@ -294,7 +309,7 @@ BEGIN
 	VALUES ('Por darse de baja de un partido sin proponer reemplazante', CURRENT_DATE(), (SELECT d.Jugadores_id_jugador 
 																							FROM Deleted d)) 
 END
-
+*/
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
