@@ -268,7 +268,13 @@ CREATE VIEW JugadoresQueMejoraran AS
 	FROM JugadoresMalos 
 	WHERE (YEAR(fecha_nac_jugador) - YEAR(NOW()) - (DATE_FORMAT(fecha_nac_jugador, '%m%d') < DATE_FORMAT(NOW(), '%m%d'))) < 25;
  
-
+-- Procedimiento para dar de baja un jugador de un partido
+CREATE PROCEDURE dar_de_baja(id_jugador INTEGER, id_partido INTEGER)
+BEGIN
+	DELETE *
+	FROM Jugadores_x_Partidos jp
+	WHERE jp.Partidos_id_partido = id_partido AND Jugadores_id_jugador = id_jugador
+END
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
