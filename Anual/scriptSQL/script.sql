@@ -9,7 +9,7 @@ USE `mydb` ;
 CREATE FUNCTION es_malo(handicap INTEGER)
 RETURNS BOOLEAN
 BEGIN
-  RETURN handicap < 5;
+  RETURN handicap <= 5;
 END
 
 CREATE FUNCTION es_traicionero(id_jugador INTEGER)
@@ -17,7 +17,9 @@ RETURNS BOOLEAN
 BEGIN
 	RETURN (SELECT COUNT(*) 
 	FROM Infracciones 
-	WHERE Jugadores_id_jugador = id_jugador) > 3
+	WHERE Jugadores_id_jugador = id_jugador
+	AND YEAR(fecha_infraccion) = YEAR(NOW()) 
+	AND MONTH(fecha_infraccion) = MONTH(NOW()) ) > 3
 END
 
 -- -----------------------------------------------------
