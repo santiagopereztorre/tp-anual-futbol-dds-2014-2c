@@ -68,10 +68,11 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Jugadores_x_Partidos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Jugadores_x_Partidos` (
+  `id_jugador_x_partido` INT NOT NULL AUTO_INCREMENT,
   `equipo` BIT NOT NULL ,
   `Partidos_id_partido` INT NOT NULL ,
   `Jugadores_id_jugador` INT NOT NULL ,
-  PRIMARY KEY (`Partidos_id_partido`, `Jugadores_id_jugador`) ,
+  PRIMARY KEY (`id_jugador_x_partido`) ,
   INDEX `fk_Jugadores_x_Partidos_Jugadores1` (`Jugadores_id_jugador` ASC) ,
   CONSTRAINT `fk_Jugadores_x_Partidos_Partidos1`
     FOREIGN KEY (`Partidos_id_partido` )
@@ -154,11 +155,12 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Sugerencias`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Sugerencias` (
-  `Jugadores_id_jugador` INT NOT NULL AUTO_INCREMENT,
+  `id_sugerencia` INT NOT NULL AUTO_INCREMENT,
+  `Jugadores_id_jugador` INT NOT NULL,
   `Partidos_id_partido` INT NOT NULL ,
   `Tipos_incripcion_id_tipos_incripcion` INT NOT NULL ,
   INDEX `fk_Sugerencias_Tipos_incripcion1` (`Tipos_incripcion_id_tipos_incripcion` ASC) ,
-  PRIMARY KEY (`Jugadores_id_jugador`, `Partidos_id_partido`) ,
+  PRIMARY KEY (`id_sugerencia`) ,
   INDEX `fk_Sugerencias_Partidos1` (`Partidos_id_partido` ASC) ,
   CONSTRAINT `fk_Sugerencias_Tipos_incripcion1`
     FOREIGN KEY (`Tipos_incripcion_id_tipos_incripcion` )
