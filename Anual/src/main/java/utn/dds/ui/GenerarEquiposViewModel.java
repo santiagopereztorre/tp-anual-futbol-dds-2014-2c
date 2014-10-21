@@ -12,6 +12,7 @@ import utn.dds.divisores.Divisor;
 import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
 import utn.dds.jugador.Jugador;
+import utn.dds.jugador.JugadorHome;
 import utn.dds.partido.Partido;
 import utn.dds.partido.PartidoHome;
 import utn.dds.tipoInscripcion.Condicional;
@@ -27,33 +28,43 @@ public class GenerarEquiposViewModel {
 	private void inicializarPartido(){
 		Jugador juan = new Jugador();
 		juan.setNombre("juan");
+		JugadorHome.getInstancia().create(juan);
 		
 		Jugador lalo = new Jugador();
 		lalo.setNombre("lalo");
+		JugadorHome.getInstancia().create(lalo);
 		
 		Jugador juancho = new Jugador();
 		juancho.setNombre("juancho");
+		JugadorHome.getInstancia().create(juancho);
 		
 		Jugador carlos = new Jugador();
 		carlos.setNombre("carlos");
+		JugadorHome.getInstancia().create(carlos);
 		
 		Jugador pepito = new Jugador();
 		pepito.setNombre("pepito");
+		JugadorHome.getInstancia().create(pepito);
 		
 		Jugador martin = new Jugador();
 		martin.setNombre("martin");
+		JugadorHome.getInstancia().create(martin);
 		
 		Jugador lucas = new Jugador();
 		lucas.setNombre("lucas");
+		JugadorHome.getInstancia().create(lucas);
 		
 		Jugador pato = new Jugador();
 		pato.setNombre("pato");
+		JugadorHome.getInstancia().create(pato);
 		
 		Jugador marcelo = new Jugador();
 		marcelo.setNombre("marcelo");
+		JugadorHome.getInstancia().create(marcelo);
 		
 		Jugador leandro = new Jugador();
 		leandro.setNombre("leandro");
+		JugadorHome.getInstancia().create(leandro);
 		
 		Partido riverboca = new Partido(new Date());
 		riverboca.inscribirJugador(carlos, new Estandar());
