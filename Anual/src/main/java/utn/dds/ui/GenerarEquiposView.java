@@ -65,9 +65,11 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 		tablita2.bindValueToProperty("jugadorSeleccionado");
 		tablita2.setHeigth(120);
 		
-		new Button(mainPanel).setCaption("Buscar jugador").onClick(()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
+		new Button(mainPanel).setCaption("Buscar jugador").onClick(
+				()-> new BuscarJugadorView(this, new BuscarJugadorViewModel()).open());
 
-		new Button(mainPanel).setCaption("Confirmar equipos").onClick(()-> getModelObject().confirmarEquipos());
+		new Button(mainPanel).setCaption("Confirmar equipos").onClick(
+				()-> getModelObject().confirmarEquipos());
 	}
 	
 	public static void main(String[] args) {
