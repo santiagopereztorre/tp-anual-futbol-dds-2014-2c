@@ -12,14 +12,6 @@ BEGIN
   RETURN handicap < 5;
 END
 
-CREATE FUNCTION es_traicionero(id_jugador INTEGER)
-RETURNS BOOLEAN
-BEGIN
-	RETURN (SELECT COUNT(*) 
-	FROM Infracciones 
-	WHERE Jugadores_id_jugador = id_jugador) > 3
-END
-
 -- -----------------------------------------------------
 -- Table `mydb`.`Criterios`
 -- -----------------------------------------------------
