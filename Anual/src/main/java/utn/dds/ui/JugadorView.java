@@ -53,6 +53,8 @@ public class JugadorView extends Window<JugadorViewModel> {
 		
 		// Amigos
 		new Label(mainPanel).setText("Amigos:");
+		Table<Jugador> tablaAmigos = TablaJugadoresColoreados.armarTabla(mainPanel);
+		tablaAmigos.bindItemsToProperty("amigos");
 		
 		// Infracciones
 		new Label(mainPanel).setText("Infracciones:");
