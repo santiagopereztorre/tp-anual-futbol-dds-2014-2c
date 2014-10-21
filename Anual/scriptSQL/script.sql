@@ -282,24 +282,28 @@ CREATE VIEW mydb.JugadoresQueMejoraran AS
 	FROM JugadoresMalos 
 	WHERE (YEAR(fecha_nac_jugador) - YEAR(NOW()) - (DATE_FORMAT(fecha_nac_jugador, '%m%d') < DATE_FORMAT(NOW(), '%m%d'))) < 25;
 
-/*
+
 -- Procedimiento para dar de baja un jugador de un partido
+DROP PROCEDURE IF EXISTS mydb.dar_de_baja;
+DELIMITER $$
 CREATE PROCEDURE dar_de_baja(id_jugador INTEGER, id_partido INTEGER, id_jugador_reemplazo INTEGER)
 BEGIN
-	IF(id_jugador_reemplazo = -1)
-	BEGIN
+	IF id_jugador_reemplazo < 0
+	THEN
 		DELETE *
-		FROM Jugadores_x_Partidos jp
-		WHERE jp.Partidos_id_partido = id_partido AND Jugadores_id_jugador = id_jugador
-	END
+		FROM Jugadores_x_Partidos
+		WHERE Partidos_id_partido = id_partido AND Jugadores_id_jugador = id_jugador;
 	ELSE
-	BEGIN
 		UPDATE Jugadores_x_Partidos
 		SET Jugadores_id_jugador = id_jugador_reemplazo
-		WHERE Jugadores_id_jugador = id_jugador
-	END
-END
+		WHERE Jugadores_id_jugador = id_jugador;
+	END IF;
+END;
+$$
+DELIMITER ;
 
+DROP TRIGGER IF EXISTS mydb.infracciono_jugador;
+DELIMITER $$
 CREATE TRIGGER infracciono_jugador
 AFTER DELETE ON Jugadores_x_Partidos
 FOR EACH ROW
@@ -307,9 +311,11 @@ BEGIN
 	INSERT INTO Infracciones
 	(motivo_infraccion, fecha_infraccion, Jugadores_id_jugador)
 	VALUES ('Por darse de baja de un partido sin proponer reemplazante', CURRENT_DATE(), (SELECT d.Jugadores_id_jugador 
-																							FROM Deleted d)) 
-END
-*/
+																							FROM Deleted d)); 
+END;
+$$
+DELIMITER ;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
