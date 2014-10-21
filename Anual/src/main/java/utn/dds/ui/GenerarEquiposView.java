@@ -11,7 +11,6 @@ import org.uqbar.arena.windows.MainWindow;
 
 import utn.dds.criterios.Criterio;
 import utn.dds.divisores.Divisor;
-import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 import utn.dds.partido.PartidoHome;
