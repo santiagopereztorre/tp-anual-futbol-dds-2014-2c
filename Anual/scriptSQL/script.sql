@@ -290,7 +290,7 @@ CREATE PROCEDURE dar_de_baja(id_jugador INTEGER, id_partido INTEGER, id_jugador_
 BEGIN
 	IF id_jugador_reemplazo < 0
 	THEN
-		DELETE *
+		DELETE
 		FROM Jugadores_x_Partidos
 		WHERE Partidos_id_partido = id_partido AND Jugadores_id_jugador = id_jugador;
 	ELSE
