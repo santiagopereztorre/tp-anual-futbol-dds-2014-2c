@@ -39,6 +39,11 @@ public class JugadorViewModel {
 		return jugador.getInfracciones();
 	}
 	
+	public List<Jugador> getAmigos()
+	{
+		return jugador.getAmigos();
+	}
+	
 	public String getPromedioUltimoPartido()
 	{
 		return new PromedioCalificacionesUltimoPartido().calificar(jugador).toString();
