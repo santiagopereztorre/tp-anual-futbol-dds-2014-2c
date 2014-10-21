@@ -10,7 +10,7 @@ USE `mydb` ;
 -- Table `mydb`.`Criterios`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Criterios` (
-  `id_criterio` INT NOT NULL ,
+  `id_criterio` INT NOT NULL AUTO_INCREMENT,
   `nombre_criterio` VARCHAR(45) NULL ,
   PRIMARY KEY (`id_criterio`) )
 ENGINE = InnoDB;
@@ -20,7 +20,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Divisores`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Divisores` (
-  `id_divisor` INT NOT NULL ,
+  `id_divisor` INT NOT NULL AUTO_INCREMENT,
   `nombre_divisor` VARCHAR(45) NULL ,
   PRIMARY KEY (`id_divisor`) )
 ENGINE = InnoDB;
@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Partidos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Partidos` (
-  `id_partido` INT NOT NULL ,
+  `id_partido` INT NOT NULL AUTO_INCREMENT,
   `fecha_partido` DATETIME NULL ,
   `Criterios_id_criterio` INT NOT NULL ,
   `Divisores_id_divisor` INT NOT NULL ,
@@ -54,7 +54,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Jugadores`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Jugadores` (
-  `id_jugador` INT NOT NULL ,
+  `id_jugador` INT NOT NULL AUTO_INCREMENT,
   `nombre_jugador` VARCHAR(45) NULL ,
   `apodo_jugador` VARCHAR(45) NULL ,
   `handicap_jugador` INT NULL ,
@@ -90,7 +90,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Calificaciones`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Calificaciones` (
-  `id_calificacion` INT NOT NULL ,
+  `id_calificacion` INT NOT NULL AUTO_INCREMENT,
   `puntaje_calificacion` INT NULL ,
   `critica_calificacion` VARCHAR(45) NULL ,
   `Jugadores_x_Partidos_id_jugador_x_partido` INT NOT NULL ,
@@ -115,7 +115,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Tipos_incripcion`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Tipos_incripcion` (
-  `id_tipos_incripcion` INT NOT NULL ,
+  `id_tipos_incripcion` INT NOT NULL AUTO_INCREMENT,
   `nombre_tipo_inscripcion` VARCHAR(45) NULL ,
   PRIMARY KEY (`id_tipos_incripcion`) )
 ENGINE = InnoDB;
@@ -154,7 +154,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Sugerencias`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Sugerencias` (
-  `Jugadores_id_jugador` INT NOT NULL ,
+  `Jugadores_id_jugador` INT NOT NULL AUTO_INCREMENT,
   `Partidos_id_partido` INT NOT NULL ,
   `Tipos_incripcion_id_tipos_incripcion` INT NOT NULL ,
   INDEX `fk_Sugerencias_Tipos_incripcion1` (`Tipos_incripcion_id_tipos_incripcion` ASC) ,
@@ -182,7 +182,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Rechazos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Rechazos` (
-  `id_rechazo` INT NOT NULL ,
+  `id_rechazo` INT NOT NULL AUTO_INCREMENT,
   `motivo` VARCHAR(45) NULL ,
   `Sugerencias_id_sugerencia` INT NOT NULL ,
   PRIMARY KEY (`id_rechazo`) ,
@@ -221,7 +221,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Infracciones`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`Infracciones` (
-  `id_infraccion` INT NOT NULL ,
+  `id_infraccion` INT NOT NULL AUTO_INCREMENT,
   `motivo_infraccion` VARCHAR(45) NULL ,
   `fecha_infraccion` DATETIME NULL ,
   `Jugadores_id_jugador` INT NOT NULL ,
@@ -269,13 +269,31 @@ CREATE VIEW JugadoresQueMejoraran AS
 	WHERE (YEAR(fecha_nac_jugador) - YEAR(NOW()) - (DATE_FORMAT(fecha_nac_jugador, '%m%d') < DATE_FORMAT(NOW(), '%m%d'))) < 25;
  
 -- Procedimiento para dar de baja un jugador de un partido
-CREATE PROCEDURE dar_de_baja(id_jugador INTEGER, id_partido INTEGER)
+CREATE PROCEDURE dar_de_baja(id_jugador INTEGER, id_partido INTEGER, id_jugador_reemplazo INTEGER)
 BEGIN
-	DELETE *
-	FROM Jugadores_x_Partidos jp
-	WHERE jp.Partidos_id_partido = id_partido AND Jugadores_id_jugador = id_jugador
+	IF(id_jugador_reemplazo = -1)
+	BEGIN
+		DELETE *
+		FROM Jugadores_x_Partidos jp
+		WHERE jp.Partidos_id_partido = id_partido AND Jugadores_id_jugador = id_jugador
+	END
+	ELSE
+	BEGIN
+		UPDATE Jugadores_x_Partidos
+		SET Jugadores_id_jugador = id_jugador_reemplazo
+		WHERE Jugadores_id_jugador = id_jugador
+	END
 END
 
+CREATE TRIGGER infracciono_jugador
+AFTER DELETE ON Jugadores_x_Partidos
+FOR EACH ROW
+BEGIN
+	INSERT INTO Infracciones
+	(motivo_infraccion, fecha_infraccion, Jugadores_id_jugador)
+	VALUES ('Por darse de baja de un partido sin proponer reemplazante', CURRENT_DATE(), (SELECT d.Jugadores_id_jugador 
+																							FROM Deleted d)) 
+END
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
