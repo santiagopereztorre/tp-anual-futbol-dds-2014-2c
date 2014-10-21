@@ -6,22 +6,6 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_s
 USE `mydb` ;
 
 
-CREATE FUNCTION es_malo(handicap INTEGER)
-RETURNS BOOLEAN
-BEGIN
-  RETURN handicap <= 5;
-END
-
-CREATE FUNCTION es_traicionero(id_jugador INTEGER)
-RETURNS BOOLEAN
-BEGIN
-	RETURN (SELECT COUNT(*) 
-	FROM Infracciones 
-	WHERE Jugadores_id_jugador = id_jugador
-	AND YEAR(fecha_infraccion) = YEAR(NOW()) 
-	AND MONTH(fecha_infraccion) = MONTH(NOW()) ) > 3
-END
-
 -- -----------------------------------------------------
 -- Table `mydb`.`Criterios`
 -- -----------------------------------------------------
@@ -249,6 +233,41 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`Infracciones` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+
+-- Funcion Jugador Malo
+CREATE FUNCTION es_malo(handicap INTEGER)
+RETURNS BOOLEAN
+BEGIN
+  RETURN handicap <= 5;
+END
+
+-- Funcion Jugador Traicionero
+CREATE FUNCTION es_traicionero(id_jugador INTEGER)
+RETURNS BOOLEAN
+BEGIN
+	RETURN (SELECT COUNT(*) 
+	FROM Infracciones 
+	WHERE Jugadores_id_jugador = id_jugador
+	AND YEAR(fecha_infraccion) = YEAR(NOW()) 
+	AND MONTH(fecha_infraccion) = MONTH(NOW()) ) > 3
+END
+
+-- Vista de Jugadores Malos
+CREATE VIEW JugadoresMalos AS
+	SELECT * FROM Jugadores WHERE es_malo(handicap_jugador);
+
+-- Vista de Jugadores Traicionero
+CREATE VIEW JugadoresTraicioneros AS
+	SELECT * FROM Jugadores WHERE es_traicionero(id_jugador);
+
+-- Vista de Jugadores que Pueden Mejorar
+CREATE VIEW JugadoresQueMejoraran AS
+	SELECT * 
+	FROM JugadoresMalos 
+	WHERE (YEAR(fecha_nac_jugador) - YEAR(NOW()) - (DATE_FORMAT(fecha_nac_jugador, '%m%d') < DATE_FORMAT(NOW(), '%m%d'))) < 25;
+ 
 
 
 
