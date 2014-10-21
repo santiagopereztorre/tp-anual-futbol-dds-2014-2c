@@ -8,6 +8,7 @@ import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.criterios.PromedioUltimasNCalificaciones;
 import utn.dds.infraccion.Infraccion;
 import utn.dds.jugador.Jugador;
+import utn.dds.partido.PartidoHome;
 
 @Observable
 public class JugadorViewModel {
@@ -42,6 +43,12 @@ public class JugadorViewModel {
 	public List<Jugador> getAmigos()
 	{
 		return jugador.getAmigos();
+	}
+	
+	public Long getCantidadPartidosJugados()
+	{
+		return PartidoHome.getInstancia().allInstances()
+			.stream().filter(unPartido -> unPartido.jugoPartido(jugador)).count();
 	}
 	
 	public String getPromedioUltimoPartido()

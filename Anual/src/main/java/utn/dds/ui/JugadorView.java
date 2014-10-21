@@ -62,8 +62,8 @@ public class JugadorView extends Window<JugadorViewModel> {
 		table.bindItemsToProperty("infracciones");
 		
 		// Cant partidos jugados
-		//new Label(mainPanel).setText("Cantidad de partidos:");
-		//new Label(mainPanel).bindValueToProperty("cantidadPartidosJugados");
+		new Label(mainPanel).setText("Cantidad de partidos:");
+		new Label(mainPanel).bindValueToProperty("cantidadPartidosJugados");
 	}
 	
 	private Table<Infraccion> armarTablaInfracciones(Panel mainPanel)
