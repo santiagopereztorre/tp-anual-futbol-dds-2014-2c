@@ -4,7 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.uqbar.commons.model.Entity;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+
+
+//import org.uqbar.commons.model.Entity;
 import org.uqbar.commons.utils.Observable;
 
 import utn.dds.admin.Admin;
@@ -18,19 +27,30 @@ import utn.dds.jugador.excepciones.NoJugaronJuntosException;
 import utn.dds.jugador.excepciones.NoPodesCalificarteAVosMismoException;
 import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.partido.*;
+import utn.dds.persistentEntity.PersistentEntity;
 import utn.dds.tipoInscripcion.TipoInscripcion;
 
 @Observable
 @SuppressWarnings("serial")
-public class Jugador extends Entity{
+@Entity
+@Table(name="Jugadores")
+public class Jugador extends PersistentEntity{
 	
+	@OneToMany
 	private List<Infraccion> infracciones;
+	
+	@ManyToMany
 	private List<Jugador> amigos;
+	
+	@OneToMany
 	private List<Calificacion> calificaciones;
+	
 	private String mail;
 	private Integer handicap;
 	private String nombre;
 	private String apodo;
+	
+	@Temporal(TemporalType.DATE)
 	private Date fechaDeNacimiento;
 	
 	public Jugador(){

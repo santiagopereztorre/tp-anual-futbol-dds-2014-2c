@@ -6,12 +6,18 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import org.uqbar.commons.model.Entity;
+//import org.uqbar.commons.model.Entity;
+
+
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import utn.dds.observers.ObsPartidoCompleto;
 import utn.dds.observers.ObsPartidoDescompleto;
 import utn.dds.observers.ObsPartidoInscripcion;
 import utn.dds.partido.exceptions.NoHayVacantesException;
+import utn.dds.persistentEntity.PersistentEntity;
 import utn.dds.tipoInscripcion.*;
 import utn.dds.admin.Rechazo;
 import utn.dds.criterios.Criterio;
@@ -22,7 +28,9 @@ import utn.dds.jugador.*;
 
 
 @SuppressWarnings("serial")
-public class Partido extends Entity{
+@Entity
+@Table(name="Partidos")
+public class Partido extends PersistentEntity{
 	
 	private List<Inscripcion> inscripciones;
 	private List<Jugador> equipo1;
