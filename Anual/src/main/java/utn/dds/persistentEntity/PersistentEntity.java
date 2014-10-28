@@ -9,9 +9,9 @@ public abstract class PersistentEntity {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Integer id;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
