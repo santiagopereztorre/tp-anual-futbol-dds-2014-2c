@@ -4,7 +4,7 @@ import java.util.List;
 
 import utn.dds.jugador.Jugador;
 
-public class Mix implements Criterio{
+public class Mix extends Criterio{
 
 	private List<Criterio> criterios;
 	

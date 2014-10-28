@@ -6,7 +6,7 @@ import java.util.Date;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
-public class PromedioCalificacionesUltimoPartido implements Criterio{
+public class PromedioCalificacionesUltimoPartido extends Criterio{
 
 	@Override
 	public Integer calificar(Jugador unJugador) {

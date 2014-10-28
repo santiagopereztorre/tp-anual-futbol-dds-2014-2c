@@ -3,7 +3,7 @@ package utn.dds.criterios;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.excepciones.FaltaCargarHandicapJugadorException;
 
-public class Handicap implements Criterio {
+public class Handicap extends Criterio {
 
 	@Override
 	public Integer calificar(Jugador unJugador) {

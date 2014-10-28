@@ -2,7 +2,7 @@ package utn.dds.criterios;
 
 import utn.dds.jugador.Jugador;
 
-public class PromedioUltimasNCalificaciones implements Criterio {
+public class PromedioUltimasNCalificaciones extends Criterio {
 
 	public static final int TODAS = -1;
 	private int cantCalificaciones;
