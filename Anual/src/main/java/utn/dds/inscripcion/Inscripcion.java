@@ -19,7 +19,7 @@ public class Inscripcion extends PersistentEntity{
 	private Jugador jugador;
 	
 	@ManyToOne
-	@JoinColumn(name="id_tipo_inscripcion")
+	@JoinColumn(name="id_tipos_inscripcion")
 	private TipoInscripcion tipoInscripcion;
 	
 	public Inscripcion(Jugador nuevoJugador, TipoInscripcion nuevoTipoInscripcion){
