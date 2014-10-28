@@ -2,10 +2,17 @@ package utn.dds.tipoInscripcion;
 
 import java.util.function.Predicate;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Transient;
+
 import utn.dds.partido.Partido;
 
-public class Condicional implements TipoInscripcion{
+@Entity
+@DiscriminatorValue("Condicional")
+public class Condicional extends TipoInscripcion{
 	
+	@Transient
 	private Predicate<Partido> condicion;
 	
 	public Condicional(){
