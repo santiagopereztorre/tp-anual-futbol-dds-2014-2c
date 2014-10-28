@@ -10,22 +10,19 @@ import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.delimitadores.Delimitador;
 import utn.dds.jugador.JugadorWrapper;
 
-public class JugadorHome extends CollectionBasedHome<Jugador> {
+public class JugadorHome {
 
 	private static JugadorHome instancia;
 	
-	@Override
 	public Jugador createExample() {
 		return new Jugador();
 	}
 
-	@Override
 	public Class<Jugador> getEntityType() {
 		return Jugador.class;
 	}
 
-	@Override
-	protected Predicate<Jugador> getCriterio(Jugador example2) {
+/*	protected Predicate<Jugador> getCriterio(Jugador example2) {
 		JugadorWrapper example = (JugadorWrapper) example2;
 		Predicate<Jugador> predicate = this.getCriterioTodas();
 		if (example.getNombre() != null && !example.getNombre().equals("")) {
@@ -49,7 +46,7 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 		return predicate;
 	}
 
-	private Predicate<Jugador> getCriterioPorNombre(String nombre) {
+*/	private Predicate<Jugador> getCriterioPorNombre(String nombre) {
 		return new Predicate<Jugador>() {
 			@Override
 			public boolean evaluate(Jugador jugador) {

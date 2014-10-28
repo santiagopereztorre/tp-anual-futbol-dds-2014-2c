@@ -10,8 +10,16 @@ import java.util.stream.Collectors;
 
 
 
+
+
+
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import utn.dds.observers.ObsPartidoCompleto;
 import utn.dds.observers.ObsPartidoDescompleto;
@@ -27,21 +35,33 @@ import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
 
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name="Partidos")
 public class Partido extends PersistentEntity{
 	
+	@OneToMany
 	private List<Inscripcion> inscripciones;
+	
+	@OneToMany
 	private List<Jugador> equipo1;
+	
+	@OneToMany
 	private List<Jugador> equipo2;
+	
+	@OneToMany
 	private ArrayList<JugadorConCalificacion> inscriptosCalificados;
 	
+	@Transient
 	private List<ObsPartidoCompleto> observadoresCompleto;
+	@Transient
 	private List<ObsPartidoDescompleto> observadoresDescompleto;
+	@Transient
 	private List<ObsPartidoInscripcion> observadoresInscripcion;
 	
+	@OneToMany
 	private List<Rechazo> rechazosSugerencias;
+	
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	public Partido(Date fecha){
