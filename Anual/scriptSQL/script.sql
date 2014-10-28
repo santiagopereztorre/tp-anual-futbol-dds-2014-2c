@@ -10,9 +10,9 @@ USE `dds_anual` ;
 -- Table `dds_anual`.`Criterios`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Criterios` (
-  `id_criterio` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre_criterio` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id_criterio`) )
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
@@ -20,9 +20,9 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Divisores`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Divisores` (
-  `id_divisor` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre_divisor` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id_divisor`) )
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
@@ -30,21 +30,21 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Partidos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Partidos` (
-  `id_partido` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `fecha_partido` DATETIME NULL ,
   `Criterios_id_criterio` INT NOT NULL ,
   `Divisores_id_divisor` INT NOT NULL ,
-  PRIMARY KEY (`id_partido`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_Partidos_Criterios` (`Criterios_id_criterio` ASC) ,
   INDEX `fk_Partidos_Divisores1` (`Divisores_id_divisor` ASC) ,
   CONSTRAINT `fk_Partidos_Criterios`
     FOREIGN KEY (`Criterios_id_criterio` )
-    REFERENCES `dds_anual`.`Criterios` (`id_criterio` )
+    REFERENCES `dds_anual`.`Criterios` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Partidos_Divisores1`
     FOREIGN KEY (`Divisores_id_divisor` )
-    REFERENCES `dds_anual`.`Divisores` (`id_divisor` )
+    REFERENCES `dds_anual`.`Divisores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -54,13 +54,13 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Jugadores`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Jugadores` (
-  `id_jugador` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre_jugador` VARCHAR(45) NULL ,
   `apodo_jugador` VARCHAR(45) NULL ,
   `handicap_jugador` INT NULL ,
   `mail_jugador` VARCHAR(45) NULL ,
   `fecha_nac_jugador` DATETIME NULL ,
-  PRIMARY KEY (`id_jugador`) )
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
@@ -68,20 +68,20 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Jugadores_x_Partidos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Jugadores_x_Partidos` (
-  `id_jugador_x_partido` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `equipo` BIT NOT NULL ,
   `Partidos_id_partido` INT NOT NULL ,
   `Jugadores_id_jugador` INT NOT NULL ,
-  PRIMARY KEY (`id_jugador_x_partido`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_Jugadores_x_Partidos_Jugadores1` (`Jugadores_id_jugador` ASC) ,
   CONSTRAINT `fk_Jugadores_x_Partidos_Partidos1`
     FOREIGN KEY (`Partidos_id_partido` )
-    REFERENCES `dds_anual`.`Partidos` (`id_partido` )
+    REFERENCES `dds_anual`.`Partidos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Jugadores_x_Partidos_Jugadores1`
     FOREIGN KEY (`Jugadores_id_jugador` )
-    REFERENCES `dds_anual`.`Jugadores` (`id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -91,34 +91,34 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Calificaciones`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Calificaciones` (
-  `id_calificacion` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `puntaje_calificacion` INT NULL ,
   `critica_calificacion` VARCHAR(45) NULL ,
   `Jugadores_x_Partidos_id_jugador_x_partido` INT NOT NULL ,
   `Jugadores_id_jugador_calificador` INT NOT NULL ,
-  PRIMARY KEY (`id_calificacion`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_Calificaciones_Jugadores_x_Partidos1` (`Jugadores_x_Partidos_id_jugador_x_partido` ASC) ,
   INDEX `fk_Calificaciones_Jugadores1` (`Jugadores_id_jugador_calificador` ASC) ,
   CONSTRAINT `fk_Calificaciones_Jugadores_x_Partidos1`
     FOREIGN KEY (`Jugadores_x_Partidos_id_jugador_x_partido` )
-    REFERENCES `dds_anual`.`Jugadores_x_Partidos` (`id_jugador_x_partido` )
+    REFERENCES `dds_anual`.`Jugadores_x_Partidos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Calificaciones_Jugadores1`
     FOREIGN KEY (`Jugadores_id_jugador_calificador` )
-    REFERENCES `dds_anual`.`Jugadores` (`id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `dds_anual`.`Tipos_incripcion`
+-- Table `dds_anual`.`Tipos_inscripcion`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `dds_anual`.`Tipos_incripcion` (
-  `id_tipos_incripcion` INT NOT NULL AUTO_INCREMENT,
+CREATE  TABLE IF NOT EXISTS `dds_anual`.`Tipos_inscripcion` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre_tipo_inscripcion` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id_tipos_incripcion`) )
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
 
 
@@ -135,17 +135,17 @@ CREATE  TABLE IF NOT EXISTS `dds_anual`.`Inscripciones` (
   INDEX `fk_Inscripciones_Tipos_incripcion1` (`Tipos_incripcion_id_tipos_incripcion` ASC) ,
   CONSTRAINT `fk_Inscripciones_Jugadores1`
     FOREIGN KEY (`Jugadores_id_jugador` )
-    REFERENCES `dds_anual`.`Jugadores` (`id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Inscripciones_Partidos1`
     FOREIGN KEY (`Partidos_id_partido` )
-    REFERENCES `dds_anual`.`Partidos` (`id_partido` )
+    REFERENCES `dds_anual`.`Partidos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Inscripciones_Tipos_incripcion1`
     FOREIGN KEY (`Tipos_incripcion_id_tipos_incripcion` )
-    REFERENCES `dds_anual`.`Tipos_incripcion` (`id_tipos_incripcion` )
+    REFERENCES `dds_anual`.`Tipos_incripcion` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -155,26 +155,26 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Sugerencias`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Sugerencias` (
-  `id_sugerencia` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Jugadores_id_jugador` INT NOT NULL,
   `Partidos_id_partido` INT NOT NULL ,
   `Tipos_incripcion_id_tipos_incripcion` INT NOT NULL ,
   INDEX `fk_Sugerencias_Tipos_incripcion1` (`Tipos_incripcion_id_tipos_incripcion` ASC) ,
-  PRIMARY KEY (`id_sugerencia`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_Sugerencias_Partidos1` (`Partidos_id_partido` ASC) ,
   CONSTRAINT `fk_Sugerencias_Tipos_incripcion1`
     FOREIGN KEY (`Tipos_incripcion_id_tipos_incripcion` )
-    REFERENCES `dds_anual`.`Tipos_incripcion` (`id_tipos_incripcion` )
+    REFERENCES `dds_anual`.`Tipos_incripcion` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Sugerencias_Jugadores1`
     FOREIGN KEY (`Jugadores_id_jugador` )
-    REFERENCES `dds_anual`.`Jugadores` (`id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Sugerencias_Partidos1`
     FOREIGN KEY (`Partidos_id_partido` )
-    REFERENCES `dds_anual`.`Partidos` (`id_partido` )
+    REFERENCES `dds_anual`.`Partidos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -184,14 +184,14 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Rechazos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Rechazos` (
-  `id_rechazo` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `motivo` VARCHAR(45) NULL ,
   `Sugerencias_id_sugerencia` INT NOT NULL ,
-  PRIMARY KEY (`id_rechazo`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_Rechazos_Sugerencias1` (`Sugerencias_id_sugerencia` ASC) ,
   CONSTRAINT `fk_Rechazos_Sugerencias1`
     FOREIGN KEY (`Sugerencias_id_sugerencia` )
-    REFERENCES `dds_anual`.`Sugerencias` (`id_sugerencia` )
+    REFERENCES `dds_anual`.`Sugerencias` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -208,12 +208,12 @@ CREATE  TABLE IF NOT EXISTS `dds_anual`.`Amigos` (
   INDEX `fk_Amigos_Jugadores2` (`Jugadores_id_jugador2` ASC) ,
   CONSTRAINT `fk_Amigos_Jugadores1`
     FOREIGN KEY (`Jugadores_id_jugador1` )
-    REFERENCES `dds_anual`.`Jugadores` (`id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Amigos_Jugadores2`
     FOREIGN KEY (`Jugadores_id_jugador2` )
-    REFERENCES `dds_anual`.`Jugadores` (`id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -223,15 +223,15 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Infracciones`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Infracciones` (
-  `id_infraccion` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `motivo_infraccion` VARCHAR(45) NULL ,
   `fecha_infraccion` DATETIME NULL ,
   `Jugadores_id_jugador` INT NOT NULL ,
-  PRIMARY KEY (`id_infraccion`) ,
+  PRIMARY KEY (`id`) ,
   INDEX `fk_Infracciones_Jugadores1` (`Jugadores_id_jugador` ASC) ,
   CONSTRAINT `fk_Infracciones_Jugadores1`
     FOREIGN KEY (`Jugadores_id_jugador` )
-    REFERENCES `dds_anual`.`Jugadores` (`id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -274,7 +274,7 @@ CREATE VIEW dds_anual.JugadoresMalos AS
 -- Vista de Jugadores Traicionero
 DROP VIEW IF EXISTS dds_anual.JugadoresTraicioneros;
 CREATE VIEW dds_anual.JugadoresTraicioneros AS
-	SELECT * FROM Jugadores WHERE es_traicionero(id_jugador);
+	SELECT * FROM Jugadores WHERE es_traicionero(id);
 
 
 -- Vista de Jugadores que Pueden Mejorar
