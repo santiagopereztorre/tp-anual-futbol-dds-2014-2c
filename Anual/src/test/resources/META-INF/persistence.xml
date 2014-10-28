@@ -9,6 +9,8 @@
     	<provider>org.hibernate.ejb.HibernatePersistence</provider>
     	
   		<class>utn.dds.jugador.Jugador</class>
+  		<class>utn.dds.infraccion.Infraccion</class>
+  		<class>utn.dds.calificacion.Calificacion</class>
 
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        
