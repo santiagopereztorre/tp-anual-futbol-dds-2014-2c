@@ -94,19 +94,23 @@ CREATE  TABLE IF NOT EXISTS `dds_anual`.`Calificaciones` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `puntaje_calificacion` INT NULL ,
   `critica_calificacion` VARCHAR(45) NULL ,
-  `Jugadores_x_Partidos_id_jugador_x_partido` INT NOT NULL ,
-  `Jugadores_id_jugador_calificador` INT NOT NULL ,
+  `id_partido` INT NOT NULL ,
+  `id_calificador` INT NOT NULL ,
+  `id_calificado`  INT NOT NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_Calificaciones_Jugadores_x_Partidos1` (`Jugadores_x_Partidos_id_jugador_x_partido` ASC) ,
-  INDEX `fk_Calificaciones_Jugadores1` (`Jugadores_id_jugador_calificador` ASC) ,
-  CONSTRAINT `fk_Calificaciones_Jugadores_x_Partidos1`
-    FOREIGN KEY (`Jugadores_x_Partidos_id_jugador_x_partido` )
-    REFERENCES `dds_anual`.`Jugadores_x_Partidos` (`id` )
+  CONSTRAINT `fk_id_calificador`
+    FOREIGN KEY (`id_calificador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Calificaciones_Jugadores1`
-    FOREIGN KEY (`Jugadores_id_jugador_calificador` )
+  CONSTRAINT `fk_id_calificado`
+    FOREIGN KEY (`id_calificado` )
     REFERENCES `dds_anual`.`Jugadores` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_id_partido`
+    FOREIGN KEY (`id_partido` )
+    REFERENCES `dds_anual`.`Partidos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

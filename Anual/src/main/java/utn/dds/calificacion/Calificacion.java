@@ -15,7 +15,7 @@ import utn.dds.persistentEntity.PersistentEntity;
 public class Calificacion extends PersistentEntity{
 	
 	@ManyToOne
-	@JoinColumn(name="id_jugador_calificador")
+	@JoinColumn(name="id_calificador")
 	private Jugador calificador;
 	
 	@ManyToOne

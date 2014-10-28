@@ -47,7 +47,7 @@ public class Jugador extends PersistentEntity{
 	private List<Jugador> amigos;
 	
 	@OneToMany
-	@JoinColumn(name="id_jugador_calificado")
+	@JoinColumn(name="id_calificado")
 	private List<Calificacion> calificaciones;
 	
 	@Column(name="mail_jugador")
