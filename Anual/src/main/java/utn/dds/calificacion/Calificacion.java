@@ -1,12 +1,30 @@
 package utn.dds.calificacion;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.persistentEntity.PersistentEntity;
 
-public class Calificacion {
+@Entity
+@Table(name="Calificaciones")
+public class Calificacion extends PersistentEntity{
+	
+	@ManyToOne
+	@Column(name="id_jugador_calificador")
 	private Jugador calificador;
+	
+	@ManyToOne
+	@Column(name="id_partido")
 	private Partido partido;
+	
+	@Column(name="critica_calificacion")
 	private String critica;
+	
+	@Column(name="puntaje_calificacion")
 	private Integer puntaje;
 	
 	public Calificacion(Jugador otroJugador, Partido unPartido, Integer puntaje, String unTexto){
