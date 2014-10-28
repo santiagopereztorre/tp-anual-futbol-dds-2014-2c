@@ -20,7 +20,7 @@ public class Infraccion extends PersistentEntity{
 	@Column(name="motivo_infraccion")
 	private String motivo;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="fecha_infraccion")
 	private Date fecha;
 	

@@ -230,11 +230,10 @@ CREATE  TABLE IF NOT EXISTS `dds_anual`.`Infracciones` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `motivo_infraccion` VARCHAR(45) NULL ,
   `fecha_infraccion` DATETIME NULL ,
-  `Jugadores_id_jugador` INT NOT NULL ,
+  `id_jugador` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_Infracciones_Jugadores1` (`Jugadores_id_jugador` ASC) ,
   CONSTRAINT `fk_Infracciones_Jugadores1`
-    FOREIGN KEY (`Jugadores_id_jugador` )
+    FOREIGN KEY (`id_jugador` )
     REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
