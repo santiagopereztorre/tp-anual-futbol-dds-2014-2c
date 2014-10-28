@@ -1,12 +1,25 @@
 package utn.dds.inscripcion;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import utn.dds.jugador.*;
 import utn.dds.tipoInscripcion.*;
 import utn.dds.partido.*;
+import utn.dds.persistentEntity.PersistentEntity;
 
-public class Inscripcion {
+@Entity
+@Table(name="Inscripciones")
+public class Inscripcion extends PersistentEntity{
 	
+	@ManyToOne
+	@JoinColumn(name="id_jugador")
 	private Jugador jugador;
+	
+	@ManyToOne
+	@JoinColumn(name="id_tipo_inscripcion")
 	private TipoInscripcion tipoInscripcion;
 	
 	public Inscripcion(Jugador nuevoJugador, TipoInscripcion nuevoTipoInscripcion){

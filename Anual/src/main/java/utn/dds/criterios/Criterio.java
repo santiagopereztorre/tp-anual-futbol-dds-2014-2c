@@ -9,12 +9,13 @@ import javax.persistence.Inheritance;
 import javax.persistence.Table;
 
 import utn.dds.jugador.Jugador;
+import utn.dds.persistentEntity.PersistentEntity;
 
 @Entity
 @Table(name = "Criterios")
 @Inheritance(strategy = SINGLE_TABLE)
 @DiscriminatorColumn(name = "nombre_criterio")
-public abstract class Criterio {
+public abstract class Criterio extends PersistentEntity{
 	public Integer calificar(Jugador unJugador){
 		return 0;
 	}

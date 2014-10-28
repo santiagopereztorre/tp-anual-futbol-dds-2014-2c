@@ -11,12 +11,13 @@ import javax.persistence.Table;
 
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorConCalificacion;
+import utn.dds.persistentEntity.PersistentEntity;
 
 @Entity
 @Table(name = "Divisores")
 @Inheritance(strategy = SINGLE_TABLE)
 @DiscriminatorColumn(name = "nombre_divisor")
-public abstract class Divisor {
+public abstract class Divisor extends PersistentEntity{
 
 
 	void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
