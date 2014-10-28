@@ -3,9 +3,14 @@ package utn.dds.criterios;
 import java.util.Comparator;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
+@Entity
+@DiscriminatorValue("CalifUltPartido")
 public class PromedioCalificacionesUltimoPartido extends Criterio{
 
 	@Override

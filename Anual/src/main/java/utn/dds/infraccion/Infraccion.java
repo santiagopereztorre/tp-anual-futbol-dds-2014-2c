@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -13,6 +14,7 @@ import utn.dds.persistentEntity.PersistentEntity;
 
 @Observable
 @Entity
+@Table(name="Infracciones")
 public class Infraccion extends PersistentEntity{
 	
 	@Column(name="motivo_infraccion")

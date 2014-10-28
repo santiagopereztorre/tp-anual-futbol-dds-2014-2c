@@ -1,8 +1,14 @@
 package utn.dds.criterios;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.excepciones.FaltaCargarHandicapJugadorException;
 
+
+@Entity
+@DiscriminatorValue("Handicap")
 public class Handicap extends Criterio {
 
 	@Override

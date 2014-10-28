@@ -2,10 +2,17 @@ package utn.dds.criterios;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
 import utn.dds.jugador.Jugador;
 
+@Entity
+@DiscriminatorValue("Mix")
 public class Mix extends Criterio{
 
+	@OneToMany
 	private List<Criterio> criterios;
 	
 	public Mix (List<Criterio> criterios){
