@@ -130,11 +130,12 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Inscripciones`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Inscripciones` (
+  `id` INT NOT NULL,
   `id_jugador` INT NOT NULL ,
   `id_partido` INT NOT NULL ,
   `condicion_inscripcion` VARCHAR(45) NULL ,
   `id_tipos_inscripcion` INT NOT NULL ,
-  PRIMARY KEY (`id_jugador`, `id_partido`) ,
+  PRIMARY KEY (`id`) ,
   CONSTRAINT `fk_Inscripciones_Jugadores1`
     FOREIGN KEY (`id_jugador` )
     REFERENCES `dds_anual`.`Jugadores` (`id` )
