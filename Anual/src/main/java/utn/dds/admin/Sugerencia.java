@@ -5,6 +5,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import javax.persistence.ManyToOne;
+
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 import utn.dds.persistentEntity.PersistentEntity;
@@ -14,15 +16,15 @@ import utn.dds.tipoInscripcion.TipoInscripcion;
 @Table(name="Sugerencias")
 public class Sugerencia extends PersistentEntity{
 
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id_jugador")
 	private Jugador jugador;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id_partido")
 	private Partido partido;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id_tipo_inscripcion")
 	private TipoInscripcion inscripcion;
 	

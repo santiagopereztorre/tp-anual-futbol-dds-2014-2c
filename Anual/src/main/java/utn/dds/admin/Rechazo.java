@@ -3,8 +3,9 @@ package utn.dds.admin;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import javax.persistence.ManyToOne;
 
 import utn.dds.jugador.Jugador;
 import utn.dds.persistentEntity.PersistentEntity;
@@ -14,11 +15,11 @@ import utn.dds.tipoInscripcion.TipoInscripcion;
 @Table(name="Rechazos")
 public class Rechazo extends PersistentEntity{
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id_jugador")
 	private Jugador jugador;
 	
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="id_partido")
 	private TipoInscripcion inscripcion;
 	

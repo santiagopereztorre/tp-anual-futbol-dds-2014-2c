@@ -48,7 +48,7 @@ public class Partido extends PersistentEntity{
 	@OneToMany
 	private List<Jugador> equipo2;
 	
-	@OneToMany
+	@Transient
 	private ArrayList<JugadorConCalificacion> inscriptosCalificados;
 	
 	@Transient
