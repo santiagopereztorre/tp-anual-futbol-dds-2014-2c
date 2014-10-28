@@ -20,7 +20,7 @@ import utn.dds.persistentEntity.PersistentEntity;
 public abstract class Divisor extends PersistentEntity{
 
 
-	void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
+	public void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
 			List<JugadorConCalificacion> jugadoresCalificados){
 		
 	}
