@@ -62,7 +62,7 @@ public class Jugador extends PersistentEntity{
 	@Column(name="apodo_jugador")
 	private String apodo;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="fecha_nac_jugador")
 	private Date fechaDeNacimiento;
 	
