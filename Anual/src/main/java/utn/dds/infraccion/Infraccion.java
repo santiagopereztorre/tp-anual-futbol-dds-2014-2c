@@ -2,12 +2,24 @@ package utn.dds.infraccion;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.uqbar.commons.utils.Observable;
 
+import utn.dds.persistentEntity.PersistentEntity;
+
 @Observable
-public class Infraccion {
+@Entity
+public class Infraccion extends PersistentEntity{
 	
+	@Column(name="motivo_infraccion")
 	private String motivo;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_infraccion")
 	private Date fecha;
 	
 	public Infraccion(String motivo){
