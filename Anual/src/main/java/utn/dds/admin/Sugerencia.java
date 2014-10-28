@@ -1,14 +1,29 @@
 package utn.dds.admin;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.persistentEntity.PersistentEntity;
 import utn.dds.tipoInscripcion.TipoInscripcion;
 
-public class Sugerencia 
-{
+@Entity
+@Table(name="Sugerencias")
+public class Sugerencia extends PersistentEntity{
 
+	@OneToMany
+	@JoinColumn(name="id_jugador")
 	private Jugador jugador;
+	
+	@OneToMany
+	@JoinColumn(name="id_partido")
 	private Partido partido;
+	
+	@OneToMany
+	@JoinColumn(name="id_tipo_inscripcion")
 	private TipoInscripcion inscripcion;
 	
 	public Sugerencia(Jugador jugador, Partido partido,
