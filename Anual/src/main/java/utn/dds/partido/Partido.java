@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-import org.uqbar.commons.model.Entity;
+//import org.uqbar.commons.model.Entity;
 
 
 
@@ -14,7 +14,7 @@ import org.uqbar.commons.model.Entity;
 
 
 
-//import javax.persistence.Entity;
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,9 +35,9 @@ import utn.dds.inscripcion.*;
 import utn.dds.jugador.*;
 
 
-@javax.persistence.Entity
+@Entity
 @Table(name="Partidos")
-public class Partido extends Entity{
+public class Partido extends PersistentEntity{
 	
 	@OneToMany
 	private List<Inscripcion> inscripciones;
