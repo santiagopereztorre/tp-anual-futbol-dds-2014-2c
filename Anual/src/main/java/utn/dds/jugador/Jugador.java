@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+
 
 
 
@@ -31,26 +35,35 @@ import utn.dds.persistentEntity.PersistentEntity;
 import utn.dds.tipoInscripcion.TipoInscripcion;
 
 @Observable
-@SuppressWarnings("serial")
 @Entity
 @Table(name="Jugadores")
 public class Jugador extends PersistentEntity{
 	
 	@OneToMany
+	@JoinColumn(name="id_jugador")
 	private List<Infraccion> infracciones;
 	
 	@ManyToMany
 	private List<Jugador> amigos;
 	
 	@OneToMany
+	@JoinColumn(name="id_jugador_calificador")
 	private List<Calificacion> calificaciones;
 	
+	@Column(name="mail_jugador")
 	private String mail;
+	
+	@Column(name="handicap_jugador")
 	private Integer handicap;
+	
+	@Column(name="nombre_jugador")
 	private String nombre;
+	
+	@Column(name="apodo_jugador")
 	private String apodo;
 	
 	@Temporal(TemporalType.DATE)
+	@Column(name="fecha_nac_jugador")
 	private Date fechaDeNacimiento;
 	
 	public Jugador(){
