@@ -3,10 +3,15 @@ package utn.dds.divisores;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorConCalificacion;
 
-public class ParImpar implements Divisor {
+@Entity
+@DiscriminatorValue("ParImpar")
+public class ParImpar extends Divisor {
 
 	@Override
 	public void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
