@@ -22,6 +22,11 @@ public class JugadorHome {
 		return Jugador.class;
 	}
 
+	/**
+	 * TODO descomentar
+	 * @param nombre
+	 * @return
+	 */
 /*	protected Predicate<Jugador> getCriterio(Jugador example2) {
 		JugadorWrapper example = (JugadorWrapper) example2;
 		Predicate<Jugador> predicate = this.getCriterioTodas();

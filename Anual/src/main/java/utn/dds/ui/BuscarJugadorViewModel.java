@@ -137,7 +137,10 @@ public class BuscarJugadorViewModel {
 	
 	public List<Jugador> getJugadores()
 	{
-		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
+		/**
+		 * TODO descomentar
+		 */
+//		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
 		return jugadores;
 	}
 }

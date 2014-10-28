@@ -1,7 +1,6 @@
 package utn.dds.partido;
 
 import org.apache.commons.collections15.Predicate;
-import org.uqbar.commons.model.CollectionBasedHome;
 
 public class PartidoHome {
 	private static PartidoHome instancia;

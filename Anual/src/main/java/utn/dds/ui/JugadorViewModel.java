@@ -47,8 +47,12 @@ public class JugadorViewModel {
 	
 	public Long getCantidadPartidosJugados()
 	{
-		return PartidoHome.getInstancia().allInstances()
-			.stream().filter(unPartido -> unPartido.jugoPartido(jugador)).count();
+		/**
+		 * TODO descomentar
+		 */
+		return new Long(2);
+	//	return PartidoHome.getInstancia().allInstances()
+	//		.stream().filter(unPartido -> unPartido.jugoPartido(jugador)).count();
 	}
 	
 	public String getPromedioUltimoPartido()

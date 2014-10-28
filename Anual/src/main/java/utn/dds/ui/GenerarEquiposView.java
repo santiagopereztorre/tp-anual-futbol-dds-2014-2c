@@ -73,7 +73,10 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 	
 	public static void main(String[] args) {
 		 new GenerarEquiposView().startApplication();
-		 java.util.List<Partido> listaDePartidos = PartidoHome.getInstancia().allInstances();
-		 listaDePartidos.forEach(System.out::println);
+		 /**
+		  * TODO descomentar
+		  */
+	//	 java.util.List<Partido> listaDePartidos = PartidoHome.getInstancia().allInstances();
+	//	 listaDePartidos.forEach(System.out::println);
 	}
 }
