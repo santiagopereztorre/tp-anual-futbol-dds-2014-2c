@@ -233,9 +233,9 @@ public class GenerarEquiposViewModel {
 	public void confirmarEquipos(){
 		EntityManagerHelper.beginTransaction();
 		PartidoHome.getInstancia().create(partido);
-		partido = new Partido();
 		EntityManagerHelper.persist(partido);
 		EntityManagerHelper.commit();
+		partido = new Partido();
 		this.inicializarPartido();	
 	}
 	
