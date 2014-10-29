@@ -32,9 +32,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `dds_anual`.`Jugadores_x_Partidos`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `dds_anual`.`Jugadores_x_Partidos` (
+CREATE  TABLE IF NOT EXISTS `dds_anual`.`Jugadores_x_Partidos_1` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `equipo` BIT NOT NULL ,
   `Partidos_id_partido` INT NOT NULL ,
   `Jugadores_id_jugador` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
@@ -45,6 +44,27 @@ CREATE  TABLE IF NOT EXISTS `dds_anual`.`Jugadores_x_Partidos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Jugadores_x_Partidos_Jugadores1`
+    FOREIGN KEY (`Jugadores_id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `dds_anual`.`Jugadores_x_Partidos`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `dds_anual`.`Jugadores_x_Partidos_2` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `Partidos_id_partido` INT NOT NULL ,
+  `Jugadores_id_jugador` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Jugadores_x_Partidos_Jugadores1` (`Jugadores_id_jugador` ASC) ,
+  CONSTRAINT `fk_Jugadores_x_Partidos_Partidos2`
+    FOREIGN KEY (`Partidos_id_partido` )
+    REFERENCES `dds_anual`.`Partidos` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Jugadores_x_Partidos_Jugadores2`
     FOREIGN KEY (`Jugadores_id_jugador` )
     REFERENCES `dds_anual`.`Jugadores` (`id` )
     ON DELETE NO ACTION
@@ -270,21 +290,41 @@ BEGIN
 	IF id_jugador_reemplazo < 0
 	THEN
 		DELETE
-		FROM Jugadores_x_Partidos
+		FROM Jugadores_x_Partidos_1
+		WHERE Partidos_id_partido = id_partido AND Jugadores_id_jugador = id_jugador;
+		DELETE
+		FROM Jugadores_x_Partidos_2
 		WHERE Partidos_id_partido = id_partido AND Jugadores_id_jugador = id_jugador;
 	ELSE
-		UPDATE Jugadores_x_Partidos
+		UPDATE Jugadores_x_Partidos_1
 		SET Jugadores_id_jugador = id_jugador_reemplazo
-		WHERE Jugadores_id_jugador = id_jugador;
+		WHERE Jugadores_id_jugador = id_jugador AND Partidos_id_partido = id_partido;
+		UPDATE Jugadores_x_Partidos_2
+		SET Jugadores_id_jugador = id_jugador_reemplazo
+		WHERE Jugadores_id_jugador = id_jugador AND Partidos_id_partido = id_partido;
 	END IF;
 END;
 $$
 DELIMITER ;
 
-DROP TRIGGER IF EXISTS dds_anual.infracciono_jugador;
+DROP TRIGGER IF EXISTS dds_anual.infracciono_jugador_1;
 DELIMITER $$
-CREATE TRIGGER infracciono_jugador
-AFTER DELETE ON Jugadores_x_Partidos
+CREATE TRIGGER infracciono_jugador_1
+AFTER DELETE ON Jugadores_x_Partidos_1
+FOR EACH ROW
+BEGIN
+	INSERT INTO Infracciones
+	(motivo_infraccion, fecha_infraccion, Jugadores_id_jugador)
+	VALUES ('Por darse de baja de un partido sin proponer reemplazante', CURRENT_DATE(), (SELECT d.Jugadores_id_jugador 
+																							FROM Deleted d)); 
+END;
+$$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS dds_anual.infracciono_jugador_2;
+DELIMITER $$
+CREATE TRIGGER infracciono_jugador_2
+AFTER DELETE ON Jugadores_x_Partidos_2
 FOR EACH ROW
 BEGIN
 	INSERT INTO Infracciones

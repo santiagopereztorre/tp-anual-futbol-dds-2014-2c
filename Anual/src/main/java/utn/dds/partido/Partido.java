@@ -9,19 +9,6 @@ import java.util.stream.Collectors;
 //import org.uqbar.commons.model.Entity;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,6 +25,9 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.FilterJoinTable;
+import org.hibernate.annotations.JoinColumnOrFormula;
+import org.hibernate.annotations.JoinColumnsOrFormulas;
+import org.hibernate.annotations.JoinFormula;
 
 import utn.dds.observers.ObsPartidoCompleto;
 import utn.dds.observers.ObsPartidoDescompleto;
@@ -68,19 +58,17 @@ public class Partido extends org.uqbar.commons.model.Entity{
 	@OneToMany(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="id_partido")
 	private List<Inscripcion> inscripciones;
-	
+
 	@ManyToMany
-	@JoinTable(name="Jugadores_x_Partidos",
+	@JoinTable(name="Jugadores_x_Partidos_1",
 	  joinColumns={@JoinColumn(name="Partidos_id_partido")},
 	  inverseJoinColumns={@JoinColumn(name="Jugadores_id_jugador")})
-	@FilterJoinTable(name="filtroEquipo", condition=":equipo = 0")
 	private List<Jugador> equipo1;
 	
 	@ManyToMany
-	@JoinTable(name="Jugadores_x_Partidos",
+	@JoinTable(name="Jugadores_x_Partidos_2",
 	  joinColumns={@JoinColumn(name="Partidos_id_partido")},
 	  inverseJoinColumns={@JoinColumn(name="Jugadores_id_jugador")})
-	@FilterJoinTable(name="filtroEquipo", condition=":equipo = 1")
 	private List<Jugador> equipo2;
 	
 	@Transient
