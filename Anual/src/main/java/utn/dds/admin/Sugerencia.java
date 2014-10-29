@@ -17,15 +17,15 @@ import utn.dds.tipoInscripcion.TipoInscripcion;
 public class Sugerencia extends PersistentEntity{
 
 	@ManyToOne
-	@JoinColumn(name="id_jugador")
+	@JoinColumn(name="Jugadores_id_jugador")
 	private Jugador jugador;
 	
 	@ManyToOne
-	@JoinColumn(name="id_partido")
+	@JoinColumn(name="Partidos_id_partido")
 	private Partido partido;
 	
 	@ManyToOne
-	@JoinColumn(name="id_tipo_inscripcion")
+	@JoinColumn(name="Tipos_inscripcion_id_tipos_inscripcion")
 	private TipoInscripcion inscripcion;
 	
 	public Sugerencia(){

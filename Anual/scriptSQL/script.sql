@@ -156,7 +156,7 @@ CREATE  TABLE IF NOT EXISTS `dds_anual`.`Inscripciones` (
     REFERENCES `dds_anual`.`Partidos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Inscripciones_Tipos_incripcion1`
+  CONSTRAINT `fk_Inscripciones_Tipos_inscripcion1`
     FOREIGN KEY (`id_tipos_inscripcion` )
     REFERENCES `dds_anual`.`Tipos_inscripcion` (`id` )
     ON DELETE NO ACTION
@@ -171,13 +171,13 @@ CREATE  TABLE IF NOT EXISTS `dds_anual`.`Sugerencias` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `Jugadores_id_jugador` INT NOT NULL,
   `Partidos_id_partido` INT NOT NULL ,
-  `Tipos_incripcion_id_tipos_incripcion` INT NOT NULL ,
-  INDEX `fk_Sugerencias_Tipos_incripcion1` (`Tipos_incripcion_id_tipos_incripcion` ASC) ,
+  `Tipos_inscripcion_id_tipos_inscripcion` INT NOT NULL ,
+  INDEX `fk_Sugerencias_Tipos_inscripcion1` (`Tipos_inscripcion_id_tipos_inscripcion` ASC) ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_Sugerencias_Partidos1` (`Partidos_id_partido` ASC) ,
-  CONSTRAINT `fk_Sugerencias_Tipos_incripcion1`
-    FOREIGN KEY (`Tipos_incripcion_id_tipos_incripcion` )
-    REFERENCES `dds_anual`.`Tipos_incripcion` (`id` )
+  CONSTRAINT `fk_Sugerencias_Tipos_inscripcion1`
+    FOREIGN KEY (`Tipos_inscripcion_id_tipos_inscripcion` )
+    REFERENCES `dds_anual`.`Tipos_inscripcion` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Sugerencias_Jugadores1`

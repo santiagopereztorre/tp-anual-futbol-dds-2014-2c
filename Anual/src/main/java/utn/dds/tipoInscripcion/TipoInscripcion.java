@@ -9,7 +9,7 @@ import utn.dds.partido.Partido;
 import utn.dds.persistentEntity.PersistentEntity;
 
 @Entity
-@Table(name="Tipos_incripcion")
+@Table(name="Tipos_inscripcion")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="nombre_tipo_inscripcion")
 public abstract class TipoInscripcion  extends PersistentEntity{
