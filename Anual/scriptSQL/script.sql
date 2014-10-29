@@ -94,7 +94,7 @@ ENGINE = InnoDB;
 -- Table `dds_anual`.`Inscripciones`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Inscripciones` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `id_jugador` INT NOT NULL ,
   `id_partido` INT NOT NULL ,
   `condicion_inscripcion` VARCHAR(45) NULL ,

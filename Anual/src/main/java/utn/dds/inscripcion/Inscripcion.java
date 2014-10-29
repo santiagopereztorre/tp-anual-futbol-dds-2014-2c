@@ -22,16 +22,30 @@ public class Inscripcion extends PersistentEntity{
 	@JoinColumn(name="id_tipos_inscripcion")
 	private TipoInscripcion tipoInscripcion;
 	
+	@ManyToOne
+	@JoinColumn(name="id_partido")
+	private Partido partido;
+
 	public Inscripcion(){
 		
 	}
 	
-	public Inscripcion(Jugador nuevoJugador, TipoInscripcion nuevoTipoInscripcion){
+	public Inscripcion(Jugador nuevoJugador, Partido unPartido, TipoInscripcion nuevoTipoInscripcion){
 		setJugador(nuevoJugador);
 		setTipoInscripcion(nuevoTipoInscripcion);
+		setPartido(unPartido);
 	}
 
 	/* Setters y getters */
+	
+	public Partido getPartido() {
+		return partido;
+	}
+
+	public void setPartido(Partido unpartido) {
+		this.partido = unpartido;
+	}
+	
 	public TipoInscripcion getTipoInscripcion() {
 		return tipoInscripcion;
 	}

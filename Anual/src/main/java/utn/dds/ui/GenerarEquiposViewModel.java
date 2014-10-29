@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import utn.dds.calificacion.Calificacion;
 import utn.dds.criterios.Criterio;
 import utn.dds.criterios.Handicap;
@@ -29,6 +31,8 @@ public class GenerarEquiposViewModel {
 
 	
 	private void inicializarPartido(){
+		EntityManagerHelper.beginTransaction();
+		
 		Jugador juan = new Jugador();
 		juan.setNombre("juan");
 		JugadorHome.getInstancia().create(juan);
@@ -69,17 +73,49 @@ public class GenerarEquiposViewModel {
 		leandro.setNombre("leandro");
 		JugadorHome.getInstancia().create(leandro);
 		
+		juan.setHandicap(10);
+		pepito.setHandicap(1);
+		marcelo.setHandicap(4);
+		leandro.setHandicap(5);
+		martin.setHandicap(6);
+		juancho.setHandicap(7);
+		carlos.setHandicap(2);
+		pato.setHandicap(8);
+		lalo.setHandicap(3);
+		lucas.setHandicap(9);
+		
+		EntityManagerHelper.persist(leandro);
+		EntityManagerHelper.persist(juan);
+		EntityManagerHelper.persist(marcelo);
+		EntityManagerHelper.persist(pepito);
+		EntityManagerHelper.persist(martin);
+		EntityManagerHelper.persist(juancho);
+		EntityManagerHelper.persist(pato);
+		EntityManagerHelper.persist(lalo);
+		EntityManagerHelper.persist(lucas);
+		EntityManagerHelper.persist(carlos);
+		
 		Partido riverboca = new Partido(new Date());
-		riverboca.inscribirJugador(carlos, new Estandar());
-		riverboca.inscribirJugador(juancho, new Estandar());
-		riverboca.inscribirJugador(juan, new Estandar());
-		riverboca.inscribirJugador(lucas, new Estandar());
-		riverboca.inscribirJugador(pato, new Estandar());
-		riverboca.inscribirJugador(martin, new Estandar());
-		riverboca.inscribirJugador(leandro, new Estandar());
-		riverboca.inscribirJugador(marcelo, new Estandar());
-		riverboca.inscribirJugador(lalo, new Estandar());
-		riverboca.inscribirJugador(pepito, new Estandar());
+		Estandar estandar = new Estandar();
+		Condicional condicional = new Condicional();
+		Solidaria solidaria = new Solidaria();
+		
+		riverboca.inscribirJugador(carlos, estandar);
+		riverboca.inscribirJugador(juancho, estandar);
+		riverboca.inscribirJugador(juan, estandar);
+		riverboca.inscribirJugador(lucas, estandar);
+		riverboca.inscribirJugador(pato, estandar);
+		riverboca.inscribirJugador(martin, estandar);
+		riverboca.inscribirJugador(leandro, estandar);
+		riverboca.inscribirJugador(marcelo, estandar);
+		riverboca.inscribirJugador(lalo, estandar);
+		riverboca.inscribirJugador(pepito, estandar);
+		
+		EntityManagerHelper.persist(estandar);
+		EntityManagerHelper.persist(condicional);
+		EntityManagerHelper.persist(solidaria);
+		
+		EntityManagerHelper.persist(riverboca);
 		
 		carlos.calificar(juancho, riverboca, 2, "Es horrible");
 		carlos.calificar(juan, riverboca, 3, "Arquero manco");
@@ -94,33 +130,31 @@ public class GenerarEquiposViewModel {
 		
 		
 		partido = new Partido(new Date());
-		partido.inscribirJugador(lalo, new Solidaria());
-		partido.inscribirJugador(juan, new Estandar());
-		partido.inscribirJugador(lucas, new Solidaria());
-		partido.inscribirJugador(pepito, new Condicional());
-		partido.inscribirJugador(martin, new Condicional());
-		partido.inscribirJugador(juancho, new Estandar());
-		partido.inscribirJugador(carlos, new Estandar());
-		partido.inscribirJugador(marcelo, new Condicional());
-		partido.inscribirJugador(leandro, new Estandar());
-		partido.inscribirJugador(pato, new Estandar());		
-	
-		juan.setHandicap(10);
-		pepito.setHandicap(1);
-		marcelo.setHandicap(4);
-		leandro.setHandicap(5);
-		martin.setHandicap(6);
-		juancho.setHandicap(7);
-		carlos.setHandicap(2);
-		pato.setHandicap(8);
-		lalo.setHandicap(3);
-		lucas.setHandicap(9);
+		partido.inscribirJugador(lalo, solidaria);
+		partido.inscribirJugador(juan, estandar);
+		partido.inscribirJugador(lucas, solidaria);
+		partido.inscribirJugador(pepito, condicional);
+		partido.inscribirJugador(martin, condicional);
+		partido.inscribirJugador(juancho, estandar);
+		partido.inscribirJugador(carlos, estandar);
+		partido.inscribirJugador(marcelo, condicional);
+		partido.inscribirJugador(leandro, estandar);
+		partido.inscribirJugador(pato, estandar);		
 		
+
+		EntityManagerHelper.commit();		
 	}
 	
 	public GenerarEquiposViewModel(Partido partido) {
 		this.partido = partido;
-		this.inicializarPartido();
+		EntityManagerHelper.beginTransaction();
+		Query query = EntityManagerHelper.createQuery("from Jugador");
+		List<Jugador> jugadores = query.getResultList();
+		if(jugadores.isEmpty()){
+			this.inicializarPartido();
+		}
+		jugadores.forEach((Jugador jugador) -> JugadorHome.getInstancia().create(jugador));
+		jugadores.forEach((Jugador jugador) -> this.partido.inscribirJugador(jugador, new Estandar()));	
 	}
 	
 	private Divisor divisorSeleccionado;
@@ -223,11 +257,14 @@ public class GenerarEquiposViewModel {
 	}
 	
 	public void armarEquipos() {
+		EntityManagerHelper.beginTransaction();
 		partido.armarEquipos(this.criterioSeleccionado, this.divisorSeleccionado);
 		
 		this.setEquipo1(this.partido.getEquipo1());
 		this.setEquipo2(this.partido.getEquipo2());
 		
+		
+		EntityManagerHelper.commit();
 		ObservableUtils.firePropertyChanged(this, "equipo1", getEquipo1());
 		ObservableUtils.firePropertyChanged(this, "equipo2", getEquipo2());
 	}
@@ -236,13 +273,13 @@ public class GenerarEquiposViewModel {
 		EntityManagerHelper.beginTransaction();
 		PartidoHome.getInstancia().create(partido);
 		
-		persistirEquipo(partido.getEquipo1());
-		persistirEquipo(partido.getEquipo2());
-		
 		EntityManagerHelper.persist(partido);
+	//	persistirEquipo(partido.getEquipo1());
+	//	persistirEquipo(partido.getEquipo2());
+		
 		EntityManagerHelper.commit();
-		partido = new Partido(new Date());
-		this.inicializarPartido();	
+	//	partido = new Partido(new Date());
+	//	this.inicializarPartido();	
 	}
 	
 	public Jugador abrirJugadorSeleccionado(){

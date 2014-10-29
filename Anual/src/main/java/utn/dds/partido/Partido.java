@@ -21,6 +21,8 @@ import java.util.stream.Collectors;
 
 
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -63,7 +65,7 @@ public class Partido extends org.uqbar.commons.model.Entity{
 		return id;
 	}
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="id_partido")
 	private List<Inscripcion> inscripciones;
 	
@@ -121,7 +123,7 @@ public class Partido extends org.uqbar.commons.model.Entity{
 		if (!hayVacante())
 			throw new NoHayVacantesException("Ya no hay mas lugar para inscribir jugadores");
 		
-		inscripciones.add(new Inscripcion(jugador, tipoInscripcion));
+		inscripciones.add(new Inscripcion(jugador, this, tipoInscripcion));
 		
 		
 		if(inscripciones.size()==10){
