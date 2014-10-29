@@ -16,8 +16,14 @@ import java.util.stream.Collectors;
 
 
 
+
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -45,12 +51,19 @@ import utn.dds.jugador.*;
 public class Partido extends PersistentEntity{
 	
 	@OneToMany
+	@JoinColumn(name="id_partido")
 	private List<Inscripcion> inscripciones;
 	
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name="Jugadores_x_Partidos_Equipo_1",
+	  joinColumns={@JoinColumn(name="Partidos_id_partido")},
+	  inverseJoinColumns={@JoinColumn(name="Jugadores_id_jugador")})
 	private List<Jugador> equipo1;
 	
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name="Jugadores_x_Partidos_Equipo_2",
+	  joinColumns={@JoinColumn(name="Partidos_id_partido")},
+	  inverseJoinColumns={@JoinColumn(name="Jugadores_id_jugador")})
 	private List<Jugador> equipo2;
 	
 	@Transient
