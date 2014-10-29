@@ -7,11 +7,13 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 
 
@@ -44,6 +46,9 @@ public class Jugador extends PersistentEntity{
 	private List<Infraccion> infracciones;
 	
 	@ManyToMany
+	@JoinTable(name="Amigos",
+	  joinColumns={@JoinColumn(name="Jugadores_id_jugador1")},
+	  inverseJoinColumns={@JoinColumn(name="Jugadores_id_jugador2")})
 	private List<Jugador> amigos;
 	
 	@OneToMany
