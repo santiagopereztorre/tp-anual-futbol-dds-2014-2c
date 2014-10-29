@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import utn.dds.calificacion.Calificacion;
 import utn.dds.criterios.Criterio;
 import utn.dds.criterios.Handicap;
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
@@ -26,6 +27,7 @@ import org.uqbar.commons.utils.Observable;
 @Observable
 public class GenerarEquiposViewModel {
 
+	
 	private void inicializarPartido(){
 		Jugador juan = new Jugador();
 		juan.setNombre("juan");
@@ -233,9 +235,13 @@ public class GenerarEquiposViewModel {
 	public void confirmarEquipos(){
 		EntityManagerHelper.beginTransaction();
 		PartidoHome.getInstancia().create(partido);
+		
+		persistirEquipo(partido.getEquipo1());
+		persistirEquipo(partido.getEquipo2());
+		
 		EntityManagerHelper.persist(partido);
 		EntityManagerHelper.commit();
-		partido = new Partido();
+		partido = new Partido(new Date());
 		this.inicializarPartido();	
 	}
 	
@@ -243,5 +249,24 @@ public class GenerarEquiposViewModel {
 		return getJugadorSeleccionado();
 	}
 	
+	public void persistirEquipo(List<Jugador> equipo){
+		int i;
+		for(i=0; i < equipo.size(); i++){
+			Jugador jugador = equipo.get(i);
+			EntityManagerHelper.persist(jugador);
+		}
+		/*for(i=0; i < equipo.size(); i++){
+			Jugador jugador = equipo.get(i);
+			persistirCalificaciones(jugador);
+		}
+		*/
+	}
 	
+	public void persistirCalificaciones(Jugador jugador){
+		int i;
+		for(i=0; i < jugador.cantidadCalificaciones(); i++){
+			Calificacion calificacion = jugador.getCalificaciones().get(i);
+			EntityManagerHelper.persist(calificacion);
+		}		
+	}
 }

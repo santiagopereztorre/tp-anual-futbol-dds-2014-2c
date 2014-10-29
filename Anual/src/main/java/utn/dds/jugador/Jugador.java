@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 
 //import org.uqbar.commons.model.Entity;
@@ -56,7 +58,7 @@ public class Jugador extends org.uqbar.commons.model.Entity{
 	  inverseJoinColumns={@JoinColumn(name="Jugadores_id_jugador2")})
 	private List<Jugador> amigos;
 	
-	@OneToMany
+	@OneToMany(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="id_calificado")
 	private List<Calificacion> calificaciones;
 	
@@ -167,7 +169,7 @@ public class Jugador extends org.uqbar.commons.model.Entity{
 		if (!this.jugueCon(unJugador, unPartido)) 
 			throw new NoJugaronJuntosException("Los jugadores no jugaron juntos el partido indicado");
 		
-		Calificacion calificacion = new Calificacion(this, unPartido, unPuntaje, unTexto);
+		Calificacion calificacion = new Calificacion(this, unJugador, unPartido, unPuntaje, unTexto);
 		
 		unJugador.agregarCalificacion(calificacion);
 	}

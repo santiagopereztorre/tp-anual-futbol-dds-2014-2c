@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,6 +35,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.Columns;
+import org.hibernate.annotations.FilterJoinTable;
 
 import utn.dds.observers.ObsPartidoCompleto;
 import utn.dds.observers.ObsPartidoDescompleto;
@@ -66,15 +68,17 @@ public class Partido extends org.uqbar.commons.model.Entity{
 	private List<Inscripcion> inscripciones;
 	
 	@ManyToMany
-	@JoinTable(name="Jugadores_x_Partidos_Equipo_1",
+	@JoinTable(name="Jugadores_x_Partidos",
 	  joinColumns={@JoinColumn(name="Partidos_id_partido")},
 	  inverseJoinColumns={@JoinColumn(name="Jugadores_id_jugador")})
+	@FilterJoinTable(name="filtroEquipo", condition=":equipo = 0")
 	private List<Jugador> equipo1;
 	
 	@ManyToMany
-	@JoinTable(name="Jugadores_x_Partidos_Equipo_2",
+	@JoinTable(name="Jugadores_x_Partidos",
 	  joinColumns={@JoinColumn(name="Partidos_id_partido")},
 	  inverseJoinColumns={@JoinColumn(name="Jugadores_id_jugador")})
+	@FilterJoinTable(name="filtroEquipo", condition=":equipo = 1")
 	private List<Jugador> equipo2;
 	
 	@Transient

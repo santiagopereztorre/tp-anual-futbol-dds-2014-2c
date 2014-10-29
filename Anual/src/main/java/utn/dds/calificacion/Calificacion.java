@@ -19,6 +19,10 @@ public class Calificacion extends PersistentEntity{
 	private Jugador calificador;
 	
 	@ManyToOne
+	@JoinColumn(name="id_calificado")
+	private Jugador calificado;
+	
+	@ManyToOne
 	@JoinColumn(name="id_partido")
 	private Partido partido;
 	
@@ -32,11 +36,20 @@ public class Calificacion extends PersistentEntity{
 		
 	}
 	
-	public Calificacion(Jugador otroJugador, Partido unPartido, Integer puntaje, String unTexto){
-		this.setCalificador(otroJugador);
+	public Calificacion(Jugador calificador, Jugador calificado, Partido unPartido, Integer puntaje, String unTexto){
+		this.setCalificador(calificador);
+		this.setCalificado(calificado);
 		this.setPartido(unPartido);
 		this.setCritica(unTexto);
 		this.setPuntaje(puntaje);
+	}
+	
+	public Jugador getCalificado() {
+		return calificado;
+	}
+
+	public void setCalificado(Jugador calificado) {
+		this.calificado = calificado;
 	}
 	
 	public void setPuntaje(int unPuntaje) {

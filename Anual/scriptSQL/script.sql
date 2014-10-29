@@ -51,17 +51,6 @@ CREATE  TABLE IF NOT EXISTS `dds_anual`.`Jugadores_x_Partidos` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-DROP VIEW IF EXISTS dds_anual.Jugadores_x_Partidos_Equipo_1;
-CREATE VIEW `dds_anual`.`Jugadores_x_Partidos_Equipo_1`
-AS
-SELECT * FROM `dds_anual`.`Jugadores_x_Partidos` WHERE equipo = 0;
-
-DROP VIEW IF EXISTS dds_anual.Jugadores_x_Partidos_Equipo_2;
-CREATE VIEW `dds_anual`.`Jugadores_x_Partidos_Equipo_2`
-AS
-SELECT * FROM `dds_anual`.`Jugadores_x_Partidos` WHERE equipo = 1;
-
-
 -- -----------------------------------------------------
 -- Table `dds_anual`.`Calificaciones`
 -- -----------------------------------------------------
