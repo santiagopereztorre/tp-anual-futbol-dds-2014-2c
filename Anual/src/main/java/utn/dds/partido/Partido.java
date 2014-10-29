@@ -14,12 +14,17 @@ import java.util.stream.Collectors;
 
 
 
+
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.Columns;
 
 import utn.dds.observers.ObsPartidoCompleto;
 import utn.dds.observers.ObsPartidoDescompleto;
@@ -61,7 +66,8 @@ public class Partido extends PersistentEntity{
 	@OneToMany
 	private List<Rechazo> rechazosSugerencias;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="fecha_partido")
 	private Date fecha;
 	
 	public Partido(Date fecha){
