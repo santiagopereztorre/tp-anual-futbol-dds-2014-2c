@@ -1,7 +1,9 @@
 package utn.dds.ui;
 
 import org.uqbar.arena.layout.VerticalLayout;
+import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.Window;
 import org.uqbar.arena.windows.WindowOwner;
 
@@ -18,6 +20,9 @@ public class VerPartidoView extends Window<VerPartidoViewModel>{
 		// TODO Auto-generated method stub
 		setTitle("Visualizar ultimo partido");
 		mainPanel.setLayout(new VerticalLayout());
+		
+		new Label(mainPanel).setText("Partido: ");
+		new Label(mainPanel).bindValueToProperty("id_partido");
 	}
 
 }

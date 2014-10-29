@@ -22,13 +22,17 @@ import utn.dds.partido.PartidoHome;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
+import utn.dds.tipoInscripcion.TipoInscripcion;
 
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class GenerarEquiposViewModel {
-
+	
+	private Estandar estandar;
+	private Condicional condicional;
+	private Solidaria solidaria;
 	
 	private void inicializarPartido(){
 		EntityManagerHelper.beginTransaction();
@@ -107,9 +111,10 @@ public class GenerarEquiposViewModel {
 		EntityManagerHelper.persist(carlos);
 		
 		Partido riverboca = new Partido(new Date());
-		Estandar estandar = new Estandar();
-		Condicional condicional = new Condicional();
-		Solidaria solidaria = new Solidaria();
+		
+		this.estandar = new Estandar();
+		this.condicional = new Condicional();
+		this.solidaria = new Solidaria();
 		
 		riverboca.inscribirJugador(carlos, estandar);
 		riverboca.inscribirJugador(juancho, estandar);
@@ -164,8 +169,15 @@ public class GenerarEquiposViewModel {
 		if(jugadores.isEmpty()){
 			this.inicializarPartido();
 		}
+		Query queryTipos = EntityManagerHelper.createQuery("from TipoInscripcion");
+		List<TipoInscripcion> tipos = queryTipos.getResultList();
+		
+		this.estandar = (Estandar)tipos.get(0);
+		this.condicional = (Condicional)tipos.get(1);
+		this.solidaria = (Solidaria)tipos.get(2);
+		
 		jugadores.forEach((Jugador jugador) -> JugadorHome.getInstancia().create(jugador));
-		jugadores.forEach((Jugador jugador) -> this.partido.inscribirJugador(jugador, new Estandar()));	
+		jugadores.forEach((Jugador jugador) -> this.partido.inscribirJugador(jugador, this.estandar));	
 	}
 	
 	private Divisor divisorSeleccionado;
