@@ -26,10 +26,7 @@ import org.uqbar.commons.utils.Observable;
 public class GenerarEquiposViewModel {
 
 	private void inicializarPartido(){
-		/**
-		 * TODO descomentar
-		 */
-	/*	Jugador juan = new Jugador();
+		Jugador juan = new Jugador();
 		juan.setNombre("juan");
 		JugadorHome.getInstancia().create(juan);
 		
@@ -115,7 +112,7 @@ public class GenerarEquiposViewModel {
 		pato.setHandicap(8);
 		lalo.setHandicap(3);
 		lucas.setHandicap(9);
-		*/
+		
 	}
 	
 	public GenerarEquiposViewModel(Partido partido) {
@@ -233,10 +230,7 @@ public class GenerarEquiposViewModel {
 	}
 	
 	public void confirmarEquipos(){
-		/**
-		 * TODO descomentar
-		 */
-	//	PartidoHome.getInstancia().create(partido);
+		PartidoHome.getInstancia().create(partido);
 		partido = new Partido();
 		this.inicializarPartido();	
 	}

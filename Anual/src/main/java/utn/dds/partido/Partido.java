@@ -19,8 +19,11 @@ import java.util.stream.Collectors;
 
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -48,7 +51,15 @@ import utn.dds.jugador.*;
 
 @Entity
 @Table(name="Partidos")
-public class Partido extends PersistentEntity{
+public class Partido extends org.uqbar.commons.model.Entity{
+	
+	@Id
+	@GeneratedValue
+	private Integer id;
+
+	public Integer getId() {
+		return id;
+	}
 	
 	@OneToMany
 	@JoinColumn(name="id_partido")

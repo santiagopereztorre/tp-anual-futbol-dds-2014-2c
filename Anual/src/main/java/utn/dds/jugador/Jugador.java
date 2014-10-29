@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -13,10 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-
-
-
 
 
 //import org.uqbar.commons.model.Entity;
@@ -33,13 +31,20 @@ import utn.dds.jugador.excepciones.NoJugaronJuntosException;
 import utn.dds.jugador.excepciones.NoPodesCalificarteAVosMismoException;
 import utn.dds.jugador.excepciones.YaFueCalificadoException;
 import utn.dds.partido.*;
-import utn.dds.persistentEntity.PersistentEntity;
 import utn.dds.tipoInscripcion.TipoInscripcion;
 
 @Observable
 @Entity
 @Table(name="Jugadores")
-public class Jugador extends PersistentEntity{
+public class Jugador extends org.uqbar.commons.model.Entity{
+	
+	@Id
+	@GeneratedValue
+	private Integer id;
+
+	public Integer getId() {
+		return id;
+	}
 	
 	@OneToMany
 	@JoinColumn(name="id_jugador")

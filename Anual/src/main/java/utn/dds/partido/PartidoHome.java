@@ -1,8 +1,11 @@
 package utn.dds.partido;
 
 import org.apache.commons.collections15.Predicate;
+import org.uqbar.commons.model.CollectionBasedHome;
 
-public class PartidoHome {
+import utn.dds.jugador.Jugador;
+
+public class PartidoHome extends CollectionBasedHome<Partido>{
 	private static PartidoHome instancia;
 	
 

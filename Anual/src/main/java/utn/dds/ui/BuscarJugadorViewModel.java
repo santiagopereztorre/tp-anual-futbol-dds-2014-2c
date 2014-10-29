@@ -3,6 +3,7 @@ package utn.dds.ui;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.uqbar.commons.model.Entity;
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
 
@@ -137,10 +138,7 @@ public class BuscarJugadorViewModel {
 	
 	public List<Jugador> getJugadores()
 	{
-		/**
-		 * TODO descomentar
-		 */
-//		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
+		jugadores = JugadorHome.getInstancia().searchByExample(jugador);
 		return jugadores;
 	}
 }
