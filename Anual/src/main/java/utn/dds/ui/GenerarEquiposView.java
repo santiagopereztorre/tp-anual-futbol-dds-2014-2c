@@ -69,6 +69,9 @@ public class GenerarEquiposView extends MainWindow<GenerarEquiposViewModel> {
 
 		new Button(mainPanel).setCaption("Confirmar equipos").onClick(
 				()-> getModelObject().confirmarEquipos());
+		
+		new Button(mainPanel).setCaption("Ver ultimo partido").onClick(
+				()-> new VerPartidoView(this, new VerPartidoViewModel()).open());
 	}
 	
 	public static void main(String[] args) {
