@@ -20,10 +20,10 @@ public class Rechazo extends PersistentEntity{
 	private Jugador jugador;
 	
 	@ManyToOne
-	@JoinColumn(name="id_partido")
+	@JoinColumn(name="id_tipos_inscripcion")
 	private TipoInscripcion inscripcion;
 	
-	@Column(name="motivo_rechazo")
+	@Column(name="motivo")
 	private String motivo;
 	
 	public Rechazo(){

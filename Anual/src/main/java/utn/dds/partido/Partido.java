@@ -77,6 +77,7 @@ public class Partido extends PersistentEntity{
 	private List<ObsPartidoInscripcion> observadoresInscripcion;
 	
 	@OneToMany
+	@JoinColumn(name="id_partido")
 	private List<Rechazo> rechazosSugerencias;
 	
 	@Temporal(TemporalType.TIMESTAMP)

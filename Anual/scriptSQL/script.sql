@@ -198,13 +198,24 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Rechazos` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `id_partido` INT NOT NULL,
+  `id_jugador` INT NOT NULL,
   `motivo` VARCHAR(45) NULL ,
-  `Sugerencias_id_sugerencia` INT NOT NULL ,
+  `id_tipos_inscripcion` INT NOT NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `fk_Rechazos_Sugerencias1` (`Sugerencias_id_sugerencia` ASC) ,
-  CONSTRAINT `fk_Rechazos_Sugerencias1`
-    FOREIGN KEY (`Sugerencias_id_sugerencia` )
-    REFERENCES `dds_anual`.`Sugerencias` (`id` )
+  CONSTRAINT `fk_Rechazos_id_partido`
+    FOREIGN KEY (`id_partido` )
+    REFERENCES `dds_anual`.`Partido` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Rechazos_id_jugador`
+    FOREIGN KEY (`id_jugador` )
+    REFERENCES `dds_anual`.`Jugadores` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Rechazos_id_tipos_inscripcion`
+    FOREIGN KEY (`id_tipos_inscripcion` )
+    REFERENCES `dds_anual`.`Tipos_inscripcion` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
