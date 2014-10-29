@@ -9,11 +9,8 @@ import javax.persistence.Entity;
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorConCalificacion;
 
-@Entity
-@DiscriminatorValue("ParImpar")
-public class ParImpar extends Divisor {
+public class ParImpar implements Divisor {
 
-	@Override
 	public void armarEquipos(List<Jugador> equipo1, List<Jugador> equipo2,
 			List<JugadorConCalificacion> jugadoresCalificados) {
 		Collections.sort(jugadoresCalificados);

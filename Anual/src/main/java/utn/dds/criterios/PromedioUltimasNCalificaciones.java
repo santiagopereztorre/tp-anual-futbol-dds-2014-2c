@@ -1,13 +1,9 @@
 package utn.dds.criterios;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-
 import utn.dds.jugador.Jugador;
 
-@Entity
-@DiscriminatorValue("UltNCalif")
-public class PromedioUltimasNCalificaciones extends Criterio {
+
+public class PromedioUltimasNCalificaciones implements Criterio {
 
 	public static final int TODAS = -1;
 	

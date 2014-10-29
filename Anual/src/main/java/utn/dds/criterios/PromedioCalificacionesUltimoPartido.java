@@ -9,9 +9,8 @@ import javax.persistence.Entity;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
 
-@Entity
-@DiscriminatorValue("CalifUltPartido")
-public class PromedioCalificacionesUltimoPartido extends Criterio{
+
+public class PromedioCalificacionesUltimoPartido implements Criterio{
 
 	@Override
 	public Integer calificar(Jugador unJugador) {

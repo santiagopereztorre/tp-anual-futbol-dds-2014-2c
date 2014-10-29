@@ -8,6 +8,7 @@ import utn.dds.criterios.Criterio;
 import utn.dds.criterios.Handicap;
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
 import utn.dds.criterios.PromedioUltimasNCalificaciones;
+import utn.dds.db.EntityManagerHelper;
 import utn.dds.divisores.Divisor;
 import utn.dds.divisores.ParImpar;
 import utn.dds.divisores.UnoParaAcaDosParaAllaDosParaAca;
@@ -230,8 +231,11 @@ public class GenerarEquiposViewModel {
 	}
 	
 	public void confirmarEquipos(){
+		EntityManagerHelper.beginTransaction();
 		PartidoHome.getInstancia().create(partido);
 		partido = new Partido();
+		EntityManagerHelper.persist(partido);
+		EntityManagerHelper.commit();
 		this.inicializarPartido();	
 	}
 	

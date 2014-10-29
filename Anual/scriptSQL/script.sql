@@ -7,48 +7,13 @@ USE `dds_anual` ;
 
 
 -- -----------------------------------------------------
--- Table `dds_anual`.`Criterios`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `dds_anual`.`Criterios` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre_criterio` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `dds_anual`.`Divisores`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `dds_anual`.`Divisores` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre_divisor` VARCHAR(45) NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `dds_anual`.`Partidos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `dds_anual`.`Partidos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `fecha_partido` DATETIME NULL ,
-  `Criterios_id_criterio` INT NOT NULL ,
-  `Divisores_id_divisor` INT NOT NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `fk_Partidos_Criterios` (`Criterios_id_criterio` ASC) ,
-  INDEX `fk_Partidos_Divisores1` (`Divisores_id_divisor` ASC) ,
-  CONSTRAINT `fk_Partidos_Criterios`
-    FOREIGN KEY (`Criterios_id_criterio` )
-    REFERENCES `dds_anual`.`Criterios` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Partidos_Divisores1`
-    FOREIGN KEY (`Divisores_id_divisor` )
-    REFERENCES `dds_anual`.`Divisores` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
+  PRIMARY KEY (`id`))
+  ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `dds_anual`.`Jugadores`
