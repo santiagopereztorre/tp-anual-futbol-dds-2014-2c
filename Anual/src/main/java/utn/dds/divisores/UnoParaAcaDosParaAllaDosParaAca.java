@@ -3,9 +3,6 @@ package utn.dds.divisores;
 import java.util.Collections;
 import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-
 import utn.dds.jugador.Jugador;
 import utn.dds.jugador.JugadorConCalificacion;
 
