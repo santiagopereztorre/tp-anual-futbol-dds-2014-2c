@@ -28,6 +28,10 @@ public class Calificacion extends PersistentEntity{
 	@Column(name="puntaje_calificacion")
 	private Integer puntaje;
 	
+	public Calificacion(){
+		
+	}
+	
 	public Calificacion(Jugador otroJugador, Partido unPartido, Integer puntaje, String unTexto){
 		this.setCalificador(otroJugador);
 		this.setPartido(unPartido);

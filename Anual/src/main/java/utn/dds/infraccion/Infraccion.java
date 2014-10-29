@@ -24,6 +24,10 @@ public class Infraccion extends PersistentEntity{
 	@Column(name="fecha_infraccion")
 	private Date fecha;
 	
+	public Infraccion(){
+		
+	}
+	
 	public Infraccion(String motivo){
 		setMotivo(motivo);
 		setFecha(new Date());

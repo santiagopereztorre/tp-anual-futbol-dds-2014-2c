@@ -28,9 +28,12 @@ public class Sugerencia extends PersistentEntity{
 	@JoinColumn(name="id_tipo_inscripcion")
 	private TipoInscripcion inscripcion;
 	
+	public Sugerencia(){
+		
+	}
+	
 	public Sugerencia(Jugador jugador, Partido partido,
-			TipoInscripcion inscripcion)
-	{
+			TipoInscripcion inscripcion){
 		super();
 		this.jugador = jugador;
 		this.partido = partido;

@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import utn.dds.db.EntityManagerHelper;
+import utn.dds.jugador.Jugador;
+import utn.dds.persistentEntity.PersistentEntity;
 
 public class ContextTest {
 
@@ -34,7 +36,8 @@ public class ContextTest {
 	
 	@Test
 	public void testName() throws Exception {
-
+		Jugador jugador = new Jugador();
+		EntityManagerHelper.persist(jugador);
 	}
 
 }

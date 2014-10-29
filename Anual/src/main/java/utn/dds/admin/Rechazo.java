@@ -26,8 +26,11 @@ public class Rechazo extends PersistentEntity{
 	@Column(name="motivo_rechazo")
 	private String motivo;
 	
-	Rechazo(Jugador unJugador, TipoInscripcion inscripcion, String motivo)
-	{
+	public Rechazo(){
+		
+	}
+	
+	public Rechazo(Jugador unJugador, TipoInscripcion inscripcion, String motivo){
 		setJugador(unJugador);
 		this.setInscripcion(inscripcion);
 		this.setMotivo(motivo);

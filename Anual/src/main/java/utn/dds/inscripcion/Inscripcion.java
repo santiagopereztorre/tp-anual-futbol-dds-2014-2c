@@ -22,6 +22,10 @@ public class Inscripcion extends PersistentEntity{
 	@JoinColumn(name="id_tipos_inscripcion")
 	private TipoInscripcion tipoInscripcion;
 	
+	public Inscripcion(){
+		
+	}
+	
 	public Inscripcion(Jugador nuevoJugador, TipoInscripcion nuevoTipoInscripcion){
 		setJugador(nuevoJugador);
 		setTipoInscripcion(nuevoTipoInscripcion);

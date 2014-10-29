@@ -15,6 +15,10 @@ public class Mix extends Criterio{
 	@OneToMany
 	private List<Criterio> criterios;
 	
+	public Mix(){
+		
+	}
+	
 	public Mix (List<Criterio> criterios){
 		this.criterios = criterios;
 	}
