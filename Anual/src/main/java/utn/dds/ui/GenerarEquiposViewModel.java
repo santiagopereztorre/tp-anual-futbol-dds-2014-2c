@@ -84,6 +84,17 @@ public class GenerarEquiposViewModel {
 		lalo.setHandicap(3);
 		lucas.setHandicap(9);
 		
+		juan.setApodo("FDSAF");
+		pepito.setApodo("Enano");
+		marcelo.setApodo("Micho");
+		leandro.setApodo("Tito");
+		martin.setApodo("Pelado");
+		juancho.setApodo("Negrito");
+		carlos.setApodo("Gordo");
+		pato.setApodo("Cabezon");
+		lalo.setApodo("ibiua");
+		lucas.setApodo("FUI");
+		
 		EntityManagerHelper.persist(leandro);
 		EntityManagerHelper.persist(juan);
 		EntityManagerHelper.persist(marcelo);
@@ -274,36 +285,11 @@ public class GenerarEquiposViewModel {
 		PartidoHome.getInstancia().create(partido);
 		
 		EntityManagerHelper.persist(partido);
-	//	persistirEquipo(partido.getEquipo1());
-	//	persistirEquipo(partido.getEquipo2());
 		
 		EntityManagerHelper.commit();
-	//	partido = new Partido(new Date());
-	//	this.inicializarPartido();	
 	}
 	
 	public Jugador abrirJugadorSeleccionado(){
 		return getJugadorSeleccionado();
-	}
-	
-	public void persistirEquipo(List<Jugador> equipo){
-		int i;
-		for(i=0; i < equipo.size(); i++){
-			Jugador jugador = equipo.get(i);
-			EntityManagerHelper.persist(jugador);
-		}
-		/*for(i=0; i < equipo.size(); i++){
-			Jugador jugador = equipo.get(i);
-			persistirCalificaciones(jugador);
-		}
-		*/
-	}
-	
-	public void persistirCalificaciones(Jugador jugador){
-		int i;
-		for(i=0; i < jugador.cantidadCalificaciones(); i++){
-			Calificacion calificacion = jugador.getCalificaciones().get(i);
-			EntityManagerHelper.persist(calificacion);
-		}		
 	}
 }
