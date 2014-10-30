@@ -23,7 +23,7 @@ public class VerPartidoViewModel {
 		EntityManagerHelper.beginTransaction();
 		Query query = EntityManagerHelper.createQuery("from Partido");
 		List<Partido> partidos = query.getResultList();
-		id_partido = partidos.get(partidos.size()).getId();
+		id_partido = partidos.get(partidos.size()-1).getId();
 		EntityManagerHelper.commit();
 		return id_partido;
 	}

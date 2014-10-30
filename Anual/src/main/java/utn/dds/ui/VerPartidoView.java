@@ -20,9 +20,10 @@ public class VerPartidoView extends Window<VerPartidoViewModel>{
 		// TODO Auto-generated method stub
 		setTitle("Visualizar ultimo partido");
 		mainPanel.setLayout(new VerticalLayout());
+		mainPanel.setWidth(400);
 		
 		new Label(mainPanel).setText("Partido: ");
-		new Label(mainPanel).bindValueToProperty("id_partido");
+		new Label(mainPanel).setWidth(100).bindValueToProperty("id_partido");
 	}
 
 }
