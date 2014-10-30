@@ -88,7 +88,7 @@ public class GenerarEquiposViewModel {
 		lalo.setHandicap(3);
 		lucas.setHandicap(9);
 		
-		juan.setApodo("FDSAF");
+		juan.setApodo("Tato");
 		pepito.setApodo("Enano");
 		marcelo.setApodo("Micho");
 		leandro.setApodo("Tito");
@@ -96,8 +96,8 @@ public class GenerarEquiposViewModel {
 		juancho.setApodo("Negrito");
 		carlos.setApodo("Gordo");
 		pato.setApodo("Cabezon");
-		lalo.setApodo("ibiua");
-		lucas.setApodo("FUI");
+		lalo.setApodo("Colo");
+		lucas.setApodo("Lucho");
 		
 		EntityManagerHelper.persist(leandro);
 		EntityManagerHelper.persist(juan);
