@@ -1,6 +1,7 @@
 package utn.dds.ui;
 
 import java.util.Date;
+import java.util.List;
 
 import utn.dds.db.EntityManagerHelper;
 import utn.dds.jugador.Jugador;
@@ -9,12 +10,16 @@ import utn.dds.partido.Partido;
 import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
+import utn.dds.tipoInscripcion.TipoInscripcion;
+import utn.dds.tipoInscripcion.TipoInscripcionHome;
 
 public class InicializadorPartidos {
 	
 	private static Estandar estandar;
 	private static Condicional condicional;
 	private static Solidaria solidaria;
+	private static List<TipoInscripcion> tipos = TipoInscripcionHome.getInstancia().getTiposInscripcion();
+	
 	
 	public static void inicializar(Partido partido){
 		EntityManagerHelper.beginTransaction();
@@ -141,27 +146,17 @@ public class InicializadorPartidos {
 		EntityManagerHelper.commit();
 	}
 
+	
 	public static Estandar getEstandar() {
-		return estandar;
-	}
-
-	public static void setEstandar(Estandar estandar) {
-		InicializadorPartidos.estandar = estandar;
+		return (Estandar)tipos.get(0);
 	}
 
 	public static Condicional getCondicional() {
-		return condicional;
-	}
-
-	public static void setCondicional(Condicional condicional) {
-		InicializadorPartidos.condicional = condicional;
+		return (Condicional)tipos.get(1);
 	}
 
 	public static Solidaria getSolidaria() {
-		return solidaria;
+		return (Solidaria)tipos.get(2);
 	}
 
-	public static void setSolidaria(Solidaria solidaria) {
-		InicializadorPartidos.solidaria = solidaria;
-	}
 }

@@ -172,11 +172,11 @@ public class GenerarEquiposViewModel {
 			InicializadorPartidos.inicializar(partido);
 		}
 		
-		List<TipoInscripcion> tipos = TipoInscripcionHome.getInstancia().getTiposInscripcion();
+		/*List<TipoInscripcion> tipos = TipoInscripcionHome.getInstancia().getTiposInscripcion();
 		
 		InicializadorPartidos.setCondicional((Condicional)tipos.get(1));
 		InicializadorPartidos.setEstandar((Estandar)tipos.get(0));
-		InicializadorPartidos.setSolidaria((Solidaria)tipos.get(2));
+		InicializadorPartidos.setSolidaria((Solidaria)tipos.get(2));*/
 		
 		jugadores.forEach((Jugador jugador) -> JugadorHome.getInstancia().create(jugador));
 		jugadores.forEach((Jugador jugador) -> this.partido.inscribirJugador(jugador, InicializadorPartidos.getEstandar()));	
