@@ -42,4 +42,24 @@ public class PartidoHome extends CollectionBasedHome<Partido>{
 		Query query = EntityManagerHelper.createQuery("from Partido");
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	private List<Jugador> getEquipoPorPartido(String equipo, Integer id)
+	{
+		Query query = EntityManagerHelper.createQuery("select "+ equipo +" from Partido p where p.id = ?1");
+		query.setParameter(1,id);
+		return query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Jugador> getEquipo1PorPartido(Integer id)
+	{
+		return getEquipoPorPartido("equipo1", id);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Jugador> getEquipo2PorPartido(Integer id)
+	{
+		return getEquipoPorPartido("equipo2", id);
+	}
 }

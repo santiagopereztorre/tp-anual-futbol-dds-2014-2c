@@ -9,6 +9,7 @@ import org.uqbar.commons.utils.Observable;
 import utn.dds.db.EntityManagerHelper;
 import utn.dds.jugador.Jugador;
 import utn.dds.partido.Partido;
+import utn.dds.partido.PartidoHome;
 
 @Observable
 public class VerPartidoViewModel {
@@ -24,8 +25,7 @@ public class VerPartidoViewModel {
 	public int getId_partido() {
 		EntityManagerHelper.beginTransaction();
 		
-		Query query = EntityManagerHelper.createQuery("from Partido");
-		List<Partido> partidos = query.getResultList();
+		List<Partido> partidos = PartidoHome.getInstancia().getPartidos();
 		
 		if(!partidos.isEmpty()){
 			id_partido = partidos.get(partidos.size()-1).getId();
@@ -39,11 +39,12 @@ public class VerPartidoViewModel {
 	
 	public List<Jugador> getEquipo1() {
 		EntityManagerHelper.beginTransaction();
-		Query query = EntityManagerHelper.createQuery("select equipo1 from Partido p where p.id = ?1");
-		query.setParameter(1,getId_partido());
-		List<Jugador> jugadores = query.getResultList();
+		
+		List<Jugador> jugadores = PartidoHome.getInstancia().getEquipo1PorPartido(getId_partido());
 		setEquipo1(jugadores);
+		
 		EntityManagerHelper.commit();
+		
 		return equipo1;
 	}
 
@@ -53,11 +54,12 @@ public class VerPartidoViewModel {
 
 	public List<Jugador> getEquipo2() {
 		EntityManagerHelper.beginTransaction();
-		Query query = EntityManagerHelper.createQuery("select equipo2 from Partido p where p.id = ?1");
-		query.setParameter(1,getId_partido());
-		List<Jugador> jugadores = query.getResultList();
+		
+		List<Jugador> jugadores = PartidoHome.getInstancia().getEquipo2PorPartido(getId_partido());
 		setEquipo2(jugadores);
+		
 		EntityManagerHelper.commit();
+		
 		return equipo2;
 	}
 
