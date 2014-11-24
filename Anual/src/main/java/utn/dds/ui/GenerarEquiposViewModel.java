@@ -165,7 +165,7 @@ public class GenerarEquiposViewModel {
 	public GenerarEquiposViewModel(Partido partido) {
 		this.partido = partido;
 		
-		EntityManagerHelper.beginTransaction();
+		//EntityManagerHelper.beginTransaction();
 		
 		List<Jugador> jugadores = JugadorHome.getInstancia().getJugadores();
 		

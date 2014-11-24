@@ -23,7 +23,7 @@ public class VerPartidoViewModel {
 	}
 
 	public int getId_partido() {
-		EntityManagerHelper.beginTransaction();
+		//EntityManagerHelper.beginTransaction();
 		
 		List<Partido> partidos = PartidoHome.getInstancia().getPartidos();
 		
@@ -33,17 +33,17 @@ public class VerPartidoViewModel {
 			id_partido = -1;
 		}
 		
-		EntityManagerHelper.commit();
+		//EntityManagerHelper.commit();
 		return id_partido;
 	}
 	
 	public List<Jugador> getEquipo1() {
-		EntityManagerHelper.beginTransaction();
+		//EntityManagerHelper.beginTransaction();
 		
 		List<Jugador> jugadores = PartidoHome.getInstancia().getEquipo1PorPartido(getId_partido());
 		setEquipo1(jugadores);
 		
-		EntityManagerHelper.commit();
+		//EntityManagerHelper.commit();
 		
 		return equipo1;
 	}
@@ -53,12 +53,12 @@ public class VerPartidoViewModel {
 	}
 
 	public List<Jugador> getEquipo2() {
-		EntityManagerHelper.beginTransaction();
+		//EntityManagerHelper.beginTransaction();
 		
 		List<Jugador> jugadores = PartidoHome.getInstancia().getEquipo2PorPartido(getId_partido());
 		setEquipo2(jugadores);
 		
-		EntityManagerHelper.commit();
+		//EntityManagerHelper.commit();
 		
 		return equipo2;
 	}
