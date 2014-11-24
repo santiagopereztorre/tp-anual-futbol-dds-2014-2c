@@ -30,7 +30,7 @@ import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class GenerarEquiposViewModel {
-	
+	/*
 	private Estandar estandar;
 	private Condicional condicional;
 	private Solidaria solidaria;
@@ -144,8 +144,7 @@ public class GenerarEquiposViewModel {
 		carlos.calificar(pepito, riverboca, 7, "Lateral con proyeccion");
 		carlos.calificar(leandro, riverboca, 4, "Defensor rustico");
 		martin.calificar(carlos, riverboca, 8, "Un volante con magia");
-		
-		
+				
 		partido = new Partido(new Date());
 		partido.inscribirJugador(lalo, solidaria);
 		partido.inscribirJugador(juan, estandar);
@@ -158,9 +157,8 @@ public class GenerarEquiposViewModel {
 		partido.inscribirJugador(leandro, estandar);
 		partido.inscribirJugador(pato, estandar);		
 		
-
 		EntityManagerHelper.commit();		
-	}
+	}*/
 	
 	public GenerarEquiposViewModel(Partido partido) {
 		this.partido = partido;
@@ -170,18 +168,18 @@ public class GenerarEquiposViewModel {
 		List<Jugador> jugadores = JugadorHome.getInstancia().getJugadores();
 		
 		if(jugadores.isEmpty()){
-			this.inicializarPartido();
+			//this.inicializarPartido();
+			InicializadorPartidos.inicializar(partido);
 		}
 		
 		List<TipoInscripcion> tipos = TipoInscripcionHome.getInstancia().getTiposInscripcion();
 		
-		this.estandar = (Estandar)tipos.get(0);
-		this.condicional = (Condicional)tipos.get(1);
-		this.solidaria = (Solidaria)tipos.get(2);
+		InicializadorPartidos.setCondicional((Condicional)tipos.get(1));
+		InicializadorPartidos.setEstandar((Estandar)tipos.get(0));
+		InicializadorPartidos.setSolidaria((Solidaria)tipos.get(2));
 		
 		jugadores.forEach((Jugador jugador) -> JugadorHome.getInstancia().create(jugador));
-		jugadores.forEach((Jugador jugador) -> this.partido.inscribirJugador(jugador, this.estandar));	
-		
+		jugadores.forEach((Jugador jugador) -> this.partido.inscribirJugador(jugador, InicializadorPartidos.getEstandar()));	
 	}
 	
 	private Divisor divisorSeleccionado;
