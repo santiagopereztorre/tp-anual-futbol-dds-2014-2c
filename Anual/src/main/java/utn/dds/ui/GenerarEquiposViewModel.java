@@ -23,6 +23,7 @@ import utn.dds.tipoInscripcion.Condicional;
 import utn.dds.tipoInscripcion.Estandar;
 import utn.dds.tipoInscripcion.Solidaria;
 import utn.dds.tipoInscripcion.TipoInscripcion;
+import utn.dds.tipoInscripcion.TipoInscripcionHome;
 
 import org.uqbar.commons.model.ObservableUtils;
 import org.uqbar.commons.utils.Observable;
@@ -165,14 +166,14 @@ public class GenerarEquiposViewModel {
 		this.partido = partido;
 		
 		EntityManagerHelper.beginTransaction();
+		
 		List<Jugador> jugadores = JugadorHome.getInstancia().getJugadores();
 		
 		if(jugadores.isEmpty()){
 			this.inicializarPartido();
 		}
 		
-		Query queryTipos = EntityManagerHelper.createQuery("from TipoInscripcion");
-		List<TipoInscripcion> tipos = queryTipos.getResultList();
+		List<TipoInscripcion> tipos = TipoInscripcionHome.getInstancia().getTiposInscripcion();
 		
 		this.estandar = (Estandar)tipos.get(0);
 		this.condicional = (Condicional)tipos.get(1);
@@ -180,6 +181,7 @@ public class GenerarEquiposViewModel {
 		
 		jugadores.forEach((Jugador jugador) -> JugadorHome.getInstancia().create(jugador));
 		jugadores.forEach((Jugador jugador) -> this.partido.inscribirJugador(jugador, this.estandar));	
+		
 	}
 	
 	private Divisor divisorSeleccionado;
