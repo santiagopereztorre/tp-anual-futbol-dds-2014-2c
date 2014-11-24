@@ -163,12 +163,14 @@ public class GenerarEquiposViewModel {
 	
 	public GenerarEquiposViewModel(Partido partido) {
 		this.partido = partido;
+		
 		EntityManagerHelper.beginTransaction();
-		Query query = EntityManagerHelper.createQuery("from Jugador");
-		List<Jugador> jugadores = query.getResultList();
+		List<Jugador> jugadores = JugadorHome.getInstancia().getJugadores();
+		
 		if(jugadores.isEmpty()){
 			this.inicializarPartido();
 		}
+		
 		Query queryTipos = EntityManagerHelper.createQuery("from TipoInscripcion");
 		List<TipoInscripcion> tipos = queryTipos.getResultList();
 		

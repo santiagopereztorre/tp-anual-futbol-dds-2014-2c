@@ -1,12 +1,16 @@
 package utn.dds.jugador;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Query;
 
 import org.apache.commons.collections15.Predicate;
 import org.apache.commons.collections15.functors.AndPredicate;
 import org.uqbar.commons.model.*;
 
 import utn.dds.criterios.PromedioCalificacionesUltimoPartido;
+import utn.dds.db.EntityManagerHelper;
 import utn.dds.delimitadores.Delimitador;
 import utn.dds.jugador.JugadorWrapper;
 
@@ -117,6 +121,13 @@ public class JugadorHome extends CollectionBasedHome<Jugador> {
 			instancia = new JugadorHome();
 		}
 		return instancia;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Jugador> getJugadores()
+	{
+		Query query = EntityManagerHelper.createQuery("from Jugador");
+		return query.getResultList();
 	}
 	
 }
